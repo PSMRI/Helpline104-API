@@ -56,7 +56,7 @@ import com.iemr.helpline104.utils.exception.IEMRException;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 
 @Service
-public class HIHLMastersImpl {
+public class HIHLMastersImpl implements HIHLMasters {
 
 	@Autowired
 	private M_104appetiteRepo m_104appetiteRepo;

@@ -56,11 +56,9 @@ public class FeedbackController {
 	 */
 	private FeedbackService feedbackService;
 
-	private FeedbackServiceImpl feedbackServiceImpl;
-
 	@Autowired
 	public void setFeedbackServiceImpl(FeedbackServiceImpl feedbackServiceImpl) {
-		this.feedbackServiceImpl = feedbackServiceImpl;
+		this.feedbackService = feedbackServiceImpl;
 	}
 
 	@Autowired
@@ -131,7 +129,7 @@ public class FeedbackController {
 	public String saveBenFeedback(@RequestBody String feedbackRequest, HttpServletRequest request) {
 		OutputResponse response = new OutputResponse();
 		try {
-			String savedFeedback = feedbackServiceImpl.saveFeedbackFromCustomer(feedbackRequest, request);
+			String savedFeedback = feedbackService.saveFeedbackFromCustomer(feedbackRequest, request);
 			if (savedFeedback != null)
 				response.setResponse(savedFeedback);
 			else

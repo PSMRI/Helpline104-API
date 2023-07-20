@@ -38,9 +38,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.LongSerializationPolicy;
-import com.iemr.helpline104.controller.casesheet.Helpline104BeneficiaryHistoryController;
 import com.iemr.helpline104.data.cdss.SymptomsWrapper;
-import com.iemr.helpline104.service.cdss.CDSSServiceImpl;
+import com.iemr.helpline104.service.cdss.CDSSService;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
 import io.swagger.annotations.ApiOperation;
@@ -48,14 +47,9 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping(value = "/CDSS")
 @RestController
 public class ClinicalDecisionSupportSystemController {
-
-	private CDSSServiceImpl cDSSServiceImpl;
-	private Logger logger = LoggerFactory.getLogger(ClinicalDecisionSupportSystemController.class);
-
 	@Autowired
-	public void setcDSSService(CDSSServiceImpl cDSSServiceImpl) {
-		this.cDSSServiceImpl = cDSSServiceImpl;
-	}
+	private CDSSService cDSSService;
+	private Logger logger = LoggerFactory.getLogger(ClinicalDecisionSupportSystemController.class);
 
 	@CrossOrigin()
 	@ApiOperation(value = "Get symptoms", consumes = "application/json", produces = "application/json")
@@ -64,7 +58,7 @@ public class ClinicalDecisionSupportSystemController {
 		OutputResponse output = new OutputResponse();
 		try {
 			String sympReturn;
-			List<String> symptoms = cDSSServiceImpl.getSymptoms(symptomsDetails);
+			List<String> symptoms = cDSSService.getSymptoms(symptomsDetails);
 			Gson gson = new GsonBuilder().setLongSerializationPolicy(LongSerializationPolicy.STRING).setPrettyPrinting()
 					.create();
 			if (symptoms != null && symptoms.size() > 0) {
@@ -96,7 +90,7 @@ public class ClinicalDecisionSupportSystemController {
 			int age = symptomsDetails.getAge();
 
 			if (symptom != null && gender != null && age >= 0) {
-				questions = cDSSServiceImpl.getQuestions(symptom, age, gender);
+				questions = cDSSService.getQuestions(symptom, age, gender);
 
 				output.setResponse(questions);
 			}
@@ -124,7 +118,7 @@ public class ClinicalDecisionSupportSystemController {
 			int complaintId = userAnswerJson.get("complaintId").getAsInt();
 			int selected = userAnswerJson.get("selected").getAsInt();
 
-			String result = cDSSServiceImpl.getResult(complaintId, selected);
+			String result = cDSSService.getResult(complaintId, selected);
 			output.setResponse(result);
 
 		} catch (Exception e) {
@@ -142,7 +136,7 @@ public class ClinicalDecisionSupportSystemController {
 	public String saveSymptom(@RequestBody String inputData) {
 		OutputResponse output = new OutputResponse();
 		try {
-			String result = cDSSServiceImpl.saveSymptom(inputData);
+			String result = cDSSService.saveSymptom(inputData);
 			output.setResponse(result);
 		} catch (Exception e) {
 			logger.error("saveSymptom failed with error " + e.getMessage(), e);

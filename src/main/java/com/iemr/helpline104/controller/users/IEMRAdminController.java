@@ -46,6 +46,7 @@ import com.iemr.helpline104.data.users.M_Role;
 import com.iemr.helpline104.data.users.M_User;
 import com.iemr.helpline104.data.users.M_UserSecurityQMapping;
 import com.iemr.helpline104.data.users.M_UserServiceRoleMapping;
+import com.iemr.helpline104.service.users.IEMRAdminUserService;
 import com.iemr.helpline104.service.users.IEMRAdminUserServiceImpl;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
@@ -55,11 +56,12 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping(value = "/user")
 @RestController
 public class IEMRAdminController {
-	private IEMRAdminUserServiceImpl iemrAdminUserServiceImpl;
+	@Autowired
+	private IEMRAdminUserService iemrAdminUserService;
 
 	@Autowired
 	public void setIemrAdminUserService(IEMRAdminUserServiceImpl iemrAdminUserService) {
-		this.iemrAdminUserServiceImpl = iemrAdminUserService;
+		this.iemrAdminUserService = iemrAdminUserService;
 	}
 
 	@CrossOrigin()
@@ -67,7 +69,7 @@ public class IEMRAdminController {
 	@RequestMapping(value = { "/userAuthenticate" }, method = {
 			org.springframework.web.bind.annotation.RequestMethod.POST }, produces = { "application/json" })
 	public String userAuthenticate(@RequestBody M_User m_User) {
-		List<M_User> mUser = this.iemrAdminUserServiceImpl.userAuthenticate(m_User.getUserName(), m_User.getPassword());
+		List<M_User> mUser = this.iemrAdminUserService.userAuthenticate(m_User.getUserName(), m_User.getPassword());
 
 		Map<Object, Object> resMap = new HashMap();
 		Multimap<String, String> serviceRoleMultiMap = ArrayListMultimap.create();
@@ -109,13 +111,13 @@ public class IEMRAdminController {
 	@RequestMapping(value = { "/forgetPassword" }, method = {
 			org.springframework.web.bind.annotation.RequestMethod.POST }, produces = { "application/json" })
 	public String forgetPassword(@RequestBody M_User m_User) {
-		M_User mUser = this.iemrAdminUserServiceImpl.userExitsCheck(m_User.getUserName());
+		M_User mUser = this.iemrAdminUserService.userExitsCheck(m_User.getUserName());
 
 		List<Map<String, String>> quesAnsList = new ArrayList();
 		Map<String, String> quesAnsMap;
 		Map<Object, Object> resMap = new HashMap();
 		if (mUser != null) {
-			List<M_UserSecurityQMapping> mUserSecQuesMapping = this.iemrAdminUserServiceImpl
+			List<M_UserSecurityQMapping> mUserSecQuesMapping = this.iemrAdminUserService
 					.userSecurityQuestion(mUser.getUserID());
 			if (mUserSecQuesMapping != null) {
 				for (M_UserSecurityQMapping element : mUserSecQuesMapping) {
@@ -140,10 +142,10 @@ public class IEMRAdminController {
 	public String setPassword(@RequestBody M_User m_user) {
 		int noOfRowModified = 0;
 
-		M_User mUser = this.iemrAdminUserServiceImpl.userExitsCheck(m_user.getUserName());
+		M_User mUser = this.iemrAdminUserService.userExitsCheck(m_user.getUserName());
 		String setStatus;
 		if (mUser != null) {
-			noOfRowModified = this.iemrAdminUserServiceImpl.setForgetPassword(mUser.getUserID(), m_user.getPassword());
+			noOfRowModified = this.iemrAdminUserService.setForgetPassword(mUser.getUserID(), m_user.getPassword());
 			if (noOfRowModified > 0) {
 				setStatus = "Password Changed";
 			} else {
@@ -163,11 +165,11 @@ public class IEMRAdminController {
 	public String changePassword(@RequestBody M_User m_User) {
 		int noOfRowUpdated = 0;
 
-		M_User mUser = this.iemrAdminUserServiceImpl.userWithOldPassExitsCheck(m_User.getUserName(),
+		M_User mUser = this.iemrAdminUserService.userWithOldPassExitsCheck(m_User.getUserName(),
 				m_User.getPassword());
 		String changeReqResult;
 		if (mUser != null) {
-			noOfRowUpdated = this.iemrAdminUserServiceImpl.setForgetPassword(mUser.getUserID(),
+			noOfRowUpdated = this.iemrAdminUserService.setForgetPassword(mUser.getUserID(),
 					m_User.getNewPassword());
 			if (noOfRowUpdated > 0) {
 				changeReqResult = "Password SuccessFully Change";
@@ -188,7 +190,7 @@ public class IEMRAdminController {
 
 		Map<String, String> resMap = new HashMap<String, String>();
 
-		responseData = iemrAdminUserServiceImpl.saveUserSecurityQuesAns(m_UserSecurityQMapping);
+		responseData = iemrAdminUserService.saveUserSecurityQuesAns(m_UserSecurityQMapping);
 
 		if (responseData > 0)
 			resMap.put("status", "Changed");
@@ -206,7 +208,7 @@ public class IEMRAdminController {
 	@ApiOperation(value = "Get security quetions", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getsecurityquetions", method = RequestMethod.GET)
 	public String getSecurityts() {
-		ArrayList<M_LoginSecurityQuestions> test = iemrAdminUserServiceImpl.getAllLoginSecurityQuestions();
+		ArrayList<M_LoginSecurityQuestions> test = iemrAdminUserService.getAllLoginSecurityQuestions();
 		return test.toString();
 	}
 
@@ -217,7 +219,7 @@ public class IEMRAdminController {
 
 		OutputResponse response = new OutputResponse();
 		try {
-			M_Role test = iemrAdminUserServiceImpl.getrolewrapuptime(roleID);
+			M_Role test = iemrAdminUserService.getrolewrapuptime(roleID);
 			if (test == null) {
 				throw new Exception("RoleID Not Found");
 			}

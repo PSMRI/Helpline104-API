@@ -43,6 +43,7 @@ import com.iemr.helpline104.data.IMRMMR.M_supportServices;
 import com.iemr.helpline104.data.IMRMMR.m_iMRMMRBaseCommunity;
 import com.iemr.helpline104.data.IMRMMR.m_iMRMMRHealthworker;
 import com.iemr.helpline104.data.IMRMMR.m_iMRMMRTransitType;
+import com.iemr.helpline104.service.IMRMMR.IMRMMRService;
 import com.iemr.helpline104.service.IMRMMR.IMRMMRServiceImpl;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
@@ -56,7 +57,7 @@ public class IMRMMRController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@Autowired
-	private IMRMMRServiceImpl imrmmrService;
+	private IMRMMRService imrmmrService;
 
 	@CrossOrigin()
 	@ApiOperation(value = "Save IMR MMR", consumes = "application/json", produces = "application/json")

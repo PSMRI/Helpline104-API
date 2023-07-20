@@ -26,6 +26,9 @@ import java.util.List;
 import com.iemr.helpline104.data.IMRMMR.IMRMMR;
 import com.iemr.helpline104.data.IMRMMR.M_facilities;
 import com.iemr.helpline104.data.IMRMMR.M_supportServices;
+import com.iemr.helpline104.data.IMRMMR.m_iMRMMRBaseCommunity;
+import com.iemr.helpline104.data.IMRMMR.m_iMRMMRHealthworker;
+import com.iemr.helpline104.data.IMRMMR.m_iMRMMRTransitType;
 
 public interface IMRMMRService {
 
@@ -36,4 +39,12 @@ public interface IMRMMRService {
 	public List<M_facilities> getFacilities() throws Exception;
 
 	String updateImrMmrRequest(IMRMMR complaint) throws Exception;
+
+	public List<m_iMRMMRBaseCommunity> getBaseCommunities() throws Exception;
+
+	public List<m_iMRMMRTransitType> getTransitType() throws Exception;
+
+	public List<m_iMRMMRHealthworker> getHealthWorker() throws Exception;
+
+	public String getWorklistRequests(Integer beneficiaryRegID, String phoneNum, String requestID);
 }

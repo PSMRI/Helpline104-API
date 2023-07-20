@@ -83,12 +83,11 @@ public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 	}
 
 	@Override
-	public int saveUserSecurityQuesAns(
-			Iterable<M_UserSecurityQMapping> m_UserSecurityQMapping) {
+	public int saveUserSecurityQuesAns(Iterable<M_UserSecurityQMapping> m_UserSecurityQMapping) {
 		int x = 0;
 		Iterable<M_UserSecurityQMapping> obj = iEMRUserSecurityQuesAnsRepository.save(m_UserSecurityQMapping);
 		for (M_UserSecurityQMapping usq : obj) {
-			x  = iEMRUserRepositoryCustom.updateSetUserStatusActive(usq.getUserID());
+			x = iEMRUserRepositoryCustom.updateSetUserStatusActive(usq.getUserID());
 		}
 		return x;
 
@@ -96,36 +95,38 @@ public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.iemr.helpline104.service.users.IEMRAdminUserService#getAllLoginSecurityQuestions()
+	 * 
+	 * @see com.iemr.helpline104.service.users.IEMRAdminUserService#
+	 * getAllLoginSecurityQuestions()
 	 */
 	@Override
 	public ArrayList<M_LoginSecurityQuestions> getAllLoginSecurityQuestions() {
-		
+
 		ArrayList<M_LoginSecurityQuestions> result = new ArrayList<M_LoginSecurityQuestions>();
 		ArrayList<Objects[]> lists = iEMRUserLoginSecurityRepository.getAllLoginSecurityQuestions();
 		for (Object[] objects : lists) {
-			if (objects!=null && objects.length > 0) {
-				result.add(new M_LoginSecurityQuestions((Integer)objects[0], (String)objects[1]));
+			if (objects != null && objects.length > 0) {
+				result.add(new M_LoginSecurityQuestions((Integer) objects[0], (String) objects[1]));
 			}
 		}
 		return result;
 	}
-	
+
 	/**
 	 * IemrUserLoginSecurityRepository repository
 	 */
 	private IEMRUserLoginSecurityRepository iEMRUserLoginSecurityRepository;
-	
+
 	@Autowired
 	private RoleRepo roleRepo;
-	
+
 	@Autowired
-	public void setIEMRUserLoginSecurityRepository(IEMRUserLoginSecurityRepository iEMRUserLoginSecurityRepository){
-		
+	public void setIEMRUserLoginSecurityRepository(IEMRUserLoginSecurityRepository iEMRUserLoginSecurityRepository) {
+
 		this.iEMRUserLoginSecurityRepository = iEMRUserLoginSecurityRepository;
 	}
 
-	public M_Role getrolewrapuptime(int roleID) {
+	public M_Role getrolewrapuptime(Integer roleID) {
 		// TODO Auto-generated method stub
 		return roleRepo.findOne(roleID);
 	}

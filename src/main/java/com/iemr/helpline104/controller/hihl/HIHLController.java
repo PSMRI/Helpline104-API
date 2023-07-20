@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.iemr.helpline104.service.hihl.HIHLMasters;
 import com.iemr.helpline104.service.hihl.HIHLMastersImpl;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
@@ -46,7 +47,7 @@ public class HIHLController {
 	private Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@Autowired
-	private HIHLMastersImpl hIHLMastersImpl;
+	private HIHLMasters hIHLMasters;
 
 	@ApiOperation(value = "Master data for 104 HIHL", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/get/masters", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
@@ -54,7 +55,7 @@ public class HIHLController {
 
 		OutputResponse response = new OutputResponse();
 		try {
-			response.setResponse(hIHLMastersImpl.getHihlMasters());
+			response.setResponse(hIHLMasters.getHihlMasters());
 		} catch (Exception e) {
 			response.setError(5000, e.getLocalizedMessage());
 		}
@@ -68,7 +69,7 @@ public class HIHLController {
 
 		OutputResponse response = new OutputResponse();
 		try {
-			response.setResponse(hIHLMastersImpl.saveHihlCasesheet(request));
+			response.setResponse(hIHLMasters.saveHihlCasesheet(request));
 		} catch (Exception e) {
 			response.setError(5000, e.getLocalizedMessage());
 		}
@@ -82,7 +83,7 @@ public class HIHLController {
 
 		OutputResponse response = new OutputResponse();
 		try {
-			response.setResponse(hIHLMastersImpl.getHihlCasesheetHistoryInfo(benRegId));
+			response.setResponse(hIHLMasters.getHihlCasesheetHistoryInfo(benRegId));
 		} catch (Exception e) {
 			response.setError(5000, e.getLocalizedMessage());
 		}
@@ -95,7 +96,7 @@ public class HIHLController {
 
 		OutputResponse response = new OutputResponse();
 		try {
-			response.setResponse(hIHLMastersImpl.getHihlCasesheetData(casesheetId));
+			response.setResponse(hIHLMasters.getHihlCasesheetHistoryInfo(casesheetId));
 		} catch (Exception e) {
 			response.setError(5000, e.getLocalizedMessage());
 		}

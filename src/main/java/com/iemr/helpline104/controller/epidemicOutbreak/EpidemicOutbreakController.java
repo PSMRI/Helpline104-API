@@ -36,7 +36,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.helpline104.data.epidemicOutbreak.T_EpidemicOutbreak;
-import com.iemr.helpline104.service.epidemicOutbreak.EpidemicOutbreakServiceImpl;
+import com.iemr.helpline104.service.epidemicOutbreak.EpidemicOutbreakService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
@@ -50,7 +50,7 @@ public class EpidemicOutbreakController {
 	private Logger logger = LoggerFactory.getLogger(EpidemicOutbreakController.class);
 
 	@Autowired
-	private EpidemicOutbreakServiceImpl epidemicOutbreakServiceImpl;
+	private EpidemicOutbreakService epidemicOutbreakService;
 
 	@CrossOrigin
 	@ApiOperation(value = "Store epidemic outbreak complaint", consumes = "application/json", produces = "application/json")
@@ -64,7 +64,7 @@ public class EpidemicOutbreakController {
 			T_EpidemicOutbreak t_epidemicOutbreak = inputMapper.gson().fromJson(request, T_EpidemicOutbreak.class);
 			logger.info("saveEpidemicOutbreakComplaint request " + t_epidemicOutbreak.toString());
 
-			T_EpidemicOutbreak epidemicOutbreakComplaint = epidemicOutbreakServiceImpl.save(t_epidemicOutbreak,
+			T_EpidemicOutbreak epidemicOutbreakComplaint = epidemicOutbreakService.save(t_epidemicOutbreak,
 					httpRequest);
 			output.setResponse(epidemicOutbreakComplaint.toString());
 			logger.info("saveEpidemicOutbreakComplaint response: " + output);
@@ -87,7 +87,7 @@ public class EpidemicOutbreakController {
 
 			List<T_EpidemicOutbreak> epidemicOutbreakComplaint = null;
 
-			epidemicOutbreakComplaint = epidemicOutbreakServiceImpl.getEpidemicOutbreakComplaints(
+			epidemicOutbreakComplaint = epidemicOutbreakService.getEpidemicOutbreakComplaints(
 					t_epidemicOutbreak.getBeneficiaryRegID(), t_epidemicOutbreak.getBenCallID(),
 					t_epidemicOutbreak.getRequestID(), t_epidemicOutbreak.getPhoneNum());
 			output.setResponse(epidemicOutbreakComplaint.toString());
@@ -114,7 +114,7 @@ public class EpidemicOutbreakController {
 			T_EpidemicOutbreak t_epidemicOutbreak = InputMapper.gson().fromJson(request, T_EpidemicOutbreak.class);
 			logger.info("saveEpidemicOutbreakComplaint request " + t_epidemicOutbreak.toString());
 			if (t_epidemicOutbreak != null && t_epidemicOutbreak.getRequestID() != null) {
-				String result = epidemicOutbreakServiceImpl.UpdateEpidemicOutbreakRequest(t_epidemicOutbreak);
+				String result = epidemicOutbreakService.UpdateEpidemicOutbreakRequest(t_epidemicOutbreak);
 				if (result != null)
 					output.setResponse(result);
 				else

@@ -37,7 +37,7 @@ import com.iemr.helpline104.data.organDonation.M_DonatableOrgan;
 import com.iemr.helpline104.data.organDonation.M_DonationType;
 import com.iemr.helpline104.data.organDonation.OrganDonations;
 import com.iemr.helpline104.data.organDonation.T_OrganDonation;
-import com.iemr.helpline104.service.organDonation.OrganDonationServiceImpl;
+import com.iemr.helpline104.service.organDonation.OrganDonationService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
@@ -51,7 +51,7 @@ public class OrganDonationController {
 	private Logger logger = LoggerFactory.getLogger(OrganDonationController.class);
 
 	@Autowired
-	private OrganDonationServiceImpl organDonationServiceImpl;
+	private OrganDonationService organDonationService;
 
 	@CrossOrigin
 	@ApiOperation(value = "Save organ donation details", consumes = "application/json", produces = "application/json")
@@ -62,7 +62,7 @@ public class OrganDonationController {
 			OrganDonations organDonations = inputMapper.gson().fromJson(request, OrganDonations.class);
 			logger.info("saveOrganDonationDetails request " + organDonations.toString());
 
-			String organDonationResponse = organDonationServiceImpl.save(organDonations);
+			String organDonationResponse = organDonationService.save(organDonations);
 			output.setResponse(organDonationResponse.toString());
 		} catch (Exception e) {
 			logger.error("saveOrganDonationDetails failed with error " + e.getMessage(), e);
@@ -80,7 +80,7 @@ public class OrganDonationController {
 			T_OrganDonation organDonations = inputMapper.gson().fromJson(request, T_OrganDonation.class);
 			logger.info("updateOrganDonationDetails request " + organDonations.toString());
 
-			String organDonationResponse = organDonationServiceImpl.update(organDonations);
+			String organDonationResponse = organDonationService.update(organDonations);
 			output.setResponse(organDonationResponse.toString());
 		} catch (Exception e) {
 			logger.error("updateOrganDonationDetails failed with error " + e.getMessage(), e);
@@ -98,7 +98,7 @@ public class OrganDonationController {
 			T_OrganDonation organDonation = inputMapper.gson().fromJson(request, T_OrganDonation.class);
 			logger.info("saveOrganDonationInstituteDetails request " + organDonation.toString());
 
-			String organDonationResponse = organDonationServiceImpl.saveInstituteDetails(organDonation);
+			String organDonationResponse = organDonationService.saveInstituteDetails(organDonation);
 			output.setResponse(organDonationResponse.toString());
 		} catch (Exception e) {
 			logger.error("saveOrganDonationInstituteDetails failed with error " + e.getMessage(), e);
@@ -119,9 +119,8 @@ public class OrganDonationController {
 
 			List<T_OrganDonation> organDonationRequest = null;
 
-			organDonationRequest = organDonationServiceImpl.getOrganDonationRequests(
-					t_organDonation.getBeneficiaryRegID(), t_organDonation.getBenCallID(),
-					t_organDonation.getRequestID());
+			organDonationRequest = organDonationService.getOrganDonationRequests(t_organDonation.getBeneficiaryRegID(),
+					t_organDonation.getBenCallID(), t_organDonation.getRequestID());
 			output.setResponse(organDonationRequest.toString());
 			logger.info("getOrganDonationDetails response size: "
 					+ ((organDonationRequest.size() > 0) ? organDonationRequest.size() : "No Beneficiary Found"));
@@ -141,7 +140,7 @@ public class OrganDonationController {
 		OutputResponse output = new OutputResponse();
 		List<M_DonationType> organDonationTypes = null;
 		try {
-			organDonationTypes = organDonationServiceImpl.getDonationTypes();
+			organDonationTypes = organDonationService.getDonationTypes();
 			output.setResponse(organDonationTypes.toString());
 		} catch (Exception e) {
 			logger.error("getOrganDonationTypes failed with error " + e.getMessage(), e);
@@ -159,7 +158,7 @@ public class OrganDonationController {
 		OutputResponse output = new OutputResponse();
 		List<M_DonatableOrgan> donatableOrgans = null;
 		try {
-			donatableOrgans = organDonationServiceImpl.getDonatableOrgans();
+			donatableOrgans = organDonationService.getDonatableOrgans();
 			output.setResponse(donatableOrgans.toString());
 		} catch (Exception e) {
 			logger.error("getDonatableOrgans failed with error " + e.getMessage(), e);

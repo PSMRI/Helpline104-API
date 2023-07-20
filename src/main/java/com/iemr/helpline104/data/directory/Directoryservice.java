@@ -22,6 +22,7 @@
 package com.iemr.helpline104.data.directory;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -154,6 +155,9 @@ public class Directoryservice {
 	public String toString()
 	{
 		return outputMapper.gson().toJson(this);
+	}
+	public List<Directoryservice> getDirectorySearchHistory(Long beneficiaryRegID2, Long benCallID2) {
+		return null;
 	}
 	
 	

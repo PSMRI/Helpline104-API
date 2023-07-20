@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.helpline104.data.feedbackType.M_FeedbackType;
-import com.iemr.helpline104.service.feedbackType.FeedbackTypeServiceImpl;
+import com.iemr.helpline104.service.feedbackType.FeedbackTypeService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
@@ -49,7 +49,7 @@ public class FeedbackTypeController {
 	private Logger logger = LoggerFactory.getLogger(FeedbackTypeController.class);
 
 	@Autowired
-	private FeedbackTypeServiceImpl feedbackTypeServiceImpl;
+	private FeedbackTypeService feedbackTypeService;
 
 	@CrossOrigin
 	@ApiOperation(value = "Provides nature of complaints", consumes = "application/json", produces = "application/json")
@@ -61,7 +61,7 @@ public class FeedbackTypeController {
 			M_FeedbackType m_feedbackType = inputMapper.gson().fromJson(request, M_FeedbackType.class);
 			logger.info("getNatureOfComplaintTypes request " + m_feedbackType.toString());
 
-			List<M_FeedbackType> m_feedbackTypes = feedbackTypeServiceImpl.getNatureOfComplaintTypes(
+			List<M_FeedbackType> m_feedbackTypes = feedbackTypeService.getNatureOfComplaintTypes(
 					m_feedbackType.getProviderServiceMapID(), m_feedbackType.getFeedbackTypeID());
 
 			output.setResponse(m_feedbackTypes.toString());

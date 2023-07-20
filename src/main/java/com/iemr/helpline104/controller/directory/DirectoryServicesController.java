@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.helpline104.data.directory.Directoryservice;
-import com.iemr.helpline104.service.directory.DirectoryServiceImpl;
+import com.iemr.helpline104.service.directory.DirectoryServiceService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
@@ -48,7 +48,7 @@ public class DirectoryServicesController {
 	private Logger logger = LoggerFactory.getLogger(DirectoryServicesController.class);
 
 	@Autowired
-	private DirectoryServiceImpl directoryServiceImpl;
+	private DirectoryServiceService directoryService;
 
 	@CrossOrigin
 	@ApiOperation(value = "Retrieve directory search history", consumes = "application/json", produces = "application/json")
@@ -61,7 +61,7 @@ public class DirectoryServicesController {
 			Directoryservice directoryService = inputMapper.gson().fromJson(request, Directoryservice.class);
 			logger.info("getdirectorySearchHistory request " + directoryService.toString());
 
-			List<Directoryservice> searchHistory = directoryServiceImpl
+			List<Directoryservice> searchHistory = directoryService
 					.getDirectorySearchHistory(directoryService.getBeneficiaryRegID(), directoryService.getBenCallID());
 			output.setResponse(searchHistory.toString());
 			logger.info("getdirectorySearchHistory response: " + output);
@@ -83,7 +83,7 @@ public class DirectoryServicesController {
 			Directoryservice[] directoryHistory = inputMapper.gson().fromJson(request, Directoryservice[].class);
 			logger.info("save/directorySearchHistory request " + Arrays.toString(directoryHistory));
 
-			String searchhistory = directoryServiceImpl.saveDirectorySearchHistory(directoryHistory);
+			String searchhistory = directoryService.saveDirectorySearchHistory(directoryHistory);
 
 			output.setResponse(searchhistory);
 			logger.info("directorySearchHistory response: " + output);

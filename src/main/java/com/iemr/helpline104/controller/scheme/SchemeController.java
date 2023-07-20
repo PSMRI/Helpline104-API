@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.helpline104.data.scheme.T_Schemeservice;
-import com.iemr.helpline104.service.scheme.SchemeServiceImpl;
+import com.iemr.helpline104.service.scheme.SchemeService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
@@ -49,7 +49,7 @@ public class SchemeController {
 	private Logger logger = LoggerFactory.getLogger(SchemeController.class);
 
 	@Autowired
-	private SchemeServiceImpl schemeServiceImpl;
+	private SchemeService schemeService;
 
 	InputMapper mapper = new InputMapper();
 
@@ -64,7 +64,7 @@ public class SchemeController {
 			T_Schemeservice[] schemeHistory = mapper.gson().fromJson(request, T_Schemeservice[].class);
 			logger.info("saveSchemeSearchHistory request " + Arrays.toString(schemeHistory));
 
-			String searchhistory = schemeServiceImpl.saveSchemeSearchHistory(schemeHistory);
+			String searchhistory = schemeService.saveSchemeSearchHistory(schemeHistory);
 
 			output.setResponse(searchhistory);
 
@@ -87,7 +87,7 @@ public class SchemeController {
 			T_Schemeservice t_schemeservice = inputMapper.gson().fromJson(request, T_Schemeservice.class);
 			logger.info("getSchemeSearchHistory request " + t_schemeservice.toString());
 
-			List<T_Schemeservice> searchHistory = schemeServiceImpl
+			List<T_Schemeservice> searchHistory = schemeService
 					.getSchemeSearchHistory(t_schemeservice.getBeneficiaryRegID(), t_schemeservice.getBenCallID());
 			output.setResponse(searchHistory.toString());
 			logger.info("getSchemeSearchHistory response: " + output);

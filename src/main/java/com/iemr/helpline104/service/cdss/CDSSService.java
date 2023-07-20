@@ -30,5 +30,10 @@ public interface CDSSService {
 
 	List<String> getSymptoms(SymptomsWrapper symptomsDetails);
 
-	
+	String getQuestions(String symptom, int age, String gender);
+
+	String getResult(int complaintId, int selected);
+
+	String saveSymptom(String inputData);
+
 }

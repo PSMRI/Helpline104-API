@@ -21,6 +21,14 @@
 */
 package com.iemr.helpline104.service.hihl;
 
+import com.iemr.helpline104.utils.exception.IEMRException;
+
 public interface HIHLMasters {
+
+	String getHihlMasters();
+
+	String saveHihlCasesheet(String request) throws IEMRException;
+
+	String getHihlCasesheetHistoryInfo(Long benRegId);
 
 }

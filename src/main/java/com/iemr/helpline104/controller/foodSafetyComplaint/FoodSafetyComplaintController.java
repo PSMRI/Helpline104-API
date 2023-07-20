@@ -36,7 +36,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.helpline104.data.foodSafetyCopmlaint.T_FoodSafetyCopmlaint;
-import com.iemr.helpline104.service.foodSafetyCopmlaint.FoodSafetyCopmlaintServiceImpl;
+import com.iemr.helpline104.service.foodSafetyCopmlaint.FoodSafetyCopmlaintService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
@@ -50,7 +50,7 @@ public class FoodSafetyComplaintController {
 	private Logger logger = LoggerFactory.getLogger(FoodSafetyComplaintController.class);
 
 	@Autowired
-	private FoodSafetyCopmlaintServiceImpl foodSafetyCopmlaintServiceImpl;
+	private FoodSafetyCopmlaintService foodSafetyCopmlaintService;
 
 	@CrossOrigin
 	@ApiOperation(value = "Stores food safety complaint details", consumes = "application/json", produces = "application/json")
@@ -70,7 +70,7 @@ public class FoodSafetyComplaintController {
 			T_FoodSafetyCopmlaint foodComplaint;
 
 			t_foodSafetyCopmlaint.setDeleted(false);
-			foodComplaint = foodSafetyCopmlaintServiceImpl.save(t_foodSafetyCopmlaint, httpRequest);
+			foodComplaint = foodSafetyCopmlaintService.save(t_foodSafetyCopmlaint, httpRequest);
 			output.setResponse(foodComplaint.toString());
 		} catch (Exception e) {
 			logger.error("saveFoodComplaintDetails failed with error " + e.getMessage(), e);
@@ -93,7 +93,7 @@ public class FoodSafetyComplaintController {
 
 			List<T_FoodSafetyCopmlaint> foodComplaint = null;
 
-			foodComplaint = foodSafetyCopmlaintServiceImpl.getFoodSafetyComplaints(
+			foodComplaint = foodSafetyCopmlaintService.getFoodSafetyComplaints(
 					t_foodSafetyCopmlaint.getBeneficiaryRegID(), t_foodSafetyCopmlaint.getBenCallID(),
 					t_foodSafetyCopmlaint.getRequestID(), t_foodSafetyCopmlaint.getPhoneNo());
 			output.setResponse(foodComplaint.toString());

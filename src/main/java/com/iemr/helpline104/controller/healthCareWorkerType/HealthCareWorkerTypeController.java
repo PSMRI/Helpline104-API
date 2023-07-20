@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.helpline104.data.healthCareWorkerType.M_HealthCareWorker;
-import com.iemr.helpline104.service.healthCareWorkerType.HealthCareWorkerServiceImpl;
+import com.iemr.helpline104.service.healthCareWorkerType.HealthCareWorkerService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
@@ -46,7 +46,7 @@ public class HealthCareWorkerTypeController {
 	private Logger logger = LoggerFactory.getLogger(HealthCareWorkerTypeController.class);
 
 	@Autowired
-	private HealthCareWorkerServiceImpl healthCareWorkerServiceImpl;
+	private HealthCareWorkerService healthCareWorkerService;
 
 	@CrossOrigin
 	@ApiOperation(value = "Get health care worker types", consumes = "application/json", produces = "application/json")
@@ -55,7 +55,7 @@ public class HealthCareWorkerTypeController {
 		logger.info("getHealthCareWorkerTypes request ");
 		OutputResponse output = new OutputResponse();
 
-		List<M_HealthCareWorker> i_BeneficiaryTypes = healthCareWorkerServiceImpl.getHealthCareWorkerTypes();
+		List<M_HealthCareWorker> i_BeneficiaryTypes = healthCareWorkerService.getHealthCareWorkerTypes();
 		output.setResponse(i_BeneficiaryTypes.toString());
 		logger.info("getHealthCareWorkerTypes response: " + output);
 		return output.toString();

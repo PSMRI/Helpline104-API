@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.iemr.helpline104.data.users.M_LoginSecurityQuestions;
+import com.iemr.helpline104.data.users.M_Role;
 import com.iemr.helpline104.data.users.M_User;
 import com.iemr.helpline104.data.users.M_UserSecurityQMapping;
 
@@ -41,12 +42,12 @@ public interface IEMRAdminUserService {
 
 	int saveUserSecurityQuesAns(Iterable<M_UserSecurityQMapping> m_UserSecurityQMapping);
 
-//	Iterable<M_UserSecurityQMapping> saveUserSecurityQuesAns(Iterable<M_UserSecurityQMapping> m_UserSecurityQMapping);
-	
 	/**
 	 * 
 	 * @return login security questions
 	 */
 	ArrayList<M_LoginSecurityQuestions> getAllLoginSecurityQuestions();
+
+	M_Role getrolewrapuptime(Integer roleID);
 
 }

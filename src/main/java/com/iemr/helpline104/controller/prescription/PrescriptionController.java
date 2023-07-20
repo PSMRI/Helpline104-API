@@ -36,7 +36,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.helpline104.data.prescription.Prescription;
-import com.iemr.helpline104.service.prescription.PrescriptionServiceImpl;
+import com.iemr.helpline104.service.prescription.PrescriptionService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
@@ -51,7 +51,7 @@ public class PrescriptionController {
 	private Logger logger = LoggerFactory.getLogger(PrescriptionController.class);
 
 	@Autowired
-	private PrescriptionServiceImpl prescriptionServiceImpl;
+	private PrescriptionService prescriptionService;
 
 	@CrossOrigin
 	@ApiOperation(value = "Save prescription", consumes = "application/json", produces = "application/json")
@@ -64,7 +64,7 @@ public class PrescriptionController {
 
 			Prescription prescription = null;
 
-			prescription = prescriptionServiceImpl.savePrescription(t_Prescription);
+			prescription = prescriptionService.savePrescription(t_Prescription);
 			output.setResponse(prescription.toString());
 		} catch (Exception e) {
 			logger.error("savePrescription failed with error " + e.getMessage(), e);
@@ -85,7 +85,7 @@ public class PrescriptionController {
 
 			List<Prescription> prescription = null;
 
-			prescription = prescriptionServiceImpl.getPrescription(t_Prescription.getBeneficiaryRegID(),
+			prescription = prescriptionService.getPrescription(t_Prescription.getBeneficiaryRegID(),
 					t_Prescription.getPrescriptionID());
 			if (prescription != null) {
 				output.setResponse(prescription.toString());
@@ -116,7 +116,7 @@ public class PrescriptionController {
 			int page = requestObj.has("page") ? (requestObj.getInt("page") - 1) : 0;
 			int size = requestObj.has("size") ? requestObj.getInt("size") : 1000;
 
-			prescription = prescriptionServiceImpl.getPrescriptionList(t_Prescription.getBeneficiaryRegID(),
+			prescription = prescriptionService.getPrescriptionList(t_Prescription.getBeneficiaryRegID(),
 					new PageRequest(page, size));
 			if (prescription != null) {
 				output.setResponse(prescription.toString());
@@ -150,7 +150,7 @@ public class PrescriptionController {
 			int page = requestObj.has("page") ? (requestObj.getInt("page") - 1) : 0;
 			int size = requestObj.has("size") ? requestObj.getInt("size") : 1000;
 
-			prescription = prescriptionServiceImpl.getLatestValidPescription(t_Prescription.getBeneficiaryRegID(),
+			prescription = prescriptionService.getLatestValidPescription(t_Prescription.getBeneficiaryRegID(),
 					new PageRequest(page, size));
 			if (prescription != null) {
 				output.setResponse(prescription.toString());
