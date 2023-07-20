@@ -44,12 +44,10 @@ public class SwaggerConfig {
     }
     private ApiInfo metaData() {
         ApiInfo apiInfo = new ApiInfo(
-                "Spring Boot REST API",
-                "Spring Boot REST API for Online Store",
+                "Helpline104 API",
+                "The AMRIT Helpline104 provides various services like medical advice, counseling, grievance resolution, and support during health emergencies to help individuals in need.line104 API",
                 "1.0",
-                "Terms of service",
-                new Contact("Wipro HCIT", "https://www.wipro.com", "mywipro@wipro.com"),
-                "",
+                "Terms of service", new Contact("AMRIT", "https://psmri.github.io/PSMRI/", "amrit@piramalswasthya.org"), "",
                 "");
         return apiInfo;
     }
