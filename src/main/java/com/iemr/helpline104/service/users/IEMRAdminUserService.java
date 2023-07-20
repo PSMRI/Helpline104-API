@@ -48,6 +48,6 @@ public interface IEMRAdminUserService {
 	 */
 	ArrayList<M_LoginSecurityQuestions> getAllLoginSecurityQuestions();
 
-	M_Role getrolewrapuptime(Integer roleID);
+	M_Role getrolewrapuptime(int roleID);
 
 }

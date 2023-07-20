@@ -126,7 +126,7 @@ public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 		this.iEMRUserLoginSecurityRepository = iEMRUserLoginSecurityRepository;
 	}
 
-	public M_Role getrolewrapuptime(Integer roleID) {
+	public M_Role getrolewrapuptime(int roleID) {
 		// TODO Auto-generated method stub
 		return roleRepo.findOne(roleID);
 	}
