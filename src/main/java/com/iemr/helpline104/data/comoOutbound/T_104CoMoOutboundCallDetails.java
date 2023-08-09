@@ -39,7 +39,7 @@ public class T_104CoMoOutboundCallDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long iD;
 	private Integer uSRMappingID;
-	private String czentrixCallID;
+	private String callCentreID;
 	private String callType;
 	private String callSubType;
 	private Boolean is_Visited;
@@ -59,12 +59,12 @@ public class T_104CoMoOutboundCallDetails {
 		// TODO Auto-generated constructor stub
 	}
 
-	public T_104CoMoOutboundCallDetails(Long iD, Integer uSRMappingID, String czentrixCallID, String callType,
+	public T_104CoMoOutboundCallDetails(Long iD, Integer uSRMappingID, String callCentreID, String callType,
 			String callSubType, Boolean is_Visited, String remarks, String feedback) {
 		super();
 		this.iD = iD;
 		this.uSRMappingID = uSRMappingID;
-		this.czentrixCallID = czentrixCallID;
+		this.callCentreID = callCentreID;
 		this.callType = callType;
 		this.callSubType = callSubType;
 		this.is_Visited = is_Visited;
@@ -80,12 +80,12 @@ public class T_104CoMoOutboundCallDetails {
 		this.uSRMappingID = uSRMappingID;
 	}
 
-	public String getCzentrixCallID() {
-		return czentrixCallID;
+	public String getCallCentreID() {
+		return callCentreID;
 	}
 
-	public void setCzentrixCallID(String czentrixCallID) {
-		this.czentrixCallID = czentrixCallID;
+	public void setCallCentreID(String callCentreID) {
+		this.callCentreID = callCentreID;
 	}
 
 	public String getCallType() {

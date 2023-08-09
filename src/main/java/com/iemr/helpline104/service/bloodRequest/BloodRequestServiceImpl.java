@@ -176,7 +176,7 @@ public class BloodRequestServiceImpl implements BloodRequestService
 	 * Exception {
 	 * 
 	 * return bloodOutboundDetailsRepository.update(t_bloodOutboundDetails.
-	 * getBloodOutboundDetailID(),t_bloodOutboundDetails.getCzentrixCallID()); }
+	 * getBloodOutboundDetailID(),t_bloodOutboundDetails.getCallCentreID()); }
 	 * 
 	 * @Override public List<T_BloodOutboundDetails> getBloodOutBoundDetails(T_BloodOutboundDetails
 	 * t_bloodOutboundDetails) throws Exception {
