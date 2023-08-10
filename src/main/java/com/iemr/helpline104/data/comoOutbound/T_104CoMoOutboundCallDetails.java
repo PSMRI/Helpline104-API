@@ -80,12 +80,12 @@ public class T_104CoMoOutboundCallDetails {
 		this.uSRMappingID = uSRMappingID;
 	}
 
-	public String getCallCentreID() {
+	public String getCallId() {
 		return callId;
 	}
 
-	public void setCallCentreID(String callCentreID) {
-		this.callId = callCentreID;
+	public void setCallId(String callId) {
+		this.callId = callId;
 	}
 
 	public String getCallType() {
