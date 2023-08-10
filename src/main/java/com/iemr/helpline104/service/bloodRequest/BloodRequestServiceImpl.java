@@ -146,19 +146,6 @@ public class BloodRequestServiceImpl implements BloodRequestService
 
 		logger.info("T_BloodRequest: update");
 
-		// T_BloodRequest bloodRequest =
-		// bloodRequestRepository.findOne(t_bloodRequest.getBloodReqID());
-		// T_BloodRequest bloodRequest =
-		// getBloodRequest(null,t_bloodRequest.getRequestID()).get(0);
-		// logger.info("T_BloodRequest:"+bloodRequest.toString());
-		/*
-		 * if(bloodRequest != null) { logger.info("T_BloodRequest: updating");
-		 * bloodRequest.setBloodBank(t_bloodRequest.getBloodBank());
-		 * bloodRequest.setMobileNo(t_bloodRequest.getMobileNo());
-		 * bloodRequest.setBbPersonName(t_bloodRequest.getBbPersonName());
-		 * bloodRequest.setBbPersonDesignation(t_bloodRequest. getBbPersonDesignation()); t_bloodRequest =
-		 * bloodRequestRepository.save(bloodRequest); }
-		 */
 		bloodRequestRepository.updateBloodBankDetails(
 				t_bloodRequest.getBloodBank(), t_bloodRequest.getBbPersonName(), t_bloodRequest.getBbPersonDesignation(),
 				t_bloodRequest.getMobileNo(), t_bloodRequest.getBloodReqID(), t_bloodRequest.getRemarks(), t_bloodRequest.getOutboundNeeded(),
@@ -167,35 +154,6 @@ public class BloodRequestServiceImpl implements BloodRequestService
 		return t_bloodRequest;
 
 	}
-
-	/*
-	 * @Override public T_BloodOutboundDetails save(T_BloodOutboundDetails t_bloodOutboundDetails) throws Exception {
-	 * return bloodOutboundDetailsRepository.save(t_bloodOutboundDetails); }
-	 * 
-	 * @Override public Integer updateBloodOutBoundDetails(T_BloodOutboundDetails t_bloodOutboundDetails) throws
-	 * Exception {
-	 * 
-	 * return bloodOutboundDetailsRepository.update(t_bloodOutboundDetails.
-	 * getBloodOutboundDetailID(),t_bloodOutboundDetails.getCallCentreID()); }
-	 * 
-	 * @Override public List<T_BloodOutboundDetails> getBloodOutBoundDetails(T_BloodOutboundDetails
-	 * t_bloodOutboundDetails) throws Exception {
-	 * 
-	 * 
-	 * List<T_BloodOutboundDetails> bloodOutboundDetailsList = new ArrayList<T_BloodOutboundDetails>();
-	 * 
-	 * List<Objects[]> bloodOutboundDetails = bloodOutboundDetailsRepository.getBloodOutBoundDetails(
-	 * t_bloodOutboundDetails.getBloodOutboundDetailID(),t_bloodOutboundDetails. getBloodReqID());
-	 * 
-	 * for (Object[] objects : bloodOutboundDetails) { if (objects!=null && objects.length > 0) {
-	 * 
-	 * bloodOutboundDetailsList.add(new T_BloodOutboundDetails((Long)objects[0], (String)objects[1],
-	 * (Integer)objects[2], (Integer)objects[3], (String)objects[4], (String)objects[5], (String)objects[6],
-	 * (String)objects[7],(Boolean)objects[8] , (String)objects[9], (String)objects[10], (String)objects[11],
-	 * (String)objects[12], (Boolean)objects[13])); } } return bloodOutboundDetailsList;
-	 * 
-	 * }
-	 */
 
 	@Override
 	public BloodBank getBloodBankURL(String bloodBankName) throws Exception
