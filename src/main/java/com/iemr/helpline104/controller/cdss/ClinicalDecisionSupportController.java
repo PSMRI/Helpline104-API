@@ -46,10 +46,10 @@ import io.swagger.annotations.ApiOperation;
 
 @RequestMapping(value = "/CDSS")
 @RestController
-public class ClinicalDecisionSupportSystemController {
+public class ClinicalDecisionSupportController {
 	@Autowired
 	private CDSSService cDSSService;
-	private Logger logger = LoggerFactory.getLogger(ClinicalDecisionSupportSystemController.class);
+	private Logger logger = LoggerFactory.getLogger(ClinicalDecisionSupportController.class);
 
 	@CrossOrigin()
 	@ApiOperation(value = "Get symptoms", consumes = "application/json", produces = "application/json")

@@ -38,7 +38,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import com.iemr.helpline104.controller.cdss.ClinicalDecisionSupportSystemController;
+import com.iemr.helpline104.controller.cdss.ClinicalDecisionSupportController;
 import com.sun.jersey.multipart.FormDataBodyPart;
 import com.sun.jersey.multipart.FormDataMultiPart;
 
@@ -62,7 +62,7 @@ public class HttpUtils {
 			headers.add("Content-Type", "application/json");
 		}
 	}
-	private Logger logger = LoggerFactory.getLogger(ClinicalDecisionSupportSystemController.class);
+	private Logger logger = LoggerFactory.getLogger(ClinicalDecisionSupportController.class);
 	// public HttpUtils() {
 	// if (rest == null) {
 	// rest = new RestTemplate();

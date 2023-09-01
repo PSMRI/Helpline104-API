@@ -45,10 +45,10 @@ import com.iemr.helpline104.service.foodSafetyCopmlaint.FoodSafetyCopmlaintServi
 import com.iemr.helpline104.service.organDonation.OrganDonationServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ServiceImprovementOfficerHistoryControllerTest {
+public class ServiceImprovementOfficerControllerTest {
 
 	@InjectMocks
-	ServiceImprovementOfficerHistoryController sioHistoryController;
+	ServiceImprovementOfficerController sioHistoryController;
 	
 	@Mock
 	BloodRequestServiceImpl bloodRequestServiceImpl;
