@@ -31,35 +31,33 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
- @Entity
- @Table(name="m_designation")
- public class M_Designation {
-	 
-	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 @Column(name="DesignationID")
-	 private int DesignationID; 
-	 @Column(name="DesignationName")
-	 private String designationName;
-	 @Column(name="DesignationDesc")
-	 private String designationDesc;
-	 @Column(name="Deleted", insertable=false, updatable=true)
-	 private Boolean deleted; 
-	 @Column(name="CreatedBy")
-	 private String createdBy;
-	 @Column(name="CreatedDate", insertable=false, updatable=false)
-	 private Date createdDate;
-	 @Column(name="ModifiedBy")
-	 private String modifiedBy;
-	 @Column(name="LastModDate")
-	 private Date lastModDate;
-	 
-	 
-	 @OneToOne(mappedBy="mdesignation")
-		private T_Feedback Feedback;
-	 
-	 public M_Designation() {
-		// TODO Auto-generated constructor stub
+@Entity
+@Table(name = "m_designation")
+public class M_Designation {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "DesignationID")
+	private int DesignationID;
+	@Column(name = "DesignationName")
+	private String designationName;
+	@Column(name = "DesignationDesc")
+	private String designationDesc;
+	@Column(name = "Deleted", insertable = false, updatable = true)
+	private Boolean deleted;
+	@Column(name = "CreatedBy")
+	private String createdBy;
+	@Column(name = "CreatedDate", insertable = false, updatable = false)
+	private Date createdDate;
+	@Column(name = "ModifiedBy")
+	private String modifiedBy;
+	@Column(name = "LastModDate")
+	private Date lastModDate;
+
+	@OneToOne(mappedBy = "mdesignation")
+	private T_Feedback Feedback;
+
+	public M_Designation() {
 	}
 
 	public int getDesignationID() {
@@ -134,5 +132,4 @@ import javax.persistence.Table;
 		Feedback = feedback;
 	}
 
-	
 }

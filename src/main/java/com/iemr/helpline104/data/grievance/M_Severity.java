@@ -32,35 +32,34 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="m_severity")
+@Table(name = "m_severity")
 public class M_Severity {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="SeverityID")
+	@Column(name = "SeverityID")
 	private int severityID;
-	@Column(name="SeverityTypeName")
+	@Column(name = "SeverityTypeName")
 	private String severityTypeName;
-	@Column(name="SeverityDesc")
-	private String severityDesc; 
-	@Column(name="ProviderServiceMapID")
+	@Column(name = "SeverityDesc")
+	private String severityDesc;
+	@Column(name = "ProviderServiceMapID")
 	private int providerServiceMapID;
-	@Column(name="Deleted", insertable=false, updatable=true)
+	@Column(name = "Deleted", insertable = false, updatable = true)
 	private Boolean deleted;
-	@Column(name="CreatedBy")
+	@Column(name = "CreatedBy")
 	private String createdBy;
-	@Column(name="CreatedDate", insertable=false, updatable=false)
-	private Date createdDate; 
-	@Column(name="ModifiedB")
+	@Column(name = "CreatedDate", insertable = false, updatable = false)
+	private Date createdDate;
+	@Column(name = "ModifiedB")
 	private String modifiedBy;
-	@Column(name="LastModDate")
+	@Column(name = "LastModDate")
 	private Date lastModDate;
-	
-	@OneToOne(mappedBy="mseverity")
+
+	@OneToOne(mappedBy = "mseverity")
 	private T_Feedback Feedback;
-	
+
 	public M_Severity() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getSeverityID() {
@@ -142,8 +141,5 @@ public class M_Severity {
 	public void setFeedback(T_Feedback feedback) {
 		Feedback = feedback;
 	}
-
-	
-	
 
 }

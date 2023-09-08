@@ -190,16 +190,6 @@ public class T_EpidemicOutbreak {
 		this.affectedDistrictBlockID = affectedDistrictBlockID;
 	}
 
-	// public Integer getAffectedCityID()
-	// {
-	// return affectedCityID;
-	// }
-	//
-	// public void setAffectedCityID(Integer affectedCityID)
-	// {
-	// this.affectedCityID = affectedCityID;
-	// }
-
 	public String getRemarks() {
 		return remarks;
 	}
@@ -247,11 +237,6 @@ public class T_EpidemicOutbreak {
 	public void setBenCall(BenCall benCall) {
 		this.benCall = benCall;
 	}
-
-	/*
-	 * 
-	 * public String toString() { return new Gson().toJson(this); }
-	 */
 
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();

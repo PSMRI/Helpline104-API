@@ -31,7 +31,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
 
 @Entity
-@Table(name="M_FeedbackNature")
+@Table(name = "M_FeedbackNature")
 public class M_FeedbackNature {
 	@Expose
 	@Id
@@ -46,7 +46,7 @@ public class M_FeedbackNature {
 	private Boolean deleted;
 	private String modifiedBy;
 	private String createdBy;
-	
+
 	public M_FeedbackNature(Integer feedbackNatureID, String feedbackNature, String feedbackNatureDesc) {
 		super();
 		this.feedbackNatureID = feedbackNatureID;
@@ -56,7 +56,6 @@ public class M_FeedbackNature {
 
 	public M_FeedbackNature() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getFeedbackNature() {
@@ -110,7 +109,7 @@ public class M_FeedbackNature {
 	public Integer getFeedbackNatureID() {
 		return feedbackNatureID;
 	}
-	
+
 	public String toString() {
 		return new Gson().toJson(this);
 	}

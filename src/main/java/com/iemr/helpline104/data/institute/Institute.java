@@ -32,14 +32,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
 import com.iemr.helpline104.data.location.DistrictBranchMapping;
 import com.iemr.helpline104.data.location.Districts;
 import com.iemr.helpline104.data.location.States;
-
 
 @Entity
 @Table(name = "m_institution")
@@ -50,9 +48,6 @@ public class Institute {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "InstitutionID")
 	private Integer institutionID;
-	// m_bencall1097servicesmapping
-	// m_institutedirectorymapping
-	// t_feedback
 	@Expose
 	@Column(name = "InstitutionName")
 	private String institutionName;
@@ -98,9 +93,9 @@ public class Institute {
 		this.institutionID = institutionID;
 		this.institutionName = institutionName;
 	}
-	
+
 	public Institute(String institutionName, String address) {
-		
+
 		this.institutionName = institutionName;
 		this.address = address;
 	}
@@ -161,8 +156,6 @@ public class Institute {
 	public Date getLastModDate() {
 		return lastModDate;
 	}
-	
-	
 
 	@Override
 	public String toString() {

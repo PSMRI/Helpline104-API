@@ -32,33 +32,31 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="m_feedbackstatus")
+@Table(name = "m_feedbackstatus")
 public class M_Feedbackstatus {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="FeedbackStatusID")
+	@Column(name = "FeedbackStatusID")
 	private int FeedbackStatusID;
-	@Column(name="FeedbackStatus")
+	@Column(name = "FeedbackStatus")
 	private String feedbackStatus;
-	@Column(name="FeedbackStatusDesc")
+	@Column(name = "FeedbackStatusDesc")
 	private String feedbackStatusDesc;
-	@Column(name="Deleted", insertable=false, updatable=true)
+	@Column(name = "Deleted", insertable = false, updatable = true)
 	private Boolean deleted;
-	@Column(name="CreatedBy")
+	@Column(name = "CreatedBy")
 	private String createdBy;
-	@Column(name="CreatedDate", insertable=false, updatable=false)
+	@Column(name = "CreatedDate", insertable = false, updatable = false)
 	private Date createdDate;
-	@Column(name="ModifiedBy")
+	@Column(name = "ModifiedBy")
 	private String modifiedBy;
-	@Column(name="LastModDate")
+	@Column(name = "LastModDate")
 	private Date lastModDate;
-	
-	
-	@OneToOne(mappedBy="mfeedbackstatus")
+
+	@OneToOne(mappedBy = "mfeedbackstatus")
 	private T_Feedback Feedback;
-	
+
 	public M_Feedbackstatus() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getFeedbackStatusID() {
@@ -132,7 +130,5 @@ public class M_Feedbackstatus {
 	public void setFeedback(T_Feedback feedback) {
 		Feedback = feedback;
 	}
-
-	
 
 }

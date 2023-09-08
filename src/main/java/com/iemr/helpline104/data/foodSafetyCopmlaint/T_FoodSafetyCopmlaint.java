@@ -120,12 +120,7 @@ public class T_FoodSafetyCopmlaint {
 	@Expose
 	@Column(name = "Deleted", insertable = false, updatable = true)
 	private Boolean deleted;
-	/*
-	 * @Expose
-	 * 
-	 * @Column(name = "Processed",insertable = false, updatable = true) private
-	 * String processed;
-	 */
+
 	@Expose
 	@Column(name = "CreatedBy")
 	private String createdBy;
@@ -153,7 +148,6 @@ public class T_FoodSafetyCopmlaint {
 
 	public T_FoodSafetyCopmlaint() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public T_FoodSafetyCopmlaint(Long fSComplaintID, String requestID, Long beneficiaryRegID, String typeOfRequest,
@@ -167,8 +161,6 @@ public class T_FoodSafetyCopmlaint {
 		this.fSComplaintID = fSComplaintID;
 		this.requestID = requestID;
 		this.beneficiaryRegID = beneficiaryRegID;
-		// this.beneficiaryReport = new BeneficiaryReport(beneficiaryRegID,
-		// preferredPhoneNum);
 		this.typeOfRequest = typeOfRequest;
 		this.isDiarrhea = isDiarrhea;
 		this.isVomiting = isVomiting;

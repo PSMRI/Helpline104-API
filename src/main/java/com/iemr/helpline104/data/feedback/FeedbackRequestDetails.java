@@ -56,7 +56,6 @@ public class FeedbackRequestDetails {
 	private Boolean deleted;
 	@Expose
 	private String createdBy;
-	// private Date CreatedDate;
 	private String modifiedBy;
 	private Date lastModDate;
 
@@ -73,8 +72,7 @@ public class FeedbackRequestDetails {
 	}
 
 	/**
-	 * @param feedbackRequestID
-	 *            the feedbackRequestID to set
+	 * @param feedbackRequestID the feedbackRequestID to set
 	 */
 	public void setFeedbackRequestID(Long feedbackRequestID) {
 		this.feedbackRequestID = feedbackRequestID;
@@ -88,8 +86,7 @@ public class FeedbackRequestDetails {
 	}
 
 	/**
-	 * @param feedbackID
-	 *            the feedbackID to set
+	 * @param feedbackID the feedbackID to set
 	 */
 	public void setFeedbackID(Long feedbackID) {
 		this.feedbackID = feedbackID;
@@ -103,8 +100,7 @@ public class FeedbackRequestDetails {
 	}
 
 	/**
-	 * @param feedbackSupSummary
-	 *            the feedbackSupSummary to set
+	 * @param feedbackSupSummary the feedbackSupSummary to set
 	 */
 	public void setFeedbackSupSummary(String feedbackSupSummary) {
 		this.feedbackSupSummary = feedbackSupSummary;
@@ -118,8 +114,7 @@ public class FeedbackRequestDetails {
 	}
 
 	/**
-	 * @param supUserID
-	 *            the supUserID to set
+	 * @param supUserID the supUserID to set
 	 */
 	public void setSupUserID(Integer supUserID) {
 		this.supUserID = supUserID;
@@ -133,8 +128,7 @@ public class FeedbackRequestDetails {
 	}
 
 	/**
-	 * @param comments
-	 *            the comments to set
+	 * @param comments the comments to set
 	 */
 	public void setComments(String comments) {
 		this.comments = comments;
@@ -148,8 +142,7 @@ public class FeedbackRequestDetails {
 	}
 
 	/**
-	 * @param deleted
-	 *            the deleted to set
+	 * @param deleted the deleted to set
 	 */
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
@@ -163,8 +156,7 @@ public class FeedbackRequestDetails {
 	}
 
 	/**
-	 * @param createdBy
-	 *            the createdBy to set
+	 * @param createdBy the createdBy to set
 	 */
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
@@ -178,8 +170,7 @@ public class FeedbackRequestDetails {
 	}
 
 	/**
-	 * @param modifiedBy
-	 *            the modifiedBy to set
+	 * @param modifiedBy the modifiedBy to set
 	 */
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
@@ -193,8 +184,7 @@ public class FeedbackRequestDetails {
 	}
 
 	/**
-	 * @param lastModDate
-	 *            the lastModDate to set
+	 * @param lastModDate the lastModDate to set
 	 */
 	public void setLastModDate(Date lastModDate) {
 		this.lastModDate = lastModDate;
@@ -208,8 +198,7 @@ public class FeedbackRequestDetails {
 	}
 
 	/**
-	 * @param feedback
-	 *            the feedback to set
+	 * @param feedback the feedback to set
 	 */
 	public void setFeedback(FeedbackDetails feedback) {
 		this.feedback = feedback;

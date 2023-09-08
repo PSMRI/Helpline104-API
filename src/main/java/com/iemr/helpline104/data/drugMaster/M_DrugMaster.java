@@ -34,16 +34,15 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.google.gson.annotations.Expose;
-import com.iemr.helpline104.data.location.M_ProviderServiceMapping;
 import com.iemr.helpline104.data.location.M_ServiceProvider;
 
 @Entity
-@Table(name="m_104druglist")
+@Table(name = "m_104druglist")
 public class M_DrugMaster {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer drugID;
-	
+
 	@Expose
 	@Column(name = "DrugName")
 	private String drugName;
@@ -53,7 +52,7 @@ public class M_DrugMaster {
 	@Expose
 	@Column(name = "Remarks")
 	private String remarks;
-	
+
 	@Expose
 	@Column(name = "ServiceProviderID")
 	private Integer serviceProviderID;
@@ -61,37 +60,35 @@ public class M_DrugMaster {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(updatable = false, insertable = false, name = "ServiceProviderID")
 	private M_ServiceProvider m_ServiceProvider;
-	
+
 	@Expose
-	@Column(name = "Deleted",insertable = false, updatable = true)
-	private Boolean deleted; 
+	@Column(name = "Deleted", insertable = false, updatable = true)
+	private Boolean deleted;
 	@Expose
-	@Column(name = "Processed",insertable = false, updatable = true)
+	@Column(name = "Processed", insertable = false, updatable = true)
 	private String processed;
 	@Expose
 	@Column(name = "CreatedBy")
 	private String createdBy;
 	@Expose
-	@Column(name = "CreatedDate" ,insertable = false, updatable = false)
+	@Column(name = "CreatedDate", insertable = false, updatable = false)
 	private Date createdDate;
 	@Expose
 	@Column(name = "ModifiedBy")
-	private String modifiedBy; 
+	private String modifiedBy;
 	@Expose
 	@Column(name = "LastModDate", insertable = false, updatable = false)
 	private Date lastModDate;
-	
+
 	public M_DrugMaster() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
 	public M_DrugMaster(Integer drugID, String drugName) {
 		super();
 		this.drugID = drugID;
 		this.drugName = drugName;
 	}
-	
+
 	public M_DrugMaster(Integer drugID, String drugName, String drugDesc, String drugForm, String drugStrength,
 			String remarks) {
 		super();
@@ -124,7 +121,6 @@ public class M_DrugMaster {
 	public void setDrugDesc(String drugDesc) {
 		this.drugDesc = drugDesc;
 	}
-
 
 	public String getRemarks() {
 		return remarks;

@@ -32,40 +32,36 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="m_institution")
+@Table(name = "m_institution")
 public class M_Institution {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="InstitutionID")
+	@Column(name = "InstitutionID")
 	private int InstitutionID;
-	@Column(name="InstitutionName")
+	@Column(name = "InstitutionName")
 	private String institutionName;
-	@Column(name="StateID")
-	private int stateID; 
-	@Column(name="DistrictID")
+	@Column(name = "StateID")
+	private int stateID;
+	@Column(name = "DistrictID")
 	private int districtID;
-	@Column(name="DistrictBranchMappingID")
+	@Column(name = "DistrictBranchMappingID")
 	private int districtBranchMappingID;
-	@Column(name="Deleted", insertable=false, updatable=true)
+	@Column(name = "Deleted", insertable = false, updatable = true)
 	private Boolean deleted;
-	@Column(name="CreatedBy")
-	private String createdBy; 
-	@Column(name="CreatedDate", insertable=false, updatable=false)
+	@Column(name = "CreatedBy")
+	private String createdBy;
+	@Column(name = "CreatedDate", insertable = false, updatable = false)
 	private Date createdDate;
-	@Column(name="ModifiedBy")
+	@Column(name = "ModifiedBy")
 	private String modifiedBy;
-	@Column(name="LastModDate")
+	@Column(name = "LastModDate")
 	private Date lastModDate;
-	
-	
-	
-	
-	@OneToOne(mappedBy="minstitution")
+
+	@OneToOne(mappedBy = "minstitution")
 	private T_Feedback Feedback;
-	
+
 	public M_Institution() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getInstitutionID() {
@@ -155,7 +151,5 @@ public class M_Institution {
 	public void setFeedback(T_Feedback feedback) {
 		Feedback = feedback;
 	}
-
-	
 
 }

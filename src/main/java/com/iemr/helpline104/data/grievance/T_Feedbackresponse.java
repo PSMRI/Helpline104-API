@@ -34,213 +34,167 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="t_feedbackresponse")
+@Table(name = "t_feedbackresponse")
 public class T_Feedbackresponse {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="FeedbackResponseID")
+	@Column(name = "FeedbackResponseID")
 	private Integer feedbackResponseID;
-	@Column(name="FeedbackRequestID")
+	@Column(name = "FeedbackRequestID")
 	private Integer feedbackRequestID;
-	@Column(name="ResponseSummary")
+	@Column(name = "ResponseSummary")
 	private String responseSummary;
-	@Column(name="AuthUserID")
+	@Column(name = "AuthUserID")
 	private int authUserID;
-	@Column(name="Comments")
-	private String comments; 
-	@Column(name="Deleted", insertable=false, updatable=true)
-	private Boolean deleted; 
-	@Column(name="CreatedBy")
+	@Column(name = "Comments")
+	private String comments;
+	@Column(name = "Deleted", insertable = false, updatable = true)
+	private Boolean deleted;
+	@Column(name = "CreatedBy")
 	private String createdBy;
-	@Column(name="CreatedDate", insertable=false, updatable=false)
+	@Column(name = "CreatedDate", insertable = false, updatable = false)
 	private Date createdDate;
-	@Column(name="ModifiedBy")
-	private String modifiedBy; 
-	@Column(name="LastModDate")
+	@Column(name = "ModifiedBy")
+	private String modifiedBy;
+	@Column(name = "LastModDate")
 	private Date lastModDate;
-	@Column(name="FeedbackID")
+	@Column(name = "FeedbackID")
 	private int feedbackID;
-	@Column(name="AuthName")
+	@Column(name = "AuthName")
 	private String authName;
-	@Column(name="AuthDesignation")
+	@Column(name = "AuthDesignation")
 	private String authDesignation;
-	
-	/*@OneToOne(mappedBy="tfeedbackResponce",cascade = CascadeType.ALL)
-	private T_FeedbackRequset tfeedbackRequest;*/
-	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="FeedbackRequestID",insertable = false, updatable = false)
-	private T_FeedbackRequset tfeedbackr1;
-	
-	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="FeedbackID",insertable = false, updatable = false)
-	private T_Feedback tfeedback;
-	
-	public T_Feedbackresponse() {
-		// TODO Auto-generated constructor stub
-	}
 
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "FeedbackRequestID", insertable = false, updatable = false)
+	private T_FeedbackRequset tfeedbackr1;
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "FeedbackID", insertable = false, updatable = false)
+	private T_Feedback tfeedback;
+
+	public T_Feedbackresponse() {
+	}
 
 	public Integer getFeedbackResponseID() {
 		return feedbackResponseID;
 	}
 
-
 	public void setFeedbackResponseID(Integer feedbackResponseID) {
 		this.feedbackResponseID = feedbackResponseID;
 	}
-
-
-	
-
 
 	public Integer getFeedbackRequestID() {
 		return feedbackRequestID;
 	}
 
-
 	public void setFeedbackRequestID(Integer feedbackRequestID) {
 		this.feedbackRequestID = feedbackRequestID;
 	}
-
 
 	public String getResponseSummary() {
 		return responseSummary;
 	}
 
-
 	public void setResponseSummary(String responseSummary) {
 		this.responseSummary = responseSummary;
 	}
-
 
 	public int getAuthUserID() {
 		return authUserID;
 	}
 
-
 	public void setAuthUserID(int authUserID) {
 		this.authUserID = authUserID;
 	}
-
 
 	public String getComments() {
 		return comments;
 	}
 
-
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
-
 
 	public Boolean getDeleted() {
 		return deleted;
 	}
 
-
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
 	}
-
 
 	public String getCreatedBy() {
 		return createdBy;
 	}
 
-
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
-
 
 	public Date getCreatedDate() {
 		return createdDate;
 	}
 
-
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-
 
 	public String getModifiedBy() {
 		return modifiedBy;
 	}
 
-
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
-
 
 	public Date getLastModDate() {
 		return lastModDate;
 	}
 
-
 	public void setLastModDate(Date lastModDate) {
 		this.lastModDate = lastModDate;
 	}
-
-
-	
-
 
 	public int getFeedbackID() {
 		return feedbackID;
 	}
 
-
 	public void setFeedbackID(int feedbackID) {
 		this.feedbackID = feedbackID;
 	}
-
 
 	public String getAuthName() {
 		return authName;
 	}
 
-
 	public void setAuthName(String authName) {
 		this.authName = authName;
 	}
-
 
 	public String getAuthDesignation() {
 		return authDesignation;
 	}
 
-
 	public void setAuthDesignation(String authDesignation) {
 		this.authDesignation = authDesignation;
 	}
-
 
 	public T_FeedbackRequset getTfeedbackr1() {
 		return tfeedbackr1;
 	}
 
-
 	public void setTfeedbackr1(T_FeedbackRequset tfeedbackr1) {
 		this.tfeedbackr1 = tfeedbackr1;
 	}
-
 
 	public T_Feedback getTfeedback() {
 		return tfeedback;
 	}
 
-
 	public void setTfeedback(T_Feedback tfeedback) {
 		this.tfeedback = tfeedback;
 	}
-	
-	
 
-	
-	
-	
-		}
+}

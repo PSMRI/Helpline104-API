@@ -32,36 +32,32 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="m_EmailStatus")
+@Table(name = "m_EmailStatus")
 public class M_Emailstatus {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="EmailStatusID")
+	@Column(name = "EmailStatusID")
 	private int EmailStatusID;
-	@Column(name="EmailStatus")
-	private String emailStatus; 
-	@Column(name="EmailStatusDesc")
+	@Column(name = "EmailStatus")
+	private String emailStatus;
+	@Column(name = "EmailStatusDesc")
 	private String emailStatusDesc;
-	@Column(name="Deleted", insertable=false, updatable=true)
+	@Column(name = "Deleted", insertable = false, updatable = true)
 	private Boolean deleted;
-	@Column(name="CreatedBy")
+	@Column(name = "CreatedBy")
 	private String createdBy;
-	@Column(name="CreatedDate", insertable=false, updatable=false)
+	@Column(name = "CreatedDate", insertable = false, updatable = false)
 	private Date createdDate;
-	@Column(name="ModifiedBy")
+	@Column(name = "ModifiedBy")
 	private String modifiedBy;
-	@Column(name="LastModDate")
+	@Column(name = "LastModDate")
 	private Date lastModDate;
-	
-	
-	
-	
-	@OneToOne(mappedBy="memailstatus")
+
+	@OneToOne(mappedBy = "memailstatus")
 	private T_Feedback Feedback;
-	
+
 	public M_Emailstatus() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getEmailStatusID() {
@@ -135,7 +131,5 @@ public class M_Emailstatus {
 	public void setFeedback(T_Feedback feedback) {
 		Feedback = feedback;
 	}
-
-	
 
 }

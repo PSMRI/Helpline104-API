@@ -59,12 +59,6 @@ public class FeedbackDetails {
 	@Column(name = "BenCallID")
 	private Long benCallID;
 
-	// @JsonIgnore
-	// @OneToMany(mappedBy = "feedbackDetails", fetch = FetchType.LAZY)
-	// @Transient
-	// private List<BenCallServicesMappingHistory>
-	// benCallServicesMappingHistories;
-
 	@Column(name = "InstitutionID")
 	@Expose
 	private Long institutionID;
@@ -109,7 +103,6 @@ public class FeedbackDetails {
 	private Integer ProviderServiceMapID;
 
 	@Transient
-	// @Column(name = "ServiceID")
 	@Expose
 	private Integer serviceID;
 
@@ -145,11 +138,6 @@ public class FeedbackDetails {
 	@JoinColumn(name = "InstitutionTypeID", insertable = false, updatable = false)
 	@Expose
 	private InstituteType instituteType;
-
-//	@OneToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "InstitutionName", insertable = false, updatable = false)
-//	@Expose
-//	private Institute institute;
 
 	/**
 	 * join to get feedback nature

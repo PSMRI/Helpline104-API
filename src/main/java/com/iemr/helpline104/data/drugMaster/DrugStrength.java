@@ -36,8 +36,7 @@ import com.iemr.helpline104.utils.mapper.OutputMapper;
 
 @Entity
 @Table(name = "m_104DrugStrength")
-public class DrugStrength
-{
+public class DrugStrength {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -70,98 +69,78 @@ public class DrugStrength
 	@Column(name = "LastModDate", insertable = false, updatable = false)
 	private Timestamp lastModDate;
 
-	public DrugStrength()
-	{
-		// TODO Auto-generated constructor stub
+	public DrugStrength() {
 	}
 
-	public Integer getDrugStrengthID()
-	{
+	public Integer getDrugStrengthID() {
 		return drugStrengthID;
 	}
 
-	public void setDrugStrengthID(Integer drugStrengthID)
-	{
+	public void setDrugStrengthID(Integer drugStrengthID) {
 		this.drugStrengthID = drugStrengthID;
 	}
 
-	public String getDrugStrength()
-	{
+	public String getDrugStrength() {
 		return drugStrength;
 	}
 
-	public void setDrugStrength(String drugStrength)
-	{
+	public void setDrugStrength(String drugStrength) {
 		this.drugStrength = drugStrength;
 	}
 
-	public String getDrugStrengthDesc()
-	{
+	public String getDrugStrengthDesc() {
 		return drugStrengthDesc;
 	}
 
-	public void setDrugStrengthDesc(String drugStrengthDesc)
-	{
+	public void setDrugStrengthDesc(String drugStrengthDesc) {
 		this.drugStrengthDesc = drugStrengthDesc;
 	}
 
-	public Integer getServiceProviderID()
-	{
+	public Integer getServiceProviderID() {
 		return serviceProviderID;
 	}
 
-	public void setServiceProviderID(Integer serviceProviderID)
-	{
+	public void setServiceProviderID(Integer serviceProviderID) {
 		this.serviceProviderID = serviceProviderID;
 	}
 
-	public Boolean getDeleted()
-	{
+	public Boolean getDeleted() {
 		return deleted;
 	}
 
-	public void setDeleted(Boolean deleted)
-	{
+	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
 	}
 
-	public String getCreatedBy()
-	{
+	public String getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(String createdBy)
-	{
+	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
 
-	public Timestamp getCreatedDate()
-	{
+	public Timestamp getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Timestamp createdDate)
-	{
+	public void setCreatedDate(Timestamp createdDate) {
 		this.createdDate = createdDate;
 	}
 
-	public String getModifiedBy()
-	{
+	public String getModifiedBy() {
 		return modifiedBy;
 	}
 
-	public void setModifiedBy(String modifiedBy)
-	{
+	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
 
-	public Timestamp getLastModDate()
-	{
+	public Timestamp getLastModDate() {
 		return lastModDate;
 	}
 
-	public void setLastModDate(Timestamp lastModDate)
-	{
+	public void setLastModDate(Timestamp lastModDate) {
 		this.lastModDate = lastModDate;
 	}
 
@@ -169,8 +148,7 @@ public class DrugStrength
 	private OutputMapper outputMapper = new OutputMapper();
 
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
 

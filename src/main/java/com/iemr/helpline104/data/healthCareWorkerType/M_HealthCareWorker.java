@@ -32,7 +32,7 @@ import javax.persistence.Table;
 import com.google.gson.Gson;
 
 @Entity
-@Table(name="M_HealthCareWorker")
+@Table(name = "M_HealthCareWorker")
 public class M_HealthCareWorker {
 
 	@Id
@@ -45,7 +45,7 @@ public class M_HealthCareWorker {
 	private Timestamp createdDate;
 	private String modifiedBy;
 	private Timestamp lastModDate;
-	
+
 	public M_HealthCareWorker(Short healthCareWorkerID, String healthCareWorkerType, String healthCareWorkerDesc,
 			Boolean deleted, String createdBy, Timestamp createdDate, String modifiedBy, Timestamp lastModDate) {
 		super();
@@ -67,7 +67,6 @@ public class M_HealthCareWorker {
 
 	public M_HealthCareWorker() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Short getHealthCareWorkerID() {
@@ -129,9 +128,9 @@ public class M_HealthCareWorker {
 	public void setLastModDate(Timestamp lastModDate) {
 		this.lastModDate = lastModDate;
 	}
-	
+
 	public String toString() {
 		return new Gson().toJson(this);
 	}
-	
+
 }
