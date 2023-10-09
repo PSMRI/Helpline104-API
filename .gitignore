@@ -13,6 +13,7 @@ hs_err_pid7608.log
 .classpath
 /.sts4-cache
 /logs
+.idea
 
 # Properties
-src/main/environment/104_test.properties
+src/main/environment/104_local.properties
