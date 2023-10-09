@@ -3,7 +3,6 @@ target/
 #configs
 config.service.ts
 config.json
-*.properties
 
 #other
 .springBeans
