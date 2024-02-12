@@ -44,11 +44,11 @@ import com.iemr.helpline104.repository.organDonation.RequestedInstitutionReposit
 public class OrganDonationServiceImpl implements OrganDonationService
 {
 
-	@Autowired
+	@Autowired(required = false)
 	private OrganDonationRepository organDonationRepository;
-	@Autowired
+	@Autowired(required = false)
 	private RequestedInstitutionRepository requestedInstitutionRepository;
-	@Autowired
+	@Autowired(required = false)
 	private BenCallRepository benCallRepository;
 
 	@Override
@@ -135,7 +135,7 @@ public class OrganDonationServiceImpl implements OrganDonationService
 				institution.setCreatedBy(organDonation.getCreatedBy());
 			}
 
-			requestedInstitutionRepository.save(requestedInstitutions);
+			requestedInstitutionRepository.saveAll(requestedInstitutions);
 
 		}
 

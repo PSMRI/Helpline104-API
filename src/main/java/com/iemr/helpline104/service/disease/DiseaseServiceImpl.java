@@ -28,13 +28,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,7 +54,7 @@ public class DiseaseServiceImpl implements DiseaseService{
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	@Autowired
+	@Autowired(required = false)
 	DiseaseRepository diseaseRepository;
 	
 	@Override
@@ -67,7 +67,7 @@ public class DiseaseServiceImpl implements DiseaseService{
 			e.printStackTrace();
 		}
 		
-		List<Disease> list = (List<Disease>) diseaseRepository.save(Arrays.asList(disease));
+		List<Disease> list = (List<Disease>) diseaseRepository.saveAll(Arrays.asList(disease));
 		
 		logger.info("saveDisease - End");
 		return list.toString();

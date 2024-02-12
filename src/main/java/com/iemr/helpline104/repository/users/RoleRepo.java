@@ -35,5 +35,7 @@ import com.iemr.helpline104.data.users.M_Role;
 @RestResource(exported = false)
 public interface RoleRepo extends CrudRepository<M_Role, Integer>
 {
+
+	
 	
 }

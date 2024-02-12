@@ -24,18 +24,12 @@ package com.iemr.helpline104.controller.IMRMMR;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.google.gson.Gson;
 import com.iemr.helpline104.data.IMRMMR.IMRMMR;
 import com.iemr.helpline104.data.IMRMMR.M_facilities;
@@ -48,7 +42,8 @@ import com.iemr.helpline104.service.IMRMMR.IMRMMRServiceImpl;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+
 
 @RequestMapping(value = "/beneficiary")
 @RestController
@@ -60,8 +55,8 @@ public class IMRMMRController {
 	private IMRMMRService imrmmrService;
 
 	@CrossOrigin()
-	@ApiOperation(value = "Save IMR MMR", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/saveIMRMMR", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Save IMR MMR")
+	@PostMapping(value = "/saveIMRMMR", headers = "Authorization", produces = {
 			"application/json" })
 	public String saveIMRMMR(@RequestBody String request,
 			@RequestHeader(value = "Authorization") String Authorization) {
@@ -84,8 +79,8 @@ public class IMRMMRController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Fetch support services", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/fetchimrmmrmasters", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Fetch support services")
+	@GetMapping(value = "/fetchimrmmrmasters", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String fetchSupportServices() {
 		OutputResponse response = new OutputResponse();
 		try {
@@ -111,8 +106,8 @@ public class IMRMMRController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Feedback request", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getIMRMMRList", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Feedback request")
+	@PostMapping(value = "/getIMRMMRList", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String feedbackReuest(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {
@@ -129,8 +124,8 @@ public class IMRMMRController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Update IMR MMR complaint", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/update/ImrMmrComplaint", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Update IMR MMR complaint")
+	@PostMapping(value = "/update/ImrMmrComplaint", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String updateImrMmrComplaint(@RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {

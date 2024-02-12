@@ -21,25 +21,20 @@
 */
 package com.iemr.helpline104.controller.balVivha;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.controller.feedback.FeedbackController;
 import com.iemr.helpline104.data.balVivah.BalVivahComplaint;
 import com.iemr.helpline104.service.balVivah.BalVivahComplaintService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import jakarta.servlet.http.HttpServletRequest;
 
 @RequestMapping(value = "/beneficiary")
 @RestController
@@ -51,8 +46,8 @@ public class BalVivahController {
 	private BalVivahComplaintService balVivahComplaintService;
 
 	@CrossOrigin()
-	@ApiOperation(value = "Save bal vivah complaint", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/saveBalVivahComplaint", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Save bal vivah complaint")
+	@PostMapping(value = "/saveBalVivahComplaint", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String balVivahComplaint(@RequestBody String request, HttpServletRequest httpRequest) {
 		OutputResponse output = new OutputResponse();
 		try {
@@ -66,8 +61,8 @@ public class BalVivahController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get bal vivah list", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getBalVivahList", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Get bal vivah list")
+	@GetMapping(value = "/getBalVivahList", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String feedbackReuest(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {
@@ -85,8 +80,8 @@ public class BalVivahController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Update bal vivah complaint", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/update/BalVivahComplaint", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Update bal vivah complaint")
+	@PostMapping(value = "/update/BalVivahComplaint", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String updateBalVivahComplaint(@RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {

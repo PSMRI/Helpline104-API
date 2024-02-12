@@ -37,7 +37,7 @@ import com.iemr.helpline104.data.covidMaster.SymptomsMaster;
 public interface SymptomsMasterRepo extends CrudRepository<SymptomsMaster, Integer>{
 //	ArrayList<SymptomsMaster> findByDeleted(Boolean deleted);
 	
-	@Query("SELECT c FROM SymptomsMaster c where c.deleted != 1 and c.masterType= :covidId")
+	@Query(value="SELECT c FROM SymptomsMaster c where c.deleted != 1 and c.masterType= :covidId",nativeQuery=true)
 	
 	public SymptomsMaster getMaster(@Param("covidId") String covidId);
 

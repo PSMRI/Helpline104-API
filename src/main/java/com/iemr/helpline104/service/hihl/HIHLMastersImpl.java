@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,46 +59,46 @@ import com.iemr.helpline104.utils.mapper.InputMapper;
 @Service
 public class HIHLMastersImpl implements HIHLMasters {
 
-	@Autowired
+	@Autowired(required = false)
 	private M_104appetiteRepo m_104appetiteRepo;
-	@Autowired
+	@Autowired(required = false)
 	private M_104bladderRepo m_104bladderRepo;
-	@Autowired
+	@Autowired(required = false)
 	private M_104bowelRepo m_104bowelRepo;
-	@Autowired
+	@Autowired(required = false)
 	private M_104courseRepo m_104courseRepo;
-	@Autowired
+	@Autowired(required = false)
 	private M_104familyconditionRepo m_104familyconditionRepo;
-	@Autowired
+	@Autowired(required = false)
 	private M_104gettingwithfamilyRepo m_104gettingwithfamilyRepo;
-	@Autowired
+	@Autowired(required = false)
 	private M_104householdworkRepo m_104householdworkRepo;
-	@Autowired
+	@Autowired(required = false)
 	private M_104hygieneselfcareRepo m_104hygieneselfcareRepo;
-	@Autowired
+	@Autowired(required = false)
 	private M_104issuesatworkplaceRepo m_104issuesatworkplaceRepo;
-	@Autowired
+	@Autowired(required = false)
 	private M_104libidoRepo m_104libidoRepo;
-	@Autowired
+	@Autowired(required = false)
 	private M_104pastmedicalconditionRepo m_104pastmedicalconditionRepo;
-	@Autowired
+	@Autowired(required = false)
 	private M_104pastpsychiatricconditionRepo m_104pastpsychiatricconditionRepo;
-	@Autowired
+	@Autowired(required = false)
 	private M_104precipitatingfactorRepo m_104precipitatingfactorRepo;
-	@Autowired
+	@Autowired(required = false)
 	private M_104progressRepo m_104progressRepo;
-	@Autowired
+	@Autowired(required = false)
 	private M_104regularworokRepo m_104regularworokRepo;
-	@Autowired
+	@Autowired(required = false)
 	private M_104relationshipRepo m_104relationshipRepo;
-	@Autowired
+	@Autowired(required = false)
 	private M_104sleepRepo m_104sleepRepo;
-	@Autowired
+	@Autowired(required = false)
 	private M_104treatmenttypeRepo m_104treatmenttypeRepo;
-	@Autowired
+	@Autowired(required = false)
 	private PsychiatricChiefComplaintsRepo psychiatricChiefComplaintsRepo;
 
-	@Autowired
+	@Autowired(required = false)
 	private T_hihlcocasesheetRepo t_hihlcocasesheetRepo;
 
 	public String getHihlMasters() {
@@ -158,7 +159,8 @@ public class HIHLMastersImpl implements HIHLMasters {
 	}
 
 	public String getHihlCasesheetData(Long casesheetId) {
-		T_hihlcocasesheet resultSet = t_hihlcocasesheetRepo.findById(casesheetId);
+		//T_hihlcocasesheet resultSet = t_hihlcocasesheetRepo.findById(casesheetId);
+		Optional<T_hihlcocasesheet> resultSet = t_hihlcocasesheetRepo.findById(casesheetId);
 		return new Gson().toJson(resultSet);
 	}
 

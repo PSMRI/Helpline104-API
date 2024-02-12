@@ -39,7 +39,7 @@ import com.iemr.helpline104.repository.userbeneficiarydata.UserBeneficiaryDataRe
 public class UserBeneficiaryDataServiceImpl implements UserBeneficiaryDataService {
 	private UserBeneficiaryDataRepository userBeneficiaryDataRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	public void setUserBeneficiaryDataRepository(UserBeneficiaryDataRepository userBeneficiaryDataRepository) {
 		this.userBeneficiaryDataRepository = userBeneficiaryDataRepository;
 	}

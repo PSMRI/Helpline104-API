@@ -35,10 +35,9 @@ import com.iemr.helpline104.data.directory.SubDirectory;
 @Repository
 @RestResource(exported = false)
 public interface SubDirectoryRepository extends CrudRepository<SubDirectory, Long> {
-	// @Query("select instituteSubDirectoryID, instituteSubDirectoryName,
-	// instituteDirectoryID from SubDirectory where Deleted = false and
-	// instituteDirectoryID = :instituteDirectoryID")
-	@Query("select instituteSubDirectoryID, instituteSubDirectoryName from SubDirectory where "
-			+ "Deleted = false and instituteDirectoryID = :instituteDirectoryID")
+	
+	@Query(value="select instituteSubDirectoryID, instituteSubDirectoryName from SubDirectory where "
+			+ "Deleted = false and instituteDirectoryID = :instituteDirectoryID",nativeQuery=true)
+	
 	public Set<Objects[]> findAciveSubDirectories(@Param("instituteDirectoryID") int instituteDirectoryID);
 }

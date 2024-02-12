@@ -21,23 +21,18 @@
 */
 package com.iemr.helpline104.controller.hihl;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.service.hihl.HIHLMasters;
 import com.iemr.helpline104.service.hihl.HIHLMastersImpl;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+
 
 @CrossOrigin
 @RestController
@@ -49,8 +44,8 @@ public class HIHLController {
 	@Autowired
 	private HIHLMasters hIHLMasters;
 
-	@ApiOperation(value = "Master data for 104 HIHL", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/masters", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
+	@Operation(summary = "Master data for 104 HIHL")
+	@GetMapping(value = "/get/masters", produces = MediaType.APPLICATION_JSON)
 	public String getHihlMasters() {
 
 		OutputResponse response = new OutputResponse();
@@ -63,8 +58,8 @@ public class HIHLController {
 		return response.toString();
 	}
 
-	@ApiOperation(value = "Save HIHL casesheet", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/save/casesheet", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON)
+	@Operation(summary = "Save HIHL casesheet")
+	@PostMapping(value = "/save/casesheet", produces = MediaType.APPLICATION_JSON)
 	public String saveHihlCasesheet(@RequestBody String request) {
 
 		OutputResponse response = new OutputResponse();
@@ -77,8 +72,8 @@ public class HIHLController {
 		return response.toString();
 	}
 
-	@ApiOperation(value = "Get HIHL casesheet history info", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getHihlCasesheetHistoryInfo/{benRegId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
+	@Operation(summary = "Get HIHL casesheet history info")
+	@GetMapping(value = "/getHihlCasesheetHistoryInfo/{benRegId}", produces = MediaType.APPLICATION_JSON)
 	public String getHihlCasesheetHistoryInfo(@PathVariable Long benRegId) {
 
 		OutputResponse response = new OutputResponse();
@@ -90,8 +85,8 @@ public class HIHLController {
 		return response.toString();
 	}
 
-	@ApiOperation(value = "Get HIHL casesheet data", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getHihlCasesheetData/{casesheetId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
+	@Operation(summary = "Get HIHL casesheet data")
+	@GetMapping(value = "/getHihlCasesheetData/{casesheetId}", produces = MediaType.APPLICATION_JSON)
 	public String getHihlCasesheetData(@PathVariable Long casesheetId) {
 
 		OutputResponse response = new OutputResponse();

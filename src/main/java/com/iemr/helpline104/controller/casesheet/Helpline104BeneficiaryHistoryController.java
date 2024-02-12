@@ -28,12 +28,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.data.casesheet.COVIDHistory;
 import com.iemr.helpline104.data.casesheet.H104BenMedHistory;
 import com.iemr.helpline104.service.casesheet.H104BenHistoryService;
@@ -41,8 +36,8 @@ import com.iemr.helpline104.service.casesheet.H104BenHistoryServiceImpl;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 
 @RequestMapping(value = "/beneficiary")
 @RestController
@@ -54,10 +49,10 @@ public class Helpline104BeneficiaryHistoryController {
 	private H104BenHistoryService h104BenHistoryService;
 
 	@CrossOrigin
-	@ApiOperation(value = "Retrieves case record", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getBenCaseSheet", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Retrieves case record")
+	@PostMapping(value = "/getBenCaseSheet", headers = "Authorization")
 	public String getBenCaseSheet(
-			@ApiParam(value = "{\"beneficiaryRegID\":\"optional long\", \"benCallID\":\" Optional long\"}") @RequestBody String request) {
+			@Parameter(description = "{\"beneficiaryRegID\":\"optional long\", \"benCallID\":\" Optional long\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
 
@@ -76,10 +71,10 @@ public class Helpline104BeneficiaryHistoryController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Stores case record", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/save/benCaseSheet", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Stores case record")
+	@PostMapping(value = "/save/benCaseSheet", headers = "Authorization")
 	public String saveBenCaseSheet(
-			@ApiParam(value = "{\"algorithm\":\"string\",\"diseaseSummary\":\"string\",\"addedAdvice\":\"string\",\"prescription\":\"string\",\"actionByHAO\":\"string\","
+			@Parameter(description = "{\"algorithm\":\"string\",\"diseaseSummary\":\"string\",\"addedAdvice\":\"string\",\"prescription\":\"string\",\"actionByHAO\":\"string\","
 					+ "\"actionByCO\":\"string\",\"actionByMO\":\"string\",\"remarks\":\"string\",\"deleted\":\"boolean\",\"createdBy\":\"string\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
@@ -107,10 +102,10 @@ public class Helpline104BeneficiaryHistoryController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Retrieves present case record", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getPresentCaseSheet", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Retrieves present case record")
+	@PostMapping(value = "/getPresentCaseSheet", headers = "Authorization")
 	public String getPresentCaseSheet(
-			@ApiParam(value = "{\"beneficiaryRegID\":\"long\",\"callID\":\"String\"}") @RequestBody String request) {
+			@Parameter(description = "{\"beneficiaryRegID\":\"long\",\"callID\":\"String\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
 

@@ -38,5 +38,6 @@ public interface SchemeRepository extends CrudRepository<T_Schemeservice, Long>{
 
 	public List<T_Schemeservice> findByBeneficiaryRegID(@Param("BeneficiaryRegID") Long BeneficiaryRegID);
 	public List<T_Schemeservice> findByBenCallID(@Param("benCallID") Long benCallID);
+	public Iterable<T_Schemeservice> save(List<T_Schemeservice> asList);
 
 }

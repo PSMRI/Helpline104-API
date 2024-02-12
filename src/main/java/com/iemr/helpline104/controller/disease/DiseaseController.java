@@ -24,16 +24,11 @@ package com.iemr.helpline104.controller.disease;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.service.disease.DiseaseService;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 
 @RequestMapping(value = "/diseaseController")
 @RestController
@@ -45,8 +40,8 @@ public class DiseaseController {
 	DiseaseService diseaseService;
 
 	@CrossOrigin()
-	@ApiOperation(value = "Save disease", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/saveDisease", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Save disease")
+	@PostMapping(value = "/saveDisease", headers = "Authorization", produces = {
 			"application/json" })
 	public String saveDisease(@RequestBody String request) {
 		logger.info("saveDisease request " + request);
@@ -63,8 +58,8 @@ public class DiseaseController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Delete disease", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/deleteDisease", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Delete disease")
+	@PostMapping(value = "/deleteDisease", headers = "Authorization", produces = {
 			"application/json" })
 	public String deleteDisease(@RequestBody String request) {
 		logger.info("deleteDisease request " + request);
@@ -81,8 +76,8 @@ public class DiseaseController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get diseases", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getDisease", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Get diseases")
+	@PostMapping(value = "/getDisease", headers = "Authorization", produces = {
 			"application/json" })
 	public String getDisease(@RequestBody String request) {
 		logger.info("getDisease request " + request);
@@ -99,8 +94,8 @@ public class DiseaseController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Update disease", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/updateDisease", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Update disease")
+	@PostMapping(value = "/updateDisease", headers = "Authorization", produces = {
 			"application/json" })
 	public String updateDisease(@RequestBody String request) {
 		logger.info("updateDisease request " + request);
@@ -117,9 +112,8 @@ public class DiseaseController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get available disease", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getAvailableDiseases", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get available disease")
+	@PostMapping(value = "/getAvailableDiseases", headers = "Authorization", produces = { "application/json" })
 	public String getAvailableDiseases() {
 		logger.info("getAvailableDiseases request ");
 		OutputResponse response = new OutputResponse();
@@ -135,8 +129,8 @@ public class DiseaseController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get disease by id", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getDiseasesByID", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Get disease by id")
+	@PostMapping(value = "/getDiseasesByID", headers = "Authorization", produces = {
 			"application/json" })
 	public String getDiseasesByID(@RequestBody String request) {
 		logger.info("getDiseasesByID request " + request);

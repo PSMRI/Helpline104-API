@@ -27,12 +27,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.data.callqamapping.CallqaMappings;
 import com.iemr.helpline104.data.callqamapping.M_104callqamapping;
 import com.iemr.helpline104.service.callqamapping.CallqamappingService;
@@ -40,8 +35,8 @@ import com.iemr.helpline104.service.callqamapping.CallqamappingServiceImpl;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 
 @RequestMapping(value = "/beneficiary")
 @RestController
@@ -54,8 +49,8 @@ public class CallQAMappingController {
 	public CallqamappingService callqamappingService;
 
 	@CrossOrigin
-	@ApiOperation(value = "Save call qa mapping", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/save/callqamapping", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Save call qa mapping")
+	@PostMapping(value = "/save/callqamapping", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String saveCallqamapping(@RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
@@ -75,10 +70,10 @@ public class CallQAMappingController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Fetch questions and answers given by beneficiary", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/CDIqamapping", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Fetch questions and answers given by beneficiary")
+	@PostMapping(value = "/get/CDIqamapping", headers = "Authorization")
 	public String getCDIqamapping(
-			@ApiParam(value = "{\"beneficiaryRegID\":\"long\",\"benCallID\":\"long\"}") @RequestBody String request) {
+			@Parameter(description = "{\"beneficiaryRegID\":\"long\",\"benCallID\":\"long\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
 			M_104callqamapping m_104callqamapping = inputMapper.gson().fromJson(request, M_104callqamapping.class);

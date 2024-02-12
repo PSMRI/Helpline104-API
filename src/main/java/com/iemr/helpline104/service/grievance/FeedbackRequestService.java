@@ -32,7 +32,7 @@ import com.iemr.helpline104.repository.grievance.FeedbackRequest;
 @Service
 public class FeedbackRequestService {
 	
-	@Autowired 
+	//@Autowired 
 	private FeedbackRequest feedbackrequest;
 
 	public int update(T_FeedbackRequset feedbackrequest1) {

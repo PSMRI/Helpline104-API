@@ -23,9 +23,9 @@ package com.iemr.helpline104.service.feedback;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.iemr.helpline104.data.feedback.FeedbackDetails;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 public interface FeedbackService {
 

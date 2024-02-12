@@ -29,8 +29,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +49,8 @@ import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.mapper.OutputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Service
 public class FeedbackServiceImpl implements FeedbackService {
 
@@ -58,18 +58,18 @@ public class FeedbackServiceImpl implements FeedbackService {
 
 	private BeneficiaryCallRepository beneficiaryCallRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private InstituteRepository instituteRepo;
 
-	@Autowired
+	@Autowired(required = false)
 	public void getBenCalServiceCatSubcatMappingRepo(BeneficiaryCallRepository benCalServiceCatSubcatMappingRepo) {
 		this.beneficiaryCallRepository = benCalServiceCatSubcatMappingRepo;
 	}
 
-	@Autowired
+	@Autowired(required = false)
 	private ServicesHistoryRepository servicesHistoryRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private FeedbackTypeRepository feedbackRepositorty;
 
 	/**
@@ -77,7 +77,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 	 */
 	private FeedbackRepository feedbackRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	public void setFeedbackRepository(FeedbackRepository feedbackRepository) {
 
 		this.feedbackRepository = feedbackRepository;
@@ -87,7 +87,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 
 	private ConfigProperties properties;
 
-	@Autowired
+	@Autowired(required = false)
 	public void setProperties(ConfigProperties properties) {
 		this.properties = properties;
 	}

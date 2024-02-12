@@ -78,14 +78,14 @@ public class IMRMMRServiceImpl implements IMRMMRService {
 	private String sendEmailGeneralUrl;
 	@Value("${IMRMMREmailTemplate}")
 	private String IMRMMREmailTemplate;
-	@Autowired
+	@Autowired(required = false)
 	IMRMMRRepository imrmmrRepository;
-	@Autowired
+	@Autowired(required = false)
 	NodalOficerRepo nodalOficerRepo;
-	@Autowired
+	@Autowired(required = false)
 	LocationDistrictRepository locationDistrictRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private EpidemicOutbreakRepository epidemicOutbreakRepository;
 
 	@Override

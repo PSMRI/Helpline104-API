@@ -41,16 +41,16 @@ public class DirectoryServiceImpl implements DirectoryServiceService
 {
 	private DirectoryRepository directoryRepository;
 
-	@Autowired
+	@Autowired(required=false)
 	public void setDirectoryRepository(DirectoryRepository directoryRepository)
 	{
 		this.directoryRepository = directoryRepository;
 	}
 
-	@Autowired
+	@Autowired(required=false)
 	private DirectoryserviceRepository directoryserviceRepository;
 	
-	@Autowired
+	@Autowired(required=false)
 	private BenCallRepository benCallRepository;
 
 	@Override
@@ -72,12 +72,6 @@ public class DirectoryServiceImpl implements DirectoryServiceService
 		{
 			if (objects != null && objects.length > 0)
 			{
-				/*
-				 * directoryServiceList.add(new Directoryservice((Long) objects[0], (String) objects[1], (String)
-				 * objects[2], (String) objects[3],(Integer) objects[4],(String) objects[5],(Integer)
-				 * objects[6],(String) objects[7],(Integer) objects[8],(String) objects[9]));
-				 */	
-				
 				dService = new Directoryservice((Long) objects[0], (String) objects[1], (String) objects[2], (String) objects[3], (String) objects[4]);
 				
 				if (benCallID != null)
@@ -93,7 +87,7 @@ public class DirectoryServiceImpl implements DirectoryServiceService
 	@Override
 	public String saveDirectorySearchHistory(Directoryservice[] directoryservice)
 	{
-		Iterable<Directoryservice> savedDirectoryserviceResponse = directoryserviceRepository.save(Arrays.asList(directoryservice));
+		Iterable<Directoryservice> savedDirectoryserviceResponse = directoryserviceRepository.saveAll(Arrays.asList(directoryservice));
 		return savedDirectoryserviceResponse.toString();
 	}
 

@@ -36,7 +36,7 @@ import com.iemr.helpline104.repository.userbeneficiarydata.GenderRepository;
 public class GenderServiceImpl implements GenderService {
 	private GenderRepository genderRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	public void setGenderServiceImpl(GenderRepository genderRepository) {
 		this.genderRepository = genderRepository;
 	}

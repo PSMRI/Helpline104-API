@@ -23,25 +23,19 @@ package com.iemr.helpline104.controller.foodSafetyComplaint;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.data.foodSafetyCopmlaint.T_FoodSafetyCopmlaint;
 import com.iemr.helpline104.service.foodSafetyCopmlaint.FoodSafetyCopmlaintService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.servlet.http.HttpServletRequest;
 
 @RequestMapping(value = "/beneficiary")
 @RestController
@@ -53,10 +47,10 @@ public class FoodSafetyComplaintController {
 	private FoodSafetyCopmlaintService foodSafetyCopmlaintService;
 
 	@CrossOrigin
-	@ApiOperation(value = "Stores food safety complaint details", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/save/foodComplaintDetails", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Stores food safety complaint details")
+	@PostMapping(value = "/save/foodComplaintDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String saveFoodComplaintDetails(
-			@ApiParam(value = "{\"typeOfRequest\":\"string\",\"isDiarrhea\":\"byte\",\"isVomiting\":\"byte\",\"isAbdominalPain\":\"byte\",\"isChillsOrRigors\":\"byte\","
+			@Parameter(description = "{\"typeOfRequest\":\"string\",\"isDiarrhea\":\"byte\",\"isVomiting\":\"byte\",\"isAbdominalPain\":\"byte\",\"isChillsOrRigors\":\"byte\","
 					+ "\"isGiddiness\":\"byte\",\"isDehydration\":\"byte\",\"isRashes\":\"byte\",\"fromWhen\":\"timestamp\",\"historyOfDiet\":\"String\","
 					+ "\"isFoodConsumed\":\"byte\",\"typeOfFood\":\"String\",\"foodConsumedFrom\":\"String\",\"associatedSymptoms\":\"String\","
 					+ "\"feedbackTypeID\":\"short\",\"districtID\":\"Integer\",\"districtBlockID\":\"Integer\",\"villageID\":\"Integer\",\"remarks\":\"String\",\"deleted\":\"boolean\",\"createdBy\":\"String\"}") @RequestBody String request,
@@ -81,10 +75,10 @@ public class FoodSafetyComplaintController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Provides food safety complaints history", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/foodComplaintDetails", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Provides food safety complaints history")
+	@PostMapping(value = "/get/foodComplaintDetails", headers = "Authorization")
 	public String getFoodComplaintDetails(
-			@ApiParam(value = "{\"beneficiaryRegID\":\"optional long\",   \"benCallID\":\" Optional long\",   \"requestID\":\" Optional string\"}") @RequestBody String request) {
+			@Parameter(description = "{\"beneficiaryRegID\":\"optional long\",   \"benCallID\":\" Optional long\",   \"requestID\":\" Optional string\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
 			T_FoodSafetyCopmlaint t_foodSafetyCopmlaint = inputMapper.gson().fromJson(request,

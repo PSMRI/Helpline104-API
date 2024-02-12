@@ -28,16 +28,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import com.google.gson.Gson;
@@ -50,7 +44,7 @@ import com.iemr.helpline104.service.users.IEMRAdminUserService;
 import com.iemr.helpline104.service.users.IEMRAdminUserServiceImpl;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 
 @CrossOrigin
 @RequestMapping(value = "/user")
@@ -65,9 +59,8 @@ public class IEMRAdminController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "User authenticate", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = { "/userAuthenticate" }, method = {
-			org.springframework.web.bind.annotation.RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "User authenticate")
+	@PostMapping(value = { "/userAuthenticate" }, produces = { "application/json" })
 	public String userAuthenticate(@RequestBody M_User m_User) {
 		List<M_User> mUser = this.iemrAdminUserService.userAuthenticate(m_User.getUserName(), m_User.getPassword());
 
@@ -107,9 +100,8 @@ public class IEMRAdminController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Forget password", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = { "/forgetPassword" }, method = {
-			org.springframework.web.bind.annotation.RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Forget password")
+	@PostMapping(value = { "/forgetPassword" }, produces = { "application/json" })
 	public String forgetPassword(@RequestBody M_User m_User) {
 		M_User mUser = this.iemrAdminUserService.userExitsCheck(m_User.getUserName());
 
@@ -136,9 +128,8 @@ public class IEMRAdminController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Set forget password", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = { "/setForgetPassword" }, method = {
-			org.springframework.web.bind.annotation.RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Set forget password")
+	@PostMapping(value = { "/setForgetPassword" }, produces = { "application/json" })
 	public String setPassword(@RequestBody M_User m_user) {
 		int noOfRowModified = 0;
 
@@ -159,9 +150,8 @@ public class IEMRAdminController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Change password", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = { "/changePassword" }, method = {
-			org.springframework.web.bind.annotation.RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Change password")
+	@PostMapping(value = { "/changePassword" }, produces = { "application/json" })
 	public String changePassword(@RequestBody M_User m_User) {
 		int noOfRowUpdated = 0;
 
@@ -183,8 +173,8 @@ public class IEMRAdminController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Save user security question answers", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/saveUserSecurityQuesAns", method = RequestMethod.POST, produces = "application/json")
+	@Operation(summary = "Save user security question answers")
+	@PostMapping(value = "/saveUserSecurityQuesAns", produces = "application/json")
 	public String saveUserSecurityQuesAns(@RequestBody Iterable<M_UserSecurityQMapping> m_UserSecurityQMapping) {
 		int responseData = 0;
 
@@ -205,16 +195,16 @@ public class IEMRAdminController {
 	 * @return security qtns
 	 */
 	@CrossOrigin()
-	@ApiOperation(value = "Get security quetions", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getsecurityquetions", method = RequestMethod.GET)
+	@Operation(summary = "Get security quetions")
+	@GetMapping("/getsecurityquetions")
 	public String getSecurityts() {
 		ArrayList<M_LoginSecurityQuestions> test = iemrAdminUserService.getAllLoginSecurityQuestions();
 		return test.toString();
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get role wrap up time", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/role/{roleID}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Get role wrap up time")
+	@GetMapping(value = "/role/{roleID}", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getrolewrapuptime(@PathVariable("roleID") Integer roleID) {
 
 		OutputResponse response = new OutputResponse();

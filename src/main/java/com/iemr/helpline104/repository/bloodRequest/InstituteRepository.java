@@ -26,9 +26,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.iemr.helpline104.data.bloodRequest.BloodBank;
-
+@Service
 @Repository
 @RestResource(exported = false)
 public interface InstituteRepository extends CrudRepository<BloodBank, Long> {

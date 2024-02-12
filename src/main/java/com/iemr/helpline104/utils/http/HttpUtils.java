@@ -26,8 +26,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 
-import javax.ws.rs.core.MediaType;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -42,19 +40,19 @@ import com.iemr.helpline104.controller.cdss.ClinicalDecisionSupportController;
 import com.sun.jersey.multipart.FormDataBodyPart;
 import com.sun.jersey.multipart.FormDataMultiPart;
 
+import jakarta.ws.rs.core.MediaType;
+
 @Component
 public class HttpUtils {
 	public static final String AUTHORIZATION = "Authorization";
 	private String server;
-	// @Autowired
+	
 	private RestTemplate rest;
-	// @Autowired
+	
 	private HttpHeaders headers;
-	// @Autowired
+	
 	private HttpStatus status;
 
-	// @Autowired(required = true)
-	// @Qualifier("hibernateCriteriaBuilder")
 	public HttpUtils() {
 		if (rest == null) {
 			rest = new RestTemplate();
@@ -63,29 +61,16 @@ public class HttpUtils {
 		}
 	}
 	private Logger logger = LoggerFactory.getLogger(ClinicalDecisionSupportController.class);
-	// public HttpUtils() {
-	// if (rest == null) {
-	// rest = new RestTemplate();
-	// headers = new HttpHeaders();
-	// headers.add("Content-Type", "application/json");
-	// }
-	// }
 
-	// @Bean
-	// public HttpUtils httpUtils() {
-	// return new HttpUtils();
-	// }
 
 	public String get(String uri) {
 		String body;
 		HttpEntity<String> requestEntity = new HttpEntity<String>("", headers);
 		ResponseEntity<String> responseEntity = rest.exchange(uri, HttpMethod.GET, requestEntity, String.class);
-		setStatus(responseEntity.getStatusCode());
-		// if (status == HttpStatus.OK){
+		setStatus((HttpStatus) responseEntity.getStatusCode());
+		
 		body = responseEntity.getBody();
-		// }else{
-		// responseEntity
-		// }
+		
 		return body;
 	}
 
@@ -102,7 +87,7 @@ public class HttpUtils {
 		}
 		HttpEntity<String> requestEntity = new HttpEntity<String>("", headers);
 		ResponseEntity<String> responseEntity = rest.exchange(uri, HttpMethod.GET, requestEntity, String.class);
-		setStatus(responseEntity.getStatusCode());
+		setStatus((HttpStatus) responseEntity.getStatusCode());
 		body = responseEntity.getBody();
 		return body;
 	}
@@ -111,7 +96,7 @@ public class HttpUtils {
 		String body;
 		HttpEntity<String> requestEntity = new HttpEntity<String>(json, headers);
 		ResponseEntity<String> responseEntity = rest.exchange(uri, HttpMethod.POST, requestEntity, String.class);
-		setStatus(responseEntity.getStatusCode());
+		setStatus((HttpStatus) responseEntity.getStatusCode());
 		body = responseEntity.getBody();
 		return body;
 	}
@@ -127,7 +112,7 @@ public class HttpUtils {
 		HttpEntity<String> requestEntity;
 		requestEntity = new HttpEntity<String>(data, headers);
 		responseEntity = rest.exchange(uri, HttpMethod.POST, requestEntity, String.class);
-		setStatus(responseEntity.getStatusCode());
+		setStatus((HttpStatus) responseEntity.getStatusCode());
 		body = responseEntity.getBody();
 		return body;
 	}
@@ -151,8 +136,11 @@ public class HttpUtils {
 			try {
 				 multiPart = new FormDataMultiPart();
 				 is = new FileInputStream(data);
-				FormDataBodyPart filePart = new FormDataBodyPart("content", is,
-						MediaType.APPLICATION_OCTET_STREAM_TYPE);
+					/*
+					 * FormDataBodyPart filePart = new FormDataBodyPart("content", is,
+					 * MediaType.APPLICATION_OCTET_STREAM_TYPE);
+					 */
+				 FormDataBodyPart filePart = new FormDataBodyPart();
 				multiPart.bodyPart(filePart);
 				multiPart.field("docPath", data);
 				headers.add("Content-Type", MediaType.APPLICATION_JSON);
@@ -175,7 +163,7 @@ public class HttpUtils {
 			requestEntity = new HttpEntity<String>(data, headers);
 			responseEntity = rest.exchange(uri, HttpMethod.POST, requestEntity, String.class);
 		}
-		setStatus(responseEntity.getStatusCode());
+		setStatus((HttpStatus) responseEntity.getStatusCode());
 		body = responseEntity.getBody();
 		return body;
 	}
@@ -184,7 +172,7 @@ public class HttpUtils {
 		return status;
 	}
 
-	public void setStatus(HttpStatus status) {
-		this.status = status;
+	public void setStatus(HttpStatus httpStatusCode) {
+		this.status = httpStatusCode;
 	}
 }

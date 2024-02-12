@@ -34,7 +34,7 @@ import com.iemr.helpline104.repository.diseaseScreening.QuestionnaireRepository;
 @Service
 public class QuestionnaireServiceImpl implements QuestionnaireService{
 
-	@Autowired
+	@Autowired(required=false)
 	private QuestionnaireRepository questionnaireRepository;
 	
 	@Override

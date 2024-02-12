@@ -35,7 +35,7 @@ import com.iemr.helpline104.repository.userbeneficiarydata.PhoneTypeRepository;
 @Service
 public class PhoneTypeServiceImpl implements PhoneTypeService{
 
-	@Autowired
+	@Autowired(required = false)
 	private PhoneTypeRepository phoneTypeRepository;
 	@Override
 	public List<M_PhoneType> getActivePhoneTypes() {

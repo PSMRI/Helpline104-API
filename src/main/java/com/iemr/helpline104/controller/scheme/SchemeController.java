@@ -28,19 +28,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.data.scheme.T_Schemeservice;
 import com.iemr.helpline104.service.scheme.SchemeService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 
 @RequestMapping(value = "/beneficiary")
 @RestController
@@ -54,10 +49,10 @@ public class SchemeController {
 	InputMapper mapper = new InputMapper();
 
 	@CrossOrigin
-	@ApiOperation(value = "Save scheme search history", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/save/schemeSearchHistory", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Save scheme search history")
+	@PostMapping(value = "/save/schemeSearchHistory", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String saveSchemeSearchHistory(
-			@ApiParam(value = "[{\"beneficiaryRegID\":\"long\",\"benCallID\":\"long\",\"schemeID\":\"integer\","
+			@Parameter(description = "[{\"beneficiaryRegID\":\"long\",\"benCallID\":\"long\",\"schemeID\":\"integer\","
 					+ "\"providerServiceMapID\":\"integer\",\"remarks\":\"string\",\"createdBy\":\"string\"}]") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
@@ -77,10 +72,10 @@ public class SchemeController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Retrieve scheme search history", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getSchemeSearchHistory", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Retrieve scheme search history")
+	@PostMapping(value = "/getSchemeSearchHistory", headers = "Authorization")
 	public String getBenSchemeHistory(
-			@ApiParam(value = "{\"beneficiaryRegID\":\"optional long\",  \"benCallID\":\" Optional long\"}") @RequestBody String request) {
+			@Parameter(description = "{\"beneficiaryRegID\":\"optional long\",  \"benCallID\":\" Optional long\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
 

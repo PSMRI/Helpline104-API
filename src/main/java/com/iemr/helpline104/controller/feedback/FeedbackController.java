@@ -23,26 +23,20 @@ package com.iemr.helpline104.controller.feedback;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.data.feedback.FeedbackDetails;
 import com.iemr.helpline104.service.feedback.FeedbackService;
 import com.iemr.helpline104.service.feedback.FeedbackServiceImpl;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import jakarta.servlet.http.HttpServletRequest;
 
 @RequestMapping(value = "/beneficiary")
 @RestController
@@ -51,9 +45,6 @@ public class FeedbackController {
 	private InputMapper inputMapper = new InputMapper();
 	private Logger logger = LoggerFactory.getLogger(FeedbackController.class);
 
-	/**
-	 * feedback service
-	 */
 	private FeedbackService feedbackService;
 
 	@Autowired
@@ -68,8 +59,8 @@ public class FeedbackController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Fetch feedback request", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getfeedbacklist", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Fetch feedback request")
+	@PostMapping(value = "/getfeedbacklist", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String feedbackReuest(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {
@@ -85,8 +76,8 @@ public class FeedbackController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get feedback by post", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getfeedback/{feedbackID}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Get feedback by post")
+	@PostMapping(value = "/getfeedback/{feedbackID}", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getFeedbackByPost(@PathVariable("feedbackID") int feedbackID) {
 		OutputResponse response = new OutputResponse();
 		try {
@@ -101,8 +92,8 @@ public class FeedbackController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Update feedback", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/updatefeedback", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Update feedback")
+	@PostMapping(value = "/updatefeedback", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String updateFeedback(@RequestBody String feedbackDetailsOBJ) {
 		OutputResponse response = new OutputResponse();
 		try {
@@ -124,8 +115,8 @@ public class FeedbackController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Save beneficiary feedback", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/saveBenFeedback", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Save beneficiary feedback")
+	@PostMapping(value = "/saveBenFeedback", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String saveBenFeedback(@RequestBody String feedbackRequest, HttpServletRequest request) {
 		OutputResponse response = new OutputResponse();
 		try {

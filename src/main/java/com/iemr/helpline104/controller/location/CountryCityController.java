@@ -21,22 +21,17 @@
 */
 package com.iemr.helpline104.controller.location;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.controller.feedback.FeedbackController;
 import com.iemr.helpline104.service.location.CountryCityService;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 
 @RequestMapping(value = "/countryCityController")
 @RestController
@@ -47,9 +42,9 @@ public class CountryCityController {
 	private Logger logger = LoggerFactory.getLogger(FeedbackController.class);
 
 	@CrossOrigin
-	@ApiOperation(value = "Get country", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = {
-			"/getCountry" }, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Get country")
+	@GetMapping(value = {
+			"/getCountry" }, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getCountry() {
 		OutputResponse response = new OutputResponse();
 		try {
@@ -65,9 +60,9 @@ public class CountryCityController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Get cities", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = {
-			"/getCities/{id}" }, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Get cities")
+	@GetMapping(value = {
+			"/getCities/{id}" }, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getCities(@PathVariable("id") Integer id) {
 		OutputResponse response = new OutputResponse();
 		try {

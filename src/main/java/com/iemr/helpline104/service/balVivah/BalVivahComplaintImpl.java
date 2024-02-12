@@ -31,8 +31,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,30 +57,33 @@ import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.mapper.OutputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Service
 public class BalVivahComplaintImpl implements BalVivahComplaintService {
 
-	@Autowired
+	@Autowired(required = false)
 	private BalVivahComplaintRepo balVivahComplaintRepo;
-	@Autowired
+	
+	@Autowired(required = false)
 	private LocationCityRepository locationCityRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private LocationDistrictBlockRepository locationDistrictBlockRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private LocationDistrictRepository locationDistrictRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	FeedbackTypeRepository feedbackRepositorty;
 
-	@Autowired
+	@Autowired(required = false)
 	FeedbackRepository feedbackRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private BenCallRepository benCallRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private EpidemicOutbreakRepository epidemicOutbreakRepository;
 
 	private InputMapper inputMapper = new InputMapper();
@@ -91,7 +92,6 @@ public class BalVivahComplaintImpl implements BalVivahComplaintService {
 
 	private Logger logger = LoggerFactory.getLogger(BalVivahController.class);
 
-	@Override
 	@Transactional(rollbackFor = Exception.class)
 
 	public String save(BalVivahComplaint balVivahComplaint, HttpServletRequest request) throws Exception {

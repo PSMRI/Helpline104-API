@@ -28,8 +28,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.helpline104.data.healthCareWorkerType.M_HealthCareWorker;
@@ -37,7 +37,8 @@ import com.iemr.helpline104.service.healthCareWorkerType.HealthCareWorkerService
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+
 
 @RequestMapping(value = "/beneficiary")
 @RestController
@@ -49,8 +50,8 @@ public class HealthCareWorkerTypeController {
 	private HealthCareWorkerService healthCareWorkerService;
 
 	@CrossOrigin
-	@ApiOperation(value = "Get health care worker types", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/healthCareWorkerTypes", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Get health care worker types")
+	@PostMapping(value = "/get/healthCareWorkerTypes", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getHealthCareWorkerTypes() {
 		logger.info("getHealthCareWorkerTypes request ");
 		OutputResponse output = new OutputResponse();

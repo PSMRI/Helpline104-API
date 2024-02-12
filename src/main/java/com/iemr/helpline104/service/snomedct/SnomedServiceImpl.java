@@ -34,7 +34,7 @@ import com.iemr.helpline104.repository.snomedct.SnomedRepository;
 @Service
 public class SnomedServiceImpl implements SnomedService {
 
-	@Autowired
+	@Autowired(required = false)
 	private SnomedRepository snomedRepository;
 
 	@Override

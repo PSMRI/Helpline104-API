@@ -34,6 +34,6 @@ import com.iemr.helpline104.data.directory.Directory;
 @Repository
 @RestResource(exported = false)
 public interface DirectoryRepository extends CrudRepository<Directory, Long> {
-	@Query("select instituteDirectoryID, instituteDirectoryName from Directory where Deleted = false")
+	@Query(value="select instituteDirectoryID, instituteDirectoryName from Directory where Deleted = false",nativeQuery=true)
 	public Set<Objects[]> findAciveDirectories();
 }

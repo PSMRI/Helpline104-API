@@ -27,12 +27,7 @@ import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.data.diseaseScreening.M_Questionnaire;
 import com.iemr.helpline104.data.diseaseScreening.M_questionairValues;
 import com.iemr.helpline104.service.diseaseScreening.QuestionScoreService;
@@ -42,8 +37,8 @@ import com.iemr.helpline104.service.diseaseScreening.QuestionnaireServiceImpl;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 
 @RequestMapping(value = "/beneficiary")
 @RestController
@@ -59,10 +54,10 @@ public class DiseaseScreeningController {
 	private QuestionScoreService questionScoreService;
 
 	@CrossOrigin
-	@ApiOperation(value = "Fetch disease screening questions", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/questions", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Fetch disease screening questions")
+	@PostMapping(value = "/get/questions", headers = "Authorization")
 	public String fetchQuestions(
-			@ApiParam(value = "{\"questionTypeID\":\"integer\",\"providerServiceMapID\":\"integer\"}") @RequestBody String request) {
+			@Parameter(description = "{\"questionTypeID\":\"integer\",\"providerServiceMapID\":\"integer\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
 			M_Questionnaire m_questionnaire = inputMapper.gson().fromJson(request, M_Questionnaire.class);
@@ -84,9 +79,9 @@ public class DiseaseScreeningController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Fetch disease screening answers", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/answers", method = RequestMethod.POST, headers = "Authorization")
-	public String fetchAnswers(@ApiParam(value = "{\"questionID\":\"integer\"}") @RequestBody String request) {
+	@Operation(summary = "Fetch disease screening answers")
+	@PostMapping(value = "/get/answers", headers = "Authorization")
+	public String fetchAnswers(@Parameter(description = "{\"questionID\":\"integer\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
 			M_questionairValues m_104QuestionScore = inputMapper.gson().fromJson(request, M_questionairValues.class);

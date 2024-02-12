@@ -10,13 +10,19 @@
 	<packaging>war</packaging>
 	<name>Piramal Helpline 104 API</name>
 	<description>Piramal Helpline 104 API</description>
-	<parent>
+	<!--<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.3.RELEASE</version>
+	</parent>-->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.2.1</version>
+		<relativePath />
 	</parent>
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 		<maven.test.skip>true</maven.test.skip>
 		<build.timestamp>${maven.build.timestamp}</build.timestamp>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
@@ -30,14 +36,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-starter-tomcat</artifactId>
 				</exclusion>
 			</exclusions>
-
 		</dependency>
 
 		<dependency>
@@ -58,11 +62,21 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
-		<!-- JSTL -->
+		<!--https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>6.1.0-M1</version>
+			<scope>provided</scope>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jdbc -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jdbc</artifactId>
+			<version>11.0.0-M16</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.restdocs</groupId>
@@ -71,9 +85,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<version>8.2.0</version>
 		</dependency>
 
 		<dependency>
@@ -85,7 +99,7 @@
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
-			<version>2.8.0</version>
+			<version>2.10.1</version>
 		</dependency>
 
 		<dependency>
@@ -93,11 +107,11 @@
 			<artifactId>spring-tx</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
+		<!--<dependency>
+			<groupId>org.hibernate.jakarta.persistence</groupId>
 			<artifactId>hibernate-jpa-2.1-api</artifactId>
 			<version>1.0.0.Final</version>
-		</dependency>
+		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -110,15 +124,12 @@
 		</dependency>
 
 		<dependency>
-			<groupId>javax.ws.rs</groupId>
-			<artifactId>javax.ws.rs-api</artifactId>
-			<version>2.0</version>
+			<groupId>jakarta.ws.rs</groupId>
+			<artifactId>jakarta.ws.rs-api</artifactId>
+			<!--<version>2.0</version>-->
 		</dependency>
 
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-		</dependency>
+		
 
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -137,7 +148,7 @@
 			<version>2.0-m11</version>
 		</dependency>
 
-		<dependency>
+		<!--<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
 			<version>2.6.1</version>
@@ -148,6 +159,14 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.6.1</version>
 			<scope>compile</scope>
+		</dependency>-->
+
+		<!--
+		https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.3.0</version>
 		</dependency>
 
 		<dependency>
@@ -173,6 +192,13 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.7.1</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.16.1</version> 
+		</dependency>
+		
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>
 			<artifactId>quartz</artifactId>
@@ -197,18 +223,17 @@
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-redis</artifactId>
-			<version>1.7.11.RELEASE</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>biz.paluch.redis</groupId>
-			<artifactId>lettuce</artifactId>
-			<version>3.5.0.Final</version>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-data-redis</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.session</groupId>
 			<artifactId>spring-session</artifactId>
+			<version>1.3.5.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>
@@ -222,15 +247,25 @@
 			<version>5.0.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>6.4.1.Final</version>
+		</dependency>
 
 
 	</dependencies>
-	<!-- <properties> <java.version>1.8</java.version> <maven.test.skip>true</maven.test.skip> 
-		<final-name>104api-v1.0</final-name> <environment>dev</environment> <target-properties>target/classes/application.properties</target-properties> 
-		<source-properties>src/main/environment/104_${environment}.properties</source-properties> 
-		<hostname-dev>10.208.122.32</hostname-dev> <port-dev>9990</port-dev> <hostname-uat>deviemr.piramalswasthya.org</hostname-uat> 
-		<port-uat>9990</port-uat> <hostname-test>10.208.122.38</hostname-test> <port-dev>9990</port-dev> 
-		<server-id>wildfly-${environment}</server-id> <server-hostname>{hostname-${environment}}</server-hostname> 
+	<!-- <properties> <java.version>1.8</java.version>
+	<maven.test.skip>true</maven.test.skip> 
+		<final-name>104api-v1.0</final-name> <environment>dev</environment>
+	<target-properties>target/classes/application.properties</target-properties>
+	<source-properties>src/main/environment/104_${environment}.properties</source-properties> 
+		<hostname-dev>10.208.122.32</hostname-dev> <port-dev>9990</port-dev>
+	<hostname-uat>deviemr.piramalswasthya.org</hostname-uat> 
+		<port-uat>9990</port-uat> <hostname-test>10.208.122.38</hostname-test>
+	<port-dev>9990</port-dev> 
+		<server-id>wildfly-${environment}</server-id>
+	<server-hostname>{hostname-${environment}}</server-hostname> 
 		<server-port>{port-${environment}}</server-port> </properties> -->
 
 	<build>
@@ -288,11 +323,13 @@
 						<configuration>
 							<target>
 								<echo>
-									concatenating properties file ${target-properties} and
+									concatenating properties file
+									${target-properties} and
 									${source-properties}
 								</echo>
-								<concat destfile="${target-properties}" append="yes"
-										force="yes">
+								<concat destfile="${target-properties}"
+									append="yes"
+									force="yes">
 									<fileset file="${source-properties}">
 									</fileset>
 								</concat>
@@ -306,18 +343,34 @@
 						</goals>
 						<id>clean-property-files</id>
 						<configuration>
+							<target>
+								<delete>
+									<file file="${source-properties}" />
+								</delete>
+							</target>
+						</configuration>
+					</execution>
+					<!--<execution>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<id>clean-property-files</id>
+						<configuration>
 							<tasks>
 								<delete>
-									<file file="${source-properties}"/>
+									<file file="${source-properties}" />
 								</delete>
 							</tasks>
 						</configuration>
-					</execution>
+					</execution>-->
 				</executions>
 			</plugin>
+
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.6</version>
+				<!--<version>2.6</version>-->
+				<version>3.3.2</version>
 				<configuration>
 					<webResources>
 						<resource>
@@ -329,8 +382,6 @@
 			</plugin>
 
 		</plugins>
-
-
 	</build>
 	<reporting>
 		<plugins>

@@ -26,15 +26,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
-import javax.persistence.criteria.JoinType;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.JoinType;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -87,38 +87,38 @@ public class CRMReportsServiceImpl implements CRMReportsService
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
-	@Autowired
+	@Autowired(required = false)
 	private EpidemicoutbreakReportRepository epidemicoutbreakReportRepository;
 
 	/*
-	 * @Autowired private BeneficiaryReportRepository beneficiaryReportRepository;
+	 * @Autowired(required = false) private BeneficiaryReportRepository beneficiaryReportRepository;
 	 */
 
-	@Autowired
+	@Autowired(required = false)
 	private BencallReportRepository bencallReportReportRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private BenmedhistoryReportRepository benmedhistoryReportRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private BloodRequestReportRepository bloodRequestReportRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private DirectoryServiceReportRepository directoryServiceReportRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private OrgandonationReportRepository organdonationReportRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private SchemesReportRepository schemesReportRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private FeedbackReportRepository feedbackReportRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private FoodSafetyReportRepository foodSafetyReportRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private PrescriptionReportRepository prescriptionReportRepository;
 
 	@Override

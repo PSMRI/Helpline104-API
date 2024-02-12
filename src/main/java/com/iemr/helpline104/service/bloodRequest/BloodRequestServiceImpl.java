@@ -47,16 +47,16 @@ public class BloodRequestServiceImpl implements BloodRequestService
 
 	private Logger logger = LoggerFactory.getLogger(BloodRequestService.class);
 
-	@Autowired
+	@Autowired(required = false)
 	private BloodRequestRepository bloodRequestRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private InstituteRepository instituteRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private BenCallRepository benCallRepository;
 	
-	@Autowired
+	@Autowired(required = false)
 	private RequestedBloodBankRepository requestedBloodBankRepository;
 
 	@Override
@@ -133,7 +133,7 @@ public class BloodRequestServiceImpl implements BloodRequestService
 			bloodBank.setCreatedBy(t_bloodRequest.getCreatedBy());
 		}		
 		
-		requestedBloodBankRepository.save(requestedBloodBanks);
+		requestedBloodBankRepository.saveAll(requestedBloodBanks);
 		
 		}
 		

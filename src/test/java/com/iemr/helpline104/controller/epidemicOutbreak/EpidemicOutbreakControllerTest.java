@@ -28,7 +28,7 @@ import static org.mockito.Mockito.doThrow;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.assertj.core.util.Lists;
 import org.junit.Test;

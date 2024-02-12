@@ -38,4 +38,6 @@ public interface LocationDistrictBlockRepository extends CrudRepository<District
 
 	@Query("select blockID, blockName from DistrictBlock where districtID = :id")
 	public ArrayList<Objects[]> findBy(@Param("id") int id);
+
+
 }

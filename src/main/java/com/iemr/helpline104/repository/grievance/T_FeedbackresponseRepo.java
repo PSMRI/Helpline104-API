@@ -23,6 +23,7 @@ package com.iemr.helpline104.repository.grievance;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -34,6 +35,7 @@ import com.iemr.helpline104.data.grievance.T_Feedbackresponse;
 @Repository
 @RestResource(exported = false)
 public interface T_FeedbackresponseRepo extends CrudRepository<T_Feedbackresponse, Integer>{
+	@Autowired(required=true)
 	@Query("SELECT tf1.responseSummary,tf1.feedbackRequestID,tf1.comments,tf1.authName,tf1.authDesignation," 
 	+ " tfr.feedbackID as FeedbackID,"
 	+ " tfr.feedbackSupSummary as FeedbackSupSummary,"

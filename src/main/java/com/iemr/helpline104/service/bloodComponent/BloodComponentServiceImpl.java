@@ -36,7 +36,7 @@ import com.iemr.helpline104.repository.bloodComponent.BloodComponentRepository;
 @Service
 public class BloodComponentServiceImpl implements BloodComponentService{
 
-	@Autowired
+	@Autowired(required = false)
 	private BloodComponentRepository bloodComponentRepository;
 	@Override
 	public M_Component save(M_Component m_component) {

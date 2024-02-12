@@ -24,17 +24,12 @@ package com.iemr.helpline104.controller.beneficiarycall;
 import java.util.List;
 import java.util.Objects;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.data.beneficiarycall.BenCallServicesMappingHistory;
 import com.iemr.helpline104.data.beneficiarycall.BeneficiaryCall;
 import com.iemr.helpline104.data.beneficiarycall.M_subservice;
@@ -43,8 +38,9 @@ import com.iemr.helpline104.service.beneficiarycall.ServicesHistoryService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+
 
 @RestController
 @RequestMapping(value = "/beneficiary")
@@ -68,10 +64,10 @@ public class BeneficiaryCallController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Stores callerID to the specific beneficiary who are on call", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/startCall", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Stores callerID to the specific beneficiary who are on call")
+	@PostMapping(value = "/startCall", headers = "Authorization")
 	public String startCall(
-			@ApiParam(value = "{\"callClosureType\":\"string\", \"callID\":\"integer\", \"sessionID\":\"integer\", \"calledServiceID\":\"integer\","
+			@Parameter(description = "{\"callClosureType\":\"string\", \"callID\":\"integer\", \"sessionID\":\"integer\", \"calledServiceID\":\"integer\","
 					+ " \"category\":\"string\", \"subCategory\":\"string\", \"servicesProvided\":\"string\", \"createdBy\":\"string\"}") @RequestBody String request) {
 
 		OutputResponse output = new OutputResponse();
@@ -89,10 +85,10 @@ public class BeneficiaryCallController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Update beneficiary reg id to the caller id", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "update/beneficiaryCallID", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Update beneficiary reg id to the caller id")
+	@PostMapping(value = "update/beneficiaryCallID", headers = "Authorization")
 	public String updateBeneficiaryIDInCall(
-			@ApiParam(value = "{\"callID\":\"integer\", \"beneficiaryRegID\":\"long\"}") @RequestBody String beneficiaryCall) {
+			@Parameter(description = "{\"callID\":\"integer\", \"beneficiaryRegID\":\"long\"}") @RequestBody String beneficiaryCall) {
 		logger.info("updateBeneficiaryIDInCall request " + beneficiaryCall.toString());
 		OutputResponse output = new OutputResponse();
 		Integer startedCall = null;
@@ -111,10 +107,10 @@ public class BeneficiaryCallController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Fetch services available in the 104 helpline", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/services", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Fetch services available in the 104 helpline")
+	@PostMapping(value = "/get/services", headers = "Authorization")
 	public String getServices(
-			@ApiParam(value = "{\"providerServiceMapID\":\"integer\"}") @RequestBody String subservice) {
+			@Parameter(description = "{\"providerServiceMapID\":\"integer\"}") @RequestBody String subservice) {
 		OutputResponse output = new OutputResponse();
 		try {
 			M_subservice m_subservice = inputMapper.gson().fromJson(subservice, M_subservice.class);
@@ -133,7 +129,7 @@ public class BeneficiaryCallController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Set service history", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Set service history")
 	@RequestMapping(value = "set/callHistory", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String setServiceHistory(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();

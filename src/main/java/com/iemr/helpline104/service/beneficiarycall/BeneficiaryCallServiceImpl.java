@@ -42,108 +42,98 @@ import com.iemr.helpline104.repository.beneficiarycall.BeneficiaryCallRepository
 public class BeneficiaryCallServiceImpl implements BeneficiaryCallService {
 	private BeneficiaryCallRepository beneficiaryCallRepository;
 
-	@Autowired
+	@Autowired(required = false)
 	private void setBeneficiaryCallRepository(BeneficiaryCallRepository beneficiaryCallRepository) {
 		this.beneficiaryCallRepository = beneficiaryCallRepository;
 	}
-    /*
-	@Override
-	public List<BeneficiaryCall> addCalltype(Long benificiaryCallId) {
-		List<BeneficiaryCall> benCalls = new ArrayList<BeneficiaryCall>();
-		ArrayList<Objects[]> queryResult = beneficiaryCallRepository.findCallsByBenefeciaryID(benificiaryCallId,
-				new PageRequest(0, 1000));
-		for (Object[] objects : queryResult) {
-			if (queryResult != null && queryResult.size() >= 8) {
-				String benCallServicesMappingHistories = new Gson().toJson(objects[1]);
-				BeneficiaryCall beneficiaryCall = new BeneficiaryCall((Long) objects[0],
-						benCallServicesMappingHistories, (Integer) objects[2], (Boolean) objects[3], (Date) objects[4],
-						(String) objects[5], (String) objects[6], (Integer) objects[7]);
-				benCalls.add(beneficiaryCall);
-			}
-		}
-		return benCalls;
-	}
-      */
+
+	/*
+	 * @Override public List<BeneficiaryCall> addCalltype(Long benificiaryCallId) {
+	 * List<BeneficiaryCall> benCalls = new ArrayList<BeneficiaryCall>();
+	 * ArrayList<Objects[]> queryResult =
+	 * beneficiaryCallRepository.findCallsByBenefeciaryID(benificiaryCallId, new
+	 * PageRequest(0, 1000)); for (Object[] objects : queryResult) { if (queryResult
+	 * != null && queryResult.size() >= 8) { String benCallServicesMappingHistories
+	 * = new Gson().toJson(objects[1]); BeneficiaryCall beneficiaryCall = new
+	 * BeneficiaryCall((Long) objects[0], benCallServicesMappingHistories, (Integer)
+	 * objects[2], (Boolean) objects[3], (Date) objects[4], (String) objects[5],
+	 * (String) objects[6], (Integer) objects[7]); benCalls.add(beneficiaryCall); }
+	 * } return benCalls; }
+	 */
 	@Override
 	public BeneficiaryCall createCall(BeneficiaryCall beneficiaryCall) {
 		beneficiaryCall.setIs1097(false);
 		BeneficiaryCall savedCalls = beneficiaryCallRepository.save(beneficiaryCall);
 		return savedCalls;
 	}
-    /*
+	/*
+	 * @Override public Integer closeCall(String request) { Integer updateCounts =
+	 * 0; BeneficiaryCall benificiaryCallId = new Gson().fromJson(request,
+	 * BeneficiaryCall.class); updateCounts =
+	 * beneficiaryCallRepository.closeCall(benificiaryCallId.getBenCallID(),
+	 * benificiaryCallId.getRemarks(), new
+	 * Date(Calendar.getInstance().getTimeInMillis()),
+	 * benificiaryCallId.getCallClosureType(),
+	 * benificiaryCallId.getDispositionStatusID()); return updateCounts; }
+	 */
+	/*
+	 * @Override public List<BeneficiaryCall> findBeneficiaryByCallID(String
+	 * benCallID, Integer pageNo, Integer rows) { List<BeneficiaryCall> benDetails =
+	 * new ArrayList<BeneficiaryCall>(); ArrayList<Objects[]> queryResult =
+	 * beneficiaryCallRepository.findBeneficiaryByCallID(benCallID, new
+	 * PageRequest(pageNo, rows));
+	 * 
+	 * for (Object[] objects : queryResult) { if (objects != null && objects.length
+	 * >= 7) {
+	 * 
+	 * 
+	 * 
+	 * // bc.benCallID, bc.callReceivedUserID, b.beneficiaryRegID, b.firstName,
+	 * b.middleName, b.lastName, b.genderID," // +
+	 * " g.genderName, b.dOB,  c.cityID, c.cityName, m.benRelationshipID, r.benRelationshipType,b.i_bendemographics, "
+	 * // + "i.districts, i.districtBlock, i.districtBranchMapping" // + "
+	 * BeneficiaryCall beneficiaryCall = new BeneficiaryCall((Long) objects[0],
+	 * (Integer) objects[1], (Long) objects[2], (String) objects[3], (String)
+	 * objects[4], (String) objects[5], (Short) objects[6], (String)
+	 * objects[7],(Date) objects[8],(Integer) objects[9],(String)
+	 * objects[10],(Short) objects[11],(String) objects[12], (Integer)
+	 * objects[13],(Districts)objects[14], (DistrictBlock)objects[15],
+	 * (DistrictBranchMapping)objects[16]); benDetails.add(beneficiaryCall);
+	 * 
+	 * // I_Beneficiary benDetail =new I_Beneficiary((String) objects[3]); //
+	 * benDetails.add(benDetail); } } return benDetails; }
+	 */
+
+	/*
+	 * @Override public List<BeneficiaryCall> getBeneficiaryCallsHistory(Long
+	 * benificiaryCallId, Integer pageNo, Integer rows) { List<BeneficiaryCall>
+	 * benCalls = new ArrayList<BeneficiaryCall>(); ArrayList<Objects[]> queryResult
+	 * =
+	 * beneficiaryCallRepository.findCallsHistoryByBenefeciaryID(benificiaryCallId,
+	 * new PageRequest(pageNo, rows)); for (Object[] objects : queryResult) { if
+	 * (objects != null && objects.length >= 7) { BeneficiaryCall beneficiaryCall =
+	 * new BeneficiaryCall((Long) objects[0], (Date) objects[1], (String)
+	 * objects[2], (Long) objects[3], (Long) objects[4], (Long) objects[5], (Date)
+	 * objects[6]); benCalls.add(beneficiaryCall); } } return benCalls; }
+	 */
+
+	/*
+	 * @Override public List<BeneficiaryCall> getCallSummaryByCallID(Long benCallID)
+	 * { List<BeneficiaryCall> benCalls = new ArrayList<BeneficiaryCall>();
+	 * ArrayList<Objects[]> queryResult =
+	 * beneficiaryCallRepository.findCallSummaryByCallID(benCallID); for (Object[]
+	 * objects : queryResult) { if (objects != null && objects.length >= 7) {
+	 * BeneficiaryCall beneficiaryCall = new BeneficiaryCall((Long) objects[0],
+	 * (Date) objects[1], (String) objects[2], (Long) objects[3], (Long) objects[4],
+	 * (Long) objects[5], (Date) objects[6]); benCalls.add(beneficiaryCall); } }
+	 * return benCalls; }
+	 */
+
 	@Override
-	public Integer closeCall(String request) {
+	public Integer updateBeneficiaryIDInCall(Long benCallID, Long beneficiaryRegID) {
 		Integer updateCounts = 0;
-		BeneficiaryCall benificiaryCallId = new Gson().fromJson(request, BeneficiaryCall.class);
-		updateCounts = beneficiaryCallRepository.closeCall(benificiaryCallId.getBenCallID(),
-				benificiaryCallId.getRemarks(), new Date(Calendar.getInstance().getTimeInMillis()), benificiaryCallId.getCallClosureType(),
-				benificiaryCallId.getDispositionStatusID());
+
+		updateCounts = beneficiaryCallRepository.updateBeneficiaryIDInCall(benCallID, beneficiaryRegID);
 		return updateCounts;
 	}
-       */
-	/*
-	@Override
-	public List<BeneficiaryCall> findBeneficiaryByCallID(String benCallID, Integer pageNo, Integer rows) {
-		List<BeneficiaryCall> benDetails = new ArrayList<BeneficiaryCall>();
-		ArrayList<Objects[]> queryResult = beneficiaryCallRepository.findBeneficiaryByCallID(benCallID, new PageRequest(pageNo, rows));
-		
-		for (Object[] objects : queryResult) {
-			if (objects != null && objects.length >= 7) {
-				
-			
-				
-//				bc.benCallID, bc.callReceivedUserID, b.beneficiaryRegID, b.firstName, b.middleName, b.lastName, b.genderID,"
-//						+ " g.genderName, b.dOB,  c.cityID, c.cityName, m.benRelationshipID, r.benRelationshipType,b.i_bendemographics, "
-//						+ "i.districts, i.districtBlock, i.districtBranchMapping"
-//						+ "
-				BeneficiaryCall beneficiaryCall = new BeneficiaryCall((Long) objects[0], (Integer) objects[1],
-						(Long) objects[2], (String) objects[3], (String) objects[4], (String) objects[5], (Short) objects[6], 
-						(String) objects[7],(Date) objects[8],(Integer) objects[9],(String) objects[10],(Short) objects[11],(String) objects[12],
-						(Integer) objects[13],(Districts)objects[14], (DistrictBlock)objects[15], (DistrictBranchMapping)objects[16]);
-				benDetails.add(beneficiaryCall);
-				
-			//	I_Beneficiary benDetail =new I_Beneficiary((String) objects[3]);
-			//	benDetails.add(benDetail);
-			}
-		}
-		return benDetails;
-	} */
-	
-	/*@Override
-	public List<BeneficiaryCall> getBeneficiaryCallsHistory(Long benificiaryCallId, Integer pageNo, Integer rows) {
-		List<BeneficiaryCall> benCalls = new ArrayList<BeneficiaryCall>();
-		ArrayList<Objects[]> queryResult = beneficiaryCallRepository.findCallsHistoryByBenefeciaryID(benificiaryCallId,
-				new PageRequest(pageNo, rows));
-		for (Object[] objects : queryResult) {
-			if (objects != null && objects.length >= 7) {
-				BeneficiaryCall beneficiaryCall = new BeneficiaryCall((Long) objects[0], (Date) objects[1],
-						(String) objects[2], (Long) objects[3], (Long) objects[4], (Long) objects[5], (Date) objects[6]);
-				benCalls.add(beneficiaryCall);
-			}
-		}
-		return benCalls;
-	} */
-
-	/*
-	@Override
-	public List<BeneficiaryCall> getCallSummaryByCallID(Long benCallID) {
-		List<BeneficiaryCall> benCalls = new ArrayList<BeneficiaryCall>();
-		ArrayList<Objects[]> queryResult = beneficiaryCallRepository.findCallSummaryByCallID(benCallID);
-		for (Object[] objects : queryResult) {
-			if (objects != null && objects.length >= 7) {
-				BeneficiaryCall beneficiaryCall = new BeneficiaryCall((Long) objects[0], (Date) objects[1],
-						(String) objects[2], (Long) objects[3], (Long) objects[4], (Long) objects[5], (Date) objects[6]);
-				benCalls.add(beneficiaryCall);
-			}
-		}
-		return benCalls;
-	} */
-    
-	@Override
-	public Integer updateBeneficiaryIDInCall(Long benCallID,Long beneficiaryRegID) {
-		Integer updateCounts = 0;
-
-		updateCounts = beneficiaryCallRepository.updateBeneficiaryIDInCall(benCallID,beneficiaryRegID);
-		return updateCounts;
-	} 
 }

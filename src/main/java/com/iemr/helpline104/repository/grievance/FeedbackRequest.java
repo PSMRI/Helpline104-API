@@ -34,30 +34,15 @@ import com.iemr.helpline104.data.grievance.T_FeedbackRequset;
 @RestResource(exported = false)
 public interface FeedbackRequest extends CrudRepository<T_FeedbackRequset, Integer>{
 
-	
-
-	
-	/*@Query("SELECT u FROM T_Feedback u WHERE LOWER(u.FeedbackID) = LOWER(:res) ")
-	 ServiceProvider_Model getDataById(@Param("res") int res);
-	T_Feedback getDataByID(@Param("res") int res);*/
-	//@Query("SELECT u FROM T_FeedbackRequset u WHERE LOWER(u.FeedbackID) = LOWER(:feedbackID) ")
-	
-	
-	/*@Query("SELECT tf1.FeedbackID,tf1.FeedbackRequestID,tf1.FeedbackSupSummary," 
-			+ " tfr.ResponseSummary as ResponseSummary,tfr.Comments as Comments"
-			+ " FROM T_FeedbackRequset tf1 "  
-			+ " LEFT JOIN tf1.tfeedbackResponce tfr " 
-			+ " WHERE tf1.FeedbackID =:feedbackID ")*/
-	@Query("SELECT u FROM T_FeedbackRequset u WHERE LOWER(u.feedbackID) = LOWER(:feedbackID) ")
+	@Query(value="SELECT u FROM T_FeedbackRequset u WHERE LOWER(u.feedbackID) = LOWER(:feedbackID) ",nativeQuery=true)
 	ArrayList<Object[]> getAllFeedbackByID(@Param("feedbackID") Integer feedbackID);
 	
 	
-	@Query("SELECT u FROM T_FeedbackRequset u WHERE LOWER(u.feedbackID) = LOWER(:feedbackID) ")
+	@Query(value="SELECT u FROM T_FeedbackRequset u WHERE LOWER(u.feedbackID) = LOWER(:feedbackID) ",nativeQuery=true)
 	T_FeedbackRequset getdataById(@Param("feedbackID") int feedbackID);
-
-		
 	
-	@Query("SELECT u FROM T_FeedbackRequset u WHERE LOWER(u.feedbackID) = LOWER(:res) ")
+	
+	@Query(value="SELECT u FROM T_FeedbackRequset u WHERE LOWER(u.feedbackID) = LOWER(:res) " ,nativeQuery=true)
 	T_FeedbackRequset getdataById1(@Param("res") int res);
 	
 }
