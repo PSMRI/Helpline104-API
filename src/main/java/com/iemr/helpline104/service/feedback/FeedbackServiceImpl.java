@@ -58,18 +58,18 @@ public class FeedbackServiceImpl implements FeedbackService {
 
 	private BeneficiaryCallRepository beneficiaryCallRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private InstituteRepository instituteRepo;
 
-	@Autowired(required = false)
+	@Autowired
 	public void getBenCalServiceCatSubcatMappingRepo(BeneficiaryCallRepository benCalServiceCatSubcatMappingRepo) {
 		this.beneficiaryCallRepository = benCalServiceCatSubcatMappingRepo;
 	}
 
-	@Autowired(required = false)
+	@Autowired
 	private ServicesHistoryRepository servicesHistoryRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private FeedbackTypeRepository feedbackRepositorty;
 
 	/**
@@ -77,7 +77,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 	 */
 	private FeedbackRepository feedbackRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	public void setFeedbackRepository(FeedbackRepository feedbackRepository) {
 
 		this.feedbackRepository = feedbackRepository;
@@ -87,7 +87,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 
 	private ConfigProperties properties;
 
-	@Autowired(required = false)
+	@Autowired
 	public void setProperties(ConfigProperties properties) {
 		this.properties = properties;
 	}

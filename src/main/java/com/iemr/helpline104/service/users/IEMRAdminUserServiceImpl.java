@@ -37,21 +37,18 @@ import com.iemr.helpline104.repository.users.IEMRUserRepositoryCustom;
 import com.iemr.helpline104.repository.users.IEMRUserSecurityQuesAnsRepository;
 import com.iemr.helpline104.repository.users.RoleRepo;
 
-/**
- * 
- */
 @Service
 public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 
 	private IEMRUserRepositoryCustom iEMRUserRepositoryCustom;
 	private IEMRUserSecurityQuesAnsRepository iEMRUserSecurityQuesAnsRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	public void setIemrUserRepositoryImpl(IEMRUserRepositoryCustom iEMRUserRepositoryCustom) {
 		this.iEMRUserRepositoryCustom = iEMRUserRepositoryCustom;
 	}
 
-	@Autowired(required = false)
+	@Autowired
 	public void setIemrUserRepositoryImpl(IEMRUserSecurityQuesAnsRepository iemrLoginSecurityQuesAnsRepository) {
 		this.iEMRUserSecurityQuesAnsRepository = iemrLoginSecurityQuesAnsRepository;
 	}
@@ -117,10 +114,10 @@ public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 	 */
 	private IEMRUserLoginSecurityRepository iEMRUserLoginSecurityRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private RoleRepo roleRepo;
 
-	@Autowired(required = false)
+	@Autowired
 	public void setIEMRUserLoginSecurityRepository(IEMRUserLoginSecurityRepository iEMRUserLoginSecurityRepository) {
 
 		this.iEMRUserLoginSecurityRepository = iEMRUserLoginSecurityRepository;

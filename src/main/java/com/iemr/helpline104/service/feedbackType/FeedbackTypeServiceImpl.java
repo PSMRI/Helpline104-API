@@ -37,7 +37,7 @@ import com.iemr.helpline104.repository.feedbackType.FeedbackTypeRepository;
 public class FeedbackTypeServiceImpl implements FeedbackTypeService{
 
 	
-	@Autowired(required = false)
+	@Autowired
 	private FeedbackTypeRepository feedbackTypeRepository;
 	
 	@Override

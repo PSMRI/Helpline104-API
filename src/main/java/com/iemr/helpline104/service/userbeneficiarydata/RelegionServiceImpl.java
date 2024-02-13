@@ -35,7 +35,7 @@ import com.iemr.helpline104.repository.userbeneficiarydata.ReligionRepository;
 public class RelegionServiceImpl implements RelegionService {
 	private ReligionRepository relegionRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	public void setRelegionServiceImpl(ReligionRepository relegionRepository) {
 		this.relegionRepository = relegionRepository;
 	}

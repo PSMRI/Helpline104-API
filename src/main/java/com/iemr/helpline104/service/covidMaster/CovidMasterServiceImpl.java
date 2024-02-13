@@ -49,11 +49,11 @@ import com.iemr.helpline104.utils.mapper.InputMapper;
 @Service
 public class CovidMasterServiceImpl implements CovidMasterService {
 
-	@Autowired(required = false)
+	@Autowired
 	private SymptomsMasterRepo symptomsMasterRepo;
 	
 	
-	@Autowired(required = false)
+	@Autowired
 	private Covid19BenFeedbackRepo covid19BenFeedbackRepo;
 	
 	

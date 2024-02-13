@@ -36,7 +36,7 @@ import com.iemr.helpline104.repository.userbeneficiarydata.MaritalStatusReposito
 public class MaritalStatusServiceImpl implements MaritalStatusService {
 	private MaritalStatusRepository maritalStatusRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	public void setMaritalStatusServiceImpl(MaritalStatusRepository maritalStatusRepository) {
 		this.maritalStatusRepository = maritalStatusRepository;
 	}

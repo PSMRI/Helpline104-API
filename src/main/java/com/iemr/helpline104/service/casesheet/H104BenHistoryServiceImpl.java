@@ -42,19 +42,19 @@ import com.iemr.helpline104.service.prescription.PrescriptionService;
 public class H104BenHistoryServiceImpl implements H104BenHistoryService
 {
 
-	@Autowired(required = false)
+	@Autowired
 	private H104BenHistoryRepository h104BenHistoryRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private BeneficiaryCallRepository beneficiaryCallRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private OutboundCallRequestRepository outboundCallRequestRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private PrescriptionService prescriptionService;	
 	
-	@Autowired(required = false)
+	@Autowired
 	private COVIDRepository covidRepository;
 	
 

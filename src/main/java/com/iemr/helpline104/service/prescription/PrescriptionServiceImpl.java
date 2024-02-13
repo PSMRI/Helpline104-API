@@ -48,10 +48,10 @@ import com.iemr.helpline104.repository.prescription.PrescriptionRepository;
 public class PrescriptionServiceImpl implements PrescriptionService{
 
 	private Logger logger = LoggerFactory.getLogger(PrescriptionController.class);
-	@Autowired(required = false)
+	@Autowired
 	private PrescriptionRepository prescriptionRepository;
 	
-	@Autowired(required = false)
+	@Autowired
 	private PrescribedDrugRepository prescribedDrugRepository;
 	
 	@Override

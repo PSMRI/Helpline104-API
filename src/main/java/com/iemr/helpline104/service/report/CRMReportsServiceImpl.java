@@ -87,38 +87,38 @@ public class CRMReportsServiceImpl implements CRMReportsService
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
-	@Autowired(required = false)
+	@Autowired
 	private EpidemicoutbreakReportRepository epidemicoutbreakReportRepository;
 
 	/*
-	 * @Autowired(required = false) private BeneficiaryReportRepository beneficiaryReportRepository;
+	 * @Autowired private BeneficiaryReportRepository beneficiaryReportRepository;
 	 */
 
-	@Autowired(required = false)
+	@Autowired
 	private BencallReportRepository bencallReportReportRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private BenmedhistoryReportRepository benmedhistoryReportRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private BloodRequestReportRepository bloodRequestReportRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private DirectoryServiceReportRepository directoryServiceReportRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private OrgandonationReportRepository organdonationReportRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private SchemesReportRepository schemesReportRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private FeedbackReportRepository feedbackReportRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private FoodSafetyReportRepository foodSafetyReportRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private PrescriptionReportRepository prescriptionReportRepository;
 
 	@Override

@@ -23,18 +23,14 @@ package com.iemr.helpline104.secondary.data;
 
 import java.io.Serializable;
 
+import com.google.gson.annotations.Expose;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-
-import com.google.gson.annotations.Expose;
-import com.iemr.helpline104.data.report.UserServiceRoleReport;
 
 @Entity
 @Table(name = "db_reporting.dim_user", schema = "db_reporting")

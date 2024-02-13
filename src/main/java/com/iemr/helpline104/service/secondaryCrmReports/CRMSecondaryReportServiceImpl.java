@@ -40,7 +40,7 @@ import com.iemr.helpline104.excelExporter.ExcelHelper;;
 @Service
 public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService {
 
-	@Autowired(required = false)
+	@Autowired
 	private SecondaryReportRepo secondaryReportRepo;
 
 	@Override

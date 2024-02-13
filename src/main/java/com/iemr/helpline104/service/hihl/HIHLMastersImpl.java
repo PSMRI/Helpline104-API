@@ -59,46 +59,46 @@ import com.iemr.helpline104.utils.mapper.InputMapper;
 @Service
 public class HIHLMastersImpl implements HIHLMasters {
 
-	@Autowired(required = false)
+	@Autowired
 	private M_104appetiteRepo m_104appetiteRepo;
-	@Autowired(required = false)
+	@Autowired
 	private M_104bladderRepo m_104bladderRepo;
-	@Autowired(required = false)
+	@Autowired
 	private M_104bowelRepo m_104bowelRepo;
-	@Autowired(required = false)
+	@Autowired
 	private M_104courseRepo m_104courseRepo;
-	@Autowired(required = false)
+	@Autowired
 	private M_104familyconditionRepo m_104familyconditionRepo;
-	@Autowired(required = false)
+	@Autowired
 	private M_104gettingwithfamilyRepo m_104gettingwithfamilyRepo;
-	@Autowired(required = false)
+	@Autowired
 	private M_104householdworkRepo m_104householdworkRepo;
-	@Autowired(required = false)
+	@Autowired
 	private M_104hygieneselfcareRepo m_104hygieneselfcareRepo;
-	@Autowired(required = false)
+	@Autowired
 	private M_104issuesatworkplaceRepo m_104issuesatworkplaceRepo;
-	@Autowired(required = false)
+	@Autowired
 	private M_104libidoRepo m_104libidoRepo;
-	@Autowired(required = false)
+	@Autowired
 	private M_104pastmedicalconditionRepo m_104pastmedicalconditionRepo;
-	@Autowired(required = false)
+	@Autowired
 	private M_104pastpsychiatricconditionRepo m_104pastpsychiatricconditionRepo;
-	@Autowired(required = false)
+	@Autowired
 	private M_104precipitatingfactorRepo m_104precipitatingfactorRepo;
-	@Autowired(required = false)
+	@Autowired
 	private M_104progressRepo m_104progressRepo;
-	@Autowired(required = false)
+	@Autowired
 	private M_104regularworokRepo m_104regularworokRepo;
-	@Autowired(required = false)
+	@Autowired
 	private M_104relationshipRepo m_104relationshipRepo;
-	@Autowired(required = false)
+	@Autowired
 	private M_104sleepRepo m_104sleepRepo;
-	@Autowired(required = false)
+	@Autowired
 	private M_104treatmenttypeRepo m_104treatmenttypeRepo;
-	@Autowired(required = false)
+	@Autowired
 	private PsychiatricChiefComplaintsRepo psychiatricChiefComplaintsRepo;
 
-	@Autowired(required = false)
+	@Autowired
 	private T_hihlcocasesheetRepo t_hihlcocasesheetRepo;
 
 	public String getHihlMasters() {
@@ -159,7 +159,6 @@ public class HIHLMastersImpl implements HIHLMasters {
 	}
 
 	public String getHihlCasesheetData(Long casesheetId) {
-		//T_hihlcocasesheet resultSet = t_hihlcocasesheetRepo.findById(casesheetId);
 		Optional<T_hihlcocasesheet> resultSet = t_hihlcocasesheetRepo.findById(casesheetId);
 		return new Gson().toJson(resultSet);
 	}

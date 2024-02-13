@@ -39,7 +39,7 @@ import com.iemr.helpline104.repository.callqamapping.CallqamappingRepository;
 @Service
 public class CallqamappingServiceImpl implements CallqamappingService{
 
-	@Autowired(required = false)
+	@Autowired
 	public CallqamappingRepository callqamappingRepository;
 	
 	@Override

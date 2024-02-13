@@ -33,7 +33,7 @@ import com.iemr.helpline104.repository.scheme.SchemeRepository;
 @Service
 public class SchemeServiceImpl implements SchemeService{
 
-	@Autowired(required = false) 
+	@Autowired 
 	private SchemeRepository schemeRepository;	
 	
 	

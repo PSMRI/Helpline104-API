@@ -62,28 +62,28 @@ import jakarta.servlet.http.HttpServletRequest;
 @Service
 public class BalVivahComplaintImpl implements BalVivahComplaintService {
 
-	@Autowired(required = false)
+	@Autowired
 	private BalVivahComplaintRepo balVivahComplaintRepo;
 	
-	@Autowired(required = false)
+	@Autowired
 	private LocationCityRepository locationCityRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private LocationDistrictBlockRepository locationDistrictBlockRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private LocationDistrictRepository locationDistrictRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	FeedbackTypeRepository feedbackRepositorty;
 
-	@Autowired(required = false)
+	@Autowired
 	FeedbackRepository feedbackRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private BenCallRepository benCallRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private EpidemicOutbreakRepository epidemicOutbreakRepository;
 
 	private InputMapper inputMapper = new InputMapper();

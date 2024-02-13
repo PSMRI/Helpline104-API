@@ -36,7 +36,7 @@ import com.iemr.helpline104.repository.userbeneficiarydata.TitleRepository;
 public class TitleServiceImpl implements TitleService {
 	private TitleRepository titleRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	public void setTitleServiceImpl(TitleRepository titleRepository) {
 		this.titleRepository = titleRepository;
 	}

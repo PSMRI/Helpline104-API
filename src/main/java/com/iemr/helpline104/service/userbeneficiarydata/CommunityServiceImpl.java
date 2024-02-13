@@ -36,7 +36,7 @@ import com.iemr.helpline104.repository.beneficiary.CommunityRepository;
 public class CommunityServiceImpl implements CommunityService {
 	private CommunityRepository communityRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	public void setCommunityServiceImpl(CommunityRepository communityRepository) {
 		this.communityRepository = communityRepository;
 	}

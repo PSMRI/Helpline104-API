@@ -47,16 +47,16 @@ public class BloodRequestServiceImpl implements BloodRequestService
 
 	private Logger logger = LoggerFactory.getLogger(BloodRequestService.class);
 
-	@Autowired(required = false)
+	@Autowired
 	private BloodRequestRepository bloodRequestRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private InstituteRepository instituteRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private BenCallRepository benCallRepository;
 	
-	@Autowired(required = false)
+	@Autowired
 	private RequestedBloodBankRepository requestedBloodBankRepository;
 
 	@Override

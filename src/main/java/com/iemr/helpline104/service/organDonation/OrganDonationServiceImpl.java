@@ -44,11 +44,11 @@ import com.iemr.helpline104.repository.organDonation.RequestedInstitutionReposit
 public class OrganDonationServiceImpl implements OrganDonationService
 {
 
-	@Autowired(required = false)
+	@Autowired
 	private OrganDonationRepository organDonationRepository;
-	@Autowired(required = false)
+	@Autowired
 	private RequestedInstitutionRepository requestedInstitutionRepository;
-	@Autowired(required = false)
+	@Autowired
 	private BenCallRepository benCallRepository;
 
 	@Override

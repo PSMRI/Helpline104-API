@@ -42,10 +42,6 @@ public interface IEMRAdminUserService {
 
 	int saveUserSecurityQuesAns(Iterable<M_UserSecurityQMapping> m_UserSecurityQMapping);
 
-	/**
-	 * 
-	 * @return login security questions
-	 */
 	ArrayList<M_LoginSecurityQuestions> getAllLoginSecurityQuestions();
 
 	M_Role getrolewrapuptime(int roleID);

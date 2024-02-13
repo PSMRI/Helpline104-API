@@ -34,7 +34,7 @@ import com.iemr.helpline104.repository.diseaseScreening.QuestionScoreRepository;
 @Service
 public class QuestionScoreServiceImpl implements QuestionScoreService{
 
-	@Autowired(required = false)
+	@Autowired
 	private QuestionScoreRepository questionScoreRepository;
 	@Override
 	public List<M_questionairValues> fetchAnswers(Integer questionID) throws Exception {

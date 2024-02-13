@@ -42,7 +42,7 @@ import com.iemr.helpline104.repository.beneficiarycall.BeneficiaryCallRepository
 public class BeneficiaryCallServiceImpl implements BeneficiaryCallService {
 	private BeneficiaryCallRepository beneficiaryCallRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private void setBeneficiaryCallRepository(BeneficiaryCallRepository beneficiaryCallRepository) {
 		this.beneficiaryCallRepository = beneficiaryCallRepository;
 	}

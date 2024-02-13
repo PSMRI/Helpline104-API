@@ -36,7 +36,7 @@ import com.iemr.helpline104.repository.directory.SubDirectoryRepository;
 public class SubDirectoryServiceImpl implements SubDirectoryService {
 	private SubDirectoryRepository subDirectoryRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	public void setSubDirectoryRepository(SubDirectoryRepository subDirectoryRepository) {
 		this.subDirectoryRepository = subDirectoryRepository;
 	}

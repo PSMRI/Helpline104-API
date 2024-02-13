@@ -38,13 +38,13 @@ import com.iemr.helpline104.repository.drugGroup.DrugStrengthRepository;
 @Service
 public class DrugGroupServiceImpl implements DrugGroupService{
 
-	@Autowired(required = false)
+	@Autowired
 	private DrugGroupRepository drugGroupRepository;
 	
-	@Autowired(required = false)
+	@Autowired
 	private DrugFrequencyRepository drugFrequencyRepository;
 	
-	@Autowired(required = false)
+	@Autowired
 	private DrugStrengthRepository drugStrengthRepository;
 	
 	/*@Override

@@ -38,7 +38,7 @@ import com.iemr.helpline104.repository.healthCareWorkerType.HealthCareWorkerType
 @Service
 public class HealthCareWorkerServiceImpl implements HealthCareWorkerService{
 
-	@Autowired(required = false)
+	@Autowired
 	private HealthCareWorkerTypeRepository healthCareWorkerTypeRepository;
 	@Override
 	public List<M_HealthCareWorker> getHealthCareWorkerTypes() {

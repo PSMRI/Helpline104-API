@@ -36,7 +36,7 @@ import com.iemr.helpline104.repository.userbeneficiarydata.StatusRepository;
 public class StatusServiceImpl implements StatusService {
 	private StatusRepository statusRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	public void setTitleServiceImpl(StatusRepository statusRepository) {
 		this.statusRepository = statusRepository;
 	}

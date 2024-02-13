@@ -38,7 +38,7 @@ import com.iemr.helpline104.repository.userbeneficiarydata.LanguageRepository;
 public class LanguageServiceImpl implements LanguageService {
 	private LanguageRepository languageRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	public void setGenderServiceImpl(LanguageRepository languageRepository) {
 		this.languageRepository = languageRepository;
 	}

@@ -54,7 +54,7 @@ public class DiseaseServiceImpl implements DiseaseService{
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	@Autowired(required = false)
+	@Autowired
 	DiseaseRepository diseaseRepository;
 	
 	@Override

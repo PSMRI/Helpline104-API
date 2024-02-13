@@ -53,15 +53,15 @@ import com.iemr.helpline104.utils.mapper.InputMapper;
 @Service
 public class SearchOnIdImpl implements SearchOnId {
 
-	@Autowired(required = false)
+	@Autowired
 	private SearchOnIdRepo searchOnIdRepo;
-	@Autowired(required = false)
+	@Autowired
 	private SearchOnFeedbackRepo searchOnFeedbackRepo;
-	@Autowired(required = false)
+	@Autowired
 	private FoodSafetyCopmlaintRepository searchOnFSRepo;
-	@Autowired(required = false)
+	@Autowired
 	private FeedbackRepository feedbackRepository;
-	@Autowired(required = false)
+	@Autowired
 	private EpidemicOutbreakRepository epidemicOutbreakRepository;
 
 	@Override

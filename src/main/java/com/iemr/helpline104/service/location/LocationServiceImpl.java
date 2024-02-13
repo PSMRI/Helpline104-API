@@ -95,7 +95,7 @@ public class LocationServiceImpl implements LocationService {
 	 * 
 	 * @param LocationStateRepository
 	 */
-	@Autowired(required = false)
+	@Autowired
 	public void setLocationStateRepository(LocationStateRepository locationStateRepository){
 		
 		this.locationStateRepository = locationStateRepository;
@@ -106,7 +106,7 @@ public class LocationServiceImpl implements LocationService {
 	 */
 	private LocationDistrictRepository locationDistrictRepository;
 	
-	@Autowired(required = false)
+	@Autowired
 	public void setLocationDistrictRepository(LocationDistrictRepository locationDistrictRepository){
 		
 		this.locationDistrictRepository = locationDistrictRepository;
@@ -117,7 +117,7 @@ public class LocationServiceImpl implements LocationService {
 	 */
 	private LocationDistrictBlockRepository locationDistrictBlockRepository;
 	
-	@Autowired(required = false)
+	@Autowired
 	public void setLocationDistrictBlockRepository(LocationDistrictBlockRepository locationDistrictBlockRepository){
 		
 		this.locationDistrictBlockRepository = locationDistrictBlockRepository;
@@ -170,7 +170,7 @@ public class LocationServiceImpl implements LocationService {
 	
 	private LocationCityRepository locationCityRepository;
 	
-	@Autowired(required = false)
+	@Autowired
 	public void setLocationCityRepository(LocationCityRepository locationCityRepository){
 		
 		this.locationCityRepository = locationCityRepository;
@@ -178,7 +178,7 @@ public class LocationServiceImpl implements LocationService {
 	
 	private LocationDistrilctBranchRepository locationDistrilctBranchRepository;
 	
-	@Autowired(required = false)
+	@Autowired
 	public void setLocationDistrilctBranchRepository(LocationDistrilctBranchRepository locationDistrilctBranchRepository){
 		
 		this.locationDistrilctBranchRepository = locationDistrilctBranchRepository;

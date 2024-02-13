@@ -54,13 +54,13 @@ import jakarta.servlet.http.HttpServletRequest;
 @Service
 public class FoodSafetyCopmlaintServiceImpl implements FoodSafetyCopmlaintService {
 
-	@Autowired(required = false)
+	@Autowired
 	private FoodSafetyCopmlaintRepository foodSafetyCopmlaintRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	FeedbackTypeRepository feedbackRepositorty;
 
-	@Autowired(required = false)
+	@Autowired
 	private BenCallRepository benCallRepository;
 
 	private InputMapper inputMapper = new InputMapper();

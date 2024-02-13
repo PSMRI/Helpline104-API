@@ -46,13 +46,13 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService {
 	 */
 	private ServicesHistoryRepository serviceHistoryRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	public void setServiceHistoryRepository(ServicesHistoryRepository serviceHistoryRepository) {
 
 		this.serviceHistoryRepository = serviceHistoryRepository;
 	}
 
-	@Autowired(required = false)
+	@Autowired
 	private ServiceMasterRepository serviceMasterRepository;
 
 	@Override
@@ -62,7 +62,7 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService {
 		return serviceHistoryRepository.save(benCallServicesMappingHistory);
 	}
 
-	@Autowired(required = false)
+	@Autowired
 	private BenCallDisconnectedDataRepo benCallDisconnectedDataRepo;
 	
 
