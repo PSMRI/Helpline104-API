@@ -33,7 +33,7 @@ import com.iemr.helpline104.repository.location.CountryCityRepository;
 @Service
 public class CountryCityServiceImpl implements CountryCityService{
 
-	@Autowired(required=false)
+	@Autowired
 	private CountryCityRepository countryCityRepository;
 	
 	@Override

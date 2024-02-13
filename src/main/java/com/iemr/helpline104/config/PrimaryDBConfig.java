@@ -81,7 +81,6 @@ public class PrimaryDBConfig {
 	@Bean(name = "transactionManager")
 	public PlatformTransactionManager transactionManager(
 			@Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory) {
-		// return new JpaTransactionManager(entityManagerFactory);
 		return new JpaTransactionManager();
 	}
 }

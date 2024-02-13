@@ -46,11 +46,11 @@ import jakarta.ws.rs.core.MediaType;
 public class HttpUtils {
 	public static final String AUTHORIZATION = "Authorization";
 	private String server;
-	
+
 	private RestTemplate rest;
-	
+
 	private HttpHeaders headers;
-	
+
 	private HttpStatus status;
 
 	public HttpUtils() {
@@ -60,17 +60,17 @@ public class HttpUtils {
 			headers.add("Content-Type", "application/json");
 		}
 	}
-	private Logger logger = LoggerFactory.getLogger(ClinicalDecisionSupportController.class);
 
+	private Logger logger = LoggerFactory.getLogger(ClinicalDecisionSupportController.class);
 
 	public String get(String uri) {
 		String body;
 		HttpEntity<String> requestEntity = new HttpEntity<String>("", headers);
 		ResponseEntity<String> responseEntity = rest.exchange(uri, HttpMethod.GET, requestEntity, String.class);
 		setStatus((HttpStatus) responseEntity.getStatusCode());
-		
+
 		body = responseEntity.getBody();
-		
+
 		return body;
 	}
 
@@ -132,30 +132,22 @@ public class HttpUtils {
 		if (headers.getContentType().toString().equals(MediaType.MULTIPART_FORM_DATA_TYPE.toString())) {
 			HttpEntity<FormDataMultiPart> requestEntity;
 			FormDataMultiPart multiPart = null;
-			FileInputStream is =null;
+			FileInputStream is = null;
 			try {
-				 multiPart = new FormDataMultiPart();
-				 is = new FileInputStream(data);
-					/*
-					 * FormDataBodyPart filePart = new FormDataBodyPart("content", is,
-					 * MediaType.APPLICATION_OCTET_STREAM_TYPE);
-					 */
-				 FormDataBodyPart filePart = new FormDataBodyPart();
+				multiPart = new FormDataMultiPart();
+				is = new FileInputStream(data);
+				FormDataBodyPart filePart = new FormDataBodyPart();
 				multiPart.bodyPart(filePart);
 				multiPart.field("docPath", data);
 				headers.add("Content-Type", MediaType.APPLICATION_JSON);
-				requestEntity = new HttpEntity<FormDataMultiPart>(multiPart, headers);// new
-																						// HttpEntity<String>(multiPart,
-																						// headers);
+				requestEntity = new HttpEntity<FormDataMultiPart>(multiPart, headers);
 				responseEntity = rest.exchange(uri, HttpMethod.POST, requestEntity, String.class);
 			} catch (FileNotFoundException e) {
 				logger.error(e.getMessage());
-			}
-			finally
-			{
-				if(multiPart!=null)
+			} finally {
+				if (multiPart != null)
 					multiPart.close();
-				if(is!=null)
+				if (is != null)
 					is.close();
 			}
 		} else {

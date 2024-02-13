@@ -72,7 +72,6 @@ public class SecondaryDBConfig {
 	@Bean(name = "secondaryTransactionManager")
 	public PlatformTransactionManager barTransactionManager(
 			@Qualifier("secondaryEntityManagerFactory") EntityManagerFactory secondaryEntityManagerFactory) {
-		//return new JpaTransactionManager(secondaryEntityManagerFactory);
 		return new JpaTransactionManager();
 	}
 }

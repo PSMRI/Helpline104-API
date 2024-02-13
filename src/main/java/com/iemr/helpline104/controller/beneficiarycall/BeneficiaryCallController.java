@@ -130,7 +130,7 @@ public class BeneficiaryCallController {
 
 	@CrossOrigin()
 	@Operation(summary = "Set service history")
-	@RequestMapping(value = "set/callHistory", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@PostMapping(value = "set/callHistory", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String setServiceHistory(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {

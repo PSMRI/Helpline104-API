@@ -54,27 +54,25 @@ import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.mapper.OutputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 @Service
 public class EpidemicOutbreakServiceImpl implements EpidemicOutbreakService {
 
-	@Autowired(required = false)
+	@Autowired
 	private EpidemicOutbreakRepository epidemicOutbreakRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private LocationCityRepository locationCityRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private LocationDistrictBlockRepository locationDistrictBlockRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	private LocationDistrictRepository locationDistrictRepository;
 
-	@Autowired(required = false)
+	@Autowired
 	FeedbackTypeRepository feedbackRepositorty;
 
-	@Autowired(required = false)
+	@Autowired
 	private BenCallRepository benCallRepository;
 
 	private InputMapper inputMapper = new InputMapper();
@@ -101,9 +99,6 @@ public class EpidemicOutbreakServiceImpl implements EpidemicOutbreakService {
 		feedbackDetails.setRequestID(t_epidemicOutbreak.getRequestID());
 
 		String blockName = locationDistrictBlockRepository.findById(t_epidemicOutbreak.getAffectedDistrictBlockID()).toString();
-
-		//String blockName = locationDistrictBlockRepository
-			//	.findByDistrictBlockID(t_epidemicOutbreak.getAffectedDistrictBlockID()).getBlockName();
 
 		String districtName = locationDistrictRepository.findByDistrictID(t_epidemicOutbreak.getAffectedDistrictID());
 

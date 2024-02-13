@@ -10,11 +10,6 @@
 	<packaging>war</packaging>
 	<name>Piramal Helpline 104 API</name>
 	<description>Piramal Helpline 104 API</description>
-	<!--<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.3.RELEASE</version>
-	</parent>-->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -56,7 +51,6 @@
 			<scope>provided</scope>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -77,7 +71,6 @@
 			<version>11.0.0-M16</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.springframework.restdocs</groupId>
 			<artifactId>spring-restdocs-mockmvc</artifactId>
@@ -94,6 +87,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>com.jayway.jsonpath</groupId>
+					<artifactId>json-path</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -106,12 +105,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 		</dependency>
-
-		<!--<dependency>
-			<groupId>org.hibernate.jakarta.persistence</groupId>
-			<artifactId>hibernate-jpa-2.1-api</artifactId>
-			<version>1.0.0.Final</version>
-		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -129,12 +122,10 @@
 			<!--<version>2.0</version>-->
 		</dependency>
 
-		
-
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>21.0</version>
+			<version>33.0.0-jre</version>
 		</dependency>
 
 		<dependency>
@@ -148,21 +139,7 @@
 			<version>2.0-m11</version>
 		</dependency>
 
-		<!--<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>2.6.1</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.6.1</version>
-			<scope>compile</scope>
-		</dependency>-->
-
-		<!--
-		https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations -->
+		<!--https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -172,7 +149,7 @@
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
-			<version>20160212</version>
+			<version>20231013</version>
 		</dependency>
 
 		<dependency>
@@ -192,23 +169,13 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.7.1</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.16.1</version> 
+			<version>2.16.1</version>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz</artifactId>
-			<version>2.2.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz-jobs</artifactId>
-			<version>2.2.1</version>
-		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-cache</artifactId>
@@ -253,26 +220,11 @@
 			<version>6.4.1.Final</version>
 		</dependency>
 
-
 	</dependencies>
-	<!-- <properties> <java.version>1.8</java.version>
-	<maven.test.skip>true</maven.test.skip> 
-		<final-name>104api-v1.0</final-name> <environment>dev</environment>
-	<target-properties>target/classes/application.properties</target-properties>
-	<source-properties>src/main/environment/104_${environment}.properties</source-properties> 
-		<hostname-dev>10.208.122.32</hostname-dev> <port-dev>9990</port-dev>
-	<hostname-uat>deviemr.piramalswasthya.org</hostname-uat> 
-		<port-uat>9990</port-uat> <hostname-test>10.208.122.38</hostname-test>
-	<port-dev>9990</port-dev> 
-		<server-id>wildfly-${environment}</server-id>
-	<server-hostname>{hostname-${environment}}</server-hostname> 
-		<server-port>{port-${environment}}</server-port> </properties> -->
 
 	<build>
 		<finalName>104api-v1.0</finalName>
-
 		<plugins>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -350,20 +302,6 @@
 							</target>
 						</configuration>
 					</execution>
-					<!--<execution>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<id>clean-property-files</id>
-						<configuration>
-							<tasks>
-								<delete>
-									<file file="${source-properties}" />
-								</delete>
-							</tasks>
-						</configuration>
-					</execution>-->
 				</executions>
 			</plugin>
 

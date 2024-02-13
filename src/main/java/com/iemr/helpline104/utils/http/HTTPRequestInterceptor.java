@@ -36,7 +36,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component
-//public class HTTPRequestInterceptor implements HandlerInterceptorAdapter {
 public class HTTPRequestInterceptor implements HandlerInterceptor {
 	private Validator validator;
 

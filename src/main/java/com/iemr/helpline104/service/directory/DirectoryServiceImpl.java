@@ -41,16 +41,16 @@ public class DirectoryServiceImpl implements DirectoryServiceService
 {
 	private DirectoryRepository directoryRepository;
 
-	@Autowired(required=false)
+	@Autowired
 	public void setDirectoryRepository(DirectoryRepository directoryRepository)
 	{
 		this.directoryRepository = directoryRepository;
 	}
 
-	@Autowired(required=false)
+	@Autowired
 	private DirectoryserviceRepository directoryserviceRepository;
 	
-	@Autowired(required=false)
+	@Autowired
 	private BenCallRepository benCallRepository;
 
 	@Override

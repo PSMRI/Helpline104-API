@@ -36,11 +36,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
-@Configuration /*
-				 * (defaultAutowire = Autowire.BY_TYPE, defaultLazy = Lazy.FALSE
-				 */
+@Configuration
 @PropertySource("classpath:/application.properties")
-// @Component
 @Component
 public class ConfigProperties {
 	private static Properties properties;
@@ -58,19 +55,16 @@ public class ConfigProperties {
 
 			// FileInputStream fis;
 			try {
-				// this.getClass().getResourceAsStream(
-
 				InputStream fis = ConfigProperties.class.getResourceAsStream("/application.properties");
 				properties.load(fis);
-				// properties.
-				// fis.close();
+
 			} catch (IOException e) {
 				logger.error("Loading of config file failed with error " + e.getLocalizedMessage(), e);
 			}
 		}
 	}
 
-	@Autowired(required=true)
+	@Autowired(required = true)
 	public void setEnvironment(Environment environment) {
 		this.environment = environment;
 	}
@@ -121,7 +115,7 @@ public class ConfigProperties {
 			if (properties == null) {
 				initalizeProperties();
 			}
-			// result = environment.getProperty(propertyName);
+
 			result = properties.getProperty(propertyName);
 		} catch (Exception e) {
 			logger.error(propertyName + " retrival failed.", e);
@@ -170,8 +164,8 @@ public class ConfigProperties {
 	}
 
 	public static String getPassword(String key) {
-		 String password = getPropertyByName(key);
-		if (password!=null && password.startsWith("0X10:")) {
+		String password = getPropertyByName(key);
+		if (password != null && password.startsWith("0X10:")) {
 			password = new String(Base64.getDecoder().decode(password.split(":")[1]));
 		}
 		return password;

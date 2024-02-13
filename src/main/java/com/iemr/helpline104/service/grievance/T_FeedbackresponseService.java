@@ -31,7 +31,7 @@ import com.iemr.helpline104.repository.grievance.T_FeedbackresponseRepo;
 
   @Service
 public class T_FeedbackresponseService {
-	@Autowired(required=false)
+	@Autowired
 	private T_FeedbackresponseRepo FeedbackresponseRepo;
 
 	public void updateResponce(T_Feedbackresponse feedbackresponce) {

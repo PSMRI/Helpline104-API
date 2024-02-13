@@ -37,7 +37,7 @@ import com.iemr.helpline104.repository.bloodComponentType.BloodComponentTypeRepo
 @Service
 public class BloodComponentTypeServiceImpl implements BloodComponentTypeService {
 
-	@Autowired(required=false)
+	@Autowired
 	private BloodComponentTypeRepository componentTypeRepository;
 	@Override
 	public List<M_ComponentType> getBloodComponentTypes() throws Exception{

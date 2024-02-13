@@ -64,97 +64,12 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService {
 
 	@Autowired(required = false)
 	private BenCallDisconnectedDataRepo benCallDisconnectedDataRepo;
-	/*
-	 * @Override public List<BenCallServicesMappingHistory> getServiceHistory(Long
-	 * id) {
-	 * 
-	 * ArrayList<BenCallServicesMappingHistory> serviceHistoryList = new
-	 * ArrayList<BenCallServicesMappingHistory>(); List<Objects[]> lists =
-	 * serviceHistoryRepository.findCallDetailsForBeneficiary(id);
-	 * 
-	 * for (Object[] objects : lists) { if (objects != null && objects.length >= 15)
-	 * { BenCallServicesMappingHistory call = new
-	 * BenCallServicesMappingHistory((Long) objects[0], (Long) objects[1], (Long)
-	 * objects[2], (Integer) objects[3], (ServicesMaster1097) objects[4], (Integer)
-	 * objects[5], (CategoryDetails) objects[6], (Integer) objects[7],
-	 * (SubCategoryDetails) objects[8], (Long) objects[9], (FeedbackDetails)
-	 * objects[10], (Long) objects[11], (DirectoryMapping) objects[12], (String)
-	 * objects[13], (Date) objects[14]); serviceHistoryList.add(call); } } return
-	 * serviceHistoryList; }
-	 */
-
-	/*
-	 * @Override public List<BenCallServicesMappingHistory> getCallSummary(Long id)
-	 * { ArrayList<BenCallServicesMappingHistory> serviceHistoryList = new
-	 * ArrayList<BenCallServicesMappingHistory>(); List<Objects[]> lists =
-	 * serviceHistoryRepository.getCallSummary(id); for (Object[] objects : lists) {
-	 * if (objects != null && objects.length >= 15) { BenCallServicesMappingHistory
-	 * srh = new BenCallServicesMappingHistory((Long) objects[0], (Long) objects[1],
-	 * (Long) objects[2], (Integer) objects[3], (ServicesMaster1097) objects[4],
-	 * (Integer) objects[5], (CategoryDetails) objects[6], (Integer) objects[7],
-	 * (SubCategoryDetails) objects[8], (Long) objects[9], (FeedbackDetails)
-	 * objects[10], (Long) objects[11], (DirectoryMapping) objects[12], (String)
-	 * objects[13], (Date) objects[14]); serviceHistoryList.add(srh); } } return
-	 * serviceHistoryList; }
-	 */
-
-	/*
-	 * @Override public List<BenCallServicesMappingHistory> getReferralsHistory(Long
-	 * id, int pageNo, int rows) {
-	 * 
-	 * ArrayList<BenCallServicesMappingHistory> serviceHistoryList = new
-	 * ArrayList<BenCallServicesMappingHistory>(); List<Objects[]> lists =
-	 * serviceHistoryRepository.findReferralsForBeneficiary(id, new
-	 * PageRequest(pageNo, rows));
-	 * 
-	 * for (Object[] objects : lists) { if (objects != null && objects.length >= 9)
-	 * { BenCallServicesMappingHistory call = new
-	 * BenCallServicesMappingHistory((Long) objects[0], (Long) objects[1], (Long)
-	 * objects[2], (Integer) objects[3], (ServicesMaster1097) objects[4], (Long)
-	 * objects[5], (DirectoryMapping) objects[6], (String) objects[7], (Date)
-	 * objects[8]); serviceHistoryList.add(call); } } return serviceHistoryList; }
-	 */
-	/*
-	 * @Override public List<BenCallServicesMappingHistory> getFeedbacksHistory(Long
-	 * id, int pageNo, int rows) {
-	 * 
-	 * ArrayList<BenCallServicesMappingHistory> serviceHistoryList = new
-	 * ArrayList<BenCallServicesMappingHistory>(); List<Objects[]> lists =
-	 * serviceHistoryRepository.findFeedbacksForBeneficiary(id, new
-	 * PageRequest(pageNo, rows));
-	 * 
-	 * for (Object[] objects : lists) { if (objects != null && objects.length >= 9)
-	 * { BenCallServicesMappingHistory call = new
-	 * BenCallServicesMappingHistory((Long) objects[0], (Long) objects[1], (Long)
-	 * objects[2], (Integer) objects[3], (ServicesMaster1097) objects[4], (Long)
-	 * objects[5], (FeedbackDetails) objects[6], (String) objects[7], (Date)
-	 * objects[8]); serviceHistoryList.add(call); } } return serviceHistoryList; }
-	 */
-
-	/*
-	 * @Override public List<BenCallServicesMappingHistory>
-	 * getInformationsHistory(Long id, int pageNo, int rows) {
-	 * 
-	 * ArrayList<BenCallServicesMappingHistory> serviceHistoryList = new
-	 * ArrayList<BenCallServicesMappingHistory>(); List<Objects[]> lists =
-	 * serviceHistoryRepository.findInformationsForBeneficiary(id, new
-	 * PageRequest(pageNo, rows));
-	 * 
-	 * for (Object[] objects : lists) { if (objects != null && objects.length >= 11)
-	 * { BenCallServicesMappingHistory call = new
-	 * BenCallServicesMappingHistory((Long) objects[0], (Long) objects[1], (Long)
-	 * objects[2], (Integer) objects[3], (ServicesMaster1097) objects[4], (Integer)
-	 * objects[5], (CategoryDetails) objects[6], (Integer) objects[7],
-	 * (SubCategoryDetails) objects[8], (String) objects[9], (Date) objects[10]);
-	 * serviceHistoryList.add(call); } } return serviceHistoryList; }
-	 */
+	
 
 	@Override
 	public List<Objects[]> getServices(Integer providerServiceMapID) {
 
 		List<Objects[]> services = new ArrayList<Objects[]>();
-
-		// services = serviceMasterRepository.getServices();
 
 		return serviceMasterRepository.getServices(providerServiceMapID);
 	}

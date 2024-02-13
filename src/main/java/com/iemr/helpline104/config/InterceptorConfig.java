@@ -24,7 +24,6 @@ package com.iemr.helpline104.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-//import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import com.iemr.helpline104.utils.http.HTTPRequestInterceptor;
@@ -35,12 +34,6 @@ public class InterceptorConfig extends WebMvcConfigurationSupport
 
 	@Autowired
 	HTTPRequestInterceptor requestInterceptor;
-
-//	@Override
-//	public void addInterceptors(InterceptorRegistry registry)
-//	{
-//		registry.addInterceptor(requestInterceptor);
-//	}
 	
 	public void addInterceptors(InterceptorRegistry registry)
 	{
