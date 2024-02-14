@@ -61,7 +61,7 @@ public class HttpUtils {
 		}
 	}
 
-	private Logger logger = LoggerFactory.getLogger(ClinicalDecisionSupportController.class);
+	private Logger logger = LoggerFactory.getLogger(HttpUtils.class);
 
 	public String get(String uri) {
 		String body;

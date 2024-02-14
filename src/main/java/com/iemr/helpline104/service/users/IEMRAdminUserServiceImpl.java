@@ -24,6 +24,7 @@ package com.iemr.helpline104.service.users;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -117,9 +118,11 @@ public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 	}
 
 	public M_Role getrolewrapuptime(int roleID) {
-		// TODO Auto-generated method stub
-		return roleRepo.findById(roleID).get();
-		
+		Optional<M_Role> byId = roleRepo.findById(roleID);
+		if (byId.isPresent()) {
+			return roleRepo.findById(roleID).get();
+		} else
+			return null;
 	}
 
 }
