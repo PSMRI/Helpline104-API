@@ -41,7 +41,6 @@ import com.iemr.helpline104.utils.response.OutputResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 
-
 @RestController
 @RequestMapping(value = "/beneficiary")
 public class BeneficiaryCallController {
@@ -88,23 +87,29 @@ public class BeneficiaryCallController {
 	@Operation(summary = "Update beneficiary reg id to the caller id")
 	@PostMapping(value = "update/beneficiaryCallID", headers = "Authorization")
 	public String updateBeneficiaryIDInCall(
-			@Parameter(description = "{\"callID\":\"integer\", \"beneficiaryRegID\":\"long\"}") @RequestBody String beneficiaryCall) {
-		logger.info("updateBeneficiaryIDInCall request " + beneficiaryCall.toString());
-		OutputResponse output = new OutputResponse();
-		Integer startedCall = null;
-		try {
-			BeneficiaryCall beneficiarycall = inputMapper.gson().fromJson(beneficiaryCall, BeneficiaryCall.class);
+	        @Parameter(description = "{\"callID\":\"integer\", \"beneficiaryRegID\":\"long\"}") @RequestBody String beneficiaryCall) {
+	   
+	    OutputResponse output = new OutputResponse();
+	    Integer startedCall = null;
+	    try {
+	        BeneficiaryCall beneficiarycall = inputMapper.gson().fromJson(beneficiaryCall, BeneficiaryCall.class);
 
-			startedCall = beneficiaryCallService.updateBeneficiaryIDInCall(beneficiarycall.getBenCallID(),
-					beneficiarycall.getBeneficiaryRegID());
-			output.setResponse(startedCall.toString());
-		} catch (Exception e) {
-			logger.error("updateBeneficiaryIDInCall failed with error " + e.getMessage(), e);
-			output.setError(e);
-		}
-		logger.info("updateBeneficiaryIDInCall response: " + output);
-		return output.toString();
+	        startedCall = beneficiaryCallService.updateBeneficiaryIDInCall(beneficiarycall.getBenCallID(),
+	                beneficiarycall.getBeneficiaryRegID());
+	        output.setResponse(startedCall.toString());
+
+	        logger.info("updateBeneficiaryIDInCall was called successfully");
+	    } catch (Exception e) {
+	        logger.error("updateBeneficiaryIDInCall failed with error " + e.getMessage(), e);
+	        output.setError(e);
+
+	    }
+
+	    logger.info("updateBeneficiaryIDInCall completed");
+
+	    return output.toString();
 	}
+
 
 	@CrossOrigin
 	@Operation(summary = "Fetch services available in the 104 helpline")

@@ -107,7 +107,6 @@ public class HttpUtils {
 		if (header.containsKey(headers.AUTHORIZATION)) {
 			headers.add(headers.AUTHORIZATION, header.get(headers.AUTHORIZATION).toString());
 		}
-		// headers.add("Content-Type", MediaType.APPLICATION_JSON);
 		ResponseEntity<String> responseEntity = new ResponseEntity(HttpStatus.BAD_REQUEST);
 		HttpEntity<String> requestEntity;
 		requestEntity = new HttpEntity<String>(data, headers);

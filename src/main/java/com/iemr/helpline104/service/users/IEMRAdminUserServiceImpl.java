@@ -90,12 +90,6 @@ public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.iemr.helpline104.service.users.IEMRAdminUserService#
-	 * getAllLoginSecurityQuestions()
-	 */
 	@Override
 	public ArrayList<M_LoginSecurityQuestions> getAllLoginSecurityQuestions() {
 
@@ -109,12 +103,11 @@ public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 		return result;
 	}
 
-	/**
+	/*
 	 * IemrUserLoginSecurityRepository repository
 	 */
 	private IEMRUserLoginSecurityRepository iEMRUserLoginSecurityRepository;
 
-	@Autowired
 	private RoleRepo roleRepo;
 
 	@Autowired
@@ -126,6 +119,7 @@ public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 	public M_Role getrolewrapuptime(int roleID) {
 		// TODO Auto-generated method stub
 		return roleRepo.findById(roleID).get();
+		
 	}
 
 }
