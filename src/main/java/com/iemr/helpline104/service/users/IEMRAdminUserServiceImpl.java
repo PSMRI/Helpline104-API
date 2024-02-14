@@ -117,12 +117,10 @@ public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 		this.iEMRUserLoginSecurityRepository = iEMRUserLoginSecurityRepository;
 	}
 
+	
 	public M_Role getrolewrapuptime(int roleID) {
-		Optional<M_Role> byId = roleRepo.findById(roleID);
-		if (byId.isPresent()) {
-			return roleRepo.findById(roleID).get();
-		} else
-			return null;
+	    return roleRepo.findById(roleID).orElse(null);
 	}
+
 
 }
