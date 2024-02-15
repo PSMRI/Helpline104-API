@@ -64,7 +64,7 @@ public class BalVivahComplaintImpl implements BalVivahComplaintService {
 
 	@Autowired
 	private BalVivahComplaintRepo balVivahComplaintRepo;
-	
+
 	@Autowired
 	private LocationCityRepository locationCityRepository;
 
@@ -128,24 +128,15 @@ public class BalVivahComplaintImpl implements BalVivahComplaintService {
 			feedbackDetails.setFeedbackTypeID(feedbackType.getFeedbackTypeID());
 		}
 
-		// feedbackDetails = feedbackRepository.save(feedbackDetails);
-		// repos.save(feedbackDetails);
-//
 		FeedbackDetails[] feedbacks = new FeedbackDetails[1];
 		feedbacks[0] = feedbackDetails;
-//
-//		logger.info("Bal Vivah request " + new OutputMapper().gson().toJson(feedbacks).toString());
-//
+
 		createFeedback(new OutputMapper().gson().toJson(feedbacks).toString(), request);
-//
-		// response = " Bal-Vivah Complaint saved successfully and your ComplaintId: " +
-		// balVivahComplaint.getRequestID();
 
 		responseMap.put("requestID", balVivahComplaint.getRequestID());
 		responseMap.put("balVivahComplaintID", balVivahComplaint.getBalVivaComplaintID());
 
 		return new Gson().toJson(responseMap);
-		// return response;
 
 	}
 
@@ -195,7 +186,7 @@ public class BalVivahComplaintImpl implements BalVivahComplaintService {
 				properties.getPropertyByName("common-url") + "/" + properties.getPropertyByName("create-feedback"),
 				feedbackDetails, header);
 		OutputResponse response = inputMapper.gson().fromJson(responseStr, OutputResponse.class);
-		// response.setResponse(responseStr);
+
 		return response;
 	}
 
