@@ -20,10 +20,7 @@
 * along with this program.  If not, see https://www.gnu.org/licenses/.
 */
 package com.iemr.helpline104.config;
-
-import javax.persistence.EntityManagerFactory;
-import javax.sql.DataSource;
-
+import org.apache.tomcat.jdbc.pool.DataSource;
 import org.apache.tomcat.jdbc.pool.PoolConfiguration;
 import org.apache.tomcat.jdbc.pool.PoolProperties;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -37,7 +34,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.iemr.helpline104.utils.config.ConfigProperties;
+import jakarta.persistence.EntityManagerFactory;
 
 @Configuration
 @EnableTransactionManagement
@@ -75,6 +72,6 @@ public class SecondaryDBConfig {
 	@Bean(name = "secondaryTransactionManager")
 	public PlatformTransactionManager barTransactionManager(
 			@Qualifier("secondaryEntityManagerFactory") EntityManagerFactory secondaryEntityManagerFactory) {
-		return new JpaTransactionManager(secondaryEntityManagerFactory);
+		return new JpaTransactionManager();
 	}
 }

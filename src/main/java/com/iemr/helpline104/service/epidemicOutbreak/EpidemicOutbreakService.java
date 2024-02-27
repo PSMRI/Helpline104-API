@@ -23,9 +23,11 @@ package com.iemr.helpline104.service.epidemicOutbreak;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+
 
 import com.iemr.helpline104.data.epidemicOutbreak.T_EpidemicOutbreak;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 public interface EpidemicOutbreakService {
 

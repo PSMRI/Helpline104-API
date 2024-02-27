@@ -26,20 +26,23 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
 
-import javax.transaction.Transactional;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.iemr.helpline104.data.bloodRequest.T_BloodRequest;
 
+import jakarta.transaction.Transactional;
+@Service
 @Repository
 @RestResource(exported = false)
 public interface BloodRequestRepository extends CrudRepository<T_BloodRequest, Long> {
+	@Autowired(required=true)
 
 	@Query("select t.bloodReqID, t.requestID, t.beneficiaryRegID, t.recipientBeneficiaryID, t.recipientName, t.recipientAge, t.recipientGenderID, g.genderName, "
 			+ "t.typeOfRequest, bg.bloodGroupID, bg.bloodGroup, bg.bloodGroupDesc, c.componentTypeID, c.componentType, c.componentTypeDesc, "

@@ -23,8 +23,6 @@ package com.iemr.helpline104.controller.epidemicOutbreak;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +38,9 @@ import com.iemr.helpline104.service.epidemicOutbreak.EpidemicOutbreakService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.servlet.http.HttpServletRequest;
 
 @RequestMapping(value = "/beneficiary")
 @RestController
@@ -53,10 +52,10 @@ public class EpidemicOutbreakController {
 	private EpidemicOutbreakService epidemicOutbreakService;
 
 	@CrossOrigin
-	@ApiOperation(value = "Store epidemic outbreak complaint", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Store epidemic outbreak complaint")
 	@RequestMapping(value = "/save/epidemicOutbreakComplaint", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String saveEpidemicOutbreakComplaint(
-			@ApiParam(value = "{\"beneficiaryRegID\":\"long\",\"natureOfComplaint\":\"string\",\"totalPeopleAffected\":\"integer\",\"affectedDistrictID\":\"integer\","
+			@Parameter(description = "{\"beneficiaryRegID\":\"long\",\"natureOfComplaint\":\"string\",\"totalPeopleAffected\":\"integer\",\"affectedDistrictID\":\"integer\","
 					+ "\"affectedDistrictBlockID\":\"integer\",\"affectedCityID\":\"integer\",\"remarks\":\"string\",\"deleted\":\"boolean\",\"createdBy\":\"string\"}") @RequestBody String request,
 			HttpServletRequest httpRequest) {
 		OutputResponse output = new OutputResponse();
@@ -76,10 +75,10 @@ public class EpidemicOutbreakController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Fetch epidemic outbreak complaints", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Fetch epidemic outbreak complaints")
 	@RequestMapping(value = "/get/epidemicOutbreakComplaint", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getEpidemicOutbreakComplaint(
-			@ApiParam(value = "{\"beneficiaryRegID\":\"optional long\",  \"benCallID\":\" Optional long\",  \"requestID\":\" Optional string\"}") @RequestBody String request) {
+			@Parameter(description = "{\"beneficiaryRegID\":\"optional long\",  \"benCallID\":\" Optional long\",  \"requestID\":\" Optional string\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
 			T_EpidemicOutbreak t_epidemicOutbreak = inputMapper.gson().fromJson(request, T_EpidemicOutbreak.class);
@@ -103,10 +102,10 @@ public class EpidemicOutbreakController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Update epidemic outbreak complaint", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Update epidemic outbreak complaint")
 	@RequestMapping(value = "/update/epidemicOutbreakComplaint", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String updateEpidemicOutbreakComplaint(
-			@ApiParam(value = "{\"natureOfComplaint\":\"string\",\"totalPeopleAffected\":\"integer\",\"affectedDistrictID\":\"integer\","
+			@Parameter(description = "{\"natureOfComplaint\":\"string\",\"totalPeopleAffected\":\"integer\",\"affectedDistrictID\":\"integer\","
 					+ "\"affectedDistrictBlockID\":\"integer\",\"affectedVillageID\":\"integer\",\"remarks\":\"string\"}") @RequestBody String request,
 			HttpServletRequest httpRequest) {
 		OutputResponse output = new OutputResponse();

@@ -23,23 +23,16 @@ package com.iemr.helpline104.controller.covidMaster;
 
 import java.util.List;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.service.covidMaster.CovidMasterService;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 
 @CrossOrigin
 @RestController
@@ -51,9 +44,9 @@ public class CovidMasterController {
 	@Autowired
 	private CovidMasterService covidMasterService;
 
-	@ApiOperation(value = "Master data  for COVID patient", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = {
-			"/patient/covidDetails/{providerServiceMapID}" }, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
+	@Operation(summary= "Master data  for COVID patient")
+	@GetMapping(value = {
+			"/patient/covidDetails/{providerServiceMapID}" }, produces = MediaType.APPLICATION_JSON)
 	public String patientAppMasterData(@PathVariable("providerServiceMapID") Integer providerServiceMapID) {
 		logger.info("master Data for beneficiary:");
 
@@ -64,8 +57,8 @@ public class CovidMasterController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Save COVID data", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = { "/save/covidScreeningData" }, method = { RequestMethod.POST })
+	@Operation(summary= "Save COVID data")
+	@PostMapping({ "/save/covidScreeningData" })
 	public String saveBenCovidDoctorData(@RequestBody String requestObj,
 			@RequestHeader(value = "Authorization") String Authorization) {
 		OutputResponse response = new OutputResponse();

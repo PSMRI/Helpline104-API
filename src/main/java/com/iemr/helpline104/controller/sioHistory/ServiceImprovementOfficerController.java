@@ -21,19 +21,14 @@
 */
 package com.iemr.helpline104.controller.sioHistory;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.data.sioHistory.SioHistory;
 import com.iemr.helpline104.service.bloodComponentType.BloodComponentTypeServiceImpl;
 import com.iemr.helpline104.service.bloodRequest.BloodRequestServiceImpl;
@@ -44,11 +39,10 @@ import com.iemr.helpline104.service.organDonation.OrganDonationServiceImpl;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 
 /**
  * Controller class to get the Sio history data for a particular beneficiary
- *
  */
 @RequestMapping(value = "/beneficiary")
 @RestController
@@ -71,8 +65,8 @@ public class ServiceImprovementOfficerController {
 	private FoodSafetyCopmlaintServiceImpl foodSafetyCopmlaintServiceImpl;
 
 	@CrossOrigin
-	@ApiOperation(value = "Get sio history", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getSioHistory", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Get sio history")
+	@PostMapping(value = "/getSioHistory", produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getSioHistory(@RequestBody String benificiary) {
 
 		logger.info("getSioHistory request " + benificiary.toString());

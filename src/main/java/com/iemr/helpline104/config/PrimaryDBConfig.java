@@ -21,8 +21,7 @@
 */
 package com.iemr.helpline104.config;
 
-import javax.persistence.EntityManagerFactory;
-import javax.sql.DataSource;
+import org.apache.tomcat.jdbc.pool.DataSource;
 import org.apache.tomcat.jdbc.pool.PoolConfiguration;
 import org.apache.tomcat.jdbc.pool.PoolProperties;
 import org.slf4j.Logger;
@@ -39,11 +38,12 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.iemr.helpline104.utils.config.ConfigProperties;
+import jakarta.persistence.EntityManagerFactory;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactory", basePackages = { "com.iemr.helpline104.repository","com.iemr.helpline104.reposotory" })
+@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactory", basePackages = {
+		"com.iemr.helpline104.repository", "com.iemr.helpline104.reposotory" })
 public class PrimaryDBConfig {
 	Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
@@ -67,6 +67,7 @@ public class PrimaryDBConfig {
 		datasource.setPoolProperties(p);
 
 		return datasource;
+
 	}
 
 	@Primary
@@ -80,6 +81,6 @@ public class PrimaryDBConfig {
 	@Bean(name = "transactionManager")
 	public PlatformTransactionManager transactionManager(
 			@Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory) {
-		return new JpaTransactionManager(entityManagerFactory);
+		return new JpaTransactionManager();
 	}
 }

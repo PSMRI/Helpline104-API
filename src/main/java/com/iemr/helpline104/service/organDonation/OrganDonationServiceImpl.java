@@ -135,7 +135,7 @@ public class OrganDonationServiceImpl implements OrganDonationService
 				institution.setCreatedBy(organDonation.getCreatedBy());
 			}
 
-			requestedInstitutionRepository.save(requestedInstitutions);
+			requestedInstitutionRepository.saveAll(requestedInstitutions);
 
 		}
 

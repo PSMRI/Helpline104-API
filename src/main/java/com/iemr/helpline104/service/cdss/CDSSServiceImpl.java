@@ -52,9 +52,6 @@ import com.iemr.helpline104.data.cdss.Symptoms;
 import com.iemr.helpline104.data.cdss.SymptomsWrapper;
 import com.iemr.helpline104.repository.cdss.DBConnect;
 
-/**
- * 
- */
 @Service
 public class CDSSServiceImpl implements CDSSService {
 

@@ -106,7 +106,7 @@ public class H104BenHistoryServiceImpl implements H104BenHistoryService
 	public List<H104BenMedHistory> getPresentCasesheet(Long beneficiaryId, String callID)
 	{
 
-		List<H104BenMedHistory> caseSheet = h104BenHistoryRepository.getPresentBenHistory(beneficiaryId, new PageRequest(0, 1));
+		List<H104BenMedHistory> caseSheet = h104BenHistoryRepository.getPresentBenHistory(beneficiaryId, PageRequest.of(0, 1));
 
 		if (caseSheet != null && caseSheet.size() > 0)
 		{

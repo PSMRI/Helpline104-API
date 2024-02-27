@@ -38,8 +38,8 @@ import com.iemr.helpline104.service.directory.DirectoryServiceService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 
 @RequestMapping(value = "/beneficiary")
 @RestController
@@ -51,10 +51,10 @@ public class DirectoryServicesController {
 	private DirectoryServiceService directoryService;
 
 	@CrossOrigin
-	@ApiOperation(value = "Retrieve directory search history", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Retrieve directory search history")
 	@RequestMapping(value = "/getdirectorySearchHistory", method = RequestMethod.POST, headers = "Authorization")
 	public String getBenDirectoryHistory(
-			@ApiParam(value = "{\"beneficiaryRegID\":\"optional long\",  \"benCallID\":\" Optional long\"}") @RequestBody String request) {
+			@Parameter(description = "{\"beneficiaryRegID\":\"optional long\",  \"benCallID\":\" Optional long\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
 
@@ -73,10 +73,10 @@ public class DirectoryServicesController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Store directory serach history", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Store directory serach history")
 	@RequestMapping(value = "/save/directorySearchHistory", method = RequestMethod.POST, headers = "Authorization")
 	public String directorySearchHistory(
-			@ApiParam(value = "[{\"beneficiaryRegID\":\"long\",\"benCallID\":\"long\",\"institutionID\":\"integer\",\"instituteDirectoryID\":\"integer\",\"instituteSubDirectoryID\":\"integer\","
+			@Parameter(description = "[{\"beneficiaryRegID\":\"long\",\"benCallID\":\"long\",\"institutionID\":\"integer\",\"instituteDirectoryID\":\"integer\",\"instituteSubDirectoryID\":\"integer\","
 					+ "\"providerServiceMapID\":\"integer\",\"remarks\":\"string\",\"createdBy\":\"string\"}]") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {

@@ -29,9 +29,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.JsonElement;
@@ -40,8 +39,10 @@ import com.google.gson.JsonParser;
 import com.iemr.helpline104.service.secondaryCrmReports.CRMSecondaryReportService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
+
 
 @CrossOrigin
 @RequestMapping({ "/crmReports" })
@@ -53,10 +54,10 @@ public class SecondaryCRMReports {
 	InputMapper inputMapper = new InputMapper();
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get RO summary report by date", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getROSummaryReportByDate", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Get RO summary report by date")
+	@PostMapping(value = "/getROSummaryReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getROSummaryReportByDate(
-			@ApiParam(value = "\"{\\\"startDate\\\":\\\"Timestamp\\\",\\\"endDate\\\":\\\"Timestamp\\\","
+			@Parameter( description = "\"{\\\"startDate\\\":\\\"Timestamp\\\",\\\"endDate\\\":\\\"Timestamp\\\","
 					+ "\\\"providerServiceMapID\\\":\\\"Integer\\\",\\\"agentID\\\":\\\"Integer\\\","
 					+ "\\\"roleName\\\":\\\"String\\\",\\\"reportTypeID\\\":\\\"Integer\\\",\\\"reportType\\\":\\\"String\\\"}\"") @RequestBody String jsonRequest)
 
@@ -82,10 +83,10 @@ public class SecondaryCRMReports {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get HAO summary report by date", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getHAOSummaryReportByDate", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Get HAO summary report by date")
+	@PostMapping(value = "/getHAOSummaryReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getHAOSummaryReportByDate(
-			@ApiParam(value = "\"{\\\"startDate\\\":\\\"Timestamp\\\",\\\"endDate\\\":\\\"Timestamp\\\","
+			@Parameter( description = "\"{\\\"startDate\\\":\\\"Timestamp\\\",\\\"endDate\\\":\\\"Timestamp\\\","
 					+ "\\\"providerServiceMapID\\\":\\\"Integer\\\",\\\"agentID\\\":\\\"Integer\\\","
 					+ "\\\"roleName\\\":\\\"String\\\",\\\"reportTypeID\\\":\\\"Integer\\\",\\\"reportType\\\":\\\"String\\\"}\"") @RequestBody String jsonRequest)
 
@@ -110,10 +111,10 @@ public class SecondaryCRMReports {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get MO summary report by date", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getMOSummaryReportByDate", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Get MO summary report by date")
+	@PostMapping(value = "/getMOSummaryReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getMOSummaryReportByDate(
-			@ApiParam(value = "\"{\\\"startDate\\\":\\\"Timestamp\\\",\\\"endDate\\\":\\\"Timestamp\\\","
+			@Parameter( description = "\"{\\\"startDate\\\":\\\"Timestamp\\\",\\\"endDate\\\":\\\"Timestamp\\\","
 					+ "\\\"providerServiceMapID\\\":\\\"Integer\\\",\\\"agentID\\\":\\\"Integer\\\","
 					+ "\\\"roleName\\\":\\\"String\\\",\\\"reportTypeID\\\":\\\"Integer\\\",\\\"reportType\\\":\\\"String\\\"}\"") @RequestBody String jsonRequest)
 
@@ -138,10 +139,10 @@ public class SecondaryCRMReports {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get medical advise report", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getMedicalAdviseReport", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Get medical advise report")
+	@PostMapping(value = "/getMedicalAdviseReport", headers = "Authorization")
 	public ResponseEntity<Object> getMedicalAdviseReport(
-			@ApiParam(value = "\"{\\\"startDate\\\":\\\"Timestamp\\\",\\\"endDate\\\":\\\"Timestamp\\\","
+			@Parameter( description = "\"{\\\"startDate\\\":\\\"Timestamp\\\",\\\"endDate\\\":\\\"Timestamp\\\","
 					+ "\\\"providerServiceMapID\\\":\\\"Integer\\\",\\\"agentID\\\":\\\"Integer\\\","
 					+ "\\\"roleName\\\":\\\"String\\\",\\\"reportTypeID\\\":\\\"Integer\\\",\\\"reportType\\\":\\\"String\\\"}\"") @RequestBody String jsonRequest)
 
@@ -166,10 +167,10 @@ public class SecondaryCRMReports {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get CO summary report by date", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getCOSummaryReportByDate", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Get CO summary report by date")
+	@PostMapping(value = "/getCOSummaryReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getCOSummaryReportByDate(
-			@ApiParam(value = "\"{\\\"startDate\\\":\\\"Timestamp\\\",\\\"endDate\\\":\\\"Timestamp\\\","
+			@Parameter( description = "\"{\\\"startDate\\\":\\\"Timestamp\\\",\\\"endDate\\\":\\\"Timestamp\\\","
 					+ "\\\"providerServiceMapID\\\":\\\"Integer\\\",\\\"agentID\\\":\\\"Integer\\\","
 					+ "\\\"roleName\\\":\\\"String\\\",\\\"reportTypeID\\\":\\\"Integer\\\",\\\"reportType\\\":\\\"String\\\"}\"") @RequestBody String jsonRequest)
 
@@ -194,10 +195,10 @@ public class SecondaryCRMReports {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get mental health report", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getMentalHealthReport", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Get mental health report")
+	@PostMapping(value = "/getMentalHealthReport", headers = "Authorization")
 	public ResponseEntity<Object> getMentalHealthReport(
-			@ApiParam(value = "\"{\\\"startDate\\\":\\\"Timestamp\\\",\\\"endDate\\\":\\\"Timestamp\\\","
+			@Parameter( description = "\"{\\\"startDate\\\":\\\"Timestamp\\\",\\\"endDate\\\":\\\"Timestamp\\\","
 					+ "\\\"providerServiceMapID\\\":\\\"Integer\\\",\\\"agentID\\\":\\\"Integer\\\","
 					+ "\\\"roleName\\\":\\\"String\\\",\\\"reportTypeID\\\":\\\"Integer\\\",\\\"reportType\\\":\\\"String\\\"}\"") @RequestBody String jsonRequest)
 
@@ -222,10 +223,10 @@ public class SecondaryCRMReports {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get grievance report by date ", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getGrievanceReportByDate", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Get grievance report by date ")
+	@PostMapping(value = "/getGrievanceReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getGrievanceReportByDate(
-			@ApiParam(value = "\"{\\\"startDate\\\":\\\"Timestamp\\\",\\\"endDate\\\":\\\"Timestamp\\\","
+			@Parameter( description = "\"{\\\"startDate\\\":\\\"Timestamp\\\",\\\"endDate\\\":\\\"Timestamp\\\","
 					+ "\\\"providerServiceMapID\\\":\\\"Integer\\\",\\\"agentID\\\":\\\"Integer\\\","
 					+ "\\\"roleName\\\":\\\"String\\\",\\\"reportTypeID\\\":\\\"Integer\\\",\\\"reportType\\\":\\\"String\\\"}\"") @RequestBody String jsonRequest)
 
@@ -250,10 +251,10 @@ public class SecondaryCRMReports {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get prescription report by date", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getPrescriptionReportByDate", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Get prescription report by date")
+	@PostMapping(value = "/getPrescriptionReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getPrescriptionReportByDate(
-			@ApiParam(value = "\"{\\\"startDate\\\":\\\"Timestamp\\\",\\\"endDate\\\":\\\"Timestamp\\\","
+			@Parameter( description = "\"{\\\"startDate\\\":\\\"Timestamp\\\",\\\"endDate\\\":\\\"Timestamp\\\","
 					+ "\\\"providerServiceMapID\\\":\\\"Integer\\\",\\\"agentID\\\":\\\"Integer\\\","
 					+ "\\\"roleName\\\":\\\"String\\\",\\\"reportTypeID\\\":\\\"Integer\\\",\\\"reportType\\\":\\\"String\\\"}\"") @RequestBody String jsonRequest)
 
@@ -278,10 +279,10 @@ public class SecondaryCRMReports {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get CDI response report", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getCDIResponseReport", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Get CDI response report")
+	@PostMapping(value = "/getCDIResponseReport", headers = "Authorization")
 	public ResponseEntity<Object> getCDIResponseReport(
-			@ApiParam("{\"startDateTime\":\"Date time stamp of start date\", "
+			 @Parameter(description="{\"startDateTime\":\"Date time stamp of start date\", "
 					+ "\"providerServiceMapID\":\"Integer - provider service map ID\", "
 					+ "\"endDateTime\":\"Date time stamp of end date\"}") @RequestBody String jsonRequest)
 
@@ -306,10 +307,10 @@ public class SecondaryCRMReports {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get schemes report by date", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getSchemesReportByDate", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Get schemes report by date")
+	@PostMapping(value = "/getSchemesReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getSchemesReportByDate(
-			@ApiParam("{\"startDateTime\":\"Date time stamp of start date\", "
+			@Parameter(description="{\"startDateTime\":\"Date time stamp of start date\", "
 					+ "\"providerServiceMapID\":\"Integer - provider service map ID\", "
 					+ "\"endDateTime\":\"Date time stamp of end date\"}") @RequestBody String jsonRequest)
 
@@ -335,10 +336,10 @@ public class SecondaryCRMReports {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get directory service report by date", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getDirectoryServiceReportByDate", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Get directory service report by date")
+	@PostMapping(value = "/getDirectoryServiceReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getDirectoryServiceReportByDate(
-			@ApiParam("{\"startDateTime\":\"Date time stamp of start date\", "
+			@Parameter(description="{\"startDateTime\":\"Date time stamp of start date\", "
 					+ "\"providerServiceMapID\":\"Integer - provider service map ID\", "
 					+ "\"endDateTime\":\"Date time stamp of end date\"}") @RequestBody String jsonRequest)
 
@@ -363,10 +364,10 @@ public class SecondaryCRMReports {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get food safety report by date", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getFoodSafetyReportByDate", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Get food safety report by date")
+	@PostMapping(value = "/getFoodSafetyReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getFoodSafetyReportByDate(
-			@ApiParam("{\"startDateTime\":\"Date time stamp of start date\", "
+			@Parameter(description="{\"startDateTime\":\"Date time stamp of start date\", "
 					+ "\"providerServiceMapID\":\"Integer - provider service map ID\", "
 					+ "\"endDateTime\":\"Date time stamp of end date\"}") @RequestBody String jsonRequest)
 
@@ -392,10 +393,10 @@ public class SecondaryCRMReports {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get blood on call report by date", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getBloodOnCallReportByDate", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Get blood on call report by date")
+	@PostMapping(value = "/getBloodOnCallReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getBloodOnCallReportByDate(
-			@ApiParam("{\"startDateTime\":\"Date time stamp of start date\", "
+			@Parameter(description="{\"startDateTime\":\"Date time stamp of start date\", "
 					+ "\"providerServiceMapID\":\"Integer - provider service map ID\", "
 					+ "\"endDateTime\":\"Date time stamp of end date\"}") @RequestBody String jsonRequest)
 
@@ -420,10 +421,10 @@ public class SecondaryCRMReports {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get blood on call count report by date", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getBloodOnCallCountReportByDate", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Get blood on call count report by date")
+	@PostMapping(value = "/getBloodOnCallCountReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getBloodOnCallCountReportByDate(
-			@ApiParam("{\"startDateTime\":\"Date time stamp of start date\", "
+			@Parameter(description="{\"startDateTime\":\"Date time stamp of start date\", "
 					+ "\"providerServiceMapID\":\"Integer - provider service map ID\", "
 					+ "\"endDateTime\":\"Date time stamp of end date\", " + "\"districtID\":\"Integer\", "
 					+ "\"searchCriteria\": \"String\", " + "\"subDistrictID\": \"Integer\", "
@@ -451,10 +452,10 @@ public class SecondaryCRMReports {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get epidemic report by date", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getEpidemicReportByDate", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Get epidemic report by date")
+	@PostMapping(value = "/getEpidemicReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getEpidemicReportByDate(
-			@ApiParam("{\"startDateTime\":\"Date time stamp of start date\", "
+			@Parameter(description="{\"startDateTime\":\"Date time stamp of start date\", "
 					+ "\"providerServiceMapID\":\"Integer - provider service map ID\", "
 					+ "\"endDateTime\":\"Date time stamp of end date\"}") @RequestBody String jsonRequest) {
 		String filename = getFileName(jsonRequest, "Epidemic_Outbreak_Service");
@@ -477,10 +478,10 @@ public class SecondaryCRMReports {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get organ donation report by date", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getOrganDonationReportByDate", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Get organ donation report by date")
+	@PostMapping(value = "/getOrganDonationReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getOrganDonationReportByDate(
-			@ApiParam("{\"startDateTime\":\"Date time stamp of start date\", "
+			@Parameter(description="{\"startDateTime\":\"Date time stamp of start date\", "
 					+ "\"providerServiceMapID\":\"Integer - provider service map ID\", "
 					+ "\"endDateTime\":\"Date time stamp of end date\"}") @RequestBody String jsonRequest)
 
@@ -505,9 +506,9 @@ public class SecondaryCRMReports {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get PD summary report by date", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getPDSummaryReportByDate", method = RequestMethod.POST, headers = "Authorization")
-	public ResponseEntity<Object> getPDSummaryReport(@ApiParam("{\"startDateTime\":\"Date time stamp of start date\", "
+	@Operation(summary = "Get PD summary report by date")
+	@PostMapping(value = "/getPDSummaryReportByDate", headers = "Authorization")
+	public ResponseEntity<Object> getPDSummaryReport(@Parameter(description="{\"startDateTime\":\"Date time stamp of start date\", "
 			+ "\"providerServiceMapID\":\"Integer - provider service map ID\", "
 			+ "\"endDateTime\":\"Date time stamp of end date\"}") @RequestBody String jsonRequest)
 

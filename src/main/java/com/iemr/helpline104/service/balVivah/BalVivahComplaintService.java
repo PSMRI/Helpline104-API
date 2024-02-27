@@ -21,9 +21,9 @@
 */
 package com.iemr.helpline104.service.balVivah;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.iemr.helpline104.data.balVivah.BalVivahComplaint;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 public interface BalVivahComplaintService {
 

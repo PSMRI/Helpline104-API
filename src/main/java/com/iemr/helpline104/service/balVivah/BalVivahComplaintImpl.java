@@ -31,8 +31,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,11 +57,14 @@ import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.mapper.OutputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Service
 public class BalVivahComplaintImpl implements BalVivahComplaintService {
 
 	@Autowired
 	private BalVivahComplaintRepo balVivahComplaintRepo;
+
 	@Autowired
 	private LocationCityRepository locationCityRepository;
 
@@ -91,7 +92,6 @@ public class BalVivahComplaintImpl implements BalVivahComplaintService {
 
 	private Logger logger = LoggerFactory.getLogger(BalVivahController.class);
 
-	@Override
 	@Transactional(rollbackFor = Exception.class)
 
 	public String save(BalVivahComplaint balVivahComplaint, HttpServletRequest request) throws Exception {
@@ -128,24 +128,15 @@ public class BalVivahComplaintImpl implements BalVivahComplaintService {
 			feedbackDetails.setFeedbackTypeID(feedbackType.getFeedbackTypeID());
 		}
 
-		// feedbackDetails = feedbackRepository.save(feedbackDetails);
-		// repos.save(feedbackDetails);
-//
 		FeedbackDetails[] feedbacks = new FeedbackDetails[1];
 		feedbacks[0] = feedbackDetails;
-//
-//		logger.info("Bal Vivah request " + new OutputMapper().gson().toJson(feedbacks).toString());
-//
+
 		createFeedback(new OutputMapper().gson().toJson(feedbacks).toString(), request);
-//
-		// response = " Bal-Vivah Complaint saved successfully and your ComplaintId: " +
-		// balVivahComplaint.getRequestID();
 
 		responseMap.put("requestID", balVivahComplaint.getRequestID());
 		responseMap.put("balVivahComplaintID", balVivahComplaint.getBalVivaComplaintID());
 
 		return new Gson().toJson(responseMap);
-		// return response;
 
 	}
 
@@ -195,7 +186,7 @@ public class BalVivahComplaintImpl implements BalVivahComplaintService {
 				properties.getPropertyByName("common-url") + "/" + properties.getPropertyByName("create-feedback"),
 				feedbackDetails, header);
 		OutputResponse response = inputMapper.gson().fromJson(responseStr, OutputResponse.class);
-		// response.setResponse(responseStr);
+
 		return response;
 	}
 

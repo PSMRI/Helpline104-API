@@ -30,7 +30,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -98,8 +98,8 @@ public class EpidemicOutbreakServiceImpl implements EpidemicOutbreakService {
 		feedbackDetails.setBenCallID(t_epidemicOutbreak.getBenCallID());
 		feedbackDetails.setRequestID(t_epidemicOutbreak.getRequestID());
 
-		String blockName = locationDistrictBlockRepository.findOne(t_epidemicOutbreak.getAffectedDistrictBlockID())
-				.getBlockName();
+		String blockName = locationDistrictBlockRepository.findById(t_epidemicOutbreak.getAffectedDistrictBlockID()).toString();
+
 		String districtName = locationDistrictRepository.findByDistrictID(t_epidemicOutbreak.getAffectedDistrictID());
 
 		String epidemicOutbreakString = "Outbreak ComplaintID: " + t_epidemicOutbreak.getOutbreakComplaintID() + ", "
@@ -154,8 +154,6 @@ public class EpidemicOutbreakServiceImpl implements EpidemicOutbreakService {
 			}
 			if (list1 != null && list1.size() > 0)
 				epidemicOutbreak = epidemicOutbreakRepository.findByBenRegIDs(list1);
-//			else
-//				throw new Exception("No generic grievance found with this phone number");
 
 		}
 		T_EpidemicOutbreak tEpidemicOutbreak;

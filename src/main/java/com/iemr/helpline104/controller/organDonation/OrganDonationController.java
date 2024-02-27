@@ -27,12 +27,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.data.organDonation.M_DonatableOrgan;
 import com.iemr.helpline104.data.organDonation.M_DonationType;
 import com.iemr.helpline104.data.organDonation.OrganDonations;
@@ -41,8 +36,8 @@ import com.iemr.helpline104.service.organDonation.OrganDonationService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 
 @RequestMapping(value = "/beneficiary")
 @RestController
@@ -54,8 +49,8 @@ public class OrganDonationController {
 	private OrganDonationService organDonationService;
 
 	@CrossOrigin
-	@ApiOperation(value = "Save organ donation details", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/save/organDonationRequestDetails", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Save organ donation details")
+	@PostMapping(value = "/save/organDonationRequestDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String saveOrganDonationDetails(@RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
@@ -72,8 +67,8 @@ public class OrganDonationController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Update organ donation details", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/update/organDonationRequestDetails", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Update organ donation details")
+	@PostMapping(value = "/update/organDonationRequestDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String updateOrganDonationDetails(@RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
@@ -90,8 +85,8 @@ public class OrganDonationController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Save organ donation institute details", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/save/organDonationInstituteDetails", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Save organ donation institute details")
+	@PostMapping(value = "/save/organDonationInstituteDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String saveOrganDonationInstituteDetails(@RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
@@ -108,10 +103,10 @@ public class OrganDonationController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Get organ donation details", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/organDonationRequestDetails", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Get organ donation details")
+	@PostMapping(value = "/get/organDonationRequestDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getOrganDonationDetails(
-			@ApiParam(value = "{\"beneficiaryRegID\":\"optional long\",   \"benCallID\":\" Optional long\",   \"requestID\":\" Optional string\"}") @RequestBody String request) {
+			@Parameter(description = "{\"beneficiaryRegID\":\"optional long\",   \"benCallID\":\" Optional long\",   \"requestID\":\" Optional string\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
 			T_OrganDonation t_organDonation = inputMapper.gson().fromJson(request, T_OrganDonation.class);
@@ -133,8 +128,8 @@ public class OrganDonationController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Get organ donation types", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/organDonationTypes", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Get organ donation types")
+	@PostMapping(value = "/get/organDonationTypes", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getOrganDonationTypes() {
 		logger.info("getOrganDonationTypes request ");
 		OutputResponse output = new OutputResponse();
@@ -151,8 +146,8 @@ public class OrganDonationController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Get donatable organs", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/DonatableOrgans", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Get donatable organs")
+	@PostMapping(value = "/get/DonatableOrgans", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getDonatableOrgans() {
 		logger.info("getDonatableOrgans request ");
 		OutputResponse output = new OutputResponse();

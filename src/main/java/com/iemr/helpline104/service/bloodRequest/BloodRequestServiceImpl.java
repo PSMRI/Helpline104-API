@@ -133,7 +133,7 @@ public class BloodRequestServiceImpl implements BloodRequestService
 			bloodBank.setCreatedBy(t_bloodRequest.getCreatedBy());
 		}		
 		
-		requestedBloodBankRepository.save(requestedBloodBanks);
+		requestedBloodBankRepository.saveAll(requestedBloodBanks);
 		
 		}
 		

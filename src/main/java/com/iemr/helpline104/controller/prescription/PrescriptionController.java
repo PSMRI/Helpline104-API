@@ -29,19 +29,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.data.prescription.Prescription;
 import com.iemr.helpline104.service.prescription.PrescriptionService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 
 @RequestMapping(value = "/beneficiary")
 @RestController
@@ -54,8 +49,8 @@ public class PrescriptionController {
 	private PrescriptionService prescriptionService;
 
 	@CrossOrigin
-	@ApiOperation(value = "Save prescription", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/save/prescription", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Save prescription")
+	@PostMapping(value = "/save/prescription", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String savePrescription(@RequestBody String createRequest) {
 		OutputResponse output = new OutputResponse();
 		try {
@@ -75,8 +70,8 @@ public class PrescriptionController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Get prescription", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/prescription", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Get prescription")
+	@PostMapping(value = "/get/prescription", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getPrescription(@RequestBody String createRequest) {
 		OutputResponse output = new OutputResponse();
 		try {
@@ -102,8 +97,8 @@ public class PrescriptionController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Get prescription list", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/prescriptionList", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Get prescription list")
+	@PostMapping(value = "/get/prescriptionList", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getPrescriptionList(@RequestBody String createRequest) {
 		OutputResponse output = new OutputResponse();
 		try {
@@ -117,7 +112,7 @@ public class PrescriptionController {
 			int size = requestObj.has("size") ? requestObj.getInt("size") : 1000;
 
 			prescription = prescriptionService.getPrescriptionList(t_Prescription.getBeneficiaryRegID(),
-					new PageRequest(page, size));
+					 PageRequest.of(page, size));
 			if (prescription != null) {
 				output.setResponse(prescription.toString());
 			} else {
@@ -135,10 +130,10 @@ public class PrescriptionController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Get latest valid pescription", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/latestValidPescription", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Get latest valid pescription")
+	@PostMapping(value = "/get/latestValidPescription", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getLatestValidPescription(
-			@ApiParam(value = "{\"beneficiaryRegID\":\"Integer\"}") @RequestBody String createRequest) {
+			@Parameter(description = "{\"beneficiaryRegID\":\"Integer\"}") @RequestBody String createRequest) {
 		OutputResponse output = new OutputResponse();
 		try {
 			Prescription t_Prescription = mapper.gson().fromJson(createRequest, Prescription.class);
@@ -151,7 +146,7 @@ public class PrescriptionController {
 			int size = requestObj.has("size") ? requestObj.getInt("size") : 1000;
 
 			prescription = prescriptionService.getLatestValidPescription(t_Prescription.getBeneficiaryRegID(),
-					new PageRequest(page, size));
+					 PageRequest.of(page, size));
 			if (prescription != null) {
 				output.setResponse(prescription.toString());
 			} else {

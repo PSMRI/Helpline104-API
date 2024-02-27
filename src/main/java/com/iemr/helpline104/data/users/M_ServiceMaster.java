@@ -24,12 +24,12 @@ package com.iemr.helpline104.data.users;
 import java.sql.Timestamp;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "m_servicemaster")
@@ -44,7 +44,7 @@ public class M_ServiceMaster {
 	private Timestamp CreatedDate;
 	private String ModifiedBy;
 	private Timestamp LastModDate;
-	@OneToMany(mappedBy = "m_ServiceMaster", cascade = { javax.persistence.CascadeType.ALL })
+	@OneToMany(mappedBy = "m_ServiceMaster", cascade = { jakarta.persistence.CascadeType.ALL })
 	private Set<M_UserServiceRoleMapping> m_UserServiceRoleMapping;
 
 	protected M_ServiceMaster() {

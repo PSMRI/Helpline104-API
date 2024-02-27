@@ -24,19 +24,16 @@ package com.iemr.helpline104.data.search;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
+import jakarta.persistence.Column;
 
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "db_identity.i_beneficiarycontacts")

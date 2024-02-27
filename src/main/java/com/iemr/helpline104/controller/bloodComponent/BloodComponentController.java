@@ -27,20 +27,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.data.bloodComponent.M_Component;
 import com.iemr.helpline104.service.bloodComponent.BloodComponentService;
 import com.iemr.helpline104.service.bloodComponent.BloodComponentServiceImpl;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 
 @RequestMapping(value = "/beneficiary")
 @RestController
@@ -53,10 +48,10 @@ public class BloodComponentController {
 	private BloodComponentService bloodComponentService;
 
 	@CrossOrigin
-	@ApiOperation(value = "Save blood component details", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/save/bloodComponentDetails", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Save blood component details")
+	@PostMapping(value = "/save/bloodComponentDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String saveBloodComponentDetails(
-			@ApiParam(value = "{\"component\":\"String\",\"componentDesc\":\"String\",\"deleted\":\"boolean\",\"createdBy\":\"String\"}") @RequestBody String request) {
+			@Parameter(description  = "{\"component\":\"String\",\"componentDesc\":\"String\",\"deleted\":\"boolean\",\"createdBy\":\"String\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
 			M_Component m_component = inputMapper.gson().fromJson(request, M_Component.class);
@@ -73,10 +68,10 @@ public class BloodComponentController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Fetch blood component details", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/bloodComponentDetails", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Fetch blood component details")
+	@PostMapping(value = "/get/bloodComponentDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getBloodComponentDetails(
-			@ApiParam(value = "{\"componentID\":\"Integer\"}") @RequestBody String request) {
+			@Parameter(description  = "{\"componentID\":\"Integer\"}") @RequestBody String request) {
 
 		OutputResponse output = new OutputResponse();
 		try {

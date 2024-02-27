@@ -27,12 +27,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.data.bloodComponentType.M_BloodGroup;
 import com.iemr.helpline104.data.bloodComponentType.M_ComponentType;
 import com.iemr.helpline104.data.bloodRequest.BloodBank;
@@ -44,8 +39,8 @@ import com.iemr.helpline104.service.bloodRequest.BloodRequestServiceImpl;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 
 @RequestMapping(value = "/beneficiary")
 @RestController
@@ -61,8 +56,8 @@ public class BloodRequestController {
 	private BloodComponentTypeService componentTypeService;
 
 	@CrossOrigin
-	@ApiOperation(value = "Save blood request details", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/save/bloodRequestDetails", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Save blood request details")
+	@PostMapping(value = "/save/bloodRequestDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String saveBloodRequestDetails(@RequestBody String request) {
 
 		OutputResponse output = new OutputResponse();
@@ -83,10 +78,10 @@ public class BloodRequestController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Get blood request details", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/bloodRequestDetails", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Get blood request details")
+	@PostMapping(value = "/get/bloodRequestDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getbloodRequestDetails(
-			@ApiParam(value = "{\"beneficiaryRegID\":\" Optional long\",\"requestID\":\" Optional string\", \"benCallID\":\" Optional long\"}") @RequestBody String request) {
+			@Parameter(description = "{\"beneficiaryRegID\":\" Optional long\",\"requestID\":\" Optional string\", \"benCallID\":\" Optional long\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
 			T_BloodRequest t_bloodRequest = inputMapper.gson().fromJson(request, T_BloodRequest.class);
@@ -108,8 +103,8 @@ public class BloodRequestController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Get blood component types", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/bloodComponentTypes", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Get blood component types")
+	@PostMapping(value = "/get/bloodComponentTypes", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getBloodComponentTypes() {
 		logger.info("getBloodComponentTypes request ");
 		OutputResponse output = new OutputResponse();
@@ -126,8 +121,8 @@ public class BloodRequestController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Get blood groups", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/bloodGroups", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
+	@Operation(summary = "Get blood groups")
+	@PostMapping(value = "/get/bloodGroups", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getBloodGroups() {
 		logger.info("getBloodGroups request ");
 		OutputResponse output = new OutputResponse();
@@ -144,10 +139,10 @@ public class BloodRequestController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Get blood bank URL", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/bloodBankURL", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Get blood bank URL")
+	@PostMapping(value = "/get/bloodBankURL", headers = "Authorization")
 	public String getBloodBankURL(
-			@ApiParam(value = "{\"providerServiceMapID\":\"integer\"}") @RequestBody String request) {
+			@Parameter(description = "{\"providerServiceMapID\":\"integer\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
 
@@ -169,10 +164,10 @@ public class BloodRequestController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Save blood bank URL", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/save/bloodBankURL", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Save blood bank URL")
+	@PostMapping(value = "/save/bloodBankURL", headers = "Authorization")
 	public String saveBloodBankURL(
-			@ApiParam(value = "{\"institutionID\":\"integer - Optional. mandatory for update\",\"providerServiceMapID\":\"integer\", \"website\":\"string\", \"createdBy\":\"string\"}") @RequestBody String request) {
+			@Parameter(description = "{\"institutionID\":\"integer - Optional. mandatory for update\",\"providerServiceMapID\":\"integer\", \"website\":\"string\", \"createdBy\":\"string\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
 

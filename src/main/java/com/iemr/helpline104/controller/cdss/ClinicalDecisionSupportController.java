@@ -27,12 +27,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -42,7 +37,7 @@ import com.iemr.helpline104.data.cdss.SymptomsWrapper;
 import com.iemr.helpline104.service.cdss.CDSSService;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 
 @RequestMapping(value = "/CDSS")
 @RestController
@@ -52,8 +47,8 @@ public class ClinicalDecisionSupportController {
 	private Logger logger = LoggerFactory.getLogger(ClinicalDecisionSupportController.class);
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get symptoms", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/Symptoms", method = RequestMethod.POST, produces = "application/json", headers = "Authorization")
+	@Operation(summary = "Get symptoms")
+	@PostMapping(value = "/Symptoms", produces = "application/json", headers = "Authorization")
 	public String getSymptomsPost(@RequestBody SymptomsWrapper symptomsDetails) {
 		OutputResponse output = new OutputResponse();
 		try {
@@ -79,8 +74,8 @@ public class ClinicalDecisionSupportController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get questions by symptom, age and gender", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getQuestions", method = RequestMethod.POST, produces = "application/json", headers = "Authorization")
+	@Operation(summary = "Get questions by symptom, age and gender")
+	@PostMapping(value = "/getQuestions", produces = "application/json", headers = "Authorization")
 	public String getQuestion(@RequestBody SymptomsWrapper symptomsDetails) {
 		OutputResponse output = new OutputResponse();
 		try {
@@ -105,8 +100,8 @@ public class ClinicalDecisionSupportController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get result based on compliant id", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getResult", method = RequestMethod.POST, produces = "application/json", headers = "Authorization")
+	@Operation(summary = "Get result based on compliant id")
+	@PostMapping(value = "/getResult", produces = "application/json", headers = "Authorization")
 	public String getResult(@RequestBody String userAnswer) {
 		OutputResponse output = new OutputResponse();
 		try {
@@ -131,8 +126,8 @@ public class ClinicalDecisionSupportController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Save symptom", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/saveSymptom", method = RequestMethod.POST, produces = "application/json", headers = "Authorization")
+	@Operation(summary = "Save symptom")
+	@PostMapping(value = "/saveSymptom", produces = "application/json", headers = "Authorization")
 	public String saveSymptom(@RequestBody String inputData) {
 		OutputResponse output = new OutputResponse();
 		try {

@@ -23,21 +23,16 @@ package com.iemr.helpline104.controller.location;
 
 import java.util.List;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.data.location.DistrictBlock;
 import com.iemr.helpline104.data.location.Districts;
 import com.iemr.helpline104.data.location.States;
 import com.iemr.helpline104.service.location.LocationService;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 
 @RequestMapping(value = "/location")
 @RestController
@@ -45,18 +40,18 @@ public class LocationController {
 	private LocationService locationService;
 
 	@CrossOrigin
-	@ApiOperation(value = "Get states", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = {
-			"/states/{id}" }, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Get states")
+	@GetMapping(value = {
+			"/states/{id}" }, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getStates(@PathVariable("id") int id) {
 		List<States> stateList = this.locationService.getStates(id);
 		return stateList.toString();
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Get districts", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = {
-			"/districts/{id}" }, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Get districts")
+	@GetMapping(value = {
+			"/districts/{id}" }, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getDistricts(@PathVariable("id") int id) {
 		List<Districts> districtsList = this.locationService.getDistricts(id);
 		System.out.println(districtsList);
@@ -64,36 +59,36 @@ public class LocationController {
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Get state districts", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = {
-			"/statesDistricts/{id}" }, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Get state districts")
+	@GetMapping(value = {
+			"/statesDistricts/{id}" }, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String geStatetDistricts(@PathVariable("id") int id) {
 		List<Districts> districtsList = this.locationService.findStateDistrictBy(id);
 		return districtsList.toString();
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Get district blocks", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = {
-			"/taluks/{id}" }, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Get district blocks")
+	@GetMapping(value = {
+			"/taluks/{id}" }, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getDistrictBlocks(@PathVariable("id") int id) {
 		List<DistrictBlock> districtBlockList = this.locationService.getDistrictBlocks(id);
 		return districtBlockList.toString();
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Get city", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = {
-			"/city/{id}" }, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Get city")
+	@GetMapping(value = {
+			"/city/{id}" }, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getCity(@PathVariable("id") int id) {
 		List<DistrictBlock> districtBlockList = this.locationService.getDistrictBlocks(id);
 		return districtBlockList.toString();
 	}
 
 	@CrossOrigin
-	@ApiOperation(value = "Get villages", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = {
-			"/village/{id}" }, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@Operation(summary = "Get villages")
+	@GetMapping(value = {
+			"/village/{id}" }, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getVillages(@PathVariable("id") int id) {
 		List<DistrictBlock> districtBlockList = this.locationService.getDistrictBlocks(id);
 		return districtBlockList.toString();

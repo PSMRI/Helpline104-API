@@ -24,14 +24,14 @@ package com.iemr.helpline104.data.users;
 import java.sql.Timestamp;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 import com.google.gson.annotations.Expose;
 import com.iemr.helpline104.utils.mapper.OutputMapper;
@@ -60,7 +60,7 @@ public class M_Role {
 	@Expose
 	@Column(name = "WrapUpTime")
 	private Integer WrapUpTime;
-	@OneToMany(mappedBy = "m_Role", cascade = { javax.persistence.CascadeType.ALL })
+	@OneToMany(mappedBy = "m_Role", cascade = { jakarta.persistence.CascadeType.ALL })
 	private Set<M_UserServiceRoleMapping> m_UserServiceRoleMapping;
 
 	protected M_Role() {

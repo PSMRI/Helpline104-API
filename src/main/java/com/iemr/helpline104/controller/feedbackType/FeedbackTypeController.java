@@ -27,19 +27,14 @@ import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.iemr.helpline104.data.feedbackType.M_FeedbackType;
 import com.iemr.helpline104.service.feedbackType.FeedbackTypeService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 
 @RequestMapping(value = "/beneficiary")
 @RestController
@@ -52,10 +47,10 @@ public class FeedbackTypeController {
 	private FeedbackTypeService feedbackTypeService;
 
 	@CrossOrigin
-	@ApiOperation(value = "Provides nature of complaints", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/get/natureOfComplaintTypes", method = RequestMethod.POST, headers = "Authorization")
+	@Operation(summary = "Provides nature of complaints")
+	@PostMapping(value = "/get/natureOfComplaintTypes", headers = "Authorization")
 	public String getNatureOfComplaintTypes(
-			@ApiParam(value = "{\"providerServiceMapID\":\"integer\",\"feedbackTypeID\":\"short\"}") @RequestBody String request) {
+			@Parameter(description = "{\"providerServiceMapID\":\"integer\",\"feedbackTypeID\":\"short\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
 			M_FeedbackType m_feedbackType = inputMapper.gson().fromJson(request, M_FeedbackType.class);

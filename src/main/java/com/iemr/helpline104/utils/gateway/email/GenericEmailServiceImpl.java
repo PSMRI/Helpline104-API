@@ -43,9 +43,6 @@ public class GenericEmailServiceImpl implements EmailService {
 		String subject = requestObj.getString("subject");
 		String message = requestObj.getString("message");
 
-		// TODO
-		// JSONObject templateObj = new JSONObject(template);
-
 		mailMessage.setTo(to);
 		mailMessage.setFrom(from);
 		mailMessage.setSubject(subject);
@@ -76,27 +73,5 @@ public class GenericEmailServiceImpl implements EmailService {
 
 	}
 
-	// public static void main(String[] args)
-	// {
-	// GenericEmailServiceImpl impl = new GenericEmailServiceImpl();
-	// JSONObject test = new JSONObject();
-	// test.put("to", "vinay.chidambara@wipro.com, vinay.sompur@gmail.com");
-	// test.put("from", "vinay.sompur@gmail.com");
-	// test.put("subject", "Test email event");
-	// test.put("message", "Testing email for demo");
-	// impl.sendEmail(test.toString());
-	// }
-
-	// public static void main(String[] args) throws Exception
-	// {
-	// GenericEmailServiceImpl impl = new GenericEmailServiceImpl();
-	// JSONObject test = new JSONObject();
-	// test.put("to", "vinay.chidambara@wipro.com, vinay.sompur@gmail.com");
-	// test.put("from", "vinay.sompur@gmail.com");
-	// test.put("subject", "Test email event");
-	// test.put("message", "Testing email for demo");
-	// SpringApplication.run(GenericEmailServiceImpl.class, args);
-	// impl.sendEmail(test.toString());
-	// }
-
+	
 }

@@ -22,6 +22,7 @@
 package com.iemr.helpline104.repository.hihl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -38,5 +39,5 @@ public interface T_hihlcocasesheetRepo extends CrudRepository<T_hihlcocasesheet,
 	@Query(value = "SELECT * from T_hihlcocasesheet WHERE BeneficiaryRegID = :benRegId ORDER BY ID DESC LIMIT 5", nativeQuery = true)
 	List<T_hihlcocasesheet> getHihlCasesheets(@Param("benRegId") Long benRegId);
 
-	T_hihlcocasesheet findById(Long id);
+	Optional<T_hihlcocasesheet> findById(Long id);
 }

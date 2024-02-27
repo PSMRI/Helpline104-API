@@ -21,23 +21,22 @@
 */
 package com.iemr.helpline104.utils.http;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.core.MediaType;
 
+import jakarta.ws.rs.core.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
 import com.iemr.helpline104.utils.response.OutputResponse;
 import com.iemr.helpline104.utils.sessionobject.SessionObject;
 import com.iemr.helpline104.utils.validator.Validator;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Component
-public class HTTPRequestInterceptor extends HandlerInterceptorAdapter {
+public class HTTPRequestInterceptor implements HandlerInterceptor {
 	private Validator validator;
 
 	Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
@@ -54,7 +53,6 @@ public class HTTPRequestInterceptor extends HandlerInterceptorAdapter {
 		this.sessionObject = sessionObject;
 	}
 
-	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception {
 		boolean status = true;
 		logger.debug("In preHandle we are Intercepting the Request");
@@ -117,7 +115,7 @@ public class HTTPRequestInterceptor extends HandlerInterceptorAdapter {
 		}
 	}
 
-	@Override
+	
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object object, Exception arg3)
 			throws Exception {
 		logger.debug("In afterCompletion Request Completed");

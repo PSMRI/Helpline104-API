@@ -24,17 +24,20 @@ package com.iemr.helpline104.repository.diseaseScreening;
 import java.util.List;
 import java.util.Objects;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.iemr.helpline104.data.diseaseScreening.M_Questionnaire;
-
+@Service
 @Repository
 @RestResource(exported = false)
 public interface QuestionnaireRepository extends CrudRepository<M_Questionnaire, Integer> {
+	@Autowired(required=true)
 
 	@Query("select q from M_Questionnaire q " + 
 	"LEFT JOIN q.m_104QuestionScore s where q.questionTypeID = :questionTypeID group by q.questionID order by q.questionRank, s.iD")

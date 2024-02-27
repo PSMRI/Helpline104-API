@@ -37,9 +37,6 @@ import com.iemr.helpline104.repository.users.IEMRUserRepositoryCustom;
 import com.iemr.helpline104.repository.users.IEMRUserSecurityQuesAnsRepository;
 import com.iemr.helpline104.repository.users.RoleRepo;
 
-/**
- * 
- */
 @Service
 public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 
@@ -85,7 +82,7 @@ public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 	@Override
 	public int saveUserSecurityQuesAns(Iterable<M_UserSecurityQMapping> m_UserSecurityQMapping) {
 		int x = 0;
-		Iterable<M_UserSecurityQMapping> obj = iEMRUserSecurityQuesAnsRepository.save(m_UserSecurityQMapping);
+		Iterable<M_UserSecurityQMapping> obj = iEMRUserSecurityQuesAnsRepository.saveAll(m_UserSecurityQMapping);
 		for (M_UserSecurityQMapping usq : obj) {
 			x = iEMRUserRepositoryCustom.updateSetUserStatusActive(usq.getUserID());
 		}
@@ -93,12 +90,6 @@ public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.iemr.helpline104.service.users.IEMRAdminUserService#
-	 * getAllLoginSecurityQuestions()
-	 */
 	@Override
 	public ArrayList<M_LoginSecurityQuestions> getAllLoginSecurityQuestions() {
 
@@ -112,12 +103,11 @@ public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 		return result;
 	}
 
-	/**
+	/*
 	 * IemrUserLoginSecurityRepository repository
 	 */
 	private IEMRUserLoginSecurityRepository iEMRUserLoginSecurityRepository;
 
-	@Autowired
 	private RoleRepo roleRepo;
 
 	@Autowired
@@ -126,9 +116,10 @@ public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 		this.iEMRUserLoginSecurityRepository = iEMRUserLoginSecurityRepository;
 	}
 
+	
 	public M_Role getrolewrapuptime(int roleID) {
-		// TODO Auto-generated method stub
-		return roleRepo.findOne(roleID);
+	    return roleRepo.findById(roleID).orElse(null);
 	}
+
 
 }
