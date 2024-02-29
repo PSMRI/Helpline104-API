@@ -21,27 +21,28 @@
 */
 package com.iemr.helpline104.service.callqamapping;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doReturn;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.assertj.core.util.Lists;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.iemr.helpline104.data.callqamapping.CallqaMappings;
 import com.iemr.helpline104.data.callqamapping.M_104callqamapping;
-import com.iemr.helpline104.data.userbeneficiarydata.M_Religion;
 import com.iemr.helpline104.repository.callqamapping.CallqamappingRepository;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class CallqamappingServiceImplTest {
 
 	@InjectMocks

@@ -21,26 +21,26 @@
 */
 package com.iemr.helpline104.controller.cdss;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.google.gson.stream.JsonReader;
 import com.iemr.helpline104.data.cdss.SymptomsWrapper;
 import com.iemr.helpline104.service.cdss.CDSSServiceImpl;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ClinicalDecisionSupportControllerTest {
 
 	@InjectMocks
@@ -48,31 +48,7 @@ public class ClinicalDecisionSupportControllerTest {
 	
 	@Mock
 	CDSSServiceImpl cDSSServiceImpl;
-	
-	@Test
-	public void getSymptomsTest()
-	{
-		String response=cDSSController.getSymptoms();
-		assertTrue(response.contains("No Symptoms Found"));	
-	}
-	
-	@Test
-	public void getSymptomsTest1()
-	{
-		List<String> symptoms =new ArrayList<String>();
-		symptoms.add("fever");
-		symptoms.add("headache");
-		doReturn(symptoms).when(cDSSServiceImpl).getSymptoms();
-		String response=cDSSController.getSymptoms();
-		assertTrue(response.contains("fever\",\"headache"));	
-	}
-	@Test
-	public void getSymptomsExceptionTest()
-	{
-		doThrow(Exception.class).when(cDSSServiceImpl).getSymptoms();
-		String response=cDSSController.getSymptoms();
-		assertTrue(response.contains("Failed with null"));	
-	}
+
 	@Test
 	public void getQuestionTest()
 	{

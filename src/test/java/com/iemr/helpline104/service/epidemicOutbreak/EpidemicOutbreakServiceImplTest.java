@@ -21,7 +21,8 @@
 */
 package com.iemr.helpline104.service.epidemicOutbreak;
 
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doReturn;
 
 import java.sql.Timestamp;
@@ -31,15 +32,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 import org.assertj.core.util.Lists;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.iemr.helpline104.data.epidemicOutbreak.T_EpidemicOutbreak;
 import com.iemr.helpline104.data.feedbackType.M_FeedbackType;
@@ -51,7 +50,9 @@ import com.iemr.helpline104.repository.location.LocationDistrictBlockRepository;
 import com.iemr.helpline104.repository.location.LocationDistrictRepository;
 import com.iemr.helpline104.utils.http.HttpUtils;
 
-@RunWith(MockitoJUnitRunner.class)
+import jakarta.servlet.http.HttpServletRequest;
+
+@ExtendWith(MockitoExtension.class)
 public class EpidemicOutbreakServiceImplTest {
 
 	@InjectMocks
@@ -86,7 +87,7 @@ public class EpidemicOutbreakServiceImplTest {
 		DistrictBlock districtBlock = new DistrictBlock();
 		districtBlock.setBlockID(103);
 		doReturn(districtBlock).when(locationDistrictBlockRepository)
-				.findOne(t_epidemicOutbreak.getAffectedDistrictBlockID());
+				.findById(t_epidemicOutbreak.getAffectedDistrictBlockID());
 
 		M_FeedbackType feedbackType = new M_FeedbackType();
 		feedbackType.setFeedbackTypeName("feedbacktype");

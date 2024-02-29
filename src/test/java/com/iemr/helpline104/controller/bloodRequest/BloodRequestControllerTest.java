@@ -21,19 +21,19 @@
 */
 package com.iemr.helpline104.controller.bloodRequest;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
 
 import java.util.List;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.google.common.collect.Lists;
 import com.iemr.helpline104.data.bloodComponentType.M_BloodGroup;
@@ -43,8 +43,7 @@ import com.iemr.helpline104.data.bloodRequest.T_BloodRequest;
 import com.iemr.helpline104.service.bloodComponentType.BloodComponentTypeServiceImpl;
 import com.iemr.helpline104.service.bloodRequest.BloodRequestServiceImpl;
 
-@RunWith(MockitoJUnitRunner.class)
-
+@ExtendWith(MockitoExtension.class)
 public class BloodRequestControllerTest {
 
 	
@@ -229,7 +228,7 @@ public class BloodRequestControllerTest {
 		bloodBank.setInstitutionName("104BloodBank");
 		
 		try {
-			doReturn(bloodBank).when(bloodRequestServiceImpl).saveBloodBankURL(Mockito.anyObject());
+			doReturn(bloodBank).when(bloodRequestServiceImpl).saveBloodBankURL(Mockito.any());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -243,7 +242,7 @@ public class BloodRequestControllerTest {
 	{
 		BloodBank bloodBank=new BloodBank();
 		try {
-			doThrow(Exception.class).when(bloodRequestServiceImpl).saveBloodBankURL(Mockito.anyObject());
+			doThrow(Exception.class).when(bloodRequestServiceImpl).saveBloodBankURL(Mockito.any());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

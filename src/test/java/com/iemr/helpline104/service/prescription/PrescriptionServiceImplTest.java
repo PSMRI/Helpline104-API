@@ -21,8 +21,10 @@
 */
 package com.iemr.helpline104.service.prescription;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doReturn;
 
 import java.sql.Date;
@@ -32,19 +34,19 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.assertj.core.util.Lists;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.iemr.helpline104.data.prescription.PrescribedDrug;
 import com.iemr.helpline104.data.prescription.Prescription;
 import com.iemr.helpline104.repository.prescription.PrescribedDrugRepository;
 import com.iemr.helpline104.repository.prescription.PrescriptionRepository;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class PrescriptionServiceImplTest {
 	
 	@InjectMocks
@@ -96,8 +98,8 @@ public class PrescriptionServiceImplTest {
 		
 		list.add(array);
 		try {
-			doReturn(list).when(prescriptionRepository).getPrescriptionList(Mockito.anyObject(),Mockito.anyObject());
-			List<Prescription> t_Prescriptions= prescriptionServiceImpl.getPrescriptionList(Mockito.anyObject(),Mockito.anyObject());
+			doReturn(list).when(prescriptionRepository).getPrescriptionList(Mockito.any(),Mockito.any());
+			List<Prescription> t_Prescriptions= prescriptionServiceImpl.getPrescriptionList(Mockito.any(),Mockito.any());
 			Prescription t_Prescription=t_Prescriptions.get(0);
 			assertTrue(t_Prescription.getPrescriptionID()==101L);
 		} catch (Exception e) {
@@ -139,11 +141,11 @@ public class PrescriptionServiceImplTest {
 		
 		list1.add(array1);
 		try {
-			doReturn(list).when(prescriptionRepository).getPrescriptionList(Mockito.anyObject(),Mockito.anyObject());
+			doReturn(list).when(prescriptionRepository).getPrescriptionList(Mockito.any(),Mockito.any());
 			doReturn(list1).when(prescribedDrugRepository).getPrescribedDrugs(Mockito.anyLong());
 			
 			
-			List<Prescription> t_Prescriptions= prescriptionServiceImpl.getPrescriptionList(Mockito.anyObject(),Mockito.anyObject());
+			List<Prescription> t_Prescriptions= prescriptionServiceImpl.getPrescriptionList(Mockito.any(),Mockito.any());
 			Prescription t_Prescription=t_Prescriptions.get(0);
 			assertTrue(t_Prescription.getPrescriptionID()==101L);
 			assertTrue(t_Prescription.getPrescribedDrugs().get(0).getNoOfDays()==101);
@@ -187,11 +189,11 @@ public class PrescriptionServiceImplTest {
 		
 		list1.add(array1);
 		try {
-			doReturn(list).when(prescriptionRepository).getLatestValidPescription(Mockito.anyObject(),Mockito.anyObject());
+			doReturn(list).when(prescriptionRepository).getLatestValidPescription(Mockito.any(),Mockito.any());
 			
 			doReturn(list1).when(prescribedDrugRepository).getPrescribedDrugs(Mockito.anyLong());
 			
-			List<Prescription> t_Prescriptions= prescriptionServiceImpl.getLatestValidPescription(Mockito.anyObject(),Mockito.anyObject());
+			List<Prescription> t_Prescriptions= prescriptionServiceImpl.getLatestValidPescription(Mockito.any(),Mockito.any());
 			Prescription t_Prescription=t_Prescriptions.get(0);
 			assertTrue(t_Prescription.getPrescriptionID()==101L);
 			assertTrue(t_Prescription.getPrescribedDrugs().get(0).getNoOfDays()==101);
@@ -217,8 +219,8 @@ public class PrescriptionServiceImplTest {
 		
 		list.add(array);
 		try {
-			doReturn(list).when(prescriptionRepository).getLatestValidPescription(Mockito.anyObject(),Mockito.anyObject());
-			List<Prescription> t_Prescriptions= prescriptionServiceImpl.getLatestValidPescription(Mockito.anyObject(),Mockito.anyObject());
+			doReturn(list).when(prescriptionRepository).getLatestValidPescription(Mockito.any(),Mockito.any());
+			List<Prescription> t_Prescriptions= prescriptionServiceImpl.getLatestValidPescription(Mockito.any(),Mockito.any());
 			assertTrue(t_Prescriptions.isEmpty());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -21,26 +21,26 @@
 */
 package com.iemr.helpline104.controller.callqamapping;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
 
 import java.util.List;
 
 import org.assertj.core.util.Lists;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.iemr.helpline104.data.callqamapping.CallqaMappings;
 import com.iemr.helpline104.data.callqamapping.M_104callqamapping;
 import com.iemr.helpline104.service.callqamapping.CallqamappingServiceImpl;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class CallQAMappingControllerTest {
 
 	
@@ -64,7 +64,7 @@ public class CallQAMappingControllerTest {
 		callqaMappings.setM_104callqamapping(mapList);
 		
 		try {
-			doReturn(mapList).when(callqamappingServiceImpl).save(Mockito.anyObject());
+			doReturn(mapList).when(callqamappingServiceImpl).save(Mockito.any());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -80,7 +80,7 @@ public class CallQAMappingControllerTest {
 		CallqaMappings  callqaMappings=new CallqaMappings();
 		
 		try {
-			doThrow(Exception.class).when(callqamappingServiceImpl).save(Mockito.anyObject());
+			doThrow(Exception.class).when(callqamappingServiceImpl).save(Mockito.any());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -98,7 +98,7 @@ public class CallQAMappingControllerTest {
 		list.add(m_104callqamapping);
 		
 		try {
-			doReturn(list).when(callqamappingServiceImpl).getCDIQuestionScores(Mockito.anyObject());
+			doReturn(list).when(callqamappingServiceImpl).getCDIQuestionScores(Mockito.any());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -113,7 +113,7 @@ public class CallQAMappingControllerTest {
 		M_104callqamapping m_104callqamapping=new M_104callqamapping();
 		m_104callqamapping.setBeneficiaryRegID(new Long("101"));
 		try {
-			doThrow(Exception.class).when(callqamappingServiceImpl).getCDIQuestionScores(Mockito.anyObject());
+			doThrow(Exception.class).when(callqamappingServiceImpl).getCDIQuestionScores(Mockito.any());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

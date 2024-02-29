@@ -21,25 +21,27 @@
 */
 package com.iemr.helpline104.controller.prescription;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
 
 import java.util.List;
 
 import org.assertj.core.util.Lists;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.iemr.helpline104.data.prescription.Prescription;
 import com.iemr.helpline104.service.prescription.PrescriptionServiceImpl;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class PrescriptionControllerTest {
 
 	@InjectMocks
@@ -53,7 +55,7 @@ public class PrescriptionControllerTest {
 	{
 		Prescription t_Prescription=new Prescription();
 		t_Prescription.setPrescriptionID(new Long("101"));
-		doReturn(t_Prescription).when(prescriptionServiceImpl).savePrescription(Mockito.anyObject());
+		doReturn(t_Prescription).when(prescriptionServiceImpl).savePrescription(Mockito.any());
 		String response=prescriptionController.savePrescription(t_Prescription.toString());
 		assertTrue(response.contains("\"prescriptionID\":101"));
 		
@@ -63,7 +65,7 @@ public class PrescriptionControllerTest {
 	{
 		Prescription t_Prescription=new Prescription();
 		t_Prescription.setPrescriptionID(new Long("101"));
-		doThrow(Exception.class).when(prescriptionServiceImpl).savePrescription(Mockito.anyObject());
+		doThrow(Exception.class).when(prescriptionServiceImpl).savePrescription(Mockito.any());
 		String response=prescriptionController.savePrescription(t_Prescription.toString());
 		assertFalse(response.contains("\"prescriptionID\":101"));
 		assertTrue(response.contains("Failed with null"));
@@ -110,7 +112,7 @@ public class PrescriptionControllerTest {
 		t_Prescription.setPrescriptionID(new Long("101"));
 		List<Prescription> list=Lists.newArrayList();
 		list.add(t_Prescription);
-		doReturn(list).when(prescriptionServiceImpl).getPrescriptionList(Mockito.anyLong(),Mockito.anyObject());
+		doReturn(list).when(prescriptionServiceImpl).getPrescriptionList(Mockito.anyLong(),Mockito.any());
 		String response=prescriptionController.getPrescriptionList(t_Prescription.toString());
 		assertTrue(response.contains("\"prescriptionID\":101"));
 	}
@@ -119,7 +121,7 @@ public class PrescriptionControllerTest {
 	{
 		Prescription t_Prescription=new Prescription();
 		t_Prescription.setPrescriptionID(new Long("101"));
-		doReturn(null).when(prescriptionServiceImpl).getPrescriptionList(Mockito.anyLong(),Mockito.anyObject());
+		doReturn(null).when(prescriptionServiceImpl).getPrescriptionList(Mockito.anyLong(),Mockito.any());
 		String response=prescriptionController.getPrescriptionList(t_Prescription.toString());
 		assertFalse(response.contains("\"prescriptionID\":101"));
 		assertTrue(response.contains("prescription not available with that prescription or beneficiary ID"));
@@ -129,7 +131,7 @@ public class PrescriptionControllerTest {
 	{
 		Prescription t_Prescription=new Prescription();
 		t_Prescription.setPrescriptionID(new Long("101"));
-		doThrow(Exception.class).when(prescriptionServiceImpl).getPrescriptionList(Mockito.anyLong(),Mockito.anyObject());
+		doThrow(Exception.class).when(prescriptionServiceImpl).getPrescriptionList(Mockito.anyLong(),Mockito.any());
 		String response=prescriptionController.getPrescriptionList(t_Prescription.toString());
 		assertFalse(response.contains("\"prescriptionID\":101"));
 		assertTrue(response.contains("Failed with null"));
@@ -142,7 +144,7 @@ public class PrescriptionControllerTest {
 		t_Prescription.setPrescriptionID(new Long("101"));
 		List<Prescription> list=Lists.newArrayList();
 		list.add(t_Prescription);
-		doReturn(list).when(prescriptionServiceImpl).getLatestValidPescription(Mockito.anyLong(),Mockito.anyObject());
+		doReturn(list).when(prescriptionServiceImpl).getLatestValidPescription(Mockito.anyLong(),Mockito.any());
 		String response=prescriptionController.getLatestValidPescription(t_Prescription.toString());
 		assertTrue(response.contains("\"prescriptionID\":101"));
 	}
@@ -152,7 +154,7 @@ public class PrescriptionControllerTest {
 	{
 		Prescription t_Prescription=new Prescription();
 		t_Prescription.setPrescriptionID(new Long("101"));
-		doReturn(null).when(prescriptionServiceImpl).getLatestValidPescription(Mockito.anyLong(),Mockito.anyObject());
+		doReturn(null).when(prescriptionServiceImpl).getLatestValidPescription(Mockito.anyLong(),Mockito.any());
 		String response=prescriptionController.getLatestValidPescription(t_Prescription.toString());
 		assertFalse(response.contains("\"prescriptionID\":101"));
 		assertTrue(response.contains("prescription not available with the beneficiaryID"));
@@ -163,7 +165,7 @@ public class PrescriptionControllerTest {
 	{
 		Prescription t_Prescription=new Prescription();
 		t_Prescription.setPrescriptionID(new Long("101"));
-		doThrow(Exception.class).when(prescriptionServiceImpl).getLatestValidPescription(Mockito.anyLong(),Mockito.anyObject());
+		doThrow(Exception.class).when(prescriptionServiceImpl).getLatestValidPescription(Mockito.anyLong(),Mockito.any());
 		String response=prescriptionController.getLatestValidPescription(t_Prescription.toString());
 		assertFalse(response.contains("\"prescriptionID\":101"));
 		assertTrue(response.contains("Failed with null"));

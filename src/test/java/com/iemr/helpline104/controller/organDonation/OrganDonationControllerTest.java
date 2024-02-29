@@ -21,20 +21,23 @@
 */
 package com.iemr.helpline104.controller.organDonation;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+
 
 import com.google.common.collect.Lists;
 import com.iemr.helpline104.data.organDonation.M_DonatableOrgan;
@@ -43,7 +46,7 @@ import com.iemr.helpline104.data.organDonation.OrganDonations;
 import com.iemr.helpline104.data.organDonation.T_OrganDonation;
 import com.iemr.helpline104.service.organDonation.OrganDonationServiceImpl;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class OrganDonationControllerTest {
 
 	@InjectMocks

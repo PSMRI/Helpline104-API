@@ -21,8 +21,10 @@
 */
 package com.iemr.helpline104.controller.users;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doReturn;
 
 import java.util.ArrayList;
@@ -31,12 +33,12 @@ import java.util.List;
 import java.util.Set;
 
 import org.assertj.core.util.Lists;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.iemr.helpline104.data.userbeneficiarydata.M_Status;
 import com.iemr.helpline104.data.users.M_LoginSecurityQuestions;
@@ -47,7 +49,7 @@ import com.iemr.helpline104.data.users.M_UserSecurityQMapping;
 import com.iemr.helpline104.data.users.M_UserServiceRoleMapping;
 import com.iemr.helpline104.service.users.IEMRAdminUserServiceImpl;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class IEMRAdminControllerTest {
 
 	@InjectMocks
@@ -215,7 +217,7 @@ public class IEMRAdminControllerTest {
 	public void saveUserSecurityQuesAnsTest()
 	{
 		Iterable<M_UserSecurityQMapping> m_UserSecurityQMapping = null;
-		doReturn(1).when(iemrAdminUserServiceImpl).saveUserSecurityQuesAns(Mockito.anyObject());
+		doReturn(1).when(iemrAdminUserServiceImpl).saveUserSecurityQuesAns(Mockito.any());
 		String response=iEMRAdminController.saveUserSecurityQuesAns(m_UserSecurityQMapping);
 		 assertTrue(response.contains("Changed"));
 	}

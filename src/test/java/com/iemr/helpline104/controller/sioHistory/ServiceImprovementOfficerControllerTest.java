@@ -21,8 +21,10 @@
 */
 package com.iemr.helpline104.controller.sioHistory;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
 
@@ -30,11 +32,11 @@ import java.util.List;
 
 import org.assertj.core.util.Lists;
 import org.json.JSONException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.iemr.helpline104.data.bloodComponentType.M_ComponentType;
 import com.iemr.helpline104.service.bloodComponentType.BloodComponentTypeServiceImpl;
@@ -44,7 +46,7 @@ import com.iemr.helpline104.service.epidemicOutbreak.EpidemicOutbreakServiceImpl
 import com.iemr.helpline104.service.foodSafetyCopmlaint.FoodSafetyCopmlaintServiceImpl;
 import com.iemr.helpline104.service.organDonation.OrganDonationServiceImpl;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ServiceImprovementOfficerControllerTest {
 
 	@InjectMocks

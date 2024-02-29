@@ -21,7 +21,8 @@
 */
 package com.iemr.helpline104.service.drugGroup;
 
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doReturn;
 
 import java.util.ArrayList;
@@ -29,12 +30,12 @@ import java.util.List;
 import java.util.Objects;
 
 import org.assertj.core.util.Lists;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.iemr.helpline104.data.drugGroup.M_DrugGroup;
 import com.iemr.helpline104.data.drugMapping.M_104drugmapping;
@@ -42,7 +43,7 @@ import com.iemr.helpline104.repository.drugGroup.DrugFrequencyRepository;
 import com.iemr.helpline104.repository.drugGroup.DrugGroupRepository; 
 
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class DrugGroupServiceImplTest {
 
 	@InjectMocks

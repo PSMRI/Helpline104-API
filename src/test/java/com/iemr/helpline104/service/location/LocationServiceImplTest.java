@@ -21,20 +21,22 @@
 */
 package com.iemr.helpline104.service.location;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doReturn;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.assertj.core.util.Lists;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.iemr.helpline104.data.location.CityDetails;
 import com.iemr.helpline104.data.location.DistrictBlock;
@@ -45,7 +47,7 @@ import com.iemr.helpline104.repository.location.LocationDistrictBlockRepository;
 import com.iemr.helpline104.repository.location.LocationDistrictRepository;
 import com.iemr.helpline104.repository.location.LocationStateRepository;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class LocationServiceImplTest {
 	
 	@InjectMocks

@@ -21,20 +21,22 @@
 */
 package com.iemr.helpline104.service.users;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doReturn;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.assertj.core.util.Lists;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.iemr.helpline104.data.users.M_LoginSecurityQuestions;
 import com.iemr.helpline104.data.users.M_UserSecurityQMapping;
@@ -42,7 +44,7 @@ import com.iemr.helpline104.repository.users.IEMRUserLoginSecurityRepository;
 import com.iemr.helpline104.repository.users.IEMRUserRepositoryCustom;
 import com.iemr.helpline104.repository.users.IEMRUserSecurityQuesAnsRepository;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class IEMRAdminUserServiceImplTest {
 	
 	@InjectMocks
@@ -64,7 +66,7 @@ public class IEMRAdminUserServiceImplTest {
 		M_UserSecurityQMapping userSecurityQMapping=Mockito.mock(M_UserSecurityQMapping.class,Mockito.CALLS_REAL_METHODS);
 		userSecurityQMapping.setUserID(101L);
 		list.add(userSecurityQMapping);
-		doReturn(list).when(iEMRUserSecurityQuesAnsRepository).save(Mockito.anyList());
+		doReturn(list).when(iEMRUserSecurityQuesAnsRepository).saveAll(Mockito.anyList());
 		doReturn(102).when(iEMRUserRepositoryCustom).updateSetUserStatusActive(Mockito.anyLong());
 		int x=iEMRAdminUserServiceImpl.saveUserSecurityQuesAns(list);
 		assertTrue(x==102);
@@ -74,7 +76,7 @@ public class IEMRAdminUserServiceImplTest {
 	public void saveUserSecurityQuesAnsTest1()
 	{
 		List<M_UserSecurityQMapping> list=Lists.newArrayList();
-		doReturn(list).when(iEMRUserSecurityQuesAnsRepository).save(Mockito.anyList());
+		doReturn(list).when(iEMRUserSecurityQuesAnsRepository).saveAll(Mockito.anyList());
 		int x=iEMRAdminUserServiceImpl.saveUserSecurityQuesAns(list);
 		assertFalse(x==102);
 		
