@@ -38,6 +38,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.iemr.helpline104.utils.config.ConfigProperties;
+
 import jakarta.persistence.EntityManagerFactory;
 
 @Configuration
@@ -65,6 +67,8 @@ public class PrimaryDBConfig {
 		p.setValidationQuery("SELECT 1");
 		org.apache.tomcat.jdbc.pool.DataSource datasource = new org.apache.tomcat.jdbc.pool.DataSource();
 		datasource.setPoolProperties(p);
+		datasource.setUsername(ConfigProperties.getPropertyByName("spring.datasource.username"));
+		datasource.setPassword(ConfigProperties.getPropertyByName("spring.datasource.password"));
 
 		return datasource;
 
@@ -81,6 +85,6 @@ public class PrimaryDBConfig {
 	@Bean(name = "transactionManager")
 	public PlatformTransactionManager transactionManager(
 			@Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory) {
-		return new JpaTransactionManager();
+		return new JpaTransactionManager((jakarta.persistence.EntityManagerFactory) entityManagerFactory);
 	}
 }
