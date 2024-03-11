@@ -39,9 +39,13 @@ import com.iemr.helpline104.utils.config.ConfigProperties;
 import jakarta.ws.rs.core.MediaType;
 
 @SpringBootApplication
-@ComponentScan
-@EnableTransactionManagement(proxyTargetClass = true)
-@EnableCaching(proxyTargetClass = true)
+/*
+ * @ComponentScan
+ * 
+ * @EnableTransactionManagement(proxyTargetClass = true)
+ * 
+ * @EnableCaching(proxyTargetClass = true)
+ */
 public class App extends SpringBootServletInitializer {
 
 	@Bean

@@ -29,16 +29,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 import com.iemr.helpline104.utils.http.HTTPRequestInterceptor;
 
 @Configuration
-public class InterceptorConfig extends WebMvcConfigurationSupport
-{
+public class InterceptorConfig extends WebMvcConfigurationSupport {
 
 	@Autowired
 	HTTPRequestInterceptor requestInterceptor;
-	
-	public void addInterceptors(InterceptorRegistry registry)
-	{
-		registry.addInterceptor(new BlockingHttpMethodInterceptor())
-        .addPathPatterns("/**"); 
-		
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(requestInterceptor);
 	}
+
 }

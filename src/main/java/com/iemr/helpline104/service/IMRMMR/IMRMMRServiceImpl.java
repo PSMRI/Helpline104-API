@@ -65,7 +65,6 @@ import com.iemr.helpline104.sms.SmsRequestOBJ;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 
 @Service
-@PropertySource("classpath:application.properties")
 public class IMRMMRServiceImpl implements IMRMMRService {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
