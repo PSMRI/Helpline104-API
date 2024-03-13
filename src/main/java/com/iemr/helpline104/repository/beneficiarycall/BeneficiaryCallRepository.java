@@ -40,14 +40,14 @@ public interface BeneficiaryCallRepository extends CrudRepository<BeneficiaryCal
 	@Query("select " + "b.benCallID, b.benCallServicesMappingHistories, b.calledServiceID, b.is1097, "
 			+ "b.callTime, b.remarks, b.callClosureType, b.dispositionStatusID from BeneficiaryCall b "
 			+ "where b.benCallID = :id")
-	public ArrayList<Objects[]> findCallsByBenefeciaryID(@Param("id") long id, Pageable page); */
+	public ArrayList<Object[]> findCallsByBenefeciaryID(@Param("id") long id, Pageable page); */
 
 	
 	/*@Query("select b.benCallID, b.callTime, b.remarks,  "
 			+ "b.createdDate from BeneficiaryCall b "
 			+ "left join b.benCallServicesMappingHistories m "
 			+ "where b.beneficiaryRegID = :id group by b.benCallID")
-	public ArrayList<Objects[]> findCallsHistoryByBenefeciaryID(@Param("id") Long id, Pageable page); */
+	public ArrayList<Object[]> findCallsHistoryByBenefeciaryID(@Param("id") Long id, Pageable page); */
 /*
 	SELECT b.beneficiaryID, b.firstName, b.middleName, b.lastName, b.genderID, g.genderName, b.dOB,  c.cityID, c.cityName"
 			+ " FROM I_Beneficiary b"
@@ -75,13 +75,13 @@ public interface BeneficiaryCallRepository extends CrudRepository<BeneficiaryCal
 			+ " LEFT JOIN m.i_benRelationshipType r "
 			+ " INNER JOIN b.m_gender g "
 			+ " WHERE bc.callID=:benCallID group by i.beneficiaryRegID,m.benRelationshipID")
-	public ArrayList<Objects[]> findBeneficiaryByCallID(@Param("benCallID") String benCallID, Pageable page);  */
+	public ArrayList<Object[]> findBeneficiaryByCallID(@Param("benCallID") String benCallID, Pageable page);  */
     /*
 	@Query("select b.benCallID, b.callTime, b.remarks, "
 			+ "b.createdDate from BeneficiaryCall b "
 			+ "left join b.benCallServicesMappingHistories m "
 			+ "where b.benCallID = :id group by b.benCallID")
-	public ArrayList<Objects[]> findCallSummaryByCallID(@Param("id") Long id); */
+	public ArrayList<Object[]> findCallSummaryByCallID(@Param("id") Long id); */
 
     /*
 	@Transactional

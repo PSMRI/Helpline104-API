@@ -46,7 +46,7 @@ public class NKSHPschemeServiceImplTest {
 	{
 		/*
 		try {
-			List<Objects[]> list=nKSHPschemeServiceImpl.saveSchemeSearchHistory(Mockito.anyInt());
+			List<Object[]> list=nKSHPschemeServiceImpl.saveSchemeSearchHistory(Mockito.anyInt());
 			assertFalse(!list.isEmpty());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

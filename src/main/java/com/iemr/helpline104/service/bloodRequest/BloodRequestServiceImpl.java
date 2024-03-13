@@ -66,7 +66,7 @@ public class BloodRequestServiceImpl implements BloodRequestService
 
 		logger.info("benificiaryRegID: " + benificiaryRegID + " ,bloodReqID: " + bloodReqID);
 
-		List<Objects[]> bloodRequest = null;
+		List<Object[]> bloodRequest = null;
 
 		if (benificiaryRegID != null)
 			bloodRequest = bloodRequestRepository.getBloodRequestsByBeneficiaryRegID(benificiaryRegID);

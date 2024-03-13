@@ -40,11 +40,11 @@ public interface H104BenHistoryRepository extends CrudRepository<H104BenMedHisto
 	
 	/*
 	@Query("select u from H104BenMedHistory u where u.beneficiaryRegID = :BeneficiaryRegID")
-	public ArrayList<Objects[]> getBenHistory(@Param("BeneficiaryRegID") Long BeneficiaryRegID); */
+	public ArrayList<Object[]> getBenHistory(@Param("BeneficiaryRegID") Long BeneficiaryRegID); */
 	
 	/*
 	@Query("select u from H104BenMedHistory LEFT JOIN u.m_gender g where u.benCallID = :benCallID")
-	public ArrayList<Objects[]> getHistoryByBenCallID(@Param("benCallID") Long benCallID); */
+	public ArrayList<Object[]> getHistoryByBenCallID(@Param("benCallID") Long benCallID); */
 	
 	@Query("select u from H104BenMedHistory u where u.beneficiaryRegID = :BeneficiaryRegID order by u.benHistoryID desc")
 	public List<H104BenMedHistory> getBenHistory(@Param("BeneficiaryRegID") Long BeneficiaryRegID); 

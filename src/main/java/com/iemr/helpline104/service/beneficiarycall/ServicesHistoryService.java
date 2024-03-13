@@ -50,7 +50,7 @@ public interface ServicesHistoryService {
 
 	//List<BenCallServicesMappingHistory> getInformationsHistory(Long id, int pageNo, int rows);
 	
-	List<Objects[]> getServices(Integer providerServiceMapID);
+	List<Object[]> getServices(Integer providerServiceMapID);
 	
     public String saveCallDisconnectedData(String requestObj) throws Exception;
 

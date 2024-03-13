@@ -70,8 +70,8 @@ public class DrugGroupServiceImplTest {
 	@Test
 	public void getDrugGroupsTest1()
 	{
-		List<Objects[]> directoryServices=Lists.newArrayList();
-		Objects[] array=new Objects[5];
+		List<Object[]> directoryServices=Lists.newArrayList();
+		Object[] array=new Objects[5];
 		directoryServices.add(array);
 		try {
 			doReturn(directoryServices).when(drugGroupRepository).getDrugGroups(Mockito.anyInt());
@@ -115,8 +115,8 @@ public class DrugGroupServiceImplTest {
 	@Test
 	public void getDrugListTest1()
 	{
-		List<Objects[]> directoryServices=Lists.newArrayList();
-		Objects[] array=new Objects[7];
+		List<Object[]> directoryServices=Lists.newArrayList();
+		Object[] array=new Objects[7];
 		directoryServices.add(array);
 		try {
 			doReturn(directoryServices).when(drugGroupRepository).getDrugList(Mockito.anyInt(),Mockito.anyInt());
@@ -151,7 +151,7 @@ public class DrugGroupServiceImplTest {
 	@Test
 	public void getDrugFrequencyTest()
 	{
-		ArrayList<Objects[]> list=drugGroupServiceImpl.getDrugFrequency();
+		ArrayList<Object[]> list=drugGroupServiceImpl.getDrugFrequency();
 		assertTrue(list.isEmpty());
 	}
 }

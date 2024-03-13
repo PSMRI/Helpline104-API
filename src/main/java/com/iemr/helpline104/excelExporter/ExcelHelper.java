@@ -43,7 +43,7 @@ public class ExcelHelper {
 	static String[] CriteriaHEADERs = { "Filter Name", "Value" };
 	static String SHEET = "Users";
 
-	public static ByteArrayInputStream tutorialsToExcel(String[] headers, List<Objects[]> result, Criteria criteria)
+	public static ByteArrayInputStream tutorialsToExcel(String[] headers, List<Object[]> result, Criteria criteria)
 			throws IEMRException {
 		try (Workbook workbook = new XSSFWorkbook(); ByteArrayOutputStream out = new ByteArrayOutputStream();) {
 			Sheet criteriaSheet = workbook.createSheet("Criteria");

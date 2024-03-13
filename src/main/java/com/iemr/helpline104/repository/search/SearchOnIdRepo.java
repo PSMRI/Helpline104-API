@@ -47,7 +47,7 @@ public interface SearchOnIdRepo extends CrudRepository<T_EpidemicOutbreak, Long>
 			+ "LEFT JOIN e.m_districtblock b "
 			+ "LEFT JOIN e.districtBranchMapping dbm "
 			+ "where e.deleted=false order by e.outbreakComplaintID desc")
-	public List<Objects[]> getEpidemicOutbreakComplaints(@Param("grievanceId") String grievanceId,@Param("mobileNumber") String mobileNumber
+	public List<Object[]> getEpidemicOutbreakComplaints(@Param("grievanceId") String grievanceId,@Param("mobileNumber") String mobileNumber
 			)
 			throws Exception;
 

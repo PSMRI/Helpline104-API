@@ -133,7 +133,7 @@ public class EpidemicOutbreakServiceImpl implements EpidemicOutbreakService {
 			String requestID, String phoneNo) throws Exception {
 		List<T_EpidemicOutbreak> epidemicOutbreakList = new ArrayList<T_EpidemicOutbreak>();
 
-		List<Objects[]> epidemicOutbreak = null;
+		List<Object[]> epidemicOutbreak = null;
 
 		if (benificiaryRegID != null)
 			epidemicOutbreak = epidemicOutbreakRepository.getEpidemicOutbreakComplaints(benificiaryRegID);

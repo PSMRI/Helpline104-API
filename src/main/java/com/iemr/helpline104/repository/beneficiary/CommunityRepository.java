@@ -39,5 +39,5 @@ public abstract interface CommunityRepository extends CrudRepository<M_Community
 	@Autowired(required=true)
 	
 	@Query("select CommunityID, CommunityType from M_Community where Deleted = false")
-	public abstract Set<Objects[]> findAciveCommunities();
+	public abstract Set<Object[]> findAciveCommunities();
 }

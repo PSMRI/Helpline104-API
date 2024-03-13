@@ -47,7 +47,7 @@ public interface OrganDonationRepository extends CrudRepository<T_OrganDonation,
 			+ " LEFT JOIN o.m_donatableOrgan do "
 			+ " LEFT JOIN o.m_gender g "
 			+ " where o.deleted=false and o.beneficiaryRegID=:beneficiaryRegID order by o.organDonationID desc")
-	public List<Objects[]> getOrganDonationRequests(@Param("beneficiaryRegID") Long beneficiaryRegID) throws Exception;
+	public List<Object[]> getOrganDonationRequests(@Param("beneficiaryRegID") Long beneficiaryRegID) throws Exception;
 	
 	@Query("select o.organDonationID, o.requestID, o.beneficiaryRegID, o.donarName, o.donarAge, o.donarGenderID, g.genderName, dt.donationTypeID, dt.donationType, dt.donationTypeDesc, do.donatableOrganID,"
 			+ " do.donatableOrgan, do.donatableOrganDesc, o.acceptorHospitalID, o.remarks "
@@ -56,7 +56,7 @@ public interface OrganDonationRepository extends CrudRepository<T_OrganDonation,
 			+ " LEFT JOIN o.m_donatableOrgan do "
 			+ " LEFT JOIN o.m_gender g " 
 			+ " where o.deleted=false and o.benCallID=:benCallID order by o.organDonationID desc")
-	public List<Objects[]> getOrganDonationRequestsByBenCallID(@Param("benCallID") Long benCallID) throws Exception;
+	public List<Object[]> getOrganDonationRequestsByBenCallID(@Param("benCallID") Long benCallID) throws Exception;
 	
 	@Query("select o.organDonationID, o.requestID, o.beneficiaryRegID, o.donarName, o.donarAge, o.donarGenderID, g.genderName, dt.donationTypeID, dt.donationType, dt.donationTypeDesc, do.donatableOrganID,"
 			+ " do.donatableOrgan, do.donatableOrganDesc, o.acceptorHospitalID, o.remarks "
@@ -65,14 +65,14 @@ public interface OrganDonationRepository extends CrudRepository<T_OrganDonation,
 			+ " LEFT JOIN o.m_donatableOrgan do "
 			+ " LEFT JOIN o.m_gender g " 
 			+ " where o.deleted=false and o.requestID=:requestID order by o.organDonationID desc")
-	public List<Objects[]> getOrganDonationRequestsByRequestID(@Param("requestID") String requestID) throws Exception;
+	public List<Object[]> getOrganDonationRequestsByRequestID(@Param("requestID") String requestID) throws Exception;
 	
 	@Query("select donationTypeID, donationType, donationTypeDesc from M_DonationType where deleted=false")
-	public List<Objects[]> getDonationTypes() throws Exception;
+	public List<Object[]> getDonationTypes() throws Exception;
 
 
 	@Query("select donatableOrganID, donatableOrgan, donatableOrganDesc from M_DonatableOrgan where deleted=false")
-	public List<Objects[]> getDonatableOrgans() throws Exception;
+	public List<Object[]> getDonatableOrgans() throws Exception;
 	
 	@Transactional
 	@Modifying(clearAutomatically = true)

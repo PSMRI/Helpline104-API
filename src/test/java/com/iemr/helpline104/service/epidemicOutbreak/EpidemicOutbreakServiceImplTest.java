@@ -105,8 +105,8 @@ public class EpidemicOutbreakServiceImplTest {
 
 	@Test
 	public void getEpidemicOutbreakComplaintsTest() {
-		List<Objects[]> list = Lists.newArrayList();
-		Objects[] array = new Objects[12];
+		List<Object[]> list = Lists.newArrayList();
+		Object[] array = new Objects[12];
 		list.add(array);
 
 		try {

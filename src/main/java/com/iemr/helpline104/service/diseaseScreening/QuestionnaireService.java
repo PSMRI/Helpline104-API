@@ -28,5 +28,5 @@ import com.iemr.helpline104.data.diseaseScreening.M_Questionnaire;
 
 public interface QuestionnaireService {
 	
-	List<Objects[]> fetchQuestions(Integer questionTypeID, Integer providerServiceMapID) throws Exception;
+	List<Object[]> fetchQuestions(Integer questionTypeID, Integer providerServiceMapID) throws Exception;
 }

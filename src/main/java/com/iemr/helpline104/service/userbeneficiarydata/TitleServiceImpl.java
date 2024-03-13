@@ -43,7 +43,7 @@ public class TitleServiceImpl implements TitleService {
 
 	public List<M_Title> getActiveTitles() {
 		List<M_Title> activeTitles = new ArrayList();
-		Set<Objects[]> lists = this.titleRepository.findAciveTitles();
+		Set<Object[]> lists = this.titleRepository.findAciveTitles();
 		for (Object[] objects : lists) {
 			if ((objects != null) && (objects.length == 3)) {
 				activeTitles.add(new M_Title(((Integer) objects[0]).intValue(), (String) objects[1]));

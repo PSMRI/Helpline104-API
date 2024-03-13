@@ -43,7 +43,7 @@ public interface EpidemicOutbreakRepository extends CrudRepository<T_EpidemicOut
 			+ "e.affectedVillageID, dbm.villageName, " + "e.remarks, e.createdDate from T_EpidemicOutbreak e "
 			+ "LEFT JOIN e.m_district d " + "LEFT JOIN e.m_districtblock b " + "LEFT JOIN e.districtBranchMapping dbm "
 			+ "where e.deleted=false and e.beneficiaryRegID=:beneficiaryRegID order by e.outbreakComplaintID desc")
-	public List<Objects[]> getEpidemicOutbreakComplaints(@Param("beneficiaryRegID") Long beneficiaryRegID)
+	public List<Object[]> getEpidemicOutbreakComplaints(@Param("beneficiaryRegID") Long beneficiaryRegID)
 			throws Exception;
 
 	@Query("select e.outbreakComplaintID, e.requestID, e.beneficiaryRegID, e.natureOfComplaint, e.totalPeopleAffected, "
@@ -51,7 +51,7 @@ public interface EpidemicOutbreakRepository extends CrudRepository<T_EpidemicOut
 			+ "e.affectedVillageID, dbm.villageName, " + "e.remarks, e.createdDate from T_EpidemicOutbreak e "
 			+ "LEFT JOIN e.m_district d " + "LEFT JOIN e.m_districtblock b " + "LEFT JOIN e.districtBranchMapping dbm "
 			+ "where e.deleted=false and e.benCallID=:benCallID order by e.outbreakComplaintID desc")
-	public List<Objects[]> getEpidemicOutbreakComplaintsByBenCallID(@Param("benCallID") Long benCallID)
+	public List<Object[]> getEpidemicOutbreakComplaintsByBenCallID(@Param("benCallID") Long benCallID)
 			throws Exception;
 
 	@Query("select e.outbreakComplaintID, e.requestID, e.beneficiaryRegID, e.natureOfComplaint, e.totalPeopleAffected, "
@@ -59,7 +59,7 @@ public interface EpidemicOutbreakRepository extends CrudRepository<T_EpidemicOut
 			+ "e.affectedVillageID, dbm.villageName, " + "e.remarks, e.createdDate from T_EpidemicOutbreak e "
 			+ "LEFT JOIN e.m_district d " + "LEFT JOIN e.m_districtblock b " + "LEFT JOIN e.districtBranchMapping dbm "
 			+ "where e.deleted=false and e.requestID=:requestID order by e.outbreakComplaintID desc")
-	public List<Objects[]> getEpidemicOutbreakComplaintsByRequestID(@Param("requestID") String requestID)
+	public List<Object[]> getEpidemicOutbreakComplaintsByRequestID(@Param("requestID") String requestID)
 			throws Exception;
 
 	@Query("select e.outbreakComplaintID, e.requestID, e.beneficiaryRegID, e.natureOfComplaint, e.totalPeopleAffected, "
@@ -67,7 +67,7 @@ public interface EpidemicOutbreakRepository extends CrudRepository<T_EpidemicOut
 			+ "e.affectedVillageID, dbm.villageName, " + "e.remarks, e.createdDate from T_EpidemicOutbreak e "
 			+ "LEFT JOIN e.m_district d " + "LEFT JOIN e.m_districtblock b " + "LEFT JOIN e.districtBranchMapping dbm "
 			+ "where e.deleted=false and e.outbreakComplaintID=:outbreakComplaintID ")
-	public List<Objects[]> getEpidemicOutbreakComplaintsByRequestIDNew(
+	public List<Object[]> getEpidemicOutbreakComplaintsByRequestIDNew(
 			@Param("outbreakComplaintID") Long outbreakComplaintID) throws Exception;
 
 	@Query(value = "SELECT im.BenRegId FROM "
@@ -81,7 +81,7 @@ public interface EpidemicOutbreakRepository extends CrudRepository<T_EpidemicOut
 			+ "e.affectedVillageID, dbm.villageName, " + "e.remarks, e.createdDate from T_EpidemicOutbreak e "
 			+ "LEFT JOIN e.m_district d " + "LEFT JOIN e.m_districtblock b " + "LEFT JOIN e.districtBranchMapping dbm "
 			+ "where e.deleted=false and e.beneficiaryRegID IN :ids ")
-	public List<Objects[]> findByBenRegIDs(@Param("ids") List<Long> ids);
+	public List<Object[]> findByBenRegIDs(@Param("ids") List<Long> ids);
 
 	// shubham 29-09-2020
 	// 29-09-2020 shubham
@@ -92,7 +92,7 @@ public interface EpidemicOutbreakRepository extends CrudRepository<T_EpidemicOut
 //				+ "LEFT JOIN e.m_districtblock b "
 //				+ "LEFT JOIN e.districtBranchMapping dbm "
 //				+ "where e.deleted=false and e.requestID=:outbreakComplaintID order by e.outbreakComplaintID desc")
-//		public List<Objects[]> getEpidemicOutbreakComplaintsByID(@Param("outbreakComplaintID") Long outbreakComplaintID)
+//		public List<Object[]> getEpidemicOutbreakComplaintsByID(@Param("outbreakComplaintID") Long outbreakComplaintID)
 //				throws Exception;
 //		@Query("select e.outbreakComplaintID, e.requestID, e.beneficiaryRegID, e.natureOfComplaint, e.totalPeopleAffected, "
 //				+ "e.affectedDistrictID, d.districtName, e.affectedDistrictBlockID, b.blockName, "
@@ -104,7 +104,7 @@ public interface EpidemicOutbreakRepository extends CrudRepository<T_EpidemicOut
 //				+ " LEFT JOIN BeneficiaryMapping ben ON e.beneficiaryRegID=ben.benRegID "
 //				+ "LEFT JOIN BenContactMapping bc ON bc.benContactsID=ben.benContactsId "
 //				+ "where e.deleted=false and bc.preferredPhoneNum = :mobile order by e.outbreakComplaintID desc")
-//		public List<Objects[]> getEpidemicOutbreakComplaintsByMobile(@Param("mobile") String mobile)
+//		public List<Object[]> getEpidemicOutbreakComplaintsByMobile(@Param("mobile") String mobile)
 //				throws Exception;
 
 	@Query(" SELECT t FROM T_EpidemicOutbreak t WHERE t.requestID = :requestID ")

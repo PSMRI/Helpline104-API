@@ -35,5 +35,5 @@ import com.iemr.helpline104.data.userbeneficiarydata.M_Religion;
 @RestResource(exported = false)
 public abstract interface ReligionRepository extends CrudRepository<M_Religion, Long> {
 	@Query("select ReligionID, ReligionType, ReligionDesc from M_Religion where Deleted = false")
-	public abstract List<Objects[]> getActiveReligions();
+	public abstract List<Object[]> getActiveReligions();
 }

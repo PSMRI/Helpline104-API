@@ -43,7 +43,7 @@ public class CommunityServiceImpl implements CommunityService {
 
 	public List<M_Community> getActiveCommunities() {
 		List<M_Community> communitiesList = new ArrayList<M_Community>();
-		Set<Objects[]> queryReult = communityRepository.findAciveCommunities();
+		Set<Object[]> queryReult = communityRepository.findAciveCommunities();
 		for (Object[] objects : queryReult) {
 			if (objects!=null && objects.length == 2) {
 				communitiesList.add(new M_Community((Integer) objects[0], (String) objects[1]));

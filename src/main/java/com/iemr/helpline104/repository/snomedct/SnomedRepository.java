@@ -40,6 +40,6 @@ public interface SnomedRepository extends CrudRepository<SCTDescription, Long> {
 	
 	/*@Query("select u from SCTDescription u where u.term like %:term%")*/
 	@Query("select s.conceptID,s.term from SCTDescription s where s.term = :term and s.active = '1'")
-	public List<Objects[]> findSnomedCTRecordFromTerm(@Param("term") String term);
+	public List<Object[]> findSnomedCTRecordFromTerm(@Param("term") String term);
 
 }

@@ -46,7 +46,7 @@ public class BloodComponentServiceImpl implements BloodComponentService{
 	@Override
 	public List<M_Component> getBloodComponents(Integer componentID) throws Exception {
 		List<M_Component> bloodComponentList = new ArrayList<M_Component>();
-		List<Objects[]> bloodComponents = bloodComponentRepository.getBloodComponents(componentID);
+		List<Object[]> bloodComponents = bloodComponentRepository.getBloodComponents(componentID);
 		
 		for (Object[] objects : bloodComponents) {
 			if (objects!=null && objects.length > 0) {

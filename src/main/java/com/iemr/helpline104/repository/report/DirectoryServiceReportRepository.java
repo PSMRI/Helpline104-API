@@ -48,7 +48,7 @@ public interface DirectoryServiceReportRepository extends CrudRepository<Directo
 			+ "left join c.userReportObj user "		
 			+ "where t.providerServiceMapID=:providerServiceMapID "
 			+ "and t.createdDate > :startDateTime " + "and t.createdDate < :endDateTime " + "order by t.createdDate desc")
-	public List<Objects[]> getDirectoryServiceReportByDate(
+	public List<Object[]> getDirectoryServiceReportByDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 

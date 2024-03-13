@@ -159,7 +159,7 @@ public class DiseaseServiceImpl implements DiseaseService{
 	public String getAvailableDiseases() throws IEMRException {
 		
 		logger.info("getAvailableDiseases - Start");
-		List<Objects[]> reports= diseaseRepository.getAvailableDiseases();
+		List<Object[]> reports= diseaseRepository.getAvailableDiseases();
 		List<Disease> list = new ArrayList<Disease>();
 		
 		for (Object[] objects : reports)

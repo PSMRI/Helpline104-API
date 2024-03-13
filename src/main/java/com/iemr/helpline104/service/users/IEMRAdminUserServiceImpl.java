@@ -94,7 +94,7 @@ public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 	public ArrayList<M_LoginSecurityQuestions> getAllLoginSecurityQuestions() {
 
 		ArrayList<M_LoginSecurityQuestions> result = new ArrayList<M_LoginSecurityQuestions>();
-		ArrayList<Objects[]> lists = iEMRUserLoginSecurityRepository.getAllLoginSecurityQuestions();
+		ArrayList<Object[]> lists = iEMRUserLoginSecurityRepository.getAllLoginSecurityQuestions();
 		for (Object[] objects : lists) {
 			if (objects != null && objects.length > 0) {
 				result.add(new M_LoginSecurityQuestions((Integer) objects[0], (String) objects[1]));

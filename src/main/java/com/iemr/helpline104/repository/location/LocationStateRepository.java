@@ -37,6 +37,6 @@ import com.iemr.helpline104.data.location.States;
 public interface LocationStateRepository extends CrudRepository<States, Integer> {
 
 	@Query("select stateID, stateName from States where countryID = :id")
-	public ArrayList<Objects[]> findBy(@Param("id") int id);
+	public ArrayList<Object[]> findBy(@Param("id") int id);
 
 }

@@ -42,7 +42,7 @@ public interface BeneficiaryReportRepository extends CrudRepository<BeneficiaryR
 			+ "c.callTypeName, c.callSubTypeName, c.phoneNo, c.callReceivedUserID, c.callEndUserID " + "from bencallReport c "
 			+ " LEFT JOIN c.BeneficiaryReport b " + "where c.providerServiceMapID=:providerServiceMapID " + "and c.isCalledEarlier = 0 "
 			+ "and c.lodadedDate > :startDateTime " + "and c.lodadedDate < :endDateTime " + "order by c.lodadedDate desc")
-	public List<Objects[]> getROSummaryReportByDate(
+	public List<Object[]> getROSummaryReportByDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);*/
 

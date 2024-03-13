@@ -52,8 +52,8 @@ public class SubDirectoryServiceImplTest {
 	@Test
 	public void getSubDirectoriesTest()
 	{
-		Set<Objects[]> directoryServices=Sets.newHashSet();
-		Objects[] array=new Objects[5];
+		Set<Object[]> directoryServices=Sets.newHashSet();
+		Object[] array=new Objects[5];
 		directoryServices.add(array);
 		doReturn(directoryServices).when(subDirectoryRepository).findAciveSubDirectories(Mockito.anyInt());
 		List<SubDirectory> list=subDirectoryServiceImpl.getSubDirectories(Mockito.anyInt());

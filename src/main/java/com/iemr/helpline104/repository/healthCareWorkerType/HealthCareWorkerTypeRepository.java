@@ -40,5 +40,5 @@ import com.iemr.helpline104.data.healthCareWorkerType.M_HealthCareWorker;
 @RestResource(exported = false)
 public interface HealthCareWorkerTypeRepository extends CrudRepository<M_HealthCareWorker, Long>{
 	@Query("select healthCareWorkerID,healthCareWorkerType from M_HealthCareWorker where deleted = false")
-	public ArrayList<Objects[]> findAciveHealthCareWorkerTypes();
+	public ArrayList<Object[]> findAciveHealthCareWorkerTypes();
 }

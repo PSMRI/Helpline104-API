@@ -48,7 +48,7 @@ public interface OrgandonationReportRepository extends CrudRepository<Organdonat
 			+ "left join c.userReportObj user "	
 			+ "where t.providerServiceMapID=:providerServiceMapID "
 			+ "and t.createdDate > :startDateTime " + "and t.createdDate < :endDateTime " + "order by t.createdDate desc")
-	public List<Objects[]> getOrgandonationReportByDate(
+	public List<Object[]> getOrgandonationReportByDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 

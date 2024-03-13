@@ -53,7 +53,7 @@ public class H104BenHistoryServiceImplTest {
 	@Test
 	public void geSmpleBenHistoryTest() {
 		
-		ArrayList<Objects[]> list=Lists.newArrayList();
+		ArrayList<Object[]> list=Lists.newArrayList();
 
 		doReturn(list).when(smpleBenHistoryRepositoryRepository).getBenHistory(Mockito.anyLong());
 		List<H104BenMedHistory> list1=smpleBenHistoryServiceImpl.geSmpleBenHistory(Mockito.anyLong(),null);

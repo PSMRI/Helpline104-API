@@ -47,7 +47,7 @@ public interface BloodRequestReportRepository extends CrudRepository<Bloodreques
 			+ "left join c.userReportObj user "			
 			+ "where t.providerServiceMapID=:providerServiceMapID "
 			+ "and t.createdDate > :startDateTime " + "and t.createdDate < :endDateTime " + "order by t.createdDate desc")
-	public List<Objects[]> getBloodRequestReportByDate(
+	public List<Object[]> getBloodRequestReportByDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 	
@@ -68,7 +68,7 @@ public interface BloodRequestReportRepository extends CrudRepository<Bloodreques
 			+ "left join c.userReportObj user "	
 			+ "where t.providerServiceMapID = :providerServiceMapID "
 			+ "and t.createdDate >= :startDateTime " + "and t.createdDate <= :endDateTime " + "order by t.createdDate desc ")
-	public List<Objects[]> getCDIResponseReport(
+	public List<Object[]> getCDIResponseReport(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 	
@@ -81,7 +81,7 @@ public interface BloodRequestReportRepository extends CrudRepository<Bloodreques
 			+ "where t.providerServiceMapID = :providerServiceMapID "
 			+ "and t.createdDate >= :startDateTime and t.createdDate <= :endDateTime and c.agentID = :agentID " 
 			+ "order by t.createdDate desc ")
-	public List<Objects[]> getCDIResponseReportByAgentID(
+	public List<Object[]> getCDIResponseReportByAgentID(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime, @Param("agentID") String agentID);
 

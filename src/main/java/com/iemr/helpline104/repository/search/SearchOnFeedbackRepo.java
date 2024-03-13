@@ -40,7 +40,7 @@ public interface SearchOnFeedbackRepo extends CrudRepository<FeedbackDetails, Lo
 	
 	@Query("select feedbackID, severityID, feedbackTypeID, feedbackStatusID, feedback, createdBy, feedbackAgainst "
 			+ "from FeedbackDetails ")
-	public List<Objects[]> searchOnFeedbackRepo(@Param("grievanceId") String grievanceId,@Param("mobileNumber") String mobileNumber);
+	public List<Object[]> searchOnFeedbackRepo(@Param("grievanceId") String grievanceId,@Param("mobileNumber") String mobileNumber);
 
 	
 }

@@ -59,7 +59,7 @@ public class DirectoryServiceImpl implements DirectoryServiceService
 
 		List<Directoryservice> directoryServiceList = new ArrayList<Directoryservice>();
 
-		List<Objects[]> directoryServices = null;
+		List<Object[]> directoryServices = null;
 
 		if (benificiaryRegID != null)
 			directoryServices = directoryserviceRepository.getBenSearchHistory(benificiaryRegID);
@@ -95,7 +95,7 @@ public class DirectoryServiceImpl implements DirectoryServiceService
 	public List<Directory> getDirectories()
 	{
 		ArrayList<Directory> directories = new ArrayList<Directory>();
-		Set<Objects[]> directoryResult = directoryRepository.findAciveDirectories();
+		Set<Object[]> directoryResult = directoryRepository.findAciveDirectories();
 		for (Object[] objects : directoryResult)
 		{
 			if (objects != null && objects.length == 2)

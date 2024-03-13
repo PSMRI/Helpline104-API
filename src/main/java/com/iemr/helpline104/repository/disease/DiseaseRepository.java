@@ -60,7 +60,7 @@ public interface DiseaseRepository extends CrudRepository<Disease, Integer> {
 						@Param("investigations") String investigations, @Param("diseasesummaryID") Integer diseasesummaryID);
 	
 	@Query("Select disease.diseasesummaryID, disease.diseaseName from Disease disease where disease.deleted = false")
-	public List<Objects[]> getAvailableDiseases();
+	public List<Object[]> getAvailableDiseases();
 	
 	@Query("Select disease from Disease disease where disease.diseasesummaryID = :diseasesummaryID")
 	public Disease getDiseasesByID(@Param("diseasesummaryID") Integer diseasesummaryID);

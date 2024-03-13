@@ -37,6 +37,6 @@ import com.iemr.helpline104.data.drugMaster.DrugStrength;
 public interface DrugStrengthRepository extends CrudRepository<DrugStrength, Long> {	
 	
 	@Query("select u from DrugStrength u where u.deleted=false and u.serviceProviderID=:serviceProviderID")
-	public ArrayList<Objects[]> getDrugStrength(@Param("serviceProviderID") Integer serviceProviderID);
+	public ArrayList<Object[]> getDrugStrength(@Param("serviceProviderID") Integer serviceProviderID);
 
 }

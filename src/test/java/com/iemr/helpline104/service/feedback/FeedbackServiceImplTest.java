@@ -68,8 +68,8 @@ public class FeedbackServiceImplTest {
 	@Test
 	public void getFeedbackRequestsTest()
 	{
-		ArrayList<Objects[]> list=Lists.newArrayList();
-		Objects[] array=new Objects[12];
+		ArrayList<Object[]> list=Lists.newArrayList();
+		Object[] array=new Objects[12];
 		list.add(array);
 		doReturn(list).when(feedbackRepository).findByBeneficiaryID(Mockito.anyLong());
 		List<FeedbackDetails> feedbackList=feedbackServiceImpl.getFeedbackRequests(Mockito.anyLong());
@@ -110,8 +110,8 @@ public class FeedbackServiceImplTest {
 	@Test
 	public void getFeedbackRequestTest()
 	{
-		ArrayList<Objects[]> list=Lists.newArrayList();
-		Objects[] array=new Objects[12];
+		ArrayList<Object[]> list=Lists.newArrayList();
+		Object[] array=new Objects[12];
 		list.add(array);
 		doReturn(list).when(feedbackRepository).findByFeedbackID(Mockito.anyLong());
 		List<FeedbackDetails> feedbackList=feedbackServiceImpl.getFeedbackRequest(Mockito.anyLong());

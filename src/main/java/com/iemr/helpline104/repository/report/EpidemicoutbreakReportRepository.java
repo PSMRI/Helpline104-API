@@ -48,7 +48,7 @@ public interface EpidemicoutbreakReportRepository extends CrudRepository<Epidemi
 			+ "and t.createdDate > :startDateTime "
 			+ "and t.createdDate < :endDateTime "
 			+ "order by t.outbreakComplaintID desc")
-	public List<Objects[]> getEpidemicoutbreakReportByDate(@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
+	public List<Object[]> getEpidemicoutbreakReportByDate(@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 
 }

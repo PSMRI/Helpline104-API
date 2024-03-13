@@ -56,7 +56,7 @@ public class OrganDonationServiceImpl implements OrganDonationService
 	{
 		List<T_OrganDonation> organDonationRequestList = new ArrayList<T_OrganDonation>();
 
-		List<Objects[]> organDonationRequest = null;
+		List<Object[]> organDonationRequest = null;
 
 		if (benificiaryRegID != null)
 			organDonationRequest = organDonationRepository.getOrganDonationRequests(benificiaryRegID);
@@ -146,7 +146,7 @@ public class OrganDonationServiceImpl implements OrganDonationService
 	public List<M_DonationType> getDonationTypes() throws Exception
 	{
 		List<M_DonationType> organDonationTypesList = new ArrayList<M_DonationType>();
-		List<Objects[]> organDonationTypes = organDonationRepository.getDonationTypes();
+		List<Object[]> organDonationTypes = organDonationRepository.getDonationTypes();
 
 		for (Object[] objects : organDonationTypes)
 		{
@@ -162,7 +162,7 @@ public class OrganDonationServiceImpl implements OrganDonationService
 	public List<M_DonatableOrgan> getDonatableOrgans() throws Exception
 	{
 		List<M_DonatableOrgan> donatableOrgansList = new ArrayList<M_DonatableOrgan>();
-		List<Objects[]> donatableOrgans = organDonationRepository.getDonatableOrgans();
+		List<Object[]> donatableOrgans = organDonationRepository.getDonatableOrgans();
 
 		for (Object[] objects : donatableOrgans)
 		{

@@ -38,7 +38,7 @@ public interface DrugGroupRepository extends CrudRepository<M_DrugGroup, Long>{
 	
 		@Query("select d.drugGroupID,d.drugGroup,d.drugGroupDesc,d.serviceProviderID from M_DrugGroup d"
 				+ " where d.deleted=false and d.serviceProviderID=:serviceProviderID")
-		public List<Objects[]> getDrugGroups(@Param("serviceProviderID") Integer serviceProviderID) throws Exception;
+		public List<Object[]> getDrugGroups(@Param("serviceProviderID") Integer serviceProviderID) throws Exception;
 		
 		/*
 		@Query("select d from M_DrugGroup d"
@@ -47,7 +47,7 @@ public interface DrugGroupRepository extends CrudRepository<M_DrugGroup, Long>{
 		
 		/*@Query("select d from M_DrugGroup d"
 				+ " INNER JOIN d.m_drugMaster m where d.deleted=false and m.deleted=false and d.providerServiceMapID=:providerServiceMapID group by d.drugGroupID")
-		public List<Objects[]> getDrugsList(@Param("providerServiceMapID") Integer providerServiceMapID) throws Exception;*/
+		public List<Object[]> getDrugsList(@Param("providerServiceMapID") Integer providerServiceMapID) throws Exception;*/
 		
 
 		
@@ -56,13 +56,13 @@ public interface DrugGroupRepository extends CrudRepository<M_DrugGroup, Long>{
 				+ "from M_104drugmapping d  "
 				+ " INNER JOIN d.m_drugMaster m "
 				+ "where d.deleted=false and m.deleted= false and d.providerServiceMapID=:providerServiceMapID and d.drugGroupID=:drugGroupID")
-		public List<Objects[]>  getDrugList(@Param("providerServiceMapID") Integer providerServiceMapID, @Param("drugGroupID") Integer drugGroupID) throws Exception;
+		public List<Object[]>  getDrugList(@Param("providerServiceMapID") Integer providerServiceMapID, @Param("drugGroupID") Integer drugGroupID) throws Exception;
 		
 		
 		@Query("select d.drugMapID,d.drugId,d.drugName,d.drugGroupID,d.drugGroupName,m.remarks,d.providerServiceMapID "
 				+ "from M_104drugmapping d  "
 				+ " INNER JOIN d.m_drugMaster m "
 				+ "where d.deleted=false and m.deleted= false and d.providerServiceMapID=:providerServiceMapID order by d.drugName ")
-		public List<Objects[]>  getDrugDetailList(@Param("providerServiceMapID") Integer providerServiceMapID) throws Exception;
+		public List<Object[]>  getDrugDetailList(@Param("providerServiceMapID") Integer providerServiceMapID) throws Exception;
 		
 }

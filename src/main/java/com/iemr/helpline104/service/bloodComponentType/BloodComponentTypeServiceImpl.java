@@ -42,7 +42,7 @@ public class BloodComponentTypeServiceImpl implements BloodComponentTypeService 
 	@Override
 	public List<M_ComponentType> getBloodComponentTypes() throws Exception{
 		List<M_ComponentType> componentTypeList = new ArrayList<M_ComponentType>();
-		List<Objects[]> componentTypes = componentTypeRepository.getComponentTypes();
+		List<Object[]> componentTypes = componentTypeRepository.getComponentTypes();
 		
 		for (Object[] objects : componentTypes) {
 			if (objects!=null && objects.length > 0) {
@@ -56,7 +56,7 @@ public class BloodComponentTypeServiceImpl implements BloodComponentTypeService 
 	@Override
 	public List<M_BloodGroup> getBloodGroups() throws Exception {
 		List<M_BloodGroup> bloodGroupsList = new ArrayList<M_BloodGroup>();
-		List<Objects[]> bloodgroups = componentTypeRepository.getBloodGroups();
+		List<Object[]> bloodgroups = componentTypeRepository.getBloodGroups();
 		
 		for (Object[] objects : bloodgroups) {
 			if (objects!=null && objects.length > 0) {

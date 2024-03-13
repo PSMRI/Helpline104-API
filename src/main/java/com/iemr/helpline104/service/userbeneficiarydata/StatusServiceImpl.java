@@ -43,7 +43,7 @@ public class StatusServiceImpl implements StatusService {
 
 	public List<M_Status> getActiveStatus() {
 		List<M_Status> activeStatus = new ArrayList();
-		Set<Objects[]> lists = this.statusRepository.findAciveStatus();
+		Set<Object[]> lists = this.statusRepository.findAciveStatus();
 		for (Object[] objects : lists) {
 			if ((objects != null) && (objects.length == 2)) {
 				activeStatus.add(new M_Status(((Integer) objects[0]).intValue(), (String) objects[1]));

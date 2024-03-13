@@ -53,8 +53,8 @@ public class HealthCareWorkerServiceImplTest {
 	@Test
 	public void getHealthCareWorkerTypesTest()
 	{
-		ArrayList<Objects[]> resultSet=Lists.newArrayList();
-		Objects[] array=new Objects[25];
+		ArrayList<Object[]> resultSet=Lists.newArrayList();
+		Object[] array=new Objects[25];
 		resultSet.add(array);
 		doReturn(resultSet).when(healthCareWorkerTypeRepository).findAciveHealthCareWorkerTypes();
 		List<M_HealthCareWorker> list=t_FeedbackresponseService.getHealthCareWorkerTypes();

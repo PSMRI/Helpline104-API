@@ -37,5 +37,5 @@ import com.iemr.helpline104.data.userbeneficiarydata.M_Language;
 @RestResource(exported = false)
 public abstract interface LanguageRepository extends CrudRepository<M_Language, Long> {
 	@Query("select LanguageID, LanguageName from M_Language where Deleted = false")
-	public abstract Set<Objects[]> findAciveLanguages();
+	public abstract Set<Object[]> findAciveLanguages();
 }

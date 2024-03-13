@@ -42,7 +42,7 @@ public class SnomedServiceImpl implements SnomedService {
 
 		List<SCTDescription> sctDesList = new ArrayList<SCTDescription>();
 
-		List<Objects[]> records = snomedRepository.findSnomedCTRecordFromTerm(term);
+		List<Object[]> records = snomedRepository.findSnomedCTRecordFromTerm(term);
 
 		for (Object[] sctdescription : records) {
 			if (sctdescription != null && sctdescription.length > 1) {

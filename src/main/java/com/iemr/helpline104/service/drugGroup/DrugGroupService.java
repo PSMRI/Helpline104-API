@@ -34,9 +34,9 @@ public interface DrugGroupService {
 	
 	public List<M_104drugmapping> getDrugList(Integer providerServiceMapID,Integer drugGroupID) throws Exception;
 	
-	public ArrayList<Objects[]> getDrugFrequency() throws Exception; 
+	public ArrayList<Object[]> getDrugFrequency() throws Exception; 
 	
-	public ArrayList<Objects[]> getDrugStrength(Integer serviceProviderID) throws Exception;
+	public ArrayList<Object[]> getDrugStrength(Integer serviceProviderID) throws Exception;
 
 	List<M_104drugmapping> getDrugDetailList(Integer providerServiceMapID) throws Exception; 
 }

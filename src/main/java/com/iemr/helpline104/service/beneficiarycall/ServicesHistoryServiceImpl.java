@@ -67,9 +67,9 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService {
 	
 
 	@Override
-	public List<Objects[]> getServices(Integer providerServiceMapID) {
+	public List<Object[]> getServices(Integer providerServiceMapID) {
 
-		List<Objects[]> services = new ArrayList<Objects[]>();
+		List<Object[]> services = new ArrayList<Object[]>();
 
 		return serviceMasterRepository.getServices(providerServiceMapID);
 	}

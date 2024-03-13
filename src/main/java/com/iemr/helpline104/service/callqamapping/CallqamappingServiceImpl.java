@@ -56,7 +56,7 @@ public class CallqamappingServiceImpl implements CallqamappingService{
 	@Override
 	public List<M_104callqamapping> getCDIQuestionScores(M_104callqamapping m_104callqamapping) throws Exception {
 		List<M_104callqamapping> callqamappings = new ArrayList<M_104callqamapping>();
-		Iterable<Objects[]> questionScores = callqamappingRepository.getCDIQuestionScores(m_104callqamapping.getBeneficiaryRegID(),m_104callqamapping.getBenCallID());
+		Iterable<Object[]> questionScores = callqamappingRepository.getCDIQuestionScores(m_104callqamapping.getBeneficiaryRegID(),m_104callqamapping.getBenCallID());
 		for (Object[] objects : questionScores)
 		{
 		

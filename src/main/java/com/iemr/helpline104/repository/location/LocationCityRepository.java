@@ -37,7 +37,7 @@ import com.iemr.helpline104.data.location.CityDetails;
 public interface LocationCityRepository extends CrudRepository<CityDetails, Integer> {
 
 	@Query("select cityID, cityName from CityDetails where districtID = :id")
-	public ArrayList<Objects[]> findBy(@Param("id") int id);
+	public ArrayList<Object[]> findBy(@Param("id") int id);
 
 	@Query("select cityName from CityDetails where cityID = :id")
 	public String findByCityID(@Param("id") int id);

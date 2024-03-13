@@ -30,7 +30,7 @@ import com.iemr.helpline104.data.casesheet.H104BenMedHistory;
 
 public interface H104BenHistoryService {
 	
-	//ArrayList<Objects[]> geSmpleBenHistory(Long beneficiaryId, Long benCallID);	H104BenMedHistory
+	//ArrayList<Object[]> geSmpleBenHistory(Long beneficiaryId, Long benCallID);	H104BenMedHistory
 	
 	List<H104BenMedHistory> geSmpleBenHistory(Long beneficiaryId, Long benCallID);	
 	

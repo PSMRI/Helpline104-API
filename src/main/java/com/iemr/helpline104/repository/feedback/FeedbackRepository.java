@@ -38,15 +38,15 @@ public interface FeedbackRepository extends CrudRepository<FeedbackDetails, Long
 
 	@Query("select feedbackID, severityID, feedbackTypeID, feedbackStatusID, feedback, createdBy, feedbackAgainst "
 			+ "from FeedbackDetails where beneficiaryRegID = :id")
-	public ArrayList<Objects[]> findByBeneficiaryID(@Param("id") long id);
+	public ArrayList<Object[]> findByBeneficiaryID(@Param("id") long id);
 
 	@Query("select feedbackID, severityID, feedbackTypeID, feedbackStatusID, feedback, createdBy, feedbackAgainst "
 			+ "from FeedbackDetails where feedbackID = :id")
-	public ArrayList<Objects[]> findByFeedbackID(@Param("id") long id);
+	public ArrayList<Object[]> findByFeedbackID(@Param("id") long id);
 
 //	@Query("SELECT feedbackID, severityID, feedbackTypeID, feedbackStatusID, feedback, createdBy, feedbackAgainst "
 //			+ "from FeedbackDetails where feedbackID = :id AND  ")
-//	public ArrayList<Objects[]> findByGrievanceID(@Param("id") String id);
+//	public ArrayList<Object[]> findByGrievanceID(@Param("id") String id);
 
 //	@Query("SELECT f FROM FeedbackDetails f WHERE feedbackID = :id AND deleted=false ")
 //	public ArrayList<FeedbackDetails> findByGrievanceID(@Param("id") String id);
@@ -59,7 +59,7 @@ public interface FeedbackRepository extends CrudRepository<FeedbackDetails, Long
 //			+ "from FeedbackDetails f " + " LEFT JOIN BeneficiaryMapping ben ON f.beneficiaryRegID=ben.benRegID "
 //			+ "LEFT JOIN BenContactMapping bc ON bc.benContactsID=ben.benContactsId "
 //			+ " where f.deleted=false and bc.preferredPhoneNum = :mobile order by f.feedbackID desc")
-//	public ArrayList<Objects[]> findByMobile(@Param("mobile") String mobile);
+//	public ArrayList<Object[]> findByMobile(@Param("mobile") String mobile);
 
 	@Query("SELECT t FROM FeedbackDetails t WHERE t.requestID = :requestID AND deleted=false ")
 	public FeedbackDetails searchByRequestID(@Param("requestID") String requestID);

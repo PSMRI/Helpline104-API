@@ -44,7 +44,7 @@ public class FeedbackTypeServiceImpl implements FeedbackTypeService{
 	public List<M_FeedbackType> getNatureOfComplaintTypes(Integer serviceLineID, Short feedbackTypeID)
 			throws Exception {
 		List<M_FeedbackType> natureOfComplaintsList = new ArrayList<M_FeedbackType>();
-		List<Objects[]> natureOfComplaints = feedbackTypeRepository.getNatureOfComplaintTypes(serviceLineID, feedbackTypeID);
+		List<Object[]> natureOfComplaints = feedbackTypeRepository.getNatureOfComplaintTypes(serviceLineID, feedbackTypeID);
 		
 		for (Object[] objects : natureOfComplaints) {
 			if (objects!=null && objects.length > 0) {

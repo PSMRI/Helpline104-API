@@ -37,5 +37,5 @@ import com.iemr.helpline104.data.userbeneficiarydata.M_MaritalStatus;
 @RestResource(exported = false)
 public abstract interface MaritalStatusRepository extends CrudRepository<M_MaritalStatus, Long> {
 	@Query("select MaritalStatusID, Status from M_MaritalStatus where Deleted = false")
-	public abstract Set<Objects[]> findAciveMaritalStatus();
+	public abstract Set<Object[]> findAciveMaritalStatus();
 }

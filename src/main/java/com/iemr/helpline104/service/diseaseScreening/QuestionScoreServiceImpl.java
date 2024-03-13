@@ -39,7 +39,7 @@ public class QuestionScoreServiceImpl implements QuestionScoreService{
 	@Override
 	public List<M_questionairValues> fetchAnswers(Integer questionID) throws Exception {
 		List<M_questionairValues> answers = new ArrayList<M_questionairValues>();
-		List<Objects[]> answersList = questionScoreRepository.fetchAnswers(questionID);
+		List<Object[]> answersList = questionScoreRepository.fetchAnswers(questionID);
 		
 		for (Object[] objects : answersList) {
 			if (objects!=null && objects.length > 0) {

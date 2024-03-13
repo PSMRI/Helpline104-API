@@ -128,7 +128,7 @@ public class CRMReportsServiceImpl implements CRMReportsService
 		logger.debug("getRegistrationReport request: " + request);
 		BencallReport bencallReportRequest = inputMapper.gson().fromJson(request, BencallReport.class);
 		List<BeneficiaryReport> registrationReports = new ArrayList<BeneficiaryReport>();
-		List<Objects[]> reports;
+		List<Object[]> reports;
 
 		if (bencallReportRequest.getAgentID() == null || bencallReportRequest.getAgentID() == "")
 		{
@@ -171,7 +171,7 @@ public class CRMReportsServiceImpl implements CRMReportsService
 		logger.debug("getHAOSummaryReport request: " + request);
 		BenmedhistoryReport benmedhistoryReportRequest = inputMapper.gson().fromJson(request, BenmedhistoryReport.class);
 		List<MedicalHistory> haoSummaryReport = new ArrayList<MedicalHistory>();
-		List<Objects[]> reports;
+		List<Object[]> reports;
 		if (benmedhistoryReportRequest.getAgentID() == null || benmedhistoryReportRequest.getAgentID() == "")
 		{
 			reports =
@@ -216,7 +216,7 @@ public class CRMReportsServiceImpl implements CRMReportsService
 		logger.debug("getMOSummaryReport request: " + request);
 		BenmedhistoryReport benmedhistoryReportRequest = inputMapper.gson().fromJson(request, BenmedhistoryReport.class);
 		List<MOReport> moSummaryReport = new ArrayList<MOReport>();
-		List<Objects[]> reports;
+		List<Object[]> reports;
 		if (benmedhistoryReportRequest.getAgentID() == null || benmedhistoryReportRequest.getAgentID() == "")
 		{
 			reports =
@@ -263,7 +263,7 @@ public class CRMReportsServiceImpl implements CRMReportsService
 		logger.debug("getCOSummaryReport request: " + request);
 		BenmedhistoryReport benmedhistoryReportRequest = inputMapper.gson().fromJson(request, BenmedhistoryReport.class);
 		List<COReport> coSummaryReport = new ArrayList<COReport>();
-		List<Objects[]> reports;
+		List<Object[]> reports;
 		if (benmedhistoryReportRequest.getAgentID() == null || benmedhistoryReportRequest.getAgentID() == "")
 		{
 			reports =
@@ -306,7 +306,7 @@ public class CRMReportsServiceImpl implements CRMReportsService
 		logger.debug("getPDSummaryReport request: " + request);
 		BenmedhistoryReport benmedhistoryReportRequest = inputMapper.gson().fromJson(request, BenmedhistoryReport.class);
 		List<BenmedhistoryReport> pdSummaryReport = new ArrayList<BenmedhistoryReport>();
-		List<Objects[]> reports;
+		List<Object[]> reports;
 		if (benmedhistoryReportRequest.getAgentID() == null || benmedhistoryReportRequest.getAgentID() == "")
 		{
 			reports =
@@ -349,7 +349,7 @@ public class CRMReportsServiceImpl implements CRMReportsService
 		logger.debug("getEpidemicoutbreakReport request: " + request);
 		EpidemicoutbreakReport epidemicoutbreakReportRequest = inputMapper.gson().fromJson(request, EpidemicoutbreakReport.class);
 		List<EpidemicoutbreakReport> epidemicoutbreakReports = new ArrayList<EpidemicoutbreakReport>();
-		List<Objects[]> reports =
+		List<Object[]> reports =
 				epidemicoutbreakReportRepository.getEpidemicoutbreakReportByDate(
 						epidemicoutbreakReportRequest.getProviderServiceMapID(), epidemicoutbreakReportRequest.getStartDateTime(),
 						epidemicoutbreakReportRequest.getEndDateTime());
@@ -380,7 +380,7 @@ public class CRMReportsServiceImpl implements CRMReportsService
 		logger.info("getBloodOnCallCountReportByDate request: " + request);
 		BloodrequestReport bloodrequestReportRequest = inputMapper.gson().fromJson(request, BloodrequestReport.class);
 		List<BloodrequestReport> bloodrequestReport = new ArrayList<BloodrequestReport>();
-		List<Objects[]> reports =
+		List<Object[]> reports =
 				bloodRequestReportRepository.getBloodRequestReportByDate(
 						bloodrequestReportRequest.getProviderServiceMapID(), bloodrequestReportRequest.getStartDateTime(),
 						bloodrequestReportRequest.getEndDateTime());
@@ -416,7 +416,7 @@ public class CRMReportsServiceImpl implements CRMReportsService
 		logger.debug("getDirectoryserviceReport request: " + request);
 		DirectoryserviceReport directoryServiceReportRequest = inputMapper.gson().fromJson(request, DirectoryserviceReport.class);
 		List<DirectoryserviceReport> directoryServiceReport = new ArrayList<DirectoryserviceReport>();
-		List<Objects[]> reports =
+		List<Object[]> reports =
 				directoryServiceReportRepository.getDirectoryServiceReportByDate(
 						directoryServiceReportRequest.getProviderServiceMapID(), directoryServiceReportRequest.getStartDateTime(),
 						directoryServiceReportRequest.getEndDateTime());
@@ -448,7 +448,7 @@ public class CRMReportsServiceImpl implements CRMReportsService
 		logger.debug("getOrgandonationReport request: " + request);
 		OrgandonationReport organdonationReportRequest = inputMapper.gson().fromJson(request, OrgandonationReport.class);
 		List<OrgandonationReport> organdonationReport = new ArrayList<OrgandonationReport>();
-		List<Objects[]> reports =
+		List<Object[]> reports =
 				organdonationReportRepository.getOrgandonationReportByDate(
 						organdonationReportRequest.getProviderServiceMapID(), organdonationReportRequest.getStartDateTime(),
 						organdonationReportRequest.getEndDateTime());
@@ -481,7 +481,7 @@ public class CRMReportsServiceImpl implements CRMReportsService
 		logger.debug("geSchemeserviceReport request: " + request);
 		SchemeserviceReport schemeReportRequest = inputMapper.gson().fromJson(request, SchemeserviceReport.class);
 		List<SchemeserviceReport> schemeReport = new ArrayList<SchemeserviceReport>();
-		List<Objects[]> reports =
+		List<Object[]> reports =
 				schemesReportRepository.getSchemeServiceReportByDate(
 						schemeReportRequest.getProviderServiceMapID(), schemeReportRequest.getStartDateTime(), schemeReportRequest.getEndDateTime());
 
@@ -511,7 +511,7 @@ public class CRMReportsServiceImpl implements CRMReportsService
 		logger.debug("geFeedbackReport request: " + request);
 		FeedbackReport feedbackReportRequest = inputMapper.gson().fromJson(request, FeedbackReport.class);
 		List<FeedbackReport> feedbackReport = new ArrayList<FeedbackReport>();
-		List<Objects[]> reports;
+		List<Object[]> reports;
 
 		if (feedbackReportRequest.getFeedbackTypeID() == null
 				&& (feedbackReportRequest.getAgentID() == null || feedbackReportRequest.getAgentID() == ""))
@@ -571,7 +571,7 @@ public class CRMReportsServiceImpl implements CRMReportsService
 		logger.debug("getFoodsafetyReport request: " + request);
 		FoodsafetyReport foodsafetyReportRequest = inputMapper.gson().fromJson(request, FoodsafetyReport.class);
 		List<FoodsafetyReport> foodsafetyReport = new ArrayList<FoodsafetyReport>();
-		List<Objects[]> reports =
+		List<Object[]> reports =
 				foodSafetyReportRepository.getFoodsafetyReportByDate(
 						foodsafetyReportRequest.getProviderServiceMapID(), foodsafetyReportRequest.getStartDateTime(),
 						foodsafetyReportRequest.getEndDateTime());
@@ -604,7 +604,7 @@ public class CRMReportsServiceImpl implements CRMReportsService
 		logger.debug("getPrescriptionReport request: " + request);
 		PrescriptionReport prescriptionReportRequest = inputMapper.gson().fromJson(request, PrescriptionReport.class);
 		List<PrescriptionReport> prescriptionReport = new ArrayList<PrescriptionReport>();
-		List<Objects[]> reports =
+		List<Object[]> reports =
 				prescriptionReportRepository.getPrescriptionReportByDate(
 						prescriptionReportRequest.getProviderServiceMapID(), prescriptionReportRequest.getStartDateTime(),
 						prescriptionReportRequest.getEndDateTime());
@@ -1139,7 +1139,7 @@ public class CRMReportsServiceImpl implements CRMReportsService
 		if(benmedhistoryReportRequest.getSearchCriteria().equalsIgnoreCase("Guidelines"))
 		{
 			List<MentalHealthGuidlineReport> list = new ArrayList<MentalHealthGuidlineReport>();
-			List<Objects[]> reports =
+			List<Object[]> reports =
 					benmedhistoryReportRepository.getMentalHealthByGuidelines(
 							benmedhistoryReportRequest.getProviderServiceMapID(), benmedhistoryReportRequest.getStartDateTime(),
 							benmedhistoryReportRequest.getEndDateTime());
@@ -1163,7 +1163,7 @@ public class CRMReportsServiceImpl implements CRMReportsService
 		else
 		{
 			List<MentalHealthCategory> list = new ArrayList<MentalHealthCategory>();
-			List<Objects[]> reports =
+			List<Object[]> reports =
 					benmedhistoryReportRepository.getMentalHealthByCategory(
 							benmedhistoryReportRequest.getProviderServiceMapID(), benmedhistoryReportRequest.getStartDateTime(),
 							benmedhistoryReportRequest.getEndDateTime());
@@ -1276,7 +1276,7 @@ public class CRMReportsServiceImpl implements CRMReportsService
 		logger.debug("getCDIResponseReport request: " + request);
 		BenCDIResponseReport benCDIResponseReport = inputMapper.gson().fromJson(request, BenCDIResponseReport.class);
 		
-		List<Objects[]> reports=null;
+		List<Object[]> reports=null;
 		
 		if(benCDIResponseReport.getAgentID()!=null)
 		{

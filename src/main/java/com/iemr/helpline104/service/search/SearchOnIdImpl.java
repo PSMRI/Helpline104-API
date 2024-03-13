@@ -67,7 +67,7 @@ public class SearchOnIdImpl implements SearchOnId {
 	@Override
 	public String getQuickSearchData(String requestOBJ) throws Exception {
 
-//		List<Objects[]> reportData = null;
+//		List<Object[]> reportData = null;
 //		SearchCriterea request = InputMapper.gson().fromJson(requestOBJ, SearchCriterea.class);
 //		Map<String, Object> resMap = new HashMap<String, Object>();
 //		if (request != null && request.getScreenID() != null) {

@@ -37,7 +37,7 @@ import com.iemr.helpline104.data.location.DistrictBlock;
 public interface LocationDistrictBlockRepository extends CrudRepository<DistrictBlock, Integer> {
 
 	@Query("select blockID, blockName from DistrictBlock where districtID = :id")
-	public ArrayList<Objects[]> findBy(@Param("id") int id);
+	public ArrayList<Object[]> findBy(@Param("id") int id);
 
 
 }

@@ -46,7 +46,7 @@ public interface BencallReportRepository extends CrudRepository<BencallReport, L
 			+ "left join c.userReportObj user "
 			+ "where c.providerServiceMapID=:providerServiceMapID " + "and c.isCalledEarlier = false "+ "and c.beneficiaryRegID IS NOT NULL "
 			+ "and b.createdDate > :startDateTime " + "and b.createdDate < :endDateTime " + "group by b.beneficiaryID " + "order by b.createdDate desc ")
-	public List<Objects[]> getROSummaryReportByDate(
+	public List<Object[]> getROSummaryReportByDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 	
@@ -58,7 +58,7 @@ public interface BencallReportRepository extends CrudRepository<BencallReport, L
 			+"left join c.userReportObj user "
 			+ "where c.providerServiceMapID=:providerServiceMapID " + "and c.agentID =:agentID "+ "and c.isCalledEarlier = false "+ "and c.beneficiaryRegID IS NOT NULL "
 			+ "and b.createdDate > :startDateTime " + "and b.createdDate < :endDateTime " + "group by b.beneficiaryID " + "order by b.createdDate desc")
-	public List<Objects[]> getROSummaryReportByAgentIDAndDate(
+	public List<Object[]> getROSummaryReportByAgentIDAndDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("agentID") String agentID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 	

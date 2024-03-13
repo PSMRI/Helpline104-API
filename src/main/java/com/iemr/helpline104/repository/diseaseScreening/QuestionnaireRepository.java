@@ -41,11 +41,11 @@ public interface QuestionnaireRepository extends CrudRepository<M_Questionnaire,
 
 	@Query("select q from M_Questionnaire q " + 
 	"LEFT JOIN q.m_104QuestionScore s where q.questionTypeID = :questionTypeID group by q.questionID order by q.questionRank, s.iD")
-	public List<Objects[]> fetchQuestionsOnQuestionID(@Param("questionTypeID") Integer questionTypeID);
+	public List<Object[]> fetchQuestionsOnQuestionID(@Param("questionTypeID") Integer questionTypeID);
 
 	@Query("SELECT DISTINCT q from M_Questionnaire q LEFT JOIN q.m_questionairValues s "
 			+ "WHERE q.providerServiceMapID = :providerServiceMapID AND q.deleted is false "
 			+ "ORDER BY q.questionTypeID ASC, q.questionRank ASC")
-	public List<Objects[]> fetchQuestions(@Param("providerServiceMapID") Integer providerServiceMapID);
+	public List<Object[]> fetchQuestions(@Param("providerServiceMapID") Integer providerServiceMapID);
 
 }

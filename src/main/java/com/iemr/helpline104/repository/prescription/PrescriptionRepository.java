@@ -43,7 +43,7 @@ public interface PrescriptionRepository extends CrudRepository<Prescription, Lon
 			+ " from Prescription p "
 			+ " RIGHT JOIN p.m_drugMaster d "
 			+ "where d.deleted = false and p.beneficiaryRegID=:beneficiaryRegID and p.prescriptionID=:prescriptionID")
-	public List<Objects[]> getPrescription(@Param("beneficiaryRegID") Long beneficiaryRegID, @Param("prescriptionID") Long prescriptionID); 
+	public List<Object[]> getPrescription(@Param("beneficiaryRegID") Long beneficiaryRegID, @Param("prescriptionID") Long prescriptionID); 
 	
 	@Query("select p.beneficiaryRegID,p.benCallID,p.diagnosisProvided,p.drugID,d.drugName,p.dosage,p.drugUsage,p.noOfDays, "
 			+ "p.timeToConsume,p.sideEffects,p.remarks "
@@ -54,12 +54,12 @@ public interface PrescriptionRepository extends CrudRepository<Prescription, Lon
 	@Query("select p.prescriptionID,p.beneficiaryRegID,p.benCallID,p.diagnosisProvided,p.remarks,p.createdDate "			
 			+ " from Prescription p "			
 			+ "where p.deleted = false and p.beneficiaryRegID=:beneficiaryRegID")
-	public List<Objects[]> getPrescriptionList(@Param("beneficiaryRegID") Long beneficiaryRegID,Pageable pageable);
+	public List<Object[]> getPrescriptionList(@Param("beneficiaryRegID") Long beneficiaryRegID,Pageable pageable);
 	
 	@Query("select p.prescriptionID,p.beneficiaryRegID,p.benCallID,p.diagnosisProvided,p.remarks,p.createdDate "			
 			+ " from Prescription p "			
 			+ "where p.deleted = false and p.benCallID=:benCallID")
-	public List<Objects[]> getPrescriptionListByBenCallID(@Param("benCallID") Long benCallID);
+	public List<Object[]> getPrescriptionListByBenCallID(@Param("benCallID") Long benCallID);
 	
 	/*
 	@Query("select p.beneficiaryRegID,p.benCallID,p.diagnosisProvided,p.drugID,d.drugName,p.dosage,p.drugUsage,p.noOfDays, "
@@ -67,12 +67,12 @@ public interface PrescriptionRepository extends CrudRepository<Prescription, Lon
 			+ " from Prescription p "
 			+ " RIGHT JOIN p.m_drugMaster d "
 			+ "where d.deleted = false and p.beneficiaryRegID=:beneficiaryRegID and DATE(p.createdDate) between adddate(now(),-5) and now() order by p.prescriptionID DESC")
-	public List<Objects[]> getLatestValidPescription(@Param("beneficiaryRegID") Long beneficiaryRegID,Pageable pageable); */
+	public List<Object[]> getLatestValidPescription(@Param("beneficiaryRegID") Long beneficiaryRegID,Pageable pageable); */
 	
 	@Query("select p.prescriptionID,p.beneficiaryRegID,p.benCallID,p.diagnosisProvided,p.remarks,p.createdDate "			
 			+ " from Prescription p "			
 			+ "where p.deleted = false and p.beneficiaryRegID=:beneficiaryRegID and DATE(p.createdDate) between adddate(now(),-30) and now() order by p.prescriptionID DESC")
-	public List<Objects[]> getLatestValidPescription(@Param("beneficiaryRegID") Long beneficiaryRegID,Pageable pageable);
+	public List<Object[]> getLatestValidPescription(@Param("beneficiaryRegID") Long beneficiaryRegID,Pageable pageable);
 	
 	
 	

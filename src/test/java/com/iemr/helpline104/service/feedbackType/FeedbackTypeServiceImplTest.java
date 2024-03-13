@@ -69,8 +69,8 @@ public class FeedbackTypeServiceImplTest {
 	{
 		try {
 			
-			List<Objects[]> list=Lists.newArrayList();
-			Objects[] array=new Objects[9];
+			List<Object[]> list=Lists.newArrayList();
+			Object[] array=new Objects[9];
 			list.add(array);
 			doReturn(list).when(feedbackTypeRepository).getNatureOfComplaintTypes(Mockito.anyInt(), Mockito.anyShort());
 			List<M_FeedbackType> natureOfComplaintsList=feedbackServiceImpl.getNatureOfComplaintTypes(Mockito.anyInt(), Mockito.anyShort());

@@ -83,7 +83,7 @@ public class PrescriptionServiceImpl implements PrescriptionService{
 	public List<Prescription> getPrescription(Long beneficiaryRegID, Long prescriptionID) {
 		/*
 		List<T_Prescription> prescriptionList = new ArrayList<T_Prescription>();
-		List<Objects[]> prescription = prescriptionRepository.getPrescription(beneficiaryRegID, prescriptionID);
+		List<Object[]> prescription = prescriptionRepository.getPrescription(beneficiaryRegID, prescriptionID);
 
 		for (Object[] objects : prescription) {
 			if (objects!=null && objects.length > 0) {
@@ -102,14 +102,14 @@ public class PrescriptionServiceImpl implements PrescriptionService{
 	public List<Prescription> getPrescriptionList(Long beneficiaryRegID,Pageable pageable) {
 		
 		List<Prescription> prescriptionList = new ArrayList<Prescription>();
-		List<Objects[]> prescriptions = prescriptionRepository.getPrescriptionList(beneficiaryRegID,pageable);
+		List<Object[]> prescriptions = prescriptionRepository.getPrescriptionList(beneficiaryRegID,pageable);
 
 		for (Object[] objects : prescriptions) {
 			if (objects!=null && objects.length > 0) {
 		
 				Prescription prescription = new Prescription((Long)objects[0], (Long)objects[1], (Long)objects[2], (String)objects[3],(String)objects[4], (Date) objects[5]);
 				
-				List<Objects[]> drugs = prescribedDrugRepository.getPrescribedDrugs(prescription.getPrescriptionID());
+				List<Object[]> drugs = prescribedDrugRepository.getPrescribedDrugs(prescription.getPrescriptionID());
 				List<PrescribedDrug> drugsList = new ArrayList<PrescribedDrug>();
 				
 				for (Object[] drugObjects : drugs) {
@@ -135,14 +135,14 @@ public class PrescriptionServiceImpl implements PrescriptionService{
 	public List<Prescription> getPrescriptionListByBenCallID(Long benCallID) {
 		logger.info("get PrescriptionList By BenCallID " + benCallID);
 		List<Prescription> prescriptionList = new ArrayList<Prescription>();
-		List<Objects[]> prescriptions = prescriptionRepository.getPrescriptionListByBenCallID(benCallID);
+		List<Object[]> prescriptions = prescriptionRepository.getPrescriptionListByBenCallID(benCallID);
 
 		for (Object[] objects : prescriptions) {
 			if (objects!=null && objects.length > 0) {
 		
 				Prescription prescription = new Prescription((Long)objects[0], (Long)objects[1], (Long)objects[2], (String)objects[3],(String)objects[4], (Date) objects[5]);
 				
-				List<Objects[]> drugs = prescribedDrugRepository.getPrescribedDrugs(prescription.getPrescriptionID());
+				List<Object[]> drugs = prescribedDrugRepository.getPrescribedDrugs(prescription.getPrescriptionID());
 				List<PrescribedDrug> drugsList = new ArrayList<PrescribedDrug>();
 				
 				for (Object[] drugObjects : drugs) {
@@ -168,14 +168,14 @@ public class PrescriptionServiceImpl implements PrescriptionService{
 	public List<Prescription> getLatestValidPescription(Long beneficiaryRegID,Pageable pageable) {
 		
 		List<Prescription> prescriptionList = new ArrayList<Prescription>();
-		List<Objects[]> prescriptions = prescriptionRepository.getLatestValidPescription(beneficiaryRegID,pageable);
+		List<Object[]> prescriptions = prescriptionRepository.getLatestValidPescription(beneficiaryRegID,pageable);
 
 		for (Object[] objects : prescriptions) {
 			if (objects!=null && objects.length > 0) {
 		
 				Prescription prescription = new Prescription((Long)objects[0], (Long)objects[1], (Long)objects[2], (String)objects[3],(String)objects[4], (Date)objects[5]);
 				
-				List<Objects[]> drugs = prescribedDrugRepository.getPrescribedDrugs(prescription.getPrescriptionID());
+				List<Object[]> drugs = prescribedDrugRepository.getPrescribedDrugs(prescription.getPrescriptionID());
 				List<PrescribedDrug> drugsList = new ArrayList<PrescribedDrug>();
 				PrescribedDrug prescribedDrug;
 				
@@ -210,7 +210,7 @@ public class PrescriptionServiceImpl implements PrescriptionService{
 	public List<T_Prescription> getLatestValidPescription(Long beneficiaryRegID) {
 		
 		List<T_Prescription> prescriptionList = new ArrayList<T_Prescription>();
-		List<Objects[]> prescriptions = prescriptionRepository.getLatestValidPescription(beneficiaryRegID,new PageRequest(0, 1));
+		List<Object[]> prescriptions = prescriptionRepository.getLatestValidPescription(beneficiaryRegID,new PageRequest(0, 1));
 
 		for (Object[] objects : prescriptions) {
 			if (objects!=null && objects.length > 0) {

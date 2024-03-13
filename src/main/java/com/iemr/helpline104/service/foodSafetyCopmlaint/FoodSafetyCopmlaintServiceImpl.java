@@ -74,7 +74,7 @@ public class FoodSafetyCopmlaintServiceImpl implements FoodSafetyCopmlaintServic
 			String phoneNo) throws Exception {
 		List<T_FoodSafetyCopmlaint> foodSafetyComplaintsList = new ArrayList<T_FoodSafetyCopmlaint>();
 
-		List<Objects[]> foodSafetyComplaints = null;
+		List<Object[]> foodSafetyComplaints = null;
 		if (benificiaryRegID != null)
 			foodSafetyComplaints = foodSafetyCopmlaintRepository.getFoodSafetyRequests(benificiaryRegID);
 		else if (benCallID != null)

@@ -56,8 +56,8 @@ public class BeneficiaryCallControllerTest {
 	{
 		M_subservice m_subservice=new M_subservice();
 		m_subservice.setProviderServiceMapID(101);
-		List<Objects[]> services=Lists.newArrayList();
-		Objects[] obj=new Objects[3];
+		List<Object[]> services=Lists.newArrayList();
+		Object[] obj=new Objects[3];
 		services.add(0, obj);
 		doReturn(services).when(servicesHistoryService).getServices(Mockito.anyInt());
 		String response=beneficiarycallController.getServices(m_subservice.toString());

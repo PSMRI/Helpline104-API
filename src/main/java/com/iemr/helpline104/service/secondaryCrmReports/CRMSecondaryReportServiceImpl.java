@@ -59,7 +59,7 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
 			c.setService(filename);
-			List<Objects[]> result = secondaryReportRepo.getRegisterationReport(bencallReportRequest.getStartDateTime(),
+			List<Object[]> result = secondaryReportRepo.getRegisterationReport(bencallReportRequest.getStartDateTime(),
 					bencallReportRequest.getEndDateTime(), bencallReportRequest.getAgentID(),
 					bencallReportRequest.getProviderServiceMapID());
 			if (result != null && result.size() > 0)
@@ -90,7 +90,7 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
 			c.setService(filename);
-			List<Objects[]> result = secondaryReportRepo.getHAOReport(bencallReportRequest.getStartDateTime(),
+			List<Object[]> result = secondaryReportRepo.getHAOReport(bencallReportRequest.getStartDateTime(),
 					bencallReportRequest.getEndDateTime(), bencallReportRequest.getAgentID(),
 					bencallReportRequest.getProviderServiceMapID());
 			if (result != null && result.size() > 0)
@@ -120,7 +120,7 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
 			c.setService(filename);
-			List<Objects[]> result = secondaryReportRepo.getMOReport(bencallReportRequest.getStartDateTime(),
+			List<Object[]> result = secondaryReportRepo.getMOReport(bencallReportRequest.getStartDateTime(),
 					bencallReportRequest.getEndDateTime(), bencallReportRequest.getAgentID(),
 					bencallReportRequest.getProviderServiceMapID());
 			if (result != null && result.size() > 0)
@@ -144,7 +144,7 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
 			c.setService(filename);
-			List<Objects[]> result = secondaryReportRepo.getMODetailsReport(bencallReportRequest.getStartDateTime(),
+			List<Object[]> result = secondaryReportRepo.getMODetailsReport(bencallReportRequest.getStartDateTime(),
 					bencallReportRequest.getEndDateTime(),
 					bencallReportRequest.getProviderServiceMapID(), bencallReportRequest.getDistrictID(),
 					bencallReportRequest.getSubDistrictID(), bencallReportRequest.getVillageID(),
@@ -176,7 +176,7 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
 			c.setService(filename);
-			List<Objects[]> result = secondaryReportRepo.getCOReport(bencallReportRequest.getStartDateTime(),
+			List<Object[]> result = secondaryReportRepo.getCOReport(bencallReportRequest.getStartDateTime(),
 					bencallReportRequest.getEndDateTime(), bencallReportRequest.getAgentID(),
 					bencallReportRequest.getProviderServiceMapID());
 			if (result != null && result.size() > 0)
@@ -195,7 +195,7 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 		String[] headers = new String[3];
 		ByteArrayInputStream response = null;
 		try {
-			List<Objects[]> result = null;
+			List<Object[]> result = null;
 			BenmedhistoryReport bloodrequestReport = InputMapper.gson().fromJson(jsonRequest,
 					BenmedhistoryReport.class);
 			Criteria c = new Criteria();
@@ -247,7 +247,7 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 			c.setStart_Date(feedbackReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(feedbackReportRequest.getEndDateTime().toString());
 			c.setService(filename);
-			List<Objects[]> result = secondaryReportRepo.getGrievanceReport(feedbackReportRequest.getStartDateTime(),
+			List<Object[]> result = secondaryReportRepo.getGrievanceReport(feedbackReportRequest.getStartDateTime(),
 					feedbackReportRequest.getEndDateTime(), feedbackReportRequest.getAgentID(),
 					feedbackReportRequest.getProviderServiceMapID(), feedbackReportRequest.getFeedbackTypeID());
 			if (result != null && result.size() > 0)
@@ -278,7 +278,7 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
 			c.setService(filename);
-			List<Objects[]> result = secondaryReportRepo.getPrescriptionReport(bencallReportRequest.getStartDateTime(),
+			List<Object[]> result = secondaryReportRepo.getPrescriptionReport(bencallReportRequest.getStartDateTime(),
 					bencallReportRequest.getEndDateTime(), bencallReportRequest.getAgentID(),
 					bencallReportRequest.getProviderServiceMapID());
 			if (result != null && result.size() > 0)
@@ -305,7 +305,7 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
 			c.setService(filename);
-			List<Objects[]> result = secondaryReportRepo.getSchemeServiceReport(bencallReportRequest.getStartDateTime(),
+			List<Object[]> result = secondaryReportRepo.getSchemeServiceReport(bencallReportRequest.getStartDateTime(),
 					bencallReportRequest.getEndDateTime(), bencallReportRequest.getAgentID(),
 					bencallReportRequest.getProviderServiceMapID());
 			if (result != null && result.size() > 0)
@@ -333,7 +333,7 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
 			c.setService(filename);
-			List<Objects[]> result = secondaryReportRepo.getFoodSafetyReport(bencallReportRequest.getStartDateTime(),
+			List<Object[]> result = secondaryReportRepo.getFoodSafetyReport(bencallReportRequest.getStartDateTime(),
 					bencallReportRequest.getEndDateTime(), bencallReportRequest.getAgentID(),
 					bencallReportRequest.getProviderServiceMapID());
 			if (result != null && result.size() > 0)
@@ -362,7 +362,7 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
 			c.setService(filename);
-			List<Objects[]> result = secondaryReportRepo.getDirectoryserviceReport(bencallReportRequest.getStartDateTime(),
+			List<Object[]> result = secondaryReportRepo.getDirectoryserviceReport(bencallReportRequest.getStartDateTime(),
 					bencallReportRequest.getEndDateTime(), bencallReportRequest.getAgentID(),
 					bencallReportRequest.getProviderServiceMapID());
 			if (result != null && result.size() > 0)
@@ -388,7 +388,7 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 			c.setStart_Date(cDIResponseRequest.getStartDateTime().toString());
 			c.setEnd_Date(cDIResponseRequest.getEndDateTime().toString());
 			c.setService(filename);
-			List<Objects[]> result = secondaryReportRepo.getCDIResponseReport(cDIResponseRequest.getStartDateTime(),
+			List<Object[]> result = secondaryReportRepo.getCDIResponseReport(cDIResponseRequest.getStartDateTime(),
 					cDIResponseRequest.getEndDateTime(), cDIResponseRequest.getAgentID(),
 					cDIResponseRequest.getProviderServiceMapID());
 			if (result != null && result.size() > 0)
@@ -420,7 +420,7 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
 			c.setService(filename);
-			List<Objects[]> result = secondaryReportRepo.getBloodRequestReport(bencallReportRequest.getStartDateTime(),
+			List<Object[]> result = secondaryReportRepo.getBloodRequestReport(bencallReportRequest.getStartDateTime(),
 					bencallReportRequest.getEndDateTime(), bencallReportRequest.getAgentID(),
 					bencallReportRequest.getProviderServiceMapID());
 			if (result != null && result.size() > 0)
@@ -442,7 +442,7 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 		String[] grpComponentHeaders = { "SNo", "District", "Total Count", "A Positive", "A Negative",
 				"B Positive", "B Negative"};
 
-		ByteArrayInputStream response = null;List<Objects[]> result=null;
+		ByteArrayInputStream response = null;List<Object[]> result=null;
 		try {
 			BloodrequestReport bloodrequestReport = InputMapper.gson().fromJson(jsonRequest,
 					BloodrequestReport.class);
@@ -508,7 +508,7 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
 			c.setService(filename);
-			List<Objects[]> result = secondaryReportRepo.getEpidemicoutbreakReport(bencallReportRequest.getStartDateTime(),
+			List<Object[]> result = secondaryReportRepo.getEpidemicoutbreakReport(bencallReportRequest.getStartDateTime(),
 					bencallReportRequest.getEndDateTime(), bencallReportRequest.getAgentID(),
 					bencallReportRequest.getProviderServiceMapID());
 			if (result != null && result.size() > 0)
@@ -539,7 +539,7 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
 			c.setService(filename);
-			List<Objects[]> result = secondaryReportRepo.getOrgandonationReport(bencallReportRequest.getStartDateTime(),
+			List<Object[]> result = secondaryReportRepo.getOrgandonationReport(bencallReportRequest.getStartDateTime(),
 					bencallReportRequest.getEndDateTime(), bencallReportRequest.getAgentID(),
 					bencallReportRequest.getProviderServiceMapID());
 			if (result != null && result.size() > 0)
@@ -571,7 +571,7 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
 			c.setService(filename);
-			List<Objects[]> result = secondaryReportRepo.getPDSummaryReport(bencallReportRequest.getStartDateTime(),
+			List<Object[]> result = secondaryReportRepo.getPDSummaryReport(bencallReportRequest.getStartDateTime(),
 					bencallReportRequest.getEndDateTime(), bencallReportRequest.getAgentID(),
 					bencallReportRequest.getProviderServiceMapID());
 			if (result != null && result.size() > 0)

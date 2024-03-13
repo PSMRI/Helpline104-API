@@ -42,7 +42,7 @@ public interface ServicesHistoryRepository extends CrudRepository<BenCallService
 	@Query("select " + "benCall104ServiceMapID, beneficiaryRegID, benCallID, serviceID104, "
 			+ "createdBy, createdDate "
 			+ "from BenCallServicesMappingHistory " + "where beneficiaryRegID = :beneficiaryRegID")
-	public Set<Objects[]> findBy(@Param("beneficiaryRegID") Long beneficiaryRegID);  */
+	public Set<Object[]> findBy(@Param("beneficiaryRegID") Long beneficiaryRegID);  */
 
 	/*
 	@Query("select " + "b.benCall104ServiceMapID, b.beneficiaryRegID, b.benCallID, "
@@ -50,7 +50,7 @@ public interface ServicesHistoryRepository extends CrudRepository<BenCallService
 			+ "b.createdBy, b.createdDate  " + "from BenCallServicesMappingHistory b "
 			+ "join b.servicesMaster104 sm " 			
 			+ "where b.benCallID = :benCallID ")
-	public List<Objects[]> getCallSummary(@Param("benCallID") Long benCallID); */
+	public List<Object[]> getCallSummary(@Param("benCallID") Long benCallID); */
 
 	/*
 	@Query("select " + "b.benCall104ServiceMapID, b.beneficiaryRegID, b.benCallID, "
@@ -58,7 +58,7 @@ public interface ServicesHistoryRepository extends CrudRepository<BenCallService
 			+ "b.createdBy, b.createdDate " + "from BenCallServicesMappingHistory b "
 			+ "left join b.servicesMaster104 sm " 			
 			+ "where b.beneficiaryRegID = :beneficiaryRegID ")
-	public List<Objects[]> findCallDetailsForBeneficiary(@Param("beneficiaryRegID") Long beneficiaryRegID); */
+	public List<Object[]> findCallDetailsForBeneficiary(@Param("beneficiaryRegID") Long beneficiaryRegID); */
 
 	/*
 	@Query("select " + "b.benCall104ServiceMapID, b.beneficiaryRegID, b.benCallID, "
@@ -66,14 +66,14 @@ public interface ServicesHistoryRepository extends CrudRepository<BenCallService
 			+ "b.createdBy, b.createdDate " + "from BenCallServicesMappingHistory b "
 			+ "left join b.servicesMaster104 sm "			
 			+ "where b.beneficiaryRegID = :beneficiaryRegID ")
-	public List<Objects[]> findReferralsForBeneficiary(@Param("beneficiaryRegID") Long beneficiaryRegID, Pageable page); */
+	public List<Object[]> findReferralsForBeneficiary(@Param("beneficiaryRegID") Long beneficiaryRegID, Pageable page); */
 
 	/*
 	@Query("select " + "b.benCall104ServiceMapID, b.beneficiaryRegID, b.benCallID, "
 			+ "b.serviceID104, b.servicesMaster104, b.createdBy, b.createdDate "
 			+ "from BenCallServicesMappingHistory b " + "left join b.servicesMaster104 sm "
 			+ "join b.feedbackDetails f " + "where b.beneficiaryRegID = :beneficiaryRegID ")
-	public List<Objects[]> findFeedbacksForBeneficiary(@Param("beneficiaryRegID") Long beneficiaryRegID, Pageable page); */
+	public List<Object[]> findFeedbacksForBeneficiary(@Param("beneficiaryRegID") Long beneficiaryRegID, Pageable page); */
 
 	/*
 	@Query("select " + "b.benCall104ServiceMapID, b.beneficiaryRegID, b.benCallID, "
@@ -81,7 +81,7 @@ public interface ServicesHistoryRepository extends CrudRepository<BenCallService
 			+ "b.createdBy, b.createdDate " + "from BenCallServicesMappingHistory b "
 			+ "join b.servicesMaster104 sm " 
 			+ "where b.beneficiaryRegID = :beneficiaryRegID ")
-	public List<Objects[]> findInformationsForBeneficiary(@Param("beneficiaryRegID") Long beneficiaryRegID,
+	public List<Object[]> findInformationsForBeneficiary(@Param("beneficiaryRegID") Long beneficiaryRegID,
 			Pageable page); */
 	
 }

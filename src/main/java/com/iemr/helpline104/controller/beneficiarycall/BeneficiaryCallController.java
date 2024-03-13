@@ -121,7 +121,7 @@ public class BeneficiaryCallController {
 			M_subservice m_subservice = inputMapper.gson().fromJson(subservice, M_subservice.class);
 			logger.info("getServices request ");
 
-			List<Objects[]> services = null;
+			List<Object[]> services = null;
 
 			services = servicesHistoryService.getServices(m_subservice.getProviderServiceMapID());
 			output.setResponse(services.toString());

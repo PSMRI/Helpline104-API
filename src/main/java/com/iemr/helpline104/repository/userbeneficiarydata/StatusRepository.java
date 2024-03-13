@@ -35,5 +35,5 @@ import com.iemr.helpline104.data.userbeneficiarydata.M_Status;
 @RestResource(exported = false)
 public abstract interface StatusRepository extends CrudRepository<M_Status, Long> {
 	@Query("select StatusID, Status from M_Status where Deleted = false")
-	public abstract Set<Objects[]> findAciveStatus();
+	public abstract Set<Object[]> findAciveStatus();
 }

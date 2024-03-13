@@ -277,7 +277,7 @@ public class IMRMMRServiceImpl implements IMRMMRService {
 	@Override
 	public List<M_supportServices> getsupportServices() throws Exception {
 		List<M_supportServices> supportServicesList = new ArrayList<M_supportServices>();
-		ArrayList<Objects[]> lists = imrmmrRepository.findsupportServices();
+		ArrayList<Object[]> lists = imrmmrRepository.findsupportServices();
 
 		for (Object[] objects : lists) {
 			if (objects != null && objects.length > 0) {
@@ -289,7 +289,7 @@ public class IMRMMRServiceImpl implements IMRMMRService {
 
 	public List<M_facilities> getFacilities() throws Exception {
 		List<M_facilities> facilitiesList = new ArrayList<M_facilities>();
-		ArrayList<Objects[]> lists = imrmmrRepository.findfacilities();
+		ArrayList<Object[]> lists = imrmmrRepository.findfacilities();
 
 		for (Object[] objects : lists) {
 			if (objects != null && objects.length > 0) {
@@ -304,7 +304,7 @@ public class IMRMMRServiceImpl implements IMRMMRService {
 	 */
 	public List<m_iMRMMRBaseCommunity> getBaseCommunities() throws Exception {
 		List<m_iMRMMRBaseCommunity> baseCommunitiesList = new ArrayList<m_iMRMMRBaseCommunity>();
-		ArrayList<Objects[]> lists = imrmmrRepository.findBaseCommunities();
+		ArrayList<Object[]> lists = imrmmrRepository.findBaseCommunities();
 
 		for (Object[] objects : lists) {
 			if (objects != null && objects.length > 0) {
@@ -319,7 +319,7 @@ public class IMRMMRServiceImpl implements IMRMMRService {
 	 */
 	public List<m_iMRMMRTransitType> getTransitType() throws Exception {
 		List<m_iMRMMRTransitType> transitTypeList = new ArrayList<m_iMRMMRTransitType>();
-		ArrayList<Objects[]> lists = imrmmrRepository.findTransitType();
+		ArrayList<Object[]> lists = imrmmrRepository.findTransitType();
 
 		for (Object[] objects : lists) {
 			if (objects != null && objects.length > 0) {
@@ -334,7 +334,7 @@ public class IMRMMRServiceImpl implements IMRMMRService {
 	 */
 	public List<m_iMRMMRHealthworker> getHealthWorker() throws Exception {
 		List<m_iMRMMRHealthworker> healthWorkerist = new ArrayList<m_iMRMMRHealthworker>();
-		ArrayList<Objects[]> lists = imrmmrRepository.findHealthWorker();
+		ArrayList<Object[]> lists = imrmmrRepository.findHealthWorker();
 
 		for (Object[] objects : lists) {
 			if (objects != null && objects.length > 0) {

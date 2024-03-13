@@ -46,7 +46,7 @@ public interface PrescriptionReportRepository extends CrudRepository<Prescriptio
 			+ "left join c.userReportObj user "	
 			+ "where t.providerServiceMapID=:providerServiceMapID "
 			+ "and t.createdDate > :startDateTime " + "and t.createdDate < :endDateTime " + "order by t.createdDate desc")
-	public List<Objects[]> getPrescriptionReportByDate(
+	public List<Object[]> getPrescriptionReportByDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 

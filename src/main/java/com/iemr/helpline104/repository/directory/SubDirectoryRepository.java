@@ -39,5 +39,5 @@ public interface SubDirectoryRepository extends CrudRepository<SubDirectory, Lon
 	@Query(value="select instituteSubDirectoryID, instituteSubDirectoryName from SubDirectory where "
 			+ "Deleted = false and instituteDirectoryID = :instituteDirectoryID",nativeQuery=true)
 	
-	public Set<Objects[]> findAciveSubDirectories(@Param("instituteDirectoryID") int instituteDirectoryID);
+	public Set<Object[]> findAciveSubDirectories(@Param("instituteDirectoryID") int instituteDirectoryID);
 }

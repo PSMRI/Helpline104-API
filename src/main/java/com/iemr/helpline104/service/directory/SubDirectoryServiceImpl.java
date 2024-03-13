@@ -44,7 +44,7 @@ public class SubDirectoryServiceImpl implements SubDirectoryService {
 	@Override
 	public List<SubDirectory> getSubDirectories(int directoryID) {
 		ArrayList<SubDirectory> subDirectories = new ArrayList<SubDirectory>();
-		Set<Objects[]> subDirectoryResult = subDirectoryRepository.findAciveSubDirectories(directoryID);
+		Set<Object[]> subDirectoryResult = subDirectoryRepository.findAciveSubDirectories(directoryID);
 		for (Object[] objects : subDirectoryResult) {
 			if (objects != null && objects.length == 2) {
 				subDirectories.add(new SubDirectory((Integer) objects[0], (String) objects[1]));

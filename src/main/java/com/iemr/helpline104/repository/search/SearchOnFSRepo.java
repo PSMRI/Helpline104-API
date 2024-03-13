@@ -48,7 +48,7 @@ public interface SearchOnFSRepo extends CrudRepository<T_FoodSafetyCopmlaint, Lo
 //			+ " LEFT JOIN BeneficiaryMapping ben ON f.beneficiaryRegID=ben.benRegID "
 //			+ "LEFT JOIN BenContactMapping bc ON bc.benContactsID=ben.benContactsId "
 //			+ " where f.deleted=false and bc.preferredPhoneNum = :mobileNumber order by f.fSComplaintID desc")
-//	public List<Objects[]> getFoodSafetyComplaintsListByMobile(@Param("mobileNumber") String mobileNumber
+//	public List<Object[]> getFoodSafetyComplaintsListByMobile(@Param("mobileNumber") String mobileNumber
 //			)
 //			throws Exception;
 //
@@ -61,7 +61,7 @@ public interface SearchOnFSRepo extends CrudRepository<T_FoodSafetyCopmlaint, Lo
 //			+ " LEFT JOIN f.districtBlock db"
 //			+ " LEFT JOIN f.districtBranchMapping dbm"
 //			+ " where  f.deleted=false and  f.fSComplaintID= :ID order by f.fSComplaintID desc")
-//	public List<Objects[]> getFoodSafetyComplaintsListByGrievanceID(@Param("ID") String ID
+//	public List<Object[]> getFoodSafetyComplaintsListByGrievanceID(@Param("ID") String ID
 //			)
 //			throws Exception;
 

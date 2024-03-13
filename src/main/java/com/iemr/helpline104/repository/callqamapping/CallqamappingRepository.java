@@ -43,7 +43,7 @@ public interface CallqamappingRepository extends CrudRepository<M_104callqamappi
 			+ "left join c.m_questionnaire q "
 			+ "left join q.m_104QuestionScore s "
 			+ "WHERE c.beneficiaryRegID = :beneficiaryRegID and c.questionID=s.questionID")	
-	public List<Objects[]> getCDIQuestionScores(@Param("beneficiaryRegID") Long beneficiaryRegID);
+	public List<Object[]> getCDIQuestionScores(@Param("beneficiaryRegID") Long beneficiaryRegID);
 	*/
 	
 	/*
@@ -52,7 +52,7 @@ public interface CallqamappingRepository extends CrudRepository<M_104callqamappi
 			+ "left join c.m_questionnaire q "
 //			+ "left join q.m_104QuestionScore s ON (c.questionID=s.questionID and c.answer=s.answer)"
 			+ "WHERE  c.beneficiaryRegID =:beneficiaryRegID and c.questionID=s.questionID and ( q.answerType='text'  or c.answer=s.answer)")	
-	public List<Objects[]> getCDIQuestionScores(@Param("beneficiaryRegID") Long beneficiaryRegID); */
+	public List<Object[]> getCDIQuestionScores(@Param("beneficiaryRegID") Long beneficiaryRegID); */
 	
 	
 	/*
@@ -60,13 +60,13 @@ public interface CallqamappingRepository extends CrudRepository<M_104callqamappi
 			+ "FROM M_104QuestionScore s,M_104callqamapping c "
 			+ "left join c.m_questionnaire q "
 			+ "WHERE  c.beneficiaryRegID =:beneficiaryRegID and c.benCallID =:benCallID and ( q.answerType='text'  or c.answer=s.answer)")	
-	public List<Objects[]> getCDIQuestionScores(@Param("beneficiaryRegID") Long beneficiaryRegID,@Param("benCallID") Long benCallID); */
+	public List<Object[]> getCDIQuestionScores(@Param("beneficiaryRegID") Long beneficiaryRegID,@Param("benCallID") Long benCallID); */
 	
 	@Query("SELECT  c.beneficiaryRegID, c.answer, c.score, c.remarks, q.question , c.reasonIfNo , q.questionType , q.answerType "
 			+ "FROM M_104callqamapping c "
 			+ "left join c.m_questionnaire q "
 			+ "WHERE  c.beneficiaryRegID =:beneficiaryRegID and c.benCallID =:benCallID ")	
-	public List<Objects[]> getCDIQuestionScores(@Param("beneficiaryRegID") Long beneficiaryRegID,@Param("benCallID") Long benCallID); 
+	public List<Object[]> getCDIQuestionScores(@Param("beneficiaryRegID") Long beneficiaryRegID,@Param("benCallID") Long benCallID); 
    
    
 }

@@ -48,9 +48,9 @@ public class DrugGroupServiceImpl implements DrugGroupService{
 	private DrugStrengthRepository drugStrengthRepository;
 	
 	/*@Override
-	public List<Objects[]> getDrugList(Integer providerServiceMapID) throws Exception {
+	public List<Object[]> getDrugList(Integer providerServiceMapID) throws Exception {
 		List<M_DrugGroup> drugsList = new ArrayList<M_DrugGroup>();
-		List<Objects[]> drugs = drugGroupRepository.getDrugsList(providerServiceMapID);
+		List<Object[]> drugs = drugGroupRepository.getDrugsList(providerServiceMapID);
 		
 		for (Object[] objects : drugs) {
 			if (objects!=null && objects.length > 0) {
@@ -68,7 +68,7 @@ public class DrugGroupServiceImpl implements DrugGroupService{
 	public List<M_DrugGroup> getDrugGroups(Integer providerServiceMapID) throws Exception {
 		
 		List<M_DrugGroup> drugGroups = new ArrayList<M_DrugGroup>();
-		List<Objects[]> drugs = drugGroupRepository.getDrugGroups(providerServiceMapID);
+		List<Object[]> drugs = drugGroupRepository.getDrugGroups(providerServiceMapID);
 		
 		for (Object[] objects : drugs) {
 			if (objects!=null && objects.length > 0) {
@@ -83,7 +83,7 @@ public class DrugGroupServiceImpl implements DrugGroupService{
 	@Override
 	public List<M_104drugmapping> getDrugList(Integer providerServiceMapID, Integer drugGroupID) throws Exception {
 		List<M_104drugmapping> drugsList = new ArrayList<M_104drugmapping>();
-		List<Objects[]> drugs = drugGroupRepository.getDrugList(providerServiceMapID, drugGroupID);
+		List<Object[]> drugs = drugGroupRepository.getDrugList(providerServiceMapID, drugGroupID);
 		
 		for (Object[] objects : drugs) {
 			if (objects!=null && objects.length > 0) {
@@ -98,14 +98,14 @@ public class DrugGroupServiceImpl implements DrugGroupService{
 	}
 	
 	@Override
-	public ArrayList<Objects[]> getDrugFrequency() {
+	public ArrayList<Object[]> getDrugFrequency() {
 		
 			
 		return  drugFrequencyRepository.getDrugFrequency();
 	}
 	
 	@Override
-	public ArrayList<Objects[]> getDrugStrength(Integer serviceProviderID) {
+	public ArrayList<Object[]> getDrugStrength(Integer serviceProviderID) {
 		
 			
 		return  drugStrengthRepository.getDrugStrength(serviceProviderID);
@@ -114,7 +114,7 @@ public class DrugGroupServiceImpl implements DrugGroupService{
 	@Override
 	public List<M_104drugmapping> getDrugDetailList(Integer providerServiceMapID) throws Exception {
 		List<M_104drugmapping> drugsList = new ArrayList<M_104drugmapping>();
-		List<Objects[]> drugs = drugGroupRepository.getDrugDetailList(providerServiceMapID);
+		List<Object[]> drugs = drugGroupRepository.getDrugDetailList(providerServiceMapID);
 		
 		for (Object[] objects : drugs) {
 			if (objects!=null && objects.length > 0) {

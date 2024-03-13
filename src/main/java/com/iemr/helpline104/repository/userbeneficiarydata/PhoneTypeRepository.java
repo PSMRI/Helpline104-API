@@ -37,5 +37,5 @@ import com.iemr.helpline104.data.userbeneficiarydata.M_PhoneType;
 public interface PhoneTypeRepository extends CrudRepository<M_PhoneType, Long>{
 	
 	@Query("select phoneTypeID, phoneType from M_PhoneType where deleted = false")
-	public ArrayList<Objects[]> findAcivePhoneTypes();
+	public ArrayList<Object[]> findAcivePhoneTypes();
 }

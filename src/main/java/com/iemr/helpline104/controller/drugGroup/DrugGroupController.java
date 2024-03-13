@@ -102,7 +102,7 @@ public class DrugGroupController {
 		OutputResponse output = new OutputResponse();
 		try {
 
-			ArrayList<Objects[]> drugFrequency = drugGroupService.getDrugFrequency();
+			ArrayList<Object[]> drugFrequency = drugGroupService.getDrugFrequency();
 			output.setResponse(drugFrequency.toString());
 
 		} catch (Exception e) {
@@ -123,7 +123,7 @@ public class DrugGroupController {
 
 			M_DrugGroup m_DrugGroup = inputMapper.gson().fromJson(request, M_DrugGroup.class);
 
-			ArrayList<Objects[]> drugStrength = drugGroupService.getDrugStrength(m_DrugGroup.getServiceProviderID());
+			ArrayList<Object[]> drugStrength = drugGroupService.getDrugStrength(m_DrugGroup.getServiceProviderID());
 			output.setResponse(drugStrength.toString());
 
 		} catch (Exception e) {

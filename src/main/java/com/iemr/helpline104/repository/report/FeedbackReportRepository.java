@@ -46,7 +46,7 @@ public interface FeedbackReportRepository extends CrudRepository<FeedbackReport,
 			+ "left join c.userReportObj user "	
 			+ "where t.providerServiceMapID=:providerServiceMapID "
 			+ "and t.createdDate > :startDateTime " + "and t.createdDate < :endDateTime " + "order by t.createdDate desc")
-	public List<Objects[]> getFeedbackReportByDate(
+	public List<Object[]> getFeedbackReportByDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 	
@@ -58,7 +58,7 @@ public interface FeedbackReportRepository extends CrudRepository<FeedbackReport,
 			+ "left join c.userReportObj user "	
 			+ "where t.providerServiceMapID=:providerServiceMapID " + "and c.agentID =:agentID "
 			+ "and t.createdDate > :startDateTime " + "and t.createdDate < :endDateTime " + "order by t.createdDate desc")
-	public List<Objects[]> getFeedbackReportByAgentIDAndDate(
+	public List<Object[]> getFeedbackReportByAgentIDAndDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("agentID") String agentID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 	
@@ -70,7 +70,7 @@ public interface FeedbackReportRepository extends CrudRepository<FeedbackReport,
 			+ "left join c.userReportObj user "	
 			+ "where t.providerServiceMapID=:providerServiceMapID "+ "and t.feedbackTypeID=:feedbackTypeID "
 			+ "and t.createdDate > :startDateTime " + "and t.createdDate < :endDateTime " + "order by t.createdDate desc")
-	public List<Objects[]> getFeedbackReportByTypeAndDate(
+	public List<Object[]> getFeedbackReportByTypeAndDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime, @Param("feedbackTypeID") Short feedbackTypeID);
 	
@@ -82,7 +82,7 @@ public interface FeedbackReportRepository extends CrudRepository<FeedbackReport,
 			+ "left join c.userReportObj user "	
 			+ "where t.providerServiceMapID=:providerServiceMapID "+ "and c.agentID =:agentID " + "and t.feedbackTypeID=:feedbackTypeID "
 			+ "and t.createdDate > :startDateTime " + "and t.createdDate < :endDateTime " + "order by t.createdDate desc")
-	public List<Objects[]> getFeedbackReportByAgendIDTypeAndDate(
+	public List<Object[]> getFeedbackReportByAgendIDTypeAndDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("agentID") String agentID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime, @Param("feedbackTypeID") Short feedbackTypeID);
 

@@ -36,5 +36,5 @@ import com.iemr.helpline104.data.userbeneficiarydata.M_Gender;
 @RestResource(exported = false)
 public abstract interface GenderRepository extends CrudRepository<M_Gender, Long> {
 	@Query("select genderID, genderName from M_Gender where deleted = false")
-	public abstract Set<Objects[]> findAciveGenders();
+	public abstract Set<Object[]> findAciveGenders();
 }

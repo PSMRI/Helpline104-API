@@ -38,6 +38,6 @@ public interface QuestionScoreRepository extends CrudRepository<M_questionairVal
 	
 	@Query("select iD, questionID, answer, score "
 			+ "from M_questionairValues where questionID = :questionID order by iD")
-	public ArrayList<Objects[]> fetchAnswers(@Param("questionID") Integer questionID);
+	public ArrayList<Object[]> fetchAnswers(@Param("questionID") Integer questionID);
 	
 }

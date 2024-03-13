@@ -64,8 +64,8 @@ public class QuestionScoreServiceImplTest {
 	@Test
 	public void fetchQuestions1()
 	{
-		List<Objects[]> directoryServices=Lists.newArrayList();
-		Objects[] array=new Objects[5];
+		List<Object[]> directoryServices=Lists.newArrayList();
+		Object[] array=new Objects[5];
 		directoryServices.add(array);
 		doReturn(directoryServices).when(questionScoreRepository).fetchAnswers(Mockito.anyInt());
 		

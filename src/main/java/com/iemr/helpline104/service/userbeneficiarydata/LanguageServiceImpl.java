@@ -45,7 +45,7 @@ public class LanguageServiceImpl implements LanguageService {
 
 	public List<M_Language> getActiveLanguages() {
 		List<M_Language> genderList = new ArrayList<M_Language>();
-		Set<Objects[]> queryResult =  languageRepository.findAciveLanguages();
+		Set<Object[]> queryResult =  languageRepository.findAciveLanguages();
 		for (Object[] objects : queryResult) {
 			if (objects!=null && objects.length == 2) {
 				genderList.add(new M_Language((Integer)objects[0], (String)objects[1]));

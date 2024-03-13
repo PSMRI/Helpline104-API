@@ -39,19 +39,19 @@ public interface IMRMMRRepository extends CrudRepository<IMRMMR, Integer> {
 	// TODO Auto-generated constructor stub
 	
 	@Query("SELECT s.supportServiceID, s.supportServiceName FROM M_supportServices s")
-	public ArrayList<Objects[]> findsupportServices();
+	public ArrayList<Object[]> findsupportServices();
 	
 	@Query("SELECT f.facilityID, f.facilityName FROM M_facilities f")
-	public ArrayList<Objects[]> findfacilities();
+	public ArrayList<Object[]> findfacilities();
 	
 	@Query("SELECT imrmmrCommunityID, communityType FROM m_iMRMMRBaseCommunity ")
-	public ArrayList<Objects[]> findBaseCommunities();
+	public ArrayList<Object[]> findBaseCommunities();
 	
 	@Query("SELECT imrmmrHealthWorkerID, healthWorkerType FROM m_iMRMMRHealthworker ")
-	public ArrayList<Objects[]> findHealthWorker();
+	public ArrayList<Object[]> findHealthWorker();
 	
 	@Query("SELECT imrmmrTransitID, transitType FROM m_iMRMMRTransitType ")
-	public ArrayList<Objects[]> findTransitType();
+	public ArrayList<Object[]> findTransitType();
 
 	@Query("SELECT i.benImrMmrID, i.benCallID, i.beneficiaryRegID, i.within42daysOfDelivery, i.duringDelivery, i.duringPregnancy, "
 			+ "i.transitType, i.facilityID, i.facilityName, i.noofDelivery, i.reasonOfDeath, i.referenceDate, i.relationshipType, "

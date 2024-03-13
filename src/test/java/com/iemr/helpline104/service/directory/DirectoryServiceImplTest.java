@@ -88,8 +88,8 @@ public class DirectoryServiceImplTest {
 	@Test
 	public void getDirectorySearchHistory1()
 	{
-		List<Objects[]> directoryServices=Lists.newArrayList();
-		Objects[] array=new Objects[5];
+		List<Object[]> directoryServices=Lists.newArrayList();
+		Object[] array=new Objects[5];
 		directoryServices.add(array);
 		doReturn(directoryServices).when(directoryserviceRepository).getBenSearchHistory(Mockito.anyLong());
 		List<Directoryservice> list=directoryServiceImpl.getDirectorySearchHistory(Mockito.anyLong(),Mockito.anyLong());
@@ -136,8 +136,8 @@ public class DirectoryServiceImplTest {
 	@Test
 	public void getDirectoriesTest1()
 	{
-		Set<Objects[]> directoryServices=Sets.newHashSet();
-		Objects[] array=new Objects[5];
+		Set<Object[]> directoryServices=Sets.newHashSet();
+		Object[] array=new Objects[5];
 		directoryServices.add(array);
 		doReturn(directoryServices).when(directoryRepository).findAciveDirectories();
 		List<Directory> list=directoryServiceImpl.getDirectories();

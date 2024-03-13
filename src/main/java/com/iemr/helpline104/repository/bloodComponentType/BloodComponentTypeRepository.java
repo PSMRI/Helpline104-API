@@ -40,8 +40,8 @@ public interface BloodComponentTypeRepository extends CrudRepository<M_Component
 	@Autowired(required=true)
 	
 	@Query("select componentTypeID, componentType, componentTypeDesc from M_ComponentType where deleted=false")
-	public List<Objects[]> getComponentTypes() throws Exception;
+	public List<Object[]> getComponentTypes() throws Exception;
 	
 	@Query("select bloodGroupID, bloodGroup, bloodGroupDesc from M_BloodGroup where deleted=false")
-	public List<Objects[]> getBloodGroups() throws Exception;
+	public List<Object[]> getBloodGroups() throws Exception;
 }

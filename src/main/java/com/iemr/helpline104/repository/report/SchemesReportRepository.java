@@ -48,7 +48,7 @@ public interface SchemesReportRepository extends CrudRepository<SchemeserviceRep
 			+ "left join c.userReportObj user "	
 			+ "where t.providerServiceMapID=:providerServiceMapID "
 			+ "and t.createdDate > :startDateTime " + "and t.createdDate < :endDateTime " + "order by t.createdDate desc")
-	public List<Objects[]> getSchemeServiceReportByDate(
+	public List<Object[]> getSchemeServiceReportByDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 

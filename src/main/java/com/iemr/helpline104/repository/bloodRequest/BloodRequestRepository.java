@@ -51,7 +51,7 @@ public interface BloodRequestRepository extends CrudRepository<T_BloodRequest, L
 			+ " LEFT JOIN t.m_bloodGroup bg " + " LEFT JOIN t.m_componentType c " + " LEFT JOIN t.m_gender g "
 			+ " LEFT JOIN t.m_component mc " + " LEFT JOIN t.m_district d "
 			+ "where t.deleted=false and t.beneficiaryRegID=:beneficiaryRegID order by t.bloodReqID desc")
-	public List<Objects[]> getBloodRequestsByBeneficiaryRegID(@Param("beneficiaryRegID") Long beneficiaryRegID)
+	public List<Object[]> getBloodRequestsByBeneficiaryRegID(@Param("beneficiaryRegID") Long beneficiaryRegID)
 			throws Exception;
 
 	@Query("select t.bloodReqID, t.requestID, t.beneficiaryRegID, t.recipientBeneficiaryID, t.recipientName, t.recipientAge, t.recipientGenderID, g.genderName, "
@@ -61,7 +61,7 @@ public interface BloodRequestRepository extends CrudRepository<T_BloodRequest, L
 			+ " LEFT JOIN t.m_bloodGroup bg " + " LEFT JOIN t.m_componentType c " + " LEFT JOIN t.m_gender g "
 			+ " LEFT JOIN t.m_component mc " + " LEFT JOIN t.m_district d "
 			+ "where t.deleted=false and t.requestID=:requestID order by t.bloodReqID desc")
-	public List<Objects[]> getBloodRequestsByRequestID(@Param("requestID") String requestID) throws Exception;
+	public List<Object[]> getBloodRequestsByRequestID(@Param("requestID") String requestID) throws Exception;
 	
 	@Query("select t.bloodReqID, t.requestID, t.beneficiaryRegID, t.recipientBeneficiaryID, t.recipientName, t.recipientAge, t.recipientGenderID, g.genderName, "
 			+ "t.typeOfRequest, bg.bloodGroupID, bg.bloodGroup, bg.bloodGroupDesc, c.componentTypeID, c.componentType, c.componentTypeDesc, "
@@ -70,7 +70,7 @@ public interface BloodRequestRepository extends CrudRepository<T_BloodRequest, L
 			+ " LEFT JOIN t.m_bloodGroup bg " + " LEFT JOIN t.m_componentType c " + " LEFT JOIN t.m_gender g "
 			+ " LEFT JOIN t.m_component mc " + " LEFT JOIN t.m_district d " 
 			+ "where t.deleted=false and t.benCallID=:benCallID order by t.bloodReqID desc")
-	public List<Objects[]> getBloodRequestsByBenCallID(@Param("benCallID") Long benCallID) throws Exception;
+	public List<Object[]> getBloodRequestsByBenCallID(@Param("benCallID") Long benCallID) throws Exception;
 
 	@Transactional
 	@Modifying(clearAutomatically = true)

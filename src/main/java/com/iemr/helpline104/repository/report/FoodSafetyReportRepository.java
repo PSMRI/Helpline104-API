@@ -46,7 +46,7 @@ public interface FoodSafetyReportRepository extends CrudRepository<FoodsafetyRep
 			+ "left join c.userReportObj user "	
 			+"where t.providerServiceMapID=:providerServiceMapID "
 			+ "and t.createdDate > :startDateTime " + "and t.createdDate < :endDateTime " + "order by t.fsComplaintID desc")
-	public List<Objects[]> getFoodsafetyReportByDate(
+	public List<Object[]> getFoodsafetyReportByDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 

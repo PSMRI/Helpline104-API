@@ -61,9 +61,9 @@ public class H104BenHistoryServiceImpl implements H104BenHistoryService
 	private Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
 	/*
-	 * @Override public ArrayList<Objects[]> geSmpleBenHistory(Long beneficiaryId, Long benCallID) {
+	 * @Override public ArrayList<Object[]> geSmpleBenHistory(Long beneficiaryId, Long benCallID) {
 	 * 
-	 * ArrayList<Objects[]> benHistory = null;
+	 * ArrayList<Object[]> benHistory = null;
 	 * 
 	 * if(beneficiaryId != null) benHistory = h104BenHistoryRepository.getBenHistory(beneficiaryId); else if(benCallID
 	 * != null) benHistory = h104BenHistoryRepository.getHistoryByBenCallID(benCallID);

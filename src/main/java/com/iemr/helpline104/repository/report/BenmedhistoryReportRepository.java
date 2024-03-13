@@ -50,7 +50,7 @@ public interface BenmedhistoryReportRepository extends CrudRepository<Benmedhist
 			+ "where t.providerServiceMapID=:providerServiceMapID "			 
 			+ "and t.actionByHAO IS NOT NULL " + "and t.createdDate > :startDateTime " + "and t.createdDate < :endDateTime "
 			+ "order by t.createdDate desc")
-	public List<Objects[]> getHAOSummaryReportByDate(
+	public List<Object[]> getHAOSummaryReportByDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 	
@@ -66,7 +66,7 @@ public interface BenmedhistoryReportRepository extends CrudRepository<Benmedhist
 			+ "where t.providerServiceMapID=:providerServiceMapID " + "and c.agentID =:agentID "			 
 			+ "and t.actionByHAO IS NOT NULL " + "and t.createdDate > :startDateTime " + "and t.createdDate < :endDateTime "
 			+ "order by t.createdDate desc")
-	public List<Objects[]> getHAOSummaryReportByAgentIDAndDate(
+	public List<Object[]> getHAOSummaryReportByAgentIDAndDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID,  @Param("agentID") String agentID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 	
@@ -85,7 +85,7 @@ public interface BenmedhistoryReportRepository extends CrudRepository<Benmedhist
 			+ "where t.providerServiceMapID=:providerServiceMapID "			 
 			+ "and t.actionByMO IS NOT NULL " + "and t.createdDate > :startDateTime " + "and t.createdDate < :endDateTime "
 			+ "order by t.createdDate desc")
-	public List<Objects[]> getMOSummaryReportByDate(
+	public List<Object[]> getMOSummaryReportByDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 	
@@ -103,7 +103,7 @@ public interface BenmedhistoryReportRepository extends CrudRepository<Benmedhist
 			+ "where t.providerServiceMapID=:providerServiceMapID "	+ "and c.agentID =:agentID "		 
 			+ "and t.actionByMO IS NOT NULL " + "and t.createdDate > :startDateTime " + "and t.createdDate < :endDateTime "
 			+ "order by t.createdDate desc")
-	public List<Objects[]> getMOSummaryReportByAgentIDAndDate(
+	public List<Object[]> getMOSummaryReportByAgentIDAndDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID,  @Param("agentID") String agentID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 	
@@ -118,7 +118,7 @@ public interface BenmedhistoryReportRepository extends CrudRepository<Benmedhist
 			+ "where t.providerServiceMapID=:providerServiceMapID "		 
 			+ "and t.actionByCO IS NOT NULL " + "and t.createdDate > :startDateTime " + "and t.createdDate < :endDateTime "
 			+ "order by t.createdDate desc")
-	public List<Objects[]> getCOSummaryReportByDate(
+	public List<Object[]> getCOSummaryReportByDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 	
@@ -131,7 +131,7 @@ public interface BenmedhistoryReportRepository extends CrudRepository<Benmedhist
 			+ "where t.providerServiceMapID=:providerServiceMapID "	+ "and c.agentID =:agentID "	 
 			+ "and t.actionByCO IS NOT NULL " + "and t.createdDate > :startDateTime " + "and t.createdDate < :endDateTime "
 			+ "order by t.createdDate desc")
-	public List<Objects[]> getCOSummaryReportByAgentIDAndDate(
+	public List<Object[]> getCOSummaryReportByAgentIDAndDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID,  @Param("agentID") String agentID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 	
@@ -146,7 +146,7 @@ public interface BenmedhistoryReportRepository extends CrudRepository<Benmedhist
 			+ "where t.providerServiceMapID=:providerServiceMapID "			 
 			+ "and t.actionByPD IS NOT NULL " + "and t.createdDate > :startDateTime " + "and t.createdDate < :endDateTime "
 			+ "order by t.createdDate desc")
-	public List<Objects[]> getPDSummaryReportByDate(
+	public List<Object[]> getPDSummaryReportByDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 	
@@ -159,7 +159,7 @@ public interface BenmedhistoryReportRepository extends CrudRepository<Benmedhist
 			+ "where t.providerServiceMapID=:providerServiceMapID "	+ "and c.agentID =:agentID "		 
 			+ "and t.actionByPD IS NOT NULL " + "and t.createdDate > :startDateTime " + "and t.createdDate < :endDateTime "
 			+ "order by t.createdDate desc")
-	public List<Objects[]> getPDSummaryReportByAgentIDAndDate(
+	public List<Object[]> getPDSummaryReportByAgentIDAndDate(
 			@Param("providerServiceMapID") Integer providerServiceMapID,  @Param("agentID") String agentID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 	
@@ -169,7 +169,7 @@ public interface BenmedhistoryReportRepository extends CrudRepository<Benmedhist
 			+ "and benmedhistoryReport.providerServiceMapID = :providerServiceMapID "
 			+ "group by benmedhistoryReport.diseaseSummary "
 			+ "order by benmedhistoryReport.diseaseSummary asc")
-	public List<Objects[]> getMentalHealthByGuidelines(
+	public List<Object[]> getMentalHealthByGuidelines(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 	
@@ -179,7 +179,7 @@ public interface BenmedhistoryReportRepository extends CrudRepository<Benmedhist
 			+ "and benmedhistoryReport.providerServiceMapID = :providerServiceMapID "
 			+ "group by benmedhistoryReport.category "
 			+ "order by benmedhistoryReport.category asc")
-	public List<Objects[]> getMentalHealthByCategory(
+	public List<Object[]> getMentalHealthByCategory(
 			@Param("providerServiceMapID") Integer providerServiceMapID, @Param("startDateTime") Timestamp startDateTime,
 			@Param("endDateTime") Timestamp endDateTime);
 

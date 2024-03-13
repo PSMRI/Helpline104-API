@@ -45,7 +45,7 @@ public class HealthCareWorkerServiceImpl implements HealthCareWorkerService{
 	
 		
 		 List<M_HealthCareWorker> healthCareTypesList = new ArrayList<M_HealthCareWorker>();
-			Iterable<Objects[]> healthCareTypes = healthCareWorkerTypeRepository.findAciveHealthCareWorkerTypes();
+			Iterable<Object[]> healthCareTypes = healthCareWorkerTypeRepository.findAciveHealthCareWorkerTypes();
 		
 			System.out.println(healthCareTypes);
 			for (Object[] objects : healthCareTypes) {

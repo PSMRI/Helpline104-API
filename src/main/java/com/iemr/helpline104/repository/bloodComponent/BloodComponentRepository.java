@@ -36,5 +36,5 @@ import com.iemr.helpline104.data.bloodComponent.M_Component;
 @RestResource(exported = false)
 public interface BloodComponentRepository extends CrudRepository<M_Component, Long>{
 	@Query("select componentID, component, componentDesc from M_Component where deleted=false and componentID=:ComponentID")
-	public List<Objects[]> getBloodComponents(@Param("ComponentID") Integer ComponentID) throws Exception;
+	public List<Object[]> getBloodComponents(@Param("ComponentID") Integer ComponentID) throws Exception;
 }

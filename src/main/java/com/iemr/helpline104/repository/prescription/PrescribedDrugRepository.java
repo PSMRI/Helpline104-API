@@ -42,7 +42,7 @@ public interface PrescribedDrugRepository extends CrudRepository<PrescribedDrug,
 			+ " from PrescribedDrug p "
 			+ " RIGHT JOIN p.m_104drugmapping d "
 			+ "where d.deleted = false and p.prescriptionID=:prescriptionID") 	
-	public List<Objects[]> getPrescribedDrugs(@Param("prescriptionID") Long prescriptionID);
+	public List<Object[]> getPrescribedDrugs(@Param("prescriptionID") Long prescriptionID);
 	
 	
 	

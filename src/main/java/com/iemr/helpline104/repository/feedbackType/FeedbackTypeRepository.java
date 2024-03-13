@@ -39,7 +39,7 @@ public interface FeedbackTypeRepository extends CrudRepository<M_FeedbackType, L
 	@Query("select t.feedbackTypeID,t.feedbackTypeName,t.feedbackDesc,t.providerServiceMapID,n.feedbackNatureID, n.feedbackNature, n.feedbackNatureDesc "
 			+ "from M_FeedbackType t" + " RIGHT JOIN t.m_feedbackNature n "
 			+ "where n.deleted=false and t.providerServiceMapID=:serviceLineID and t.feedbackTypeID=:feedbackTypeID")
-	public List<Objects[]> getNatureOfComplaintTypes(@Param("serviceLineID") Integer serviceLineID,
+	public List<Object[]> getNatureOfComplaintTypes(@Param("serviceLineID") Integer serviceLineID,
 			@Param("feedbackTypeID") Short feedbackTypeID) throws Exception;
 
 	@Query("select new M_FeedbackType(feedbackTypeID, feedbackTypeName) from M_FeedbackType type where "

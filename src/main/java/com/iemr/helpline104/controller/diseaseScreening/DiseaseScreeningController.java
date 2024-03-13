@@ -63,7 +63,7 @@ public class DiseaseScreeningController {
 			M_Questionnaire m_questionnaire = inputMapper.gson().fromJson(request, M_Questionnaire.class);
 			logger.info("getQuestions request " + m_questionnaire.toString());
 
-			List<Objects[]> Questions = null;
+			List<Object[]> Questions = null;
 
 			Questions = questionnaireService.fetchQuestions(m_questionnaire.getQuestionTypeID(),
 					m_questionnaire.getProviderServiceMapID());

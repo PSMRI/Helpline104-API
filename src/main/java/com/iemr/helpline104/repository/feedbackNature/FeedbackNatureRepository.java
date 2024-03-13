@@ -40,5 +40,5 @@ public interface FeedbackNatureRepository extends CrudRepository<M_FeedbackNatur
 			+ "from M_FeedbackType t"
 			+ " INNER JOIN t.m_feedbackNature n "
 			+ "where n.deleted=false and t.providerServiceMapID=:serviceLineID and t.feedbackTypeID=:feedbackTypeID")
-	public List<Objects[]> getNatureOfComplaintTypes(@Param("serviceLineID") Integer serviceLineID,@Param("feedbackTypeID") Short feedbackTypeID) throws Exception;
+	public List<Object[]> getNatureOfComplaintTypes(@Param("serviceLineID") Integer serviceLineID,@Param("feedbackTypeID") Short feedbackTypeID) throws Exception;
 }

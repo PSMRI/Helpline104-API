@@ -41,9 +41,9 @@ public interface DirectoryserviceRepository extends CrudRepository<Directoryserv
 	@Autowired(required = true)
 
 	@Query("select d.directoryServiceID, i.institutionName, i.address, s.instituteDirectoryName, b.instituteSubDirectoryName from Directoryservice d left join d.institute i join d.instituteDirectory s join d.instituteSubDirectory b where d.deleted=false and d.beneficiaryRegID = :BeneficiaryRegID")
-	public List<Objects[]> getBenSearchHistory(@Param("BeneficiaryRegID") Long BeneficiaryRegID);
+	public List<Object[]> getBenSearchHistory(@Param("BeneficiaryRegID") Long BeneficiaryRegID);
 
 	@Query("select d.directoryServiceID, i.institutionName, i.address, s.instituteDirectoryName, b.instituteSubDirectoryName from Directoryservice d left join d.institute i join d.instituteDirectory s join d.instituteSubDirectory b where d.deleted=false and d.benCallID = :benCallID")
-	public List<Objects[]> getBenSearchHistoryByBenCallID(@Param("benCallID") Long benCallID);
+	public List<Object[]> getBenSearchHistoryByBenCallID(@Param("benCallID") Long benCallID);
 
 }

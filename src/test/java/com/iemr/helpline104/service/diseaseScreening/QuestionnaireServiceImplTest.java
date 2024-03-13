@@ -41,7 +41,7 @@ public class QuestionnaireServiceImplTest {
 	@Test
 	public void fetchQuestions() {
 		try {
-			// List<Objects[]> questionsList
+			// List<Object[]> questionsList
 			// =questionnaireServiceImpl.fetchQuestions(Mockito.anyInt(), 101);
 			// assertTrue(questionsList.isEmpty());
 		} catch (Exception e) {

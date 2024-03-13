@@ -96,7 +96,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 	public List<FeedbackDetails> getFeedbackRequests(long id) {
 
 		List<FeedbackDetails> feedbackList = new ArrayList<FeedbackDetails>();
-		ArrayList<Objects[]> lists = feedbackRepository.findByBeneficiaryID(id);
+		ArrayList<Object[]> lists = feedbackRepository.findByBeneficiaryID(id);
 
 		for (Object[] objects : lists) {
 			if (objects != null && objects.length >= 7) {
@@ -111,7 +111,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 	public List<FeedbackDetails> getFeedbackRequest(long id) {
 
 		List<FeedbackDetails> feedbackList = new ArrayList<FeedbackDetails>();
-		ArrayList<Objects[]> lists = feedbackRepository.findByFeedbackID(id);
+		ArrayList<Object[]> lists = feedbackRepository.findByFeedbackID(id);
 
 		for (Object[] objects : lists) {
 			if (objects != null && objects.length >= 7) {

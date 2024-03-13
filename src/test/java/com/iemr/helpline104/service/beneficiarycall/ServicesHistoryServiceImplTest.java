@@ -83,7 +83,7 @@ public class ServicesHistoryServiceImplTest {
 		list.add(array);
 		try {
 			doReturn(list).when(serviceMasterRepository).getServices(Mockito.anyInt());
-			List<Objects[]> m_Religion=servicesHistoryServiceImpl.getServices(Mockito.anyInt());
+			List<Object[]> m_Religion=servicesHistoryServiceImpl.getServices(Mockito.anyInt());
 			//assertTrue(m_Religion.toString().contains("subServiceID"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

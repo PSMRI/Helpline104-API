@@ -44,7 +44,7 @@ public interface FoodSafetyCopmlaintRepository extends CrudRepository<T_FoodSafe
 			+ "from T_FoodSafetyCopmlaint f " + " LEFT JOIN f.m_feedbackType t" + " LEFT JOIN f.district d"
 			+ " LEFT JOIN f.districtBlock db" + " LEFT JOIN f.districtBranchMapping dbm"
 			+ " where  f.deleted=false and  f.beneficiaryRegID=:beneficiaryRegID order by f.fSComplaintID desc")
-	public List<Objects[]> getFoodSafetyRequests(@Param("beneficiaryRegID") Long beneficiaryRegID) throws Exception;
+	public List<Object[]> getFoodSafetyRequests(@Param("beneficiaryRegID") Long beneficiaryRegID) throws Exception;
 
 	@Query("select f.fSComplaintID, f.requestID, f.beneficiaryRegID, f.typeOfRequest, f.isDiarrhea, f.isVomiting, f.isAbdominalPain, f.isChillsOrRigors, f.isGiddiness, f.isDehydration, "
 			+ "f.isRashes, f.fromWhen, f.historyOfDiet, f.isFoodConsumed, f.typeOfFood, f.foodConsumedFrom, f.associatedSymptoms, t.feedbackTypeID, t.feedbackTypeName, "
@@ -52,7 +52,7 @@ public interface FoodSafetyCopmlaintRepository extends CrudRepository<T_FoodSafe
 			+ "from T_FoodSafetyCopmlaint f " + " LEFT JOIN f.m_feedbackType t" + " LEFT JOIN f.district d"
 			+ " LEFT JOIN f.districtBlock db" + " LEFT JOIN f.districtBranchMapping dbm"
 			+ " where  f.deleted=false and  f.benCallID=:benCallID order by f.fSComplaintID desc")
-	public List<Objects[]> getFoodSafetyRequestsByBenCallID(@Param("benCallID") Long benCallID) throws Exception;
+	public List<Object[]> getFoodSafetyRequestsByBenCallID(@Param("benCallID") Long benCallID) throws Exception;
 
 	@Query("select f.fSComplaintID, f.requestID, f.beneficiaryRegID, f.typeOfRequest, f.isDiarrhea, f.isVomiting, f.isAbdominalPain, f.isChillsOrRigors, f.isGiddiness, f.isDehydration, "
 			+ "f.isRashes, f.fromWhen, f.historyOfDiet, f.isFoodConsumed, f.typeOfFood, f.foodConsumedFrom, f.associatedSymptoms, t.feedbackTypeID, t.feedbackTypeName, "
@@ -60,7 +60,7 @@ public interface FoodSafetyCopmlaintRepository extends CrudRepository<T_FoodSafe
 			+ "from T_FoodSafetyCopmlaint f " + " LEFT JOIN f.m_feedbackType t" + " LEFT JOIN f.district d"
 			+ " LEFT JOIN f.districtBlock db" + " LEFT JOIN f.districtBranchMapping dbm"
 			+ " where  f.deleted=false and  f.requestID=:requestID order by f.fSComplaintID desc")
-	public List<Objects[]> getFoodSafetyRequestsByRequestID(@Param("requestID") String requestID) throws Exception;
+	public List<Object[]> getFoodSafetyRequestsByRequestID(@Param("requestID") String requestID) throws Exception;
 
 	@Query("select f.fSComplaintID, f.requestID, f.beneficiaryRegID, f.typeOfRequest, f.isDiarrhea, f.isVomiting, f.isAbdominalPain, f.isChillsOrRigors, f.isGiddiness, f.isDehydration, "
 			+ "f.isRashes, f.fromWhen, f.historyOfDiet, f.isFoodConsumed, f.typeOfFood, f.foodConsumedFrom, f.associatedSymptoms, t.feedbackTypeID, t.feedbackTypeName, "
@@ -68,7 +68,7 @@ public interface FoodSafetyCopmlaintRepository extends CrudRepository<T_FoodSafe
 			+ "from T_FoodSafetyCopmlaint f " + " LEFT JOIN f.m_feedbackType t" + " LEFT JOIN f.district d"
 			+ " LEFT JOIN f.districtBlock db" + " LEFT JOIN f.districtBranchMapping dbm"
 			+ " where  f.deleted=false and  f.fSComplaintID=:fSComplaintID ")
-	public List<Objects[]> getFoodSafetyRequestsByRequestIDNew(@Param("fSComplaintID") Long fSComplaintID)
+	public List<Object[]> getFoodSafetyRequestsByRequestIDNew(@Param("fSComplaintID") Long fSComplaintID)
 			throws Exception;
 
 	@Query(value = "SELECT im.BenRegId FROM "
@@ -83,7 +83,7 @@ public interface FoodSafetyCopmlaintRepository extends CrudRepository<T_FoodSafe
 			+ "from T_FoodSafetyCopmlaint f " + " LEFT JOIN f.m_feedbackType t" + " LEFT JOIN f.district d"
 			+ " LEFT JOIN f.districtBlock db" + " LEFT JOIN f.districtBranchMapping dbm"
 			+ " where  f.deleted=false and  f.beneficiaryRegID IN :ids ")
-	public List<Objects[]> findByBenRegIDs(@Param("ids") List<Long> ids);
+	public List<Object[]> findByBenRegIDs(@Param("ids") List<Long> ids);
 
 	// shubham 29-02-2020
 //	@Query("select f.fSComplaintID, f.requestID, f.beneficiaryRegID, f.typeOfRequest, f.isDiarrhea, f.isVomiting, f.isAbdominalPain, f.isChillsOrRigors, f.isGiddiness, f.isDehydration, "
@@ -97,7 +97,7 @@ public interface FoodSafetyCopmlaintRepository extends CrudRepository<T_FoodSafe
 //			+ " LEFT JOIN BeneficiaryMapping ben ON f.beneficiaryRegID=ben.benRegID "
 //			+ "LEFT JOIN BenContactMapping bc ON bc.benContactsID=ben.benContactsId "
 //			+ " where f.deleted=false and bc.preferredPhoneNum = :mobileNumber order by f.fSComplaintID desc")
-//	public List<Objects[]> getFoodSafetyComplaintsListByMobile(@Param("mobileNumber") String mobileNumber
+//	public List<Object[]> getFoodSafetyComplaintsListByMobile(@Param("mobileNumber") String mobileNumber
 //			)
 //			throws Exception;
 
@@ -110,7 +110,7 @@ public interface FoodSafetyCopmlaintRepository extends CrudRepository<T_FoodSafe
 //			+ " LEFT JOIN f.districtBlock db"
 //			+ " LEFT JOIN f.districtBranchMapping dbm"
 //			+ " where  f.deleted=false and  f.fSComplaintID= :ID order by f.fSComplaintID desc")
-//	public List<Objects[]> getFoodSafetyComplaintsListByGrievanceID(@Param("ID") Long ID
+//	public List<Object[]> getFoodSafetyComplaintsListByGrievanceID(@Param("ID") Long ID
 //			)
 //			throws Exception;
 

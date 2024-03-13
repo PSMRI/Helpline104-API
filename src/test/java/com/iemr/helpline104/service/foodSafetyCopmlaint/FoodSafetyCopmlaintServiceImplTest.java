@@ -60,8 +60,8 @@ public class FoodSafetyCopmlaintServiceImplTest {
 
 	@Test
 	public void getFoodSafetyComplaints() {
-		List<Objects[]> list = Lists.newArrayList();
-		Objects[] array = new Objects[22];
+		List<Object[]> list = Lists.newArrayList();
+		Object[] array = new Objects[22];
 		list.add(array);
 		try {
 			doReturn(list).when(foodSafetyCopmlaintRepository).getFoodSafetyRequests(Mockito.anyLong());

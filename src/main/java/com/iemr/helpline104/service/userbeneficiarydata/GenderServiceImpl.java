@@ -43,7 +43,7 @@ public class GenderServiceImpl implements GenderService {
 
 	public List<M_Gender> getActiveGenders() {
 		List<M_Gender> genderList = new ArrayList<M_Gender>();
-		Set<Objects[]> queryResult =  genderRepository.findAciveGenders();
+		Set<Object[]> queryResult =  genderRepository.findAciveGenders();
 		for (Object[] objects : queryResult) {
 			if (objects!=null && objects.length == 2) {
 				genderList.add(new M_Gender((Short)objects[0], (String)objects[1]));

@@ -41,7 +41,7 @@ public class PhoneTypeServiceImpl implements PhoneTypeService{
 	public List<M_PhoneType> getActivePhoneTypes() {
 		
 		List<M_PhoneType> phoneTypesList = new ArrayList<M_PhoneType>();
-		List<Objects[]> phoneTypes = phoneTypeRepository.findAcivePhoneTypes();
+		List<Object[]> phoneTypes = phoneTypeRepository.findAcivePhoneTypes();
 		
 		for(Object[] phoneType:phoneTypes){
 			if(null!=phoneType && phoneType.length>0){

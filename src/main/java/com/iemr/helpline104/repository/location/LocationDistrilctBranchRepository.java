@@ -37,5 +37,5 @@ import com.iemr.helpline104.data.location.DistrictBranchMapping;
 public interface LocationDistrilctBranchRepository extends CrudRepository<DistrictBranchMapping, Integer> {
 
 	@Query("select districtBranchID, villageName from DistrictBranchMapping where blockID = :id")
-	public ArrayList<Objects[]> findBy(@Param("id") int id);
+	public ArrayList<Object[]> findBy(@Param("id") int id);
 }
