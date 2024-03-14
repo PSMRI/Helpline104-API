@@ -29,12 +29,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
 
 @Entity
 @Table(name = "m_subservice")
+@Data
 public class M_subservice {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -149,8 +151,12 @@ public class M_subservice {
 		this.lastModDate = lastModDate;
 	}
 	
+	@Override
 	public String toString() {
-		return new Gson().toJson(this);
+		return "M_subservice [subServiceID=" + subServiceID + ", subServiceName=" + subServiceName + ", subServiceDesc="
+				+ subServiceDesc + ", providerServiceMapID=" + providerServiceMapID + ", deleted=" + deleted
+				+ ", processed=" + processed + ", createdBy=" + createdBy + ", createdDate=" + createdDate
+				+ ", modifiedBy=" + modifiedBy + ", lastModDate=" + lastModDate + "]";
 	}
 
 }

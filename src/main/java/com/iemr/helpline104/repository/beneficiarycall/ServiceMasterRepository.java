@@ -36,5 +36,5 @@ public interface ServiceMasterRepository extends CrudRepository<M_subservice, Lo
 
 	@Query("select s "
 			+ "from M_subservice s where s.deleted = false and s.providerServiceMapID = :providerServiceMapID")
-	public List<Object[]> getServices(@Param("providerServiceMapID") Integer providerServiceMapID); 
+	public List<M_subservice> getServices(@Param("providerServiceMapID") Integer providerServiceMapID); 
 }

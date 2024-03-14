@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Objects;
 
 import com.iemr.helpline104.data.beneficiarycall.BenCallServicesMappingHistory;
+import com.iemr.helpline104.data.beneficiarycall.M_subservice;
 import com.iemr.helpline104.data.beneficiarycall.ServicesMaster104;
 
 public interface ServicesHistoryService {
@@ -50,7 +51,7 @@ public interface ServicesHistoryService {
 
 	//List<BenCallServicesMappingHistory> getInformationsHistory(Long id, int pageNo, int rows);
 	
-	List<Object[]> getServices(Integer providerServiceMapID);
+	List<M_subservice> getServices(Integer providerServiceMapID);
 	
     public String saveCallDisconnectedData(String requestObj) throws Exception;
 

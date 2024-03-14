@@ -32,6 +32,7 @@ import org.springframework.stereotype.Service;
 
 import com.iemr.helpline104.data.beneficiarycall.BenCallDisconnectedData;
 import com.iemr.helpline104.data.beneficiarycall.BenCallServicesMappingHistory;
+import com.iemr.helpline104.data.beneficiarycall.M_subservice;
 import com.iemr.helpline104.data.beneficiarycall.ServicesMaster104;
 import com.iemr.helpline104.repository.beneficiarycall.BenCallDisconnectedDataRepo;
 import com.iemr.helpline104.repository.beneficiarycall.ServiceMasterRepository;
@@ -67,9 +68,8 @@ public class ServicesHistoryServiceImpl implements ServicesHistoryService {
 	
 
 	@Override
-	public List<Object[]> getServices(Integer providerServiceMapID) {
+	public List<M_subservice> getServices(Integer providerServiceMapID) {
 
-		List<Object[]> services = new ArrayList<Object[]>();
 
 		return serviceMasterRepository.getServices(providerServiceMapID);
 	}

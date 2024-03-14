@@ -30,6 +30,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import com.google.gson.Gson;
 import com.iemr.helpline104.data.beneficiarycall.BenCallServicesMappingHistory;
 import com.iemr.helpline104.data.beneficiarycall.BeneficiaryCall;
 import com.iemr.helpline104.data.beneficiarycall.M_subservice;
@@ -121,10 +123,11 @@ public class BeneficiaryCallController {
 			M_subservice m_subservice = inputMapper.gson().fromJson(subservice, M_subservice.class);
 			logger.info("getServices request ");
 
-			List<Object[]> services = null;
+			List<M_subservice> services = null;
 
 			services = servicesHistoryService.getServices(m_subservice.getProviderServiceMapID());
-			output.setResponse(services.toString());
+			String json = new Gson().toJson(services);
+			output.setResponse(json);
 		} catch (Exception e) {
 			logger.error("getServices failed with error " + e.getMessage(), e);
 			output.setError(e);
