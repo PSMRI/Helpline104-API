@@ -28,6 +28,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iemr.helpline104.data.foodSafetyCopmlaint.T_FoodSafetyCopmlaint;
 import com.iemr.helpline104.service.foodSafetyCopmlaint.FoodSafetyCopmlaintService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
@@ -57,15 +60,17 @@ public class FoodSafetyComplaintController {
 			HttpServletRequest httpRequest) {
 		OutputResponse output = new OutputResponse();
 		try {
-			T_FoodSafetyCopmlaint t_foodSafetyCopmlaint = inputMapper.gson().fromJson(request,
+			ObjectMapper objectMapper = new ObjectMapper();
+			objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+			T_FoodSafetyCopmlaint t_foodSafetyCopmlaint = objectMapper.readValue(request,
 					T_FoodSafetyCopmlaint.class);
-			logger.info("saveFoodComplaintDetails request " + t_foodSafetyCopmlaint.toString());
+		//	logger.info("saveFoodComplaintDetails request " + t_foodSafetyCopmlaint.toString());
 
 			T_FoodSafetyCopmlaint foodComplaint;
 
 			t_foodSafetyCopmlaint.setDeleted(false);
 			foodComplaint = foodSafetyCopmlaintService.save(t_foodSafetyCopmlaint, httpRequest);
-			output.setResponse(foodComplaint.toString());
+			output.setResponse(objectMapper.writeValueAsString(foodComplaint));
 		} catch (Exception e) {
 			logger.error("saveFoodComplaintDetails failed with error " + e.getMessage(), e);
 			output.setError(e);
