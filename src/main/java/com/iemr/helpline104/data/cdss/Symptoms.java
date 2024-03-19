@@ -36,11 +36,15 @@ public class Symptoms {
 	@Column(name = "SymptomId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int SymptomId;
+	@Column(name="Symptom")
 	private String Symptom;
-
+	@Column(name="Gender")
 	private String Gender;
+	@Column(name="AgeFrom")
 	private int AgeFrom;
+	@Column(name="AgeTo")
 	private int AgeTo;
+	@Column(name="Data")
 	private String Data;
 
 	public String getSymptom() {
