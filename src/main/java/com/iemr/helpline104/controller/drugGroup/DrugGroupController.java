@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.*;
 import com.google.gson.Gson;
 import com.iemr.helpline104.data.drugGroup.M_DrugGroup;
 import com.iemr.helpline104.data.drugMapping.M_104drugmapping;
+import com.iemr.helpline104.data.drugMaster.DrugFrequency;
 import com.iemr.helpline104.data.drugMaster.DrugStrength;
 import com.iemr.helpline104.service.drugGroup.DrugGroupService;
 import com.iemr.helpline104.service.drugGroup.DrugGroupServiceImpl;
@@ -105,7 +106,7 @@ public class DrugGroupController {
 		OutputResponse output = new OutputResponse();
 		try {
 
-			ArrayList<Object[]> drugFrequency = drugGroupService.getDrugFrequency();
+			ArrayList<DrugFrequency> drugFrequency = drugGroupService.getDrugFrequency();
 			output.setResponse(drugFrequency.toString());
 
 		} catch (Exception e) {

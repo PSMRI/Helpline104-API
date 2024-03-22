@@ -30,6 +30,7 @@ import org.springframework.stereotype.Service;
 
 import com.iemr.helpline104.data.drugGroup.M_DrugGroup;
 import com.iemr.helpline104.data.drugMapping.M_104drugmapping;
+import com.iemr.helpline104.data.drugMaster.DrugFrequency;
 import com.iemr.helpline104.data.drugMaster.DrugStrength;
 import com.iemr.helpline104.data.feedbackType.M_FeedbackType;
 import com.iemr.helpline104.repository.drugGroup.DrugFrequencyRepository;
@@ -99,9 +100,8 @@ public class DrugGroupServiceImpl implements DrugGroupService{
 	}
 	
 	@Override
-	public ArrayList<Object[]> getDrugFrequency() {
+	public ArrayList<DrugFrequency> getDrugFrequency() {
 		
-			
 		return  drugFrequencyRepository.getDrugFrequency();
 	}
 	

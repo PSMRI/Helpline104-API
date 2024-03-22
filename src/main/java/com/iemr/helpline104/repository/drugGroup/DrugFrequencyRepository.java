@@ -37,6 +37,6 @@ public interface DrugFrequencyRepository extends CrudRepository<DrugFrequency, L
 	
 	/* @Query("select u.drugFrequencyID, u.frequency from DrugFrequency u where u.deleted=false") */
 	@Query("select u from DrugFrequency u where u.deleted=false")
-	public ArrayList<Object[]> getDrugFrequency();
+	public ArrayList<DrugFrequency> getDrugFrequency();
 
 }
