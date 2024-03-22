@@ -27,6 +27,7 @@ import java.util.Objects;
 
 import com.iemr.helpline104.data.drugGroup.M_DrugGroup;
 import com.iemr.helpline104.data.drugMapping.M_104drugmapping;
+import com.iemr.helpline104.data.drugMaster.DrugStrength;
 
 public interface DrugGroupService {
 	
@@ -36,7 +37,7 @@ public interface DrugGroupService {
 	
 	public ArrayList<Object[]> getDrugFrequency() throws Exception; 
 	
-	public ArrayList<Object[]> getDrugStrength(Integer serviceProviderID) throws Exception;
+	public ArrayList<DrugStrength> getDrugStrength(Integer serviceProviderID) throws Exception;
 
 	List<M_104drugmapping> getDrugDetailList(Integer providerServiceMapID) throws Exception; 
 }

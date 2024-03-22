@@ -27,6 +27,7 @@ import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.iemr.helpline104.data.diseaseScreening.M_Questionnaire;
 import com.iemr.helpline104.repository.diseaseScreening.QuestionnaireRepository;
@@ -38,9 +39,10 @@ public class QuestionnaireServiceImpl implements QuestionnaireService{
 	private QuestionnaireRepository questionnaireRepository;
 	
 	@Override
-	public List<Object[]> fetchQuestions(Integer questionTypeID ,Integer providerServiceMapID) throws Exception {
+	 @Transactional
+	public List<M_Questionnaire> fetchQuestions(Integer questionTypeID ,Integer providerServiceMapID) throws Exception {
 		List<M_Questionnaire> questions = new ArrayList<M_Questionnaire>();
-		List<Object[]> questionsList = null;
+		List<M_Questionnaire> questionsList = null;
 		if(questionTypeID != null && (questionTypeID == 1 || questionTypeID == 2 || questionTypeID == 3)) {
 			questionsList = questionnaireRepository.fetchQuestionsOnQuestionID(questionTypeID);
 		}else {

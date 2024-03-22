@@ -29,8 +29,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import com.google.gson.Gson;
 import com.iemr.helpline104.data.drugGroup.M_DrugGroup;
 import com.iemr.helpline104.data.drugMapping.M_104drugmapping;
+import com.iemr.helpline104.data.drugMaster.DrugStrength;
 import com.iemr.helpline104.service.drugGroup.DrugGroupService;
 import com.iemr.helpline104.service.drugGroup.DrugGroupServiceImpl;
 import com.iemr.helpline104.utils.mapper.InputMapper;
@@ -123,7 +126,8 @@ public class DrugGroupController {
 
 			M_DrugGroup m_DrugGroup = inputMapper.gson().fromJson(request, M_DrugGroup.class);
 
-			ArrayList<Object[]> drugStrength = drugGroupService.getDrugStrength(m_DrugGroup.getServiceProviderID());
+			ArrayList<DrugStrength> drugStrength = drugGroupService.getDrugStrength(m_DrugGroup.getServiceProviderID());
+			
 			output.setResponse(drugStrength.toString());
 
 		} catch (Exception e) {

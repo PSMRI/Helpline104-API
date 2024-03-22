@@ -41,10 +41,10 @@ public class M_Questionnaire {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer questionID;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "questionID")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "questionID")
 	private Set<M_questionairValues> m_questionairValues;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "questionID")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "questionID")
 	private Set<M_104QuestionScore> m_104QuestionScore;
 
 	private String question;

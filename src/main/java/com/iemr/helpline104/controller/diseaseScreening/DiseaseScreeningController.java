@@ -28,6 +28,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import com.iemr.helpline104.data.diseaseScreening.M_Questionnaire;
 import com.iemr.helpline104.data.diseaseScreening.M_questionairValues;
 import com.iemr.helpline104.service.diseaseScreening.QuestionScoreService;
@@ -59,12 +63,12 @@ public class DiseaseScreeningController {
 	public String fetchQuestions(
 			@Parameter(description = "{\"questionTypeID\":\"integer\",\"providerServiceMapID\":\"integer\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
 			M_Questionnaire m_questionnaire = inputMapper.gson().fromJson(request, M_Questionnaire.class);
 			logger.info("getQuestions request " + m_questionnaire.toString());
-
-			List<Object[]> Questions = null;
-
+			List<M_Questionnaire> Questions = null;
 			Questions = questionnaireService.fetchQuestions(m_questionnaire.getQuestionTypeID(),
 					m_questionnaire.getProviderServiceMapID());
 			output.setResponse(Questions.toString());
@@ -74,7 +78,6 @@ public class DiseaseScreeningController {
 			logger.error("getQuestions failed with error " + e.getMessage(), e);
 			output.setError(e);
 		}
-
 		return output.toString();
 	}
 

@@ -37,15 +37,13 @@ import com.iemr.helpline104.data.diseaseScreening.M_Questionnaire;
 @Repository
 @RestResource(exported = false)
 public interface QuestionnaireRepository extends CrudRepository<M_Questionnaire, Integer> {
-	@Autowired(required=true)
-
+	
 	@Query("select q from M_Questionnaire q " + 
 	"LEFT JOIN q.m_104QuestionScore s where q.questionTypeID = :questionTypeID group by q.questionID order by q.questionRank, s.iD")
-	public List<Object[]> fetchQuestionsOnQuestionID(@Param("questionTypeID") Integer questionTypeID);
+	public List<M_Questionnaire> fetchQuestionsOnQuestionID(@Param("questionTypeID") Integer questionTypeID);
 
-	@Query("SELECT DISTINCT q from M_Questionnaire q LEFT JOIN q.m_questionairValues s "
-			+ "WHERE q.providerServiceMapID = :providerServiceMapID AND q.deleted is false "
-			+ "ORDER BY q.questionTypeID ASC, q.questionRank ASC")
-	public List<Object[]> fetchQuestions(@Param("providerServiceMapID") Integer providerServiceMapID);
+
+	@Query("SELECT DISTINCT q FROM M_Questionnaire q LEFT JOIN FETCH q.m_questionairValues WHERE q.providerServiceMapID = :providerServiceMapID AND q.deleted = false ORDER BY q.questionTypeID ASC, q.questionRank ASC")
+	public List<M_Questionnaire> fetchQuestions(@Param("providerServiceMapID") Integer providerServiceMapID);
 
 }
