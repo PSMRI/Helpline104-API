@@ -35,6 +35,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
 import com.iemr.helpline104.data.beneficiarycall.BenCall;
@@ -49,6 +50,7 @@ import com.iemr.helpline104.data.report.BeneficiaryReport;
 public class T_FoodSafetyCopmlaint {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonProperty("fSComplaintID")
 	private Long fSComplaintID;
 	private String requestID;
 	@Expose
