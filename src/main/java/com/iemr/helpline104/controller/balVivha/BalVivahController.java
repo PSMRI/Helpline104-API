@@ -62,7 +62,7 @@ public class BalVivahController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get bal vivah list")
-	@GetMapping(value = "/getBalVivahList", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
+	@PostMapping(value = "/getBalVivahList", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String feedbackReuest(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		try {

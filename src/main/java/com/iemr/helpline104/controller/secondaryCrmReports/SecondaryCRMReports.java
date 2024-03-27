@@ -30,6 +30,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,7 +42,6 @@ import com.iemr.helpline104.utils.mapper.InputMapper;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 
 @CrossOrigin
@@ -56,13 +56,8 @@ public class SecondaryCRMReports {
 	@CrossOrigin()
 	@Operation(summary = "Get RO summary report by date")
 	@PostMapping(value = "/getROSummaryReportByDate", headers = "Authorization")
-	public ResponseEntity<Object> getROSummaryReportByDate(
-			@Parameter( description = "\"{\\\"startDate\\\":\\\"Timestamp\\\",\\\"endDate\\\":\\\"Timestamp\\\","
-					+ "\\\"providerServiceMapID\\\":\\\"Integer\\\",\\\"agentID\\\":\\\"Integer\\\","
-					+ "\\\"roleName\\\":\\\"String\\\",\\\"reportTypeID\\\":\\\"Integer\\\",\\\"reportType\\\":\\\"String\\\"}\"") @RequestBody String jsonRequest)
-
+	public ResponseEntity<Object> getROSummaryReportByDate(@RequestBody String jsonRequest)
 	{
-
 		String filename = getFileName(jsonRequest, "Registration_Service");
 		InputStreamResource file = null;
 		try {

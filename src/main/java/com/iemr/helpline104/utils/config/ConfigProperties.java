@@ -37,7 +37,6 @@ import org.springframework.stereotype.Component;
 
 @Configuration
 @Component
-@PropertySource("classpath:/application.properties")
 public class ConfigProperties {
 	private static Properties properties;
 	private static Logger logger = LoggerFactory.getLogger(ConfigProperties.class);

@@ -48,7 +48,7 @@ public class DirectoryServicesController {
 	private Logger logger = LoggerFactory.getLogger(DirectoryServicesController.class);
 
 	@Autowired
-	private DirectoryServiceService directoryService;
+	private DirectoryServiceService directoryServiceService;
 
 	@CrossOrigin
 	@Operation(summary = "Retrieve directory search history")
@@ -61,7 +61,7 @@ public class DirectoryServicesController {
 			Directoryservice directoryService = inputMapper.gson().fromJson(request, Directoryservice.class);
 			logger.info("getdirectorySearchHistory request " + directoryService.toString());
 
-			List<Directoryservice> searchHistory = directoryService
+			List<Directoryservice> searchHistory = directoryServiceService
 					.getDirectorySearchHistory(directoryService.getBeneficiaryRegID(), directoryService.getBenCallID());
 			output.setResponse(searchHistory.toString());
 			logger.info("getdirectorySearchHistory response: " + output);
@@ -83,7 +83,7 @@ public class DirectoryServicesController {
 			Directoryservice[] directoryHistory = inputMapper.gson().fromJson(request, Directoryservice[].class);
 			logger.info("save/directorySearchHistory request " + Arrays.toString(directoryHistory));
 
-			String searchhistory = directoryService.saveDirectorySearchHistory(directoryHistory);
+			String searchhistory = directoryServiceService.saveDirectorySearchHistory(directoryHistory);
 
 			output.setResponse(searchhistory);
 			logger.info("directorySearchHistory response: " + output);

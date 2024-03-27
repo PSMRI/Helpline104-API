@@ -32,6 +32,8 @@ import com.iemr.helpline104.secondary.data.BencallReport;
 import com.iemr.helpline104.secondary.repo.report.SecondaryReportRepo;
 import com.iemr.helpline104.utils.exception.IEMRException;
 import com.iemr.helpline104.utils.mapper.InputMapper;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iemr.helpline104.data.report.BenmedhistoryReport;
 import com.iemr.helpline104.data.report.BloodrequestReport;
 import com.iemr.helpline104.data.report.FeedbackReport;
@@ -53,8 +55,9 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 				"Call Sub Type", "Call Received User ID", "Call End User ID", "Date", "Agent ID", "Agent Name" };
 		ByteArrayInputStream response = null;
 		try {
-
-			BencallReport bencallReportRequest = InputMapper.gson().fromJson(jsonRequest, BencallReport.class);
+			ObjectMapper objectMapper = new ObjectMapper();
+			objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+			BencallReport bencallReportRequest = objectMapper.readValue(jsonRequest, BencallReport.class);
 			Criteria c = new Criteria();
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
@@ -84,8 +87,10 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 				"Have You Travelled In Last14 Days", "Travel Type", "Symptom", "Covid19 Contact History",
 				"Did You Seek Medical Consultation", "Suspected Covid19", "Recommendation" };
 		ByteArrayInputStream response = null;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			BencallReport bencallReportRequest = InputMapper.gson().fromJson(jsonRequest, BencallReport.class);
+			BencallReport bencallReportRequest = objectMapper.readValue(jsonRequest, BencallReport.class);
 			Criteria c = new Criteria();
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
@@ -114,8 +119,10 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 				"No Of Days", "Agent ID", "Agent Name", "Have You Travelled In Last14 Days", "Travel Type", "Symptom",
 				"Covid19 Contact History", "Did You Seek Medical Consultation", "Suspected Covid19", "Recommendation" };
 		ByteArrayInputStream response = null;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			BencallReport bencallReportRequest = InputMapper.gson().fromJson(jsonRequest, BencallReport.class);
+			BencallReport bencallReportRequest = objectMapper.readValue(jsonRequest, BencallReport.class);
 			Criteria c = new Criteria();
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
@@ -137,8 +144,10 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 	public ByteArrayInputStream getMODetailsReport(String jsonRequest, String filename) throws Exception {
 		String[] headers = { "SNo", "Disease Summary", "Count" };
 		ByteArrayInputStream response = null;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			BenmedhistoryReport bencallReportRequest = InputMapper.gson().fromJson(jsonRequest,
+			BenmedhistoryReport bencallReportRequest = objectMapper.readValue(jsonRequest,
 					BenmedhistoryReport.class);
 			Criteria c = new Criteria();
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
@@ -170,8 +179,10 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 				"Action By M O", "Date", "Call End User ID", "Category", "Sub Category", "Agent ID",
 				"Agent Name" };
 		ByteArrayInputStream response = null;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			BencallReport bencallReportRequest = InputMapper.gson().fromJson(jsonRequest, BencallReport.class);
+			BencallReport bencallReportRequest = objectMapper.readValue(jsonRequest, BencallReport.class);
 			Criteria c = new Criteria();
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
@@ -194,9 +205,11 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 
 		String[] headers = new String[3];
 		ByteArrayInputStream response = null;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
 			List<Object[]> result = null;
-			BenmedhistoryReport bloodrequestReport = InputMapper.gson().fromJson(jsonRequest,
+			BenmedhistoryReport bloodrequestReport = objectMapper.readValue(jsonRequest,
 					BenmedhistoryReport.class);
 			Criteria c = new Criteria();
 			c.setStart_Date(bloodrequestReport.getStartDateTime().toString());
@@ -241,8 +254,10 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 				"Sub District", "Village", "Ben Call ID", "Call Type", "Call Sub Type", "Call Received User ID",
 				"Call End User ID", "Agent ID", "Agent Name" };
 		ByteArrayInputStream response = null;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			FeedbackReport feedbackReportRequest = InputMapper.gson().fromJson(jsonRequest, FeedbackReport.class);
+			FeedbackReport feedbackReportRequest = objectMapper.readValue(jsonRequest, FeedbackReport.class);
 			Criteria c = new Criteria();
 			c.setStart_Date(feedbackReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(feedbackReportRequest.getEndDateTime().toString());
@@ -272,8 +287,10 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 				"Gender", "Phone Number", "Health Care Worker", "District", "Sub District", "Village", "Call Type",
 				"Call Sub Type", "Ben Call ID", "Call End User ID", "Call Received User ID", "Agent ID", "Agent Name" };
 		ByteArrayInputStream response = null;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			BencallReport bencallReportRequest = InputMapper.gson().fromJson(jsonRequest, BencallReport.class);
+			BencallReport bencallReportRequest = objectMapper.readValue(jsonRequest, BencallReport.class);
 			Criteria c = new Criteria();
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
@@ -299,8 +316,10 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 				"Health Care Worker", "Phone Number", "District", "Sub District", "Village", "Call Type",
 				"Call Sub Type", "Ben Call ID", "Call Received User ID", "Call End User ID", "Agent ID", "Agent Name"};
 		ByteArrayInputStream response = null;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			BencallReport bencallReportRequest = InputMapper.gson().fromJson(jsonRequest, BencallReport.class);
+			BencallReport bencallReportRequest = objectMapper.readValue(jsonRequest, BencallReport.class);
 			Criteria c = new Criteria();
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
@@ -327,8 +346,10 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 				"Patient Age", "Date Of Birth", "Gender", "Health Care Worker", "Is Self", "Patient Gender ID", "Phone Number", "District", "Sub District", "Village",  "Ben Call ID",
 				"Call Type", "Call Sub Type", "Call Received User ID", "Call End User ID", "From When Date", "Patient Gender", "Agent ID", "Agent Name"};
 		ByteArrayInputStream response = null;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			BencallReport bencallReportRequest = InputMapper.gson().fromJson(jsonRequest, BencallReport.class);
+			BencallReport bencallReportRequest = objectMapper.readValue(jsonRequest, BencallReport.class);
 			Criteria c = new Criteria();
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
@@ -356,8 +377,10 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 				"District", "Sub District","Village", "Ben Call ID", "Call Type", "Call Sub Type",
 				"Call Received User ID", "Call End User ID", "Agent ID", "Agent Name"};
 		ByteArrayInputStream response = null;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			BencallReport bencallReportRequest = InputMapper.gson().fromJson(jsonRequest, BencallReport.class);
+			BencallReport bencallReportRequest = objectMapper.readValue(jsonRequest, BencallReport.class);
 			Criteria c = new Criteria();
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
@@ -382,8 +405,10 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 				"Gender", "Date Of Birth",	"Village", "Sub District", "District",	"Call Type", "Call Sub Type", "Phone Number", "Agent ID", "Agent Name"
 };
 		ByteArrayInputStream response = null;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			FeedbackReport cDIResponseRequest = InputMapper.gson().fromJson(jsonRequest, FeedbackReport.class);
+			FeedbackReport cDIResponseRequest = objectMapper.readValue(jsonRequest, FeedbackReport.class);
 			Criteria c = new Criteria();
 			c.setStart_Date(cDIResponseRequest.getStartDateTime().toString());
 			c.setEnd_Date(cDIResponseRequest.getEndDateTime().toString());
@@ -414,8 +439,10 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 				"Call Type", "Call Sub Type", "Call Received User ID", "Call End User ID",
 				"Outbound Date", "Agent ID", "Agent Name"};
 		ByteArrayInputStream response = null;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			BencallReport bencallReportRequest = InputMapper.gson().fromJson(jsonRequest, BencallReport.class);
+			BencallReport bencallReportRequest = objectMapper.readValue(jsonRequest, BencallReport.class);
 			Criteria c = new Criteria();
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
@@ -443,8 +470,10 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 				"B Positive", "B Negative"};
 
 		ByteArrayInputStream response = null;List<Object[]> result=null;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			BloodrequestReport bloodrequestReport = InputMapper.gson().fromJson(jsonRequest,
+			BloodrequestReport bloodrequestReport = objectMapper.readValue(jsonRequest,
 					BloodrequestReport.class);
 			Criteria c=new Criteria();
 			c.setStart_Date(bloodrequestReport.getStartDateTime().toString());
@@ -502,8 +531,10 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 				"Call Sub Type", "Ben Call ID", "Call Received User ID", "Call End User ID", "Agent ID", 
 				"Agent Name" };
 		ByteArrayInputStream response = null;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			BencallReport bencallReportRequest = InputMapper.gson().fromJson(jsonRequest, BencallReport.class);
+			BencallReport bencallReportRequest = objectMapper.readValue(jsonRequest, BencallReport.class);
 			Criteria c = new Criteria();
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
@@ -533,8 +564,10 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 				"Call Received User ID", "Call End User ID", "Date", "Agent ID", "Agent Name"
 };
 		ByteArrayInputStream response = null;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			BencallReport bencallReportRequest = InputMapper.gson().fromJson(jsonRequest, BencallReport.class);
+			BencallReport bencallReportRequest = objectMapper.readValue(jsonRequest, BencallReport.class);
 			Criteria c = new Criteria();
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());
@@ -564,9 +597,11 @@ public class CRMSecondaryReportServiceImpl implements CRMSecondaryReportService 
 				"Date", "Beneficiary ID", "Agent ID", "Agent Name"
 };
 		ByteArrayInputStream response = null;
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
 
-			BencallReport bencallReportRequest = InputMapper.gson().fromJson(jsonRequest, BencallReport.class);
+			BencallReport bencallReportRequest = objectMapper.readValue(jsonRequest, BencallReport.class);
 			Criteria c = new Criteria();
 			c.setStart_Date(bencallReportRequest.getStartDateTime().toString());
 			c.setEnd_Date(bencallReportRequest.getEndDateTime().toString());

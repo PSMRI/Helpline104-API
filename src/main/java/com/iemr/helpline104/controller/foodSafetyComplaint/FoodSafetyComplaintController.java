@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.iemr.helpline104.data.foodSafetyCopmlaint.T_FoodSafetyCopmlaint;
 import com.iemr.helpline104.service.foodSafetyCopmlaint.FoodSafetyCopmlaintService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
@@ -85,17 +86,18 @@ public class FoodSafetyComplaintController {
 	public String getFoodComplaintDetails(
 			@Parameter(description = "{\"beneficiaryRegID\":\"optional long\",   \"benCallID\":\" Optional long\",   \"requestID\":\" Optional string\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
+		ObjectMapper objectMapper = new ObjectMapper();
 		try {
-			T_FoodSafetyCopmlaint t_foodSafetyCopmlaint = inputMapper.gson().fromJson(request,
+			T_FoodSafetyCopmlaint t_foodSafetyCopmlaint = objectMapper.readValue(request,
 					T_FoodSafetyCopmlaint.class);
-			logger.info("saveFoodComplaintDetails request " + t_foodSafetyCopmlaint.toString());
+			logger.info("saveFoodComplaintDetails request " + objectMapper.writeValueAsString(t_foodSafetyCopmlaint));
 
 			List<T_FoodSafetyCopmlaint> foodComplaint = null;
 
 			foodComplaint = foodSafetyCopmlaintService.getFoodSafetyComplaints(
 					t_foodSafetyCopmlaint.getBeneficiaryRegID(), t_foodSafetyCopmlaint.getBenCallID(),
 					t_foodSafetyCopmlaint.getRequestID(), t_foodSafetyCopmlaint.getPhoneNo());
-			output.setResponse(foodComplaint.toString());
+			output.setResponse(objectMapper.writeValueAsString(foodComplaint));
 			logger.info("getFoodComplaintDetails response size: "
 					+ ((foodComplaint.size() > 0) ? foodComplaint.size() : "No Beneficiary Found"));
 		} catch (Exception e) {
