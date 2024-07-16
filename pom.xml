@@ -20,7 +20,7 @@
 		<maven.test.skip>true</maven.test.skip>
 		<build.timestamp>${maven.build.timestamp}</build.timestamp>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
-		<final-name>104api-v1.0</final-name>
+		<final-name>104api-v3.0.0</final-name>
 		<environment>${ENV_VAR}</environment>
 		<target-properties>target/classes/application.properties</target-properties>
 		<source-properties>target/classes/104_${environment}.properties</source-properties>
