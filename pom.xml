@@ -237,7 +237,7 @@
 	</dependencies>
 	
 	<build>
-		<finalName>104api-v1.0</finalName>
+		<finalName>104api-v3.0.0</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.owasp</groupId>
