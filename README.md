@@ -1,6 +1,6 @@
 # AMRIT - Helpline104 Service
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) ![branch parameter](https://github.com/PSMRI/Helpline104-API/actions/workflows/sast-and-package.yml/badge.svg)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) ![branch parameter](https://github.com/PSMRI/Helpline104-API/actions/workflows/sast.yml/badge.svg)
 
 The AMRIT Helpline104 service aims to provide comprehensive assistance to individuals in need. It offers a range of services such as medical advice, counseling, grievance resolution, and support during health emergencies. The helpline is designed to cater to the specific needs of callers, ensuring they receive the appropriate assistance.
 
@@ -24,27 +24,11 @@ The AMRIT Helpline104 service aims to provide comprehensive assistance to indivi
 
 - **Maternal and Child Death Review**: The helpline has systems in place for Maternal Death Surveillance and Response (MDSR) and child death review (CDR). These systems enable the tracking and monitoring of maternal and child deaths, ensuring appropriate actions are taken.
 
-## Building From Source
+## Environment and Setup
+For setting up the development environment, please refer to the [Developer Guide](https://piramal-swasthya.gitbook.io/amrit/developer-guide/development-environment-setup) .
 
-To build the Helpline104 microservice from source, follow these steps:
-
-### Prerequisites
-
-- JDK 1.8
-- Maven
-- Redis
-- Spring Boot V2
-- MySQL
-
-### Installation
-
-1. Clone the repository to your local machine.
-2. Install the dependencies and build the module:
-   - Run `mvn clean install` in the project directory.
-3. Run the development server:
-   - Start the Redis server.
-   - Run `mvn spring-boot:run` in the project directory.
-   - Open your browser and go to `http://localhost:8080/swagger-ui.html#!/` to access the Swagger API documentation.
+## API Guide
+Detailed information on API endpoints can be found in the [API Guide](https://piramal-swasthya.gitbook.io/amrit/architecture/api-guide).
 
 ## Usage
 
