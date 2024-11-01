@@ -147,6 +147,11 @@ public class OutputResponse
 	{
 		setError(errorCode, message, message);
 	}
+	
+	public void setError(String message)
+	{
+		setError(message);
+	}
 
 	public boolean isSuccess()
 	{

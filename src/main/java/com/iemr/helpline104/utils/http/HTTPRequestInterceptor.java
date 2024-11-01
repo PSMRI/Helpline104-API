@@ -94,8 +94,10 @@ public class HTTPRequestInterceptor implements HandlerInterceptor {
 					break;
 				}
 			} catch (Exception e) {
+				logger.error("Error in preHandle method", e);
 				OutputResponse output = new OutputResponse();
-				output.setError(e);
+				output.setError("An unexpected error occurred.");
+				response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 				response.getOutputStream().print(output.toString());
 				response.setContentType(MediaType.APPLICATION_JSON);
 				response.setContentLength(output.toString().length());
