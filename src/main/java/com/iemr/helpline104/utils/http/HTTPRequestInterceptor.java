@@ -40,12 +40,12 @@ import com.iemr.helpline104.utils.validator.Validator;
 
 @Component
 public class HTTPRequestInterceptor implements HandlerInterceptor {
-	private Validator validator;
+	private final Validator validator;
 
 	Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
 	@Autowired
-	public void setValidator(Validator validator) {
+	public HTTPRequestInterceptor(Validator validator) {
 		this.validator = validator;
 	}
 
@@ -61,8 +61,7 @@ public class HTTPRequestInterceptor implements HandlerInterceptor {
 		boolean status = true;
 		logger.debug("In preHandle we are Intercepting the Request");
 		String authorization = request.getHeader("Authorization");
-		logger.debug("RequestURI::" + request.getRequestURI() + " || Authorization ::" + authorization
-				+ " || method :: " + request.getMethod());
+		logger.debug("RequestURI::" + request.getRequestURI() + " || method :: " + request.getMethod());
 		if (!request.getMethod().equalsIgnoreCase("OPTIONS")) {
 			try {
 				String[] requestURIParts = request.getRequestURI().split("/");
