@@ -40,12 +40,12 @@ import com.iemr.helpline104.utils.validator.Validator;
 
 @Component
 public class HTTPRequestInterceptor implements HandlerInterceptor {
-	private Validator validator;
+	private final Validator validator;
 
 	Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
 	@Autowired
-	public void setValidator(Validator validator) {
+	public HTTPRequestInterceptor(Validator validator) {
 		this.validator = validator;
 	}
 
