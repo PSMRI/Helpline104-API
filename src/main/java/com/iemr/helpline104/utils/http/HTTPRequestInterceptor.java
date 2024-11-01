@@ -61,24 +61,16 @@ public class HTTPRequestInterceptor implements HandlerInterceptor {
 		boolean status = true;
 		logger.debug("In preHandle we are Intercepting the Request");
 		String authorization = request.getHeader("Authorization");
-		logger.debug("RequestURI::" + request.getRequestURI() + " || method :: " + request.getMethod());
+		logger.debug("RequestURI:: {} || method :: {}", request.getRequestURI(), request.getMethod());
 		if (!request.getMethod().equalsIgnoreCase("OPTIONS")) {
 			try {
 				String[] requestURIParts = request.getRequestURI().split("/");
 				String requestAPI = requestURIParts[requestURIParts.length - 1];
 				switch (requestAPI) {
-				case "userAuthenticate":
-				case "userAuthenticateNew":
-				case "userAuthenticateV1":
-				case "forgetPassword":
-				case "setForgetPassword":
-				case "changePassword":
-				case "saveUserSecurityQuesAns":
-				case "swagger-ui.html":
-				case "ui":
-				case "swagger-resources":
-				case "api-docs":
-
+				case "userAuthenticate", "userAuthenticateNew", "userAuthenticateV1",
+		         "forgetPassword", "setForgetPassword", "changePassword", 
+		         "saveUserSecurityQuesAns", "swagger-ui.html", 
+		         "ui", "swagger-resources", "api-docs":
 					break;
 				case "error":
 					status = false;
@@ -106,6 +98,7 @@ public class HTTPRequestInterceptor implements HandlerInterceptor {
 		return status;
 	}
 
+	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object object, ModelAndView model)
 			throws Exception {
 		try {
