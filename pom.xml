@@ -8,7 +8,7 @@
 	<artifactId>Common</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Piramal Helpline 104 API</name>
+	<name>Piramal-Helpline-104-API</name>
 	<description>Piramal Helpline 104 API</description>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -38,12 +38,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-logging</artifactId>
-				</exclusion>
-			</exclusions>
+		</dependency>
+		<dependency> 
+			<groupId>co.elastic.logging</groupId> 
+			<artifactId>logback-ecs-encoder</artifactId> 
+			<version>1.3.2</version> 
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

@@ -16,3 +16,6 @@ hs_err_pid7608.log
 
 # Properties
 src/main/environment/104_local.properties
+
+.settings
+.project
