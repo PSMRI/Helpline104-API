@@ -98,9 +98,10 @@ public class BeneficiaryCallController {
 			if (null != beneficiarycall.getBeneficiaryRegID()) {
 				startedCall = beneficiaryCallService.updateBeneficiaryIDInCall(beneficiarycall.getBenCallID(),
 						beneficiarycall.getBeneficiaryRegID());
+				output.setResponse(startedCall.toString());
+			}else {
+				output.setResponse("Update skipped : BeneficiaryRegID is null");
 			}
-	        output.setResponse(startedCall.toString());
-
 	        logger.info("updateBeneficiaryIDInCall was called successfully");
 	    } catch (Exception e) {
 	        logger.error("updateBeneficiaryIDInCall failed with error " + e.getMessage(), e);
