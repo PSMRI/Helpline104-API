@@ -95,9 +95,10 @@ public class BeneficiaryCallController {
 	    Integer startedCall = null;
 	    try {
 	        BeneficiaryCall beneficiarycall = inputMapper.gson().fromJson(beneficiaryCall, BeneficiaryCall.class);
-
-	        startedCall = beneficiaryCallService.updateBeneficiaryIDInCall(beneficiarycall.getBenCallID(),
-	                beneficiarycall.getBeneficiaryRegID());
+			if (null != beneficiarycall.getBeneficiaryRegID()) {
+				startedCall = beneficiaryCallService.updateBeneficiaryIDInCall(beneficiarycall.getBenCallID(),
+						beneficiarycall.getBeneficiaryRegID());
+			}
 	        output.setResponse(startedCall.toString());
 
 	        logger.info("updateBeneficiaryIDInCall was called successfully");
