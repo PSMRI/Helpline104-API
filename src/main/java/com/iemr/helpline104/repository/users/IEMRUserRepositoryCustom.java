@@ -59,6 +59,7 @@ public interface IEMRUserRepositoryCustom extends CrudRepository<M_User, Long> {
 	@Query("UPDATE M_User u set u.StatusID = 2 where u.UserID = :userId")
 	int updateSetUserStatusActive(@Param("userId") Long userId);
 
-	M_User findByUserID(Long UserID);
+	@Query(" SELECT u FROM M_User u WHERE u.userID = :userID AND u.Deleted = false ")
+	public M_User getUserByUserID(@Param("userID") Long userID);
 
 }

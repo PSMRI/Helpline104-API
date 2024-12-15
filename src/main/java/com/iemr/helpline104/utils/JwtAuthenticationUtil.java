@@ -71,7 +71,7 @@ public class JwtAuthenticationUtil {
 			String userId = claims.get("userId", String.class);
 
 			// Fetch user based on userId from the database or cache
-			M_User user = iEMRUserRepositoryCustom.findByUserID(Long.parseLong(userId));
+			M_User user = iEMRUserRepositoryCustom.getUserByUserID(Long.parseLong(userId));
 			if (user == null) {
 				throw new IEMRException("Invalid User ID.");
 			}
