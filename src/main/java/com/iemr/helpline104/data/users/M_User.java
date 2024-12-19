@@ -21,6 +21,7 @@
 */
 package com.iemr.helpline104.data.users;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Set;
 
@@ -35,12 +36,14 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.OrderBy;
 import jakarta.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.iemr.helpline104.data.userbeneficiarydata.M_Gender;
 import com.iemr.helpline104.data.userbeneficiarydata.M_MaritalStatus;
 import com.iemr.helpline104.data.userbeneficiarydata.M_Status;
 
 @Entity
-public class M_User {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class M_User implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long UserID;
