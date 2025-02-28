@@ -45,7 +45,11 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -62,7 +66,10 @@ import com.iemr.helpline104.repository.location.LocationDistrictRepository;
 import com.iemr.helpline104.repository.nodalOfficer.NodalOficerRepo;
 import com.iemr.helpline104.reposotory.IMRMMR.IMRMMRRepository;
 import com.iemr.helpline104.sms.SmsRequestOBJ;
+import com.iemr.helpline104.utils.CookieUtil;
 import com.iemr.helpline104.utils.mapper.InputMapper;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Service
 public class IMRMMRServiceImpl implements IMRMMRService {
@@ -86,6 +93,8 @@ public class IMRMMRServiceImpl implements IMRMMRService {
 
 	@Autowired
 	private EpidemicOutbreakRepository epidemicOutbreakRepository;
+	@Autowired
+	private CookieUtil cookieUtil;
 
 	@Override
 	public String saveIMRMMR(String request, String Authorization) throws Exception {
@@ -94,7 +103,7 @@ public class IMRMMRServiceImpl implements IMRMMRService {
 
 		IMRMMR imrmmr = InputMapper.gson().fromJson(request, IMRMMR.class);
 
-		//Validating Mandatory fields
+		// Validating Mandatory fields
 //		if(imrmmr.getVictimName() == null || imrmmr.getVictimAge() == null || imrmmr.getVictimDistrict() == null || imrmmr.getVictimTaluk() == null || imrmmr.getRelationshipType() == null) {
 //			throw new Exception("error in saving IMR/MMR data as mandatory field(s) is null");
 //		}
@@ -140,9 +149,8 @@ public class IMRMMRServiceImpl implements IMRMMRService {
 			imrmmr.setNoofDelivery(Integer.parseInt(imrmmr.getStagesOfDeath().get("noofDelivery")));
 		else
 			imrmmr.setNoofDelivery(null);
-		
+
 		imrmmr.setAbove42daysOfDelivery(imrmmr.getStagesOfDeath().get("above42daysOfDelivery"));
-		
 
 		imrmmr = imrmmrRepository.save(imrmmr);
 
@@ -167,7 +175,7 @@ public class IMRMMRServiceImpl implements IMRMMRService {
 					if (contact.get(i)[0] != null) {
 						createSmsGateway(Long.valueOf(imrmmr.getBeneficiaryRegID()), imrmmr.getReferenceDate(), stateID,
 								contact.get(i)[0].toString(), imrmmr.getRequestID(), Authorization,
-								imrmmr.getCreatedBy(),imrmmr.getInformerName());
+								imrmmr.getCreatedBy(), imrmmr.getInformerName());
 					}
 				}
 				for (int i = 0; i < contact.size(); i++) {
@@ -190,6 +198,11 @@ public class IMRMMRServiceImpl implements IMRMMRService {
 		emailReqObj.put("requestID", requestID);
 		emailReqObj.put("emailType", IMRMMREmailTemplate);
 		emailReqObj.put("emailID", emailID);
+		HttpServletRequest requestHeader = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		String jwtTokenFromCookie = cookieUtil.getJwtTokenFromCookie(requestHeader);
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
+		headers.add("Cookie", "Jwttoken=" + jwtTokenFromCookie);
 		try {
 			String emailStatus = restTemplate(new Gson().toJson(emailReqObj), sendEmailGeneralUrl, Authorization);
 			if (emailStatus != null) {
@@ -210,11 +223,16 @@ public class IMRMMRServiceImpl implements IMRMMRService {
 	}
 
 	public void createSmsGateway(Long benRegID, Timestamp refDate, Integer stateID, String contact, String imrmmrID,
-			String Authorization, String createdBy,String informerName) {
+			String Authorization, String createdBy, String informerName) {
 		int returnOBJ = 0;
 
 		String requestOBJ = createSMSRequest(IMRMMRSmsTemplate, benRegID, stateID, contact, imrmmrID, refDate,
-				createdBy,informerName);
+				createdBy, informerName);
+		HttpServletRequest requestHeader = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		String jwtTokenFromCookie = cookieUtil.getJwtTokenFromCookie(requestHeader);
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
+		headers.add("Cookie", "Jwttoken=" + jwtTokenFromCookie);
 
 		if (requestOBJ != null) {
 			String smsStatus = restTemplate(requestOBJ, sendSMSUrl, Authorization);
@@ -236,7 +254,7 @@ public class IMRMMRServiceImpl implements IMRMMRService {
 	}
 
 	public String createSMSRequest(String smsType, Long benRegID, Integer stateID, String contact, String imrmmrID,
-			Timestamp refDate, String createdBy,String informerName) {
+			Timestamp refDate, String createdBy, String informerName) {
 
 		SmsRequestOBJ obj;
 		ArrayList<SmsRequestOBJ> objList = new ArrayList<>();
@@ -368,15 +386,17 @@ public class IMRMMRServiceImpl implements IMRMMRService {
 		if (feedback != null)
 			for (Object[] objects : feedback) {
 				if (objects != null && objects.length > 0) {
-					IMRMMRC = new IMRMMR((Long) objects[0], (Integer) objects[1], (Integer) objects[2], (String) objects[3], (String) objects[4],
-                            (String) objects[5], (String) objects[6], (Integer) objects[7], (String) objects[8], (Integer) objects[9], (String) objects[10],
-                            (Timestamp) objects[11], (Integer) objects[12], (Long) objects[13], (String) objects[14], (String) objects[15],
-                            (String) objects[16], (String) objects[17], (Integer) objects[18], (Integer) objects[19], (Integer) objects[20],
-                            (String) objects[21], (Integer) objects[22], (Integer) objects[23], (String) objects[24], (String) objects[25],
-                            (String) objects[26], (String) objects[27], (Integer) objects[28], (Integer) objects[29], (Integer) objects[30],
-                            (String) objects[31], (String) objects[32], (String) objects[33], (String) objects[34], (String) objects[35],
-                            (String) objects[36], (Boolean) objects[37], (String) objects[38],(String) objects[39], (Integer) objects[40],
-                            (Integer) objects[41],(String) objects[42]);
+					IMRMMRC = new IMRMMR((Long) objects[0], (Integer) objects[1], (Integer) objects[2],
+							(String) objects[3], (String) objects[4], (String) objects[5], (String) objects[6],
+							(Integer) objects[7], (String) objects[8], (Integer) objects[9], (String) objects[10],
+							(Timestamp) objects[11], (Integer) objects[12], (Long) objects[13], (String) objects[14],
+							(String) objects[15], (String) objects[16], (String) objects[17], (Integer) objects[18],
+							(Integer) objects[19], (Integer) objects[20], (String) objects[21], (Integer) objects[22],
+							(Integer) objects[23], (String) objects[24], (String) objects[25], (String) objects[26],
+							(String) objects[27], (Integer) objects[28], (Integer) objects[29], (Integer) objects[30],
+							(String) objects[31], (String) objects[32], (String) objects[33], (String) objects[34],
+							(String) objects[35], (String) objects[36], (Boolean) objects[37], (String) objects[38],
+							(String) objects[39], (Integer) objects[40], (Integer) objects[41], (String) objects[42]);
 					feedbackList.add(IMRMMRC);
 				}
 			}

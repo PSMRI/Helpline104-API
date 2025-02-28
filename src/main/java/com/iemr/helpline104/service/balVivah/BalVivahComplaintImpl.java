@@ -34,9 +34,18 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.iemr.helpline104.controller.balVivha.BalVivahController;
 import com.iemr.helpline104.data.balVivah.BalVivahComplaint;
@@ -50,6 +59,7 @@ import com.iemr.helpline104.repository.feedbackType.FeedbackTypeRepository;
 import com.iemr.helpline104.repository.location.LocationCityRepository;
 import com.iemr.helpline104.repository.location.LocationDistrictBlockRepository;
 import com.iemr.helpline104.repository.location.LocationDistrictRepository;
+import com.iemr.helpline104.utils.CookieUtil;
 import com.iemr.helpline104.utils.config.ConfigProperties;
 import com.iemr.helpline104.utils.exception.IEMRException;
 import com.iemr.helpline104.utils.http.HttpUtils;
@@ -85,6 +95,8 @@ public class BalVivahComplaintImpl implements BalVivahComplaintService {
 
 	@Autowired
 	private EpidemicOutbreakRepository epidemicOutbreakRepository;
+	@Autowired
+	private CookieUtil cookieUtil;
 
 	private InputMapper inputMapper = new InputMapper();
 
@@ -178,14 +190,18 @@ public class BalVivahComplaintImpl implements BalVivahComplaintService {
 		return new Gson().toJson(feedbackList);
 	}
 
-	private OutputResponse createFeedback(String feedbackDetails, HttpServletRequest request) throws IEMRException {
-		HttpUtils utils = new HttpUtils();
-		HashMap<String, Object> header = new HashMap<String, Object>();
-		header.put("Authorization", request.getHeader("Authorization"));
-		String responseStr = utils.post(
-				properties.getPropertyByName("common-url") + "/" + properties.getPropertyByName("create-feedback"),
-				feedbackDetails, header);
-		OutputResponse response = inputMapper.gson().fromJson(responseStr, OutputResponse.class);
+	private OutputResponse createFeedback(String feedbackDetails, HttpServletRequest request) throws IEMRException, JsonMappingException, JsonProcessingException {
+		RestTemplate restTemplate = new RestTemplate();
+		ObjectMapper objectMapper = new ObjectMapper();
+		String jwtTokenFromCookie = cookieUtil.getJwtTokenFromCookie(request);
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
+		headers.add("Content-Type", "application/json");
+		headers.add("AUTHORIZATION", request.getHeader("Authorization"));
+		headers.add("Jwttoken", jwtTokenFromCookie);
+		String url = properties.getPropertyByName("common-url") + "/" + properties.getPropertyByName("create-feedback");
+		HttpEntity<Object> request1 = new HttpEntity<Object>(feedbackDetails, headers);
+		ResponseEntity<String> responseStr = restTemplate.exchange(url, HttpMethod.POST, request1, String.class);
+		OutputResponse response = objectMapper.readValue(responseStr.getBody(), OutputResponse.class);
 
 		return response;
 	}
