@@ -108,6 +108,7 @@ public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 	 */
 	private IEMRUserLoginSecurityRepository iEMRUserLoginSecurityRepository;
 
+	@Autowired
 	private RoleRepo roleRepo;
 
 	@Autowired
