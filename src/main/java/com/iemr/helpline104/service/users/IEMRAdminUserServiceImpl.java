@@ -42,7 +42,14 @@ public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 
 	private IEMRUserRepositoryCustom iEMRUserRepositoryCustom;
 	private IEMRUserSecurityQuesAnsRepository iEMRUserSecurityQuesAnsRepository;
+	private RoleRepo roleRepo;
+	
+	@Autowired
+	public void setRoleRepo(RoleRepo roleRepo) {
 
+		this.roleRepo = roleRepo;
+	}
+	
 	@Autowired
 	public void setIemrUserRepositoryImpl(IEMRUserRepositoryCustom iEMRUserRepositoryCustom) {
 		this.iEMRUserRepositoryCustom = iEMRUserRepositoryCustom;
@@ -108,7 +115,7 @@ public class IEMRAdminUserServiceImpl implements IEMRAdminUserService {
 	 */
 	private IEMRUserLoginSecurityRepository iEMRUserLoginSecurityRepository;
 
-	private RoleRepo roleRepo;
+
 
 	@Autowired
 	public void setIEMRUserLoginSecurityRepository(IEMRUserLoginSecurityRepository iEMRUserLoginSecurityRepository) {
