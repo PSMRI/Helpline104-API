@@ -55,7 +55,7 @@ public class BloodRequestController {
 	@Autowired
 	private BloodComponentTypeService componentTypeService;
 
-	@CrossOrigin
+	
 	@Operation(summary = "Save blood request details")
 	@PostMapping(value = "/save/bloodRequestDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String saveBloodRequestDetails(@RequestBody String request) {
@@ -77,7 +77,7 @@ public class BloodRequestController {
 		return output.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Get blood request details")
 	@PostMapping(value = "/get/bloodRequestDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getbloodRequestDetails(
@@ -102,7 +102,7 @@ public class BloodRequestController {
 		return output.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Get blood component types")
 	@PostMapping(value = "/get/bloodComponentTypes", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getBloodComponentTypes() {
@@ -120,7 +120,7 @@ public class BloodRequestController {
 		return output.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Get blood groups")
 	@PostMapping(value = "/get/bloodGroups", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getBloodGroups() {
@@ -138,7 +138,7 @@ public class BloodRequestController {
 		return output.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Get blood bank URL")
 	@PostMapping(value = "/get/bloodBankURL", headers = "Authorization")
 	public String getBloodBankURL(
@@ -163,7 +163,7 @@ public class BloodRequestController {
 		return output.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Save blood bank URL")
 	@PostMapping(value = "/save/bloodBankURL", headers = "Authorization")
 	public String saveBloodBankURL(

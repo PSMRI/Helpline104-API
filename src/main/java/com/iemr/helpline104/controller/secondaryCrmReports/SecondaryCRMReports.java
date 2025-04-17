@@ -44,7 +44,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 
 
-@CrossOrigin
+
 @RequestMapping({ "/crmReports" })
 @RestController
 public class SecondaryCRMReports {
@@ -53,7 +53,7 @@ public class SecondaryCRMReports {
 	private Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 	InputMapper inputMapper = new InputMapper();
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get RO summary report by date")
 	@PostMapping(value = "/getROSummaryReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getROSummaryReportByDate(@RequestBody String jsonRequest)
@@ -77,7 +77,7 @@ public class SecondaryCRMReports {
 		}
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get HAO summary report by date")
 	@PostMapping(value = "/getHAOSummaryReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getHAOSummaryReportByDate(
@@ -105,7 +105,7 @@ public class SecondaryCRMReports {
 		}
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get MO summary report by date")
 	@PostMapping(value = "/getMOSummaryReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getMOSummaryReportByDate(
@@ -133,7 +133,7 @@ public class SecondaryCRMReports {
 		}
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get medical advise report")
 	@PostMapping(value = "/getMedicalAdviseReport", headers = "Authorization")
 	public ResponseEntity<Object> getMedicalAdviseReport(
@@ -161,7 +161,7 @@ public class SecondaryCRMReports {
 		}
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get CO summary report by date")
 	@PostMapping(value = "/getCOSummaryReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getCOSummaryReportByDate(
@@ -189,7 +189,7 @@ public class SecondaryCRMReports {
 		}
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get mental health report")
 	@PostMapping(value = "/getMentalHealthReport", headers = "Authorization")
 	public ResponseEntity<Object> getMentalHealthReport(
@@ -217,7 +217,7 @@ public class SecondaryCRMReports {
 		}
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get grievance report by date ")
 	@PostMapping(value = "/getGrievanceReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getGrievanceReportByDate(
@@ -245,7 +245,7 @@ public class SecondaryCRMReports {
 		}
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get prescription report by date")
 	@PostMapping(value = "/getPrescriptionReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getPrescriptionReportByDate(
@@ -273,7 +273,7 @@ public class SecondaryCRMReports {
 		}
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get CDI response report")
 	@PostMapping(value = "/getCDIResponseReport", headers = "Authorization")
 	public ResponseEntity<Object> getCDIResponseReport(
@@ -301,7 +301,7 @@ public class SecondaryCRMReports {
 		}
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get schemes report by date")
 	@PostMapping(value = "/getSchemesReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getSchemesReportByDate(
@@ -330,7 +330,7 @@ public class SecondaryCRMReports {
 		}
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get directory service report by date")
 	@PostMapping(value = "/getDirectoryServiceReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getDirectoryServiceReportByDate(
@@ -358,7 +358,7 @@ public class SecondaryCRMReports {
 		}
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get food safety report by date")
 	@PostMapping(value = "/getFoodSafetyReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getFoodSafetyReportByDate(
@@ -387,7 +387,7 @@ public class SecondaryCRMReports {
 
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get blood on call report by date")
 	@PostMapping(value = "/getBloodOnCallReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getBloodOnCallReportByDate(
@@ -415,7 +415,7 @@ public class SecondaryCRMReports {
 		}
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get blood on call count report by date")
 	@PostMapping(value = "/getBloodOnCallCountReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getBloodOnCallCountReportByDate(
@@ -446,7 +446,7 @@ public class SecondaryCRMReports {
 		}
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get epidemic report by date")
 	@PostMapping(value = "/getEpidemicReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getEpidemicReportByDate(
@@ -472,7 +472,7 @@ public class SecondaryCRMReports {
 		}
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get organ donation report by date")
 	@PostMapping(value = "/getOrganDonationReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getOrganDonationReportByDate(
@@ -500,7 +500,7 @@ public class SecondaryCRMReports {
 		}
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get PD summary report by date")
 	@PostMapping(value = "/getPDSummaryReportByDate", headers = "Authorization")
 	public ResponseEntity<Object> getPDSummaryReport(@Parameter(description="{\"startDateTime\":\"Date time stamp of start date\", "

@@ -39,7 +39,7 @@ import io.swagger.v3.oas.annotations.Operation;
 public class LocationController {
 	private LocationService locationService;
 
-	@CrossOrigin
+	
 	@Operation(summary = "Get states")
 	@GetMapping(value = {
 			"/states/{id}" }, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
@@ -48,7 +48,7 @@ public class LocationController {
 		return stateList.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Get districts")
 	@GetMapping(value = {
 			"/districts/{id}" }, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
@@ -58,7 +58,7 @@ public class LocationController {
 		return districtsList.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Get state districts")
 	@GetMapping(value = {
 			"/statesDistricts/{id}" }, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
@@ -67,7 +67,7 @@ public class LocationController {
 		return districtsList.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Get district blocks")
 	@GetMapping(value = {
 			"/taluks/{id}" }, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
@@ -76,7 +76,7 @@ public class LocationController {
 		return districtBlockList.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Get city")
 	@GetMapping(value = {
 			"/city/{id}" }, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
@@ -85,7 +85,7 @@ public class LocationController {
 		return districtBlockList.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Get villages")
 	@GetMapping(value = {
 			"/village/{id}" }, produces = MediaType.APPLICATION_JSON, headers = "Authorization")

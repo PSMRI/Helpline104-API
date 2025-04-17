@@ -34,7 +34,7 @@ import com.iemr.helpline104.utils.response.OutputResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 
-@CrossOrigin
+
 @RestController
 @RequestMapping(value = "/master", headers = "Authorization")
 
@@ -56,7 +56,7 @@ public class CovidMasterController {
 		return response.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary= "Save COVID data")
 	@PostMapping({ "/save/covidScreeningData" })
 	public String saveBenCovidDoctorData(@RequestBody String requestObj,

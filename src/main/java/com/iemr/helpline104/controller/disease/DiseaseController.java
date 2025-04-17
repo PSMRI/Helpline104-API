@@ -39,7 +39,7 @@ public class DiseaseController {
 	@Autowired
 	DiseaseService diseaseService;
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Save disease")
 	@PostMapping(value = "/saveDisease", headers = "Authorization", produces = {
 			"application/json" })
@@ -57,7 +57,7 @@ public class DiseaseController {
 		return response.toString();
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Delete disease")
 	@PostMapping(value = "/deleteDisease", headers = "Authorization", produces = {
 			"application/json" })
@@ -75,7 +75,7 @@ public class DiseaseController {
 		return response.toString();
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get diseases")
 	@PostMapping(value = "/getDisease", headers = "Authorization", produces = {
 			"application/json" })
@@ -93,7 +93,7 @@ public class DiseaseController {
 		return response.toString();
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Update disease")
 	@PostMapping(value = "/updateDisease", headers = "Authorization", produces = {
 			"application/json" })
@@ -111,7 +111,7 @@ public class DiseaseController {
 		return response.toString();
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get available disease")
 	@PostMapping(value = "/getAvailableDiseases", headers = "Authorization", produces = { "application/json" })
 	public String getAvailableDiseases() {
@@ -128,7 +128,7 @@ public class DiseaseController {
 		return response.toString();
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get disease by id")
 	@PostMapping(value = "/getDiseasesByID", headers = "Authorization", produces = {
 			"application/json" })

@@ -64,7 +64,7 @@ public class BeneficiaryCallController {
 		this.beneficiaryCallService = beneficiaryCallService;
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Stores callerID to the specific beneficiary who are on call")
 	@PostMapping(value = "/startCall", headers = "Authorization")
 	public String startCall(
@@ -85,7 +85,7 @@ public class BeneficiaryCallController {
 		return output.toString();
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Update beneficiary reg id to the caller id")
 	@PostMapping(value = "update/beneficiaryCallID", headers = "Authorization")
 	public String updateBeneficiaryIDInCall(
@@ -115,7 +115,7 @@ public class BeneficiaryCallController {
 	}
 
 
-	@CrossOrigin
+	
 	@Operation(summary = "Fetch services available in the 104 helpline")
 	@PostMapping(value = "/get/services", headers = "Authorization")
 	public String getServices(
@@ -138,7 +138,7 @@ public class BeneficiaryCallController {
 		return output.toString();
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Set service history")
 	@PostMapping(value = "set/callHistory", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String setServiceHistory(@RequestBody String request) {

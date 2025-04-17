@@ -50,7 +50,7 @@ public class DirectoryServicesController {
 	@Autowired
 	private DirectoryServiceService directoryServiceService;
 
-	@CrossOrigin
+	
 	@Operation(summary = "Retrieve directory search history")
 	@RequestMapping(value = "/getdirectorySearchHistory", method = RequestMethod.POST, headers = "Authorization")
 	public String getBenDirectoryHistory(
@@ -72,7 +72,7 @@ public class DirectoryServicesController {
 		return output.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Store directory serach history")
 	@RequestMapping(value = "/save/directorySearchHistory", method = RequestMethod.POST, headers = "Authorization")
 	public String directorySearchHistory(

@@ -49,7 +49,6 @@ public class HealthCareWorkerTypeController {
 	@Autowired
 	private HealthCareWorkerService healthCareWorkerService;
 
-	@CrossOrigin
 	@Operation(summary = "Get health care worker types")
 	@PostMapping(value = "/get/healthCareWorkerTypes", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getHealthCareWorkerTypes() {

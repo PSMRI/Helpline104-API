@@ -45,7 +45,7 @@ public class BalVivahController {
 	@Autowired
 	private BalVivahComplaintService balVivahComplaintService;
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Save bal vivah complaint")
 	@PostMapping(value = "/saveBalVivahComplaint", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String balVivahComplaint(@RequestBody String request, HttpServletRequest httpRequest) {
@@ -60,7 +60,7 @@ public class BalVivahController {
 		return output.toString();
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Get bal vivah list")
 	@PostMapping(value = "/getBalVivahList", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String feedbackReuest(@RequestBody String request) {
@@ -79,7 +79,7 @@ public class BalVivahController {
 		return response.toString();
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Update bal vivah complaint")
 	@PostMapping(value = "/update/BalVivahComplaint", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String updateBalVivahComplaint(@RequestBody String request) {
