@@ -57,7 +57,7 @@ public class DiseaseScreeningController {
 	@Autowired
 	private QuestionScoreService questionScoreService;
 
-	@CrossOrigin
+	
 	@Operation(summary = "Fetch disease screening questions")
 	@PostMapping(value = "/get/questions", headers = "Authorization")
 	public String fetchQuestions(
@@ -81,7 +81,7 @@ public class DiseaseScreeningController {
 		return output.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Fetch disease screening answers")
 	@PostMapping(value = "/get/answers", headers = "Authorization")
 	public String fetchAnswers(@Parameter(description = "{\"questionID\":\"integer\"}") @RequestBody String request) {

@@ -41,7 +41,7 @@ public class CountryCityController {
 	private CountryCityService countryCityService;
 	private Logger logger = LoggerFactory.getLogger(FeedbackController.class);
 
-	@CrossOrigin
+	
 	@Operation(summary = "Get country")
 	@GetMapping(value = {
 			"/getCountry" }, produces = MediaType.APPLICATION_JSON, headers = "Authorization")
@@ -59,7 +59,7 @@ public class CountryCityController {
 		return response.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Get cities")
 	@GetMapping(value = {
 			"/getCities/{id}" }, produces = MediaType.APPLICATION_JSON, headers = "Authorization")

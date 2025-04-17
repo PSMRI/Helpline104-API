@@ -47,7 +47,7 @@ public class BloodComponentController {
 	@Autowired
 	private BloodComponentService bloodComponentService;
 
-	@CrossOrigin
+	
 	@Operation(summary = "Save blood component details")
 	@PostMapping(value = "/save/bloodComponentDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String saveBloodComponentDetails(
@@ -67,7 +67,7 @@ public class BloodComponentController {
 		return output.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Fetch blood component details")
 	@PostMapping(value = "/get/bloodComponentDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getBloodComponentDetails(

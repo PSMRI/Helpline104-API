@@ -48,7 +48,7 @@ public class Helpline104BeneficiaryHistoryController {
 	@Autowired
 	private H104BenHistoryService h104BenHistoryService;
 
-	@CrossOrigin
+	
 	@Operation(summary = "Retrieves case record")
 	@PostMapping(value = "/getBenCaseSheet", headers = "Authorization")
 	public String getBenCaseSheet(
@@ -70,7 +70,7 @@ public class Helpline104BeneficiaryHistoryController {
 		return output.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Stores case record")
 	@PostMapping(value = "/save/benCaseSheet", headers = "Authorization")
 	public String saveBenCaseSheet(
@@ -101,7 +101,7 @@ public class Helpline104BeneficiaryHistoryController {
 		return output.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Retrieves present case record")
 	@PostMapping(value = "/getPresentCaseSheet", headers = "Authorization")
 	public String getPresentCaseSheet(

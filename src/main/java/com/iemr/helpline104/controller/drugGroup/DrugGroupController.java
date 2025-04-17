@@ -53,7 +53,7 @@ public class DrugGroupController {
 	@Autowired
 	private DrugGroupService drugGroupService;
 
-	@CrossOrigin
+	
 	@Operation(summary= "Fetch drug groups")
 	@PostMapping(value = "/get/drugGroups", headers = "Authorization")
 	public String getDrugGroups(@Parameter(description = "{\"serviceProviderID\":\"integer\"}") @RequestBody String request) {
@@ -74,7 +74,7 @@ public class DrugGroupController {
 		return output.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary= "Fetch drug list")
 	@PostMapping(value = "/get/drugList", headers = "Authorization")
 	public String getDrugList(@Parameter(description = "{\"providerServiceMapID\":\"integer\"}") @RequestBody String request) {
@@ -99,7 +99,7 @@ public class DrugGroupController {
 		return output.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary= "Fetch drug frequency details")
 	@PostMapping(value = "/get/drugFrequency", headers = "Authorization")
 	public String getDrugFrequency() {
@@ -117,7 +117,7 @@ public class DrugGroupController {
 		return output.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary= "Fetch drug strength details")
 	@PostMapping(value = "/get/drugStrength", headers = "Authorization")
 	public String getDrugStrength(
@@ -139,7 +139,7 @@ public class DrugGroupController {
 		return output.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary= "Fetch drug name list")
 	@PostMapping(value = "/getDrugDetailList", headers = "Authorization")
 	public String getDrugNameList(

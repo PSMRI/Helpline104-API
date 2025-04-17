@@ -34,7 +34,7 @@ import com.iemr.helpline104.utils.response.OutputResponse;
 import io.swagger.v3.oas.annotations.Operation;
 
 
-@CrossOrigin
+
 @RestController
 @RequestMapping(value = "/hihl", headers = "Authorization")
 public class HIHLController {

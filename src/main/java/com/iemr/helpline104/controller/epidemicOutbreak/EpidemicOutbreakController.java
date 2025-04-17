@@ -51,7 +51,7 @@ public class EpidemicOutbreakController {
 	@Autowired
 	private EpidemicOutbreakService epidemicOutbreakService;
 
-	@CrossOrigin
+	
 	@Operation(summary = "Store epidemic outbreak complaint")
 	@RequestMapping(value = "/save/epidemicOutbreakComplaint", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String saveEpidemicOutbreakComplaint(
@@ -74,7 +74,7 @@ public class EpidemicOutbreakController {
 		return output.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Fetch epidemic outbreak complaints")
 	@RequestMapping(value = "/get/epidemicOutbreakComplaint", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getEpidemicOutbreakComplaint(
@@ -101,7 +101,7 @@ public class EpidemicOutbreakController {
 		return output.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Update epidemic outbreak complaint")
 	@RequestMapping(value = "/update/epidemicOutbreakComplaint", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String updateEpidemicOutbreakComplaint(

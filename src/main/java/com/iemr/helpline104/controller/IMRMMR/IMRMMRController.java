@@ -54,7 +54,7 @@ public class IMRMMRController {
 	@Autowired
 	private IMRMMRService imrmmrService;
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Save IMR MMR")
 	@PostMapping(value = "/saveIMRMMR", headers = "Authorization", produces = {
 			"application/json" })
@@ -78,7 +78,7 @@ public class IMRMMRController {
 		return response.toString();
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Fetch support services")
 	@GetMapping(value = "/fetchimrmmrmasters", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String fetchSupportServices() {
@@ -105,7 +105,7 @@ public class IMRMMRController {
 		return response.toString();
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Feedback request")
 	@PostMapping(value = "/getIMRMMRList", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String feedbackReuest(@RequestBody String request) {
@@ -123,7 +123,7 @@ public class IMRMMRController {
 		return response.toString();
 	}
 
-	@CrossOrigin()
+	
 	@Operation(summary = "Update IMR MMR complaint")
 	@PostMapping(value = "/update/ImrMmrComplaint", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String updateImrMmrComplaint(@RequestBody String request) {

@@ -50,7 +50,7 @@ public class FoodSafetyComplaintController {
 	@Autowired
 	private FoodSafetyCopmlaintService foodSafetyCopmlaintService;
 
-	@CrossOrigin
+	
 	@Operation(summary = "Stores food safety complaint details")
 	@PostMapping(value = "/save/foodComplaintDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String saveFoodComplaintDetails(
@@ -80,7 +80,7 @@ public class FoodSafetyComplaintController {
 		return output.toString();
 	}
 
-	@CrossOrigin
+	
 	@Operation(summary = "Provides food safety complaints history")
 	@PostMapping(value = "/get/foodComplaintDetails", headers = "Authorization")
 	public String getFoodComplaintDetails(
