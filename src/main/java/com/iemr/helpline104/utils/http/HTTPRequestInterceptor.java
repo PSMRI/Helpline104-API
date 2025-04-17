@@ -70,7 +70,7 @@ public class HTTPRequestInterceptor implements HandlerInterceptor {
 				case "userAuthenticate", "userAuthenticateNew", "userAuthenticateV1",
 		         "forgetPassword", "setForgetPassword", "changePassword", 
 		         "saveUserSecurityQuesAns", "swagger-ui.html", 
-		         "ui", "swagger-resources", "api-docs":
+		         "ui", "swagger-resources", "api-docs","index.html","swagger-initializer.js","swagger-config":
 					break;
 				case "error":
 					status = false;
