@@ -20,3 +20,7 @@ src/main/environment/104_local.properties
 
 .settings
 .project
+
+### Node.js ###
+node_modules/
+npm-debug.log
