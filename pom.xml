@@ -8,7 +8,7 @@
 	<artifactId>helpline-104-api</artifactId>
 	<version>3.1.0</version>
 	<packaging>war</packaging>
-	<name>Piramal-Helpline-104-API</name>
+	<name>Helpline-104-API</name>
 	<description>Piramal Helpline 104 API</description>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
