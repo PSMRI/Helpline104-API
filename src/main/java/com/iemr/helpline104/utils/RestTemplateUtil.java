@@ -1,5 +1,7 @@
 package com.iemr.helpline104.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -11,6 +13,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import jakarta.servlet.http.HttpServletRequest;
 
 public class RestTemplateUtil {
+	private final static Logger logger = LoggerFactory.getLogger(RestTemplateUtil.class);
+	
 	public static HttpEntity<Object> createRequestEntity(Object body, String authorization) {
         
 		ServletRequestAttributes servletRequestAttributes = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes());
@@ -26,7 +30,7 @@ public class RestTemplateUtil {
 			jwtTokenFromCookie = CookieUtil.getJwtTokenFromCookie(requestHeader);
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error while getting jwtToken from Cookie" + e.getMessage() );
 		}
 
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
@@ -34,7 +38,9 @@ public class RestTemplateUtil {
         headers.add(HttpHeaders.USER_AGENT, UserAgentContext.getUserAgent());
         headers.add(HttpHeaders.AUTHORIZATION, authorization);
         headers.add("JwtToken",requestHeader.getHeader("JwtToken"));
-        headers.add(HttpHeaders.COOKIE, "Jwttoken=" + jwtTokenFromCookie);
+        if(null != jwtTokenFromCookie) {
+        	headers.add(HttpHeaders.COOKIE, "Jwttoken=" + jwtTokenFromCookie);
+        }
 
         return new HttpEntity<>(body, headers);
     }
