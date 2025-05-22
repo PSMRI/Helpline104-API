@@ -67,6 +67,7 @@ import com.iemr.helpline104.repository.nodalOfficer.NodalOficerRepo;
 import com.iemr.helpline104.reposotory.IMRMMR.IMRMMRRepository;
 import com.iemr.helpline104.sms.SmsRequestOBJ;
 import com.iemr.helpline104.utils.CookieUtil;
+import com.iemr.helpline104.utils.RestTemplateUtil;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -198,11 +199,7 @@ public class IMRMMRServiceImpl implements IMRMMRService {
 		emailReqObj.put("requestID", requestID);
 		emailReqObj.put("emailType", IMRMMREmailTemplate);
 		emailReqObj.put("emailID", emailID);
-		HttpServletRequest requestHeader = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-				.getRequest();
-		String jwtTokenFromCookie = cookieUtil.getJwtTokenFromCookie(requestHeader);
-		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
-		headers.add("Cookie", "Jwttoken=" + jwtTokenFromCookie);
+		
 		try {
 			String emailStatus = restTemplate(new Gson().toJson(emailReqObj), sendEmailGeneralUrl, Authorization);
 			if (emailStatus != null) {
@@ -283,11 +280,7 @@ public class IMRMMRServiceImpl implements IMRMMRService {
 	}
 
 	public String restTemplate(String request, String url, String Authorization) {
-		HttpHeaders headers = new HttpHeaders();
-		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		headers.set("AUTHORIZATION", Authorization);
-
-		HttpEntity<Object> requestOBJ = new HttpEntity<Object>(request, headers);
+		HttpEntity<Object> requestOBJ = RestTemplateUtil.createRequestEntity(request, Authorization);
 		RestTemplate restTemplate = new RestTemplate();
 		return restTemplate.exchange(url, HttpMethod.POST, requestOBJ, String.class).getBody();
 	}

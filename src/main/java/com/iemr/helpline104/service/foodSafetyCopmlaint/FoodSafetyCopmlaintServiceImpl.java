@@ -52,6 +52,7 @@ import com.iemr.helpline104.repository.beneficiarycall.BenCallRepository;
 import com.iemr.helpline104.repository.feedbackType.FeedbackTypeRepository;
 import com.iemr.helpline104.repository.foodSafetyCopmlaint.FoodSafetyCopmlaintRepository;
 import com.iemr.helpline104.utils.CookieUtil;
+import com.iemr.helpline104.utils.RestTemplateUtil;
 import com.iemr.helpline104.utils.config.ConfigProperties;
 import com.iemr.helpline104.utils.exception.IEMRException;
 import com.iemr.helpline104.utils.http.HttpUtils;
@@ -209,13 +210,10 @@ public class FoodSafetyCopmlaintServiceImpl implements FoodSafetyCopmlaintServic
 	private OutputResponse createFeedback(String feedbackDetails, HttpServletRequest request) throws IEMRException, JsonMappingException, JsonProcessingException {
 		RestTemplate restTemplate = new RestTemplate();
 		ObjectMapper objectMapper = new ObjectMapper();
-		String jwtTokenFromCookie = cookieUtil.getJwtTokenFromCookie(request);
-		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
-		headers.add("Content-Type", "application/json");
-		headers.add("AUTHORIZATION", request.getHeader("Authorization"));
-		headers.add("Jwttoken", jwtTokenFromCookie);
+		
 		String url = properties.getPropertyByName("common-url") + "/" + properties.getPropertyByName("create-feedback");
-		HttpEntity<Object> request1 = new HttpEntity<Object>(feedbackDetails, headers);
+		HttpEntity<Object> request1 = RestTemplateUtil.createRequestEntity(feedbackDetails, request.getHeader("Authorization"));
+		
 		ResponseEntity<String> responseStr = restTemplate.exchange(url, HttpMethod.POST, request1, String.class);
 		OutputResponse response = objectMapper.readValue(responseStr.getBody(), OutputResponse.class);
 		return response;
