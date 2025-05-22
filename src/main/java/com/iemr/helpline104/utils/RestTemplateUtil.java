@@ -35,7 +35,9 @@ public class RestTemplateUtil {
 
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
         headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE + ";charset=utf-8");
-        headers.add(HttpHeaders.USER_AGENT, UserAgentContext.getUserAgent());
+        if(null != UserAgentContext.getUserAgent()) {
+        	headers.add(HttpHeaders.USER_AGENT, UserAgentContext.getUserAgent());
+        }
         headers.add(HttpHeaders.AUTHORIZATION, authorization);
         headers.add("JwtToken",requestHeader.getHeader("JwtToken"));
         if(null != jwtTokenFromCookie) {
