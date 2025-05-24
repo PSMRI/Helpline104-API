@@ -44,7 +44,7 @@ public interface DiseaseRepository extends CrudRepository<Disease, Integer> {
 	@Query("UPDATE Disease set deleted = :deleted where diseasesummaryID = :diseasesummaryID")
 	public int deleteDisease(@Param("diseasesummaryID") Integer diseasesummaryID,@Param("deleted") Boolean deleted);
 	
-	@Query("Select count(*) from Disease disease d where d.deleted = false")
+	@Query("Select count(d) from Disease disease d where d.deleted = false")
 	public Integer getDiseaseCountExcludingDeleted();
 	
 	@Transactional
