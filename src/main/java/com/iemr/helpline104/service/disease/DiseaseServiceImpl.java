@@ -96,39 +96,100 @@ public class DiseaseServiceImpl implements DiseaseService{
 		return "activated successfully";
 	}
 	
+//	@Override
+//	public String getDisease(String request) throws IEMRException {
+//		logger.info("getDisease - Start");
+//		Disease disease = InputMapper.gson().fromJson(request, Disease.class);
+//		Integer totalCount = diseaseRepository.getDiseaseCount();
+//		
+//		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//		CriteriaQuery<Disease> criteriaQuery = criteriaBuilder.createQuery(Disease.class);
+//		Root<Disease> root = criteriaQuery.from(Disease.class);
+//		List<Predicate> predicates = new ArrayList<Predicate>();
+//
+//		criteriaQuery.select(root).where(predicates.toArray(new Predicate[] {}));
+//		TypedQuery<Disease> typedQuery = entityManager.createQuery(criteriaQuery);
+//		
+//		if (disease.getPageNo() != null && disease.getPageSize() != null)
+//		{
+//			typedQuery.setMaxResults(disease.getPageSize())
+//			.setFirstResult((disease.getPageNo() - 1) * disease.getPageSize());
+//		}
+//		
+//		List<Disease> list=typedQuery.getResultList();
+//		
+//		Integer totalPages= getPageCount(totalCount, disease.getPageSize());
+//		
+//		Map<String, Object> responseMap = new HashMap<>();
+//		
+//		responseMap.put("DiseaseList", list);
+//		responseMap.put("totalPages", totalPages);
+//		
+//		logger.info("getDisease - End");
+//		return responseMap.toString();
+//	}
+//	
+//	private int getPageCount(Integer totalCount, Integer pageSize) {
+//		if (pageSize > 0) {
+//			if (totalCount % pageSize == 0)
+//				return (int) (totalCount / pageSize);
+//			else
+//				return ((int) (totalCount / pageSize) + 1);
+//		} else
+//			return 0;
+//	}
+//	
+	
 	@Override
 	public String getDisease(String request) throws IEMRException {
-		logger.info("getDisease - Start");
-		Disease disease = InputMapper.gson().fromJson(request, Disease.class);
-		Integer totalCount = diseaseRepository.getDiseaseCount();
-		
-		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<Disease> criteriaQuery = criteriaBuilder.createQuery(Disease.class);
-		Root<Disease> root = criteriaQuery.from(Disease.class);
-		List<Predicate> predicates = new ArrayList<Predicate>();
+	    logger.info("getDisease - Start");
+	    
+	    Disease disease = InputMapper.gson().fromJson(request, Disease.class);
+	    Integer totalCount = diseaseRepository.getDiseaseCount();
 
-		criteriaQuery.select(root).where(predicates.toArray(new Predicate[] {}));
-		TypedQuery<Disease> typedQuery = entityManager.createQuery(criteriaQuery);
-		
-		if (disease.getPageNo() != null && disease.getPageSize() != null)
-		{
-			typedQuery.setMaxResults(disease.getPageSize())
-			.setFirstResult((disease.getPageNo() - 1) * disease.getPageSize());
-		}
-		
-		List<Disease> list=typedQuery.getResultList();
-		
-		Integer totalPages= getPageCount(totalCount, disease.getPageSize());
-		
-		Map<String, Object> responseMap = new HashMap<>();
-		
-		responseMap.put("DiseaseList", list);
-		responseMap.put("totalPages", totalPages);
-		
-		logger.info("getDisease - End");
-		return responseMap.toString();
+	    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+	    CriteriaQuery<Disease> criteriaQuery = criteriaBuilder.createQuery(Disease.class);
+	    Root<Disease> root = criteriaQuery.from(Disease.class);
+	    
+	    List<Predicate> predicates = new ArrayList<>();
+
+	    // Exclude deleted diseases (assuming soft delete logic)
+	    predicates.add(criteriaBuilder.equal(root.get("deleted"), false));
+
+	    // Build query with predicates and sorting by newest first
+	    criteriaQuery.select(root)
+	                 .where(predicates.toArray(new Predicate[0]))
+	                 .orderBy(criteriaBuilder.desc(root.get("diseaseSummaryId")));
+
+	    logger.info("Executing disease fetch query with predicates: " + predicates);
+
+	    TypedQuery<Disease> typedQuery = entityManager.createQuery(criteriaQuery);
+
+	    // Apply pagination if provided
+	    if (disease.getPageNo() != null && disease.getPageSize() != null) {
+	        int offset = (disease.getPageNo() - 1) * disease.getPageSize();
+	        typedQuery.setFirstResult(offset);
+	        typedQuery.setMaxResults(disease.getPageSize());
+	    }
+
+	    List<Disease> list = typedQuery.getResultList();
+
+//	    // Optional: log result IDs and names for debugging
+//	    logger.info("Fetched diseases: " + list.stream()
+//	        .map(d -> d.getDiseaseSummaryId() + ":" + d.getDiseaseName())
+//	        .collect(Collectors.joining(", ")));
+
+	    Integer totalPages = getPageCount(totalCount, disease.getPageSize());
+
+	    Map<String, Object> responseMap = new HashMap<>();
+	    responseMap.put("DiseaseList", list);
+	    responseMap.put("totalPages", totalPages);
+
+	    logger.info("getDisease - End");
+
+	    return responseMap.toString();  // Consider using Gson or Jackson here for proper JSON
 	}
-	
+
 	private int getPageCount(Integer totalCount, Integer pageSize) {
 		if (pageSize > 0) {
 			if (totalCount % pageSize == 0)
