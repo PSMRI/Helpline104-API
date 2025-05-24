@@ -42,6 +42,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.iemr.helpline104.data.disease.Disease;
+import com.iemr.helpline104.repository.beneficiarycall.BeneficiaryCallRepository;
 import com.iemr.helpline104.repository.disease.DiseaseRepository;
 import com.iemr.helpline104.utils.exception.IEMRException;
 import com.iemr.helpline104.utils.mapper.InputMapper;
@@ -54,8 +55,13 @@ public class DiseaseServiceImpl implements DiseaseService{
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	@Autowired
+//	@Autowired
 	DiseaseRepository diseaseRepository;
+	
+	@Autowired
+	private void setDiseaseRepository(DiseaseRepository diseaseRepository) {
+		this.diseaseRepository = diseaseRepository;
+	}
 	
 	@Override
 	public String saveDisease(String request) {
@@ -98,37 +104,58 @@ public class DiseaseServiceImpl implements DiseaseService{
 	
 	@Override
 	public String getDisease(String request) throws IEMRException {
-		logger.info("getDisease - Start");
-		Disease disease = InputMapper.gson().fromJson(request, Disease.class);
-		Integer totalCount = diseaseRepository.getDiseaseCount();
-		
-		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<Disease> criteriaQuery = criteriaBuilder.createQuery(Disease.class);
-		Root<Disease> root = criteriaQuery.from(Disease.class);
-		List<Predicate> predicates = new ArrayList<Predicate>();
+	    logger.info("getDisease - Start");
+	    
+	    Disease disease = InputMapper.gson().fromJson(request, Disease.class);
+	    
+	    if (disease == null) {
+	    	throw new IEMRException("Invalid request: Unable to parse disease object");
+	    }
+	    
+	    Integer totalCount = diseaseRepository.getDiseaseCountExcludingDeleted();
 
-		criteriaQuery.select(root).where(predicates.toArray(new Predicate[] {}));
-		TypedQuery<Disease> typedQuery = entityManager.createQuery(criteriaQuery);
-		
-		if (disease.getPageNo() != null && disease.getPageSize() != null)
-		{
-			typedQuery.setMaxResults(disease.getPageSize())
-			.setFirstResult((disease.getPageNo() - 1) * disease.getPageSize());
-		}
-		
-		List<Disease> list=typedQuery.getResultList();
-		
-		Integer totalPages= getPageCount(totalCount, disease.getPageSize());
-		
-		Map<String, Object> responseMap = new HashMap<>();
-		
-		responseMap.put("DiseaseList", list);
-		responseMap.put("totalPages", totalPages);
-		
-		logger.info("getDisease - End");
-		return responseMap.toString();
+	    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+	    CriteriaQuery<Disease> criteriaQuery = criteriaBuilder.createQuery(Disease.class);
+	    Root<Disease> root = criteriaQuery.from(Disease.class);
+	    
+	    List<Predicate> predicates = new ArrayList<>();
+
+	    // Exclude deleted diseases (assuming soft delete logic)
+	    predicates.add(criteriaBuilder.equal(root.get("deleted"), false));
+
+	    // Build query with predicates and sorting by newest first
+	    criteriaQuery.select(root)
+	                 .where(predicates.toArray(new Predicate[0]))
+	                 .orderBy(criteriaBuilder.desc(root.get("diseasesummaryID")));
+
+	    logger.info("Executing disease fetch query with predicates: {}" , predicates);
+
+	    TypedQuery<Disease> typedQuery = entityManager.createQuery(criteriaQuery);
+
+	    // Apply pagination if provided
+	    if (disease.getPageNo() != null && disease.getPageSize() != null) {
+		    if (disease.getPageNo()<=0 || disease.getPageSize()<=0) {
+		    	throw new IEMRException("Invalid pagination parameter, page no and page size must be positive");
+		    }
+
+	        int offset = (disease.getPageNo() - 1) * disease.getPageSize();
+	        typedQuery.setFirstResult(offset);
+	        typedQuery.setMaxResults(disease.getPageSize());
+	    }
+
+	    List<Disease> list = typedQuery.getResultList();
+
+	    Integer totalPages = getPageCount(totalCount, disease.getPageSize());
+
+	    Map<String, Object> responseMap = new HashMap<>();
+	    responseMap.put("DiseaseList", list);
+	    responseMap.put("totalPages", totalPages);
+
+	    logger.info("getDisease - End");
+
+	    return responseMap.toString(); 
 	}
-	
+
 	private int getPageCount(Integer totalCount, Integer pageSize) {
 		if (pageSize > 0) {
 			if (totalCount % pageSize == 0)
