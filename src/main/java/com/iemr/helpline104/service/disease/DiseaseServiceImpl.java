@@ -159,7 +159,7 @@ public class DiseaseServiceImpl implements DiseaseService{
 	    // Build query with predicates and sorting by newest first
 	    criteriaQuery.select(root)
 	                 .where(predicates.toArray(new Predicate[0]))
-	                 .orderBy(criteriaBuilder.desc(root.get("diseaseSummaryId")));
+	                 .orderBy(criteriaBuilder.desc(root.get("diseasesummaryID")));
 
 	    logger.info("Executing disease fetch query with predicates: " + predicates);
 
