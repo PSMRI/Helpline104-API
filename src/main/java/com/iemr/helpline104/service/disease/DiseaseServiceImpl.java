@@ -130,11 +130,6 @@ public class DiseaseServiceImpl implements DiseaseService{
 
 	    List<Disease> list = typedQuery.getResultList();
 
-//	    // Optional: log result IDs and names for debugging
-//	    logger.info("Fetched diseases: " + list.stream()
-//	        .map(d -> d.getDiseaseSummaryId() + ":" + d.getDiseaseName())
-//	        .collect(Collectors.joining(", ")));
-
 	    Integer totalPages = getPageCount(totalCount, disease.getPageSize());
 
 	    Map<String, Object> responseMap = new HashMap<>();
@@ -143,7 +138,7 @@ public class DiseaseServiceImpl implements DiseaseService{
 
 	    logger.info("getDisease - End");
 
-	    return responseMap.toString();  // Consider using Gson or Jackson here for proper JSON
+	    return responseMap.toString(); 
 	}
 
 	private int getPageCount(Integer totalCount, Integer pageSize) {
