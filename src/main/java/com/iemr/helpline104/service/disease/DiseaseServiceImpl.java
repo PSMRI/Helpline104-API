@@ -101,7 +101,12 @@ public class DiseaseServiceImpl implements DiseaseService{
 	    logger.info("getDisease - Start");
 	    
 	    Disease disease = InputMapper.gson().fromJson(request, Disease.class);
-	    Integer totalCount = diseaseRepository.getDiseaseCount();
+	    
+	    if (disease == null) {
+	    	throw new IEMRException("Invalid request: Unable to parse disease object");
+	    }
+	    
+	    Integer totalCount = diseaseRepository.getDiseaseCountExcludingDeleted();
 
 	    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 	    CriteriaQuery<Disease> criteriaQuery = criteriaBuilder.createQuery(Disease.class);
@@ -123,6 +128,10 @@ public class DiseaseServiceImpl implements DiseaseService{
 
 	    // Apply pagination if provided
 	    if (disease.getPageNo() != null && disease.getPageSize() != null) {
+		    if (disease.getPageNo()<=0 || disease.getPageSize()<=0) {
+		    	throw new IEMRException("Invalid pagination parameter, page no and page size must be positive");
+		    }
+
 	        int offset = (disease.getPageNo() - 1) * disease.getPageSize();
 	        typedQuery.setFirstResult(offset);
 	        typedQuery.setMaxResults(disease.getPageSize());
