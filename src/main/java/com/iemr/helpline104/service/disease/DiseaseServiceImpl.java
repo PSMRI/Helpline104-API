@@ -42,6 +42,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.iemr.helpline104.data.disease.Disease;
+import com.iemr.helpline104.repository.beneficiarycall.BeneficiaryCallRepository;
 import com.iemr.helpline104.repository.disease.DiseaseRepository;
 import com.iemr.helpline104.utils.exception.IEMRException;
 import com.iemr.helpline104.utils.mapper.InputMapper;
@@ -54,8 +55,13 @@ public class DiseaseServiceImpl implements DiseaseService{
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	@Autowired
+//	@Autowired
 	DiseaseRepository diseaseRepository;
+	
+	@Autowired
+	private void setDiseaseRepository(DiseaseRepository diseaseRepository) {
+		this.diseaseRepository = diseaseRepository;
+	}
 	
 	@Override
 	public String saveDisease(String request) {
