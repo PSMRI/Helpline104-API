@@ -43,6 +43,7 @@ import org.springframework.stereotype.Service;
 
 import com.iemr.helpline104.data.disease.Disease;
 import com.iemr.helpline104.repository.disease.DiseaseRepository;
+import com.iemr.helpline104.service.disease.DiseaseService;
 import com.iemr.helpline104.utils.exception.IEMRException;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 
@@ -53,7 +54,6 @@ public class DiseaseServiceImpl implements DiseaseService{
 	
 	@PersistenceContext
 	private EntityManager entityManager;
-
 	
 	@Autowired
 	DiseaseRepository diseaseRepository;
