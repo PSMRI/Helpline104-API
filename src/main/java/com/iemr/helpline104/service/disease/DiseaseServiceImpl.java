@@ -117,7 +117,7 @@ public class DiseaseServiceImpl implements DiseaseService{
 	                 .where(predicates.toArray(new Predicate[0]))
 	                 .orderBy(criteriaBuilder.desc(root.get("diseasesummaryID")));
 
-	    logger.info("Executing disease fetch query with predicates: " + predicates);
+	    logger.info("Executing disease fetch query with predicates: {}" , predicates);
 
 	    TypedQuery<Disease> typedQuery = entityManager.createQuery(criteriaQuery);
 
