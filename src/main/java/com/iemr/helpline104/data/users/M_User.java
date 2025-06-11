@@ -95,7 +95,7 @@ public class M_User implements Serializable {
 	@Transient
 	private String newPassword = null;
 
-	protected M_User() {
+	public M_User() {
 	}
 
 	public M_User(Long userID, Integer titleID, String firstName, String middleName, String lastName, Integer genderID,
