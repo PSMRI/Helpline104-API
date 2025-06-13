@@ -33,6 +33,11 @@ public class JwtUserIdValidationFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            filterChain.doFilter(servletRequest, servletResponse); // allow it through
+            return;
+        }
+
         String path = request.getRequestURI();
         String contextPath = request.getContextPath();
         logger.info("JwtUserIdValidationFilter invoked for path: " + path);
@@ -43,79 +48,80 @@ public class JwtUserIdValidationFilter implements Filter {
             for (Cookie cookie : cookies) {
                 if ("userId".equals(cookie.getName())) {
                     logger.warn("userId found in cookies! Clearing it...");
-                    clearUserIdCookie(response);  // Explicitly remove userId cookie
+                    clearUserIdCookie(response); // Explicitly remove userId cookie
                 }
             }
         } else {
             logger.info("No cookies found in the request");
         }
 
-
         // Log headers for debugging
         String jwtTokenFromHeader = request.getHeader("Jwttoken");
         logger.info("JWT token from header: " + jwtTokenFromHeader);
 
         // Skip login and public endpoints
-        if (path.equals(contextPath + "/user/userAuthenticate") || 
-            path.equalsIgnoreCase(contextPath + "/user/logOutUserFromConcurrentSession")
-            || path.startsWith(contextPath + "/swagger-ui")
-			|| path.startsWith(contextPath + "/v3/api-docs")
-			|| path.startsWith(contextPath + "/user/refreshToken")
-            || path.startsWith(contextPath + "/public")) {
+        if (path.equals(contextPath + "/user/userAuthenticate") ||
+                path.equalsIgnoreCase(contextPath + "/user/logOutUserFromConcurrentSession")
+                || path.startsWith(contextPath + "/swagger-ui")
+                || path.startsWith(contextPath + "/v3/api-docs")
+                || path.startsWith(contextPath + "/user/refreshToken")
+                || path.startsWith(contextPath + "/public")) {
             logger.info("Skipping filter for path: " + path);
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
 
         try {
-        	String jwtFromCookie = getJwtTokenFromCookies(request);
-			String jwtFromHeader = request.getHeader("JwtToken");
-			String authHeader = request.getHeader("Authorization");
+            String jwtFromCookie = getJwtTokenFromCookies(request);
+            String jwtFromHeader = request.getHeader("JwtToken");
+            String authHeader = request.getHeader("Authorization");
 
-			if (jwtFromCookie != null) {
-				logger.info("Validating JWT token from cookie");
-				if (jwtAuthenticationUtil.validateUserIdAndJwtToken(jwtFromCookie)) {
-					AuthorizationHeaderRequestWrapper authorizationHeaderRequestWrapper = new AuthorizationHeaderRequestWrapper(
-							request, "");
-					filterChain.doFilter(authorizationHeaderRequestWrapper, servletResponse);
-					return;
-				}
-			} else if (jwtFromHeader != null) {
-				logger.info("Validating JWT token from header");
-				if (jwtAuthenticationUtil.validateUserIdAndJwtToken(jwtFromHeader)) {
-					AuthorizationHeaderRequestWrapper authorizationHeaderRequestWrapper = new AuthorizationHeaderRequestWrapper(
-							request, "");
-					filterChain.doFilter(authorizationHeaderRequestWrapper, servletResponse);
-					return;
-				}
-			} else {
-				String userAgent = request.getHeader("User-Agent");
-				logger.info("User-Agent: " + userAgent);
+            if (jwtFromCookie != null) {
+                logger.info("Validating JWT token from cookie");
+                if (jwtAuthenticationUtil.validateUserIdAndJwtToken(jwtFromCookie)) {
+                    AuthorizationHeaderRequestWrapper authorizationHeaderRequestWrapper = new AuthorizationHeaderRequestWrapper(
+                            request, "");
+                    filterChain.doFilter(authorizationHeaderRequestWrapper, servletResponse);
+                    return;
+                }
+            } else if (jwtFromHeader != null) {
+                logger.info("Validating JWT token from header");
+                if (jwtAuthenticationUtil.validateUserIdAndJwtToken(jwtFromHeader)) {
+                    AuthorizationHeaderRequestWrapper authorizationHeaderRequestWrapper = new AuthorizationHeaderRequestWrapper(
+                            request, "");
+                    filterChain.doFilter(authorizationHeaderRequestWrapper, servletResponse);
+                    return;
+                }
+            } else {
+                String userAgent = request.getHeader("User-Agent");
+                logger.info("User-Agent: " + userAgent);
 
-				if (userAgent != null && isMobileClient(userAgent) && authHeader != null) {
-					try {
-						UserAgentContext.setUserAgent(userAgent);
-						filterChain.doFilter(servletRequest, servletResponse);
-					} finally {
-						UserAgentContext.clear();
-					}
-					return;
-				}
-			}
+                if (userAgent != null && isMobileClient(userAgent) && authHeader != null) {
+                    try {
+                        UserAgentContext.setUserAgent(userAgent);
+                        filterChain.doFilter(servletRequest, servletResponse);
+                    } finally {
+                        UserAgentContext.clear();
+                    }
+                    return;
+                }
+            }
 
-			logger.warn("No valid authentication token found");
-			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized: Invalid or missing token");
+            logger.warn("No valid authentication token found");
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized: Invalid or missing token");
         } catch (Exception e) {
             logger.error("Authorization error: ", e);
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Authorization error: " + e.getMessage());
         }
     }
+
     private boolean isMobileClient(String userAgent) {
-		if (userAgent == null)
-			return false;
-		userAgent = userAgent.toLowerCase();
-		return userAgent.contains("okhttp");
-	}
+        if (userAgent == null)
+            return false;
+        userAgent = userAgent.toLowerCase();
+        return userAgent.contains("okhttp");
+    }
+
     private String getJwtTokenFromCookies(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
@@ -127,14 +133,13 @@ public class JwtUserIdValidationFilter implements Filter {
         }
         return null;
     }
-    
+
     private void clearUserIdCookie(HttpServletResponse response) {
         Cookie cookie = new Cookie("userId", null);
         cookie.setPath("/");
         cookie.setHttpOnly(true);
-		cookie.setSecure(true);
-        cookie.setMaxAge(0);  // Invalidate the cookie
+        cookie.setSecure(true);
+        cookie.setMaxAge(0); // Invalidate the cookie
         response.addCookie(cookie);
     }
 }
-

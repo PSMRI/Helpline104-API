@@ -64,7 +64,6 @@ public class BeneficiaryCallController {
 		this.beneficiaryCallService = beneficiaryCallService;
 	}
 
-	@CrossOrigin()
 	@Operation(summary = "Stores callerID to the specific beneficiary who are on call")
 	@PostMapping(value = "/startCall", headers = "Authorization")
 	public String startCall(
@@ -85,37 +84,34 @@ public class BeneficiaryCallController {
 		return output.toString();
 	}
 
-	@CrossOrigin()
 	@Operation(summary = "Update beneficiary reg id to the caller id")
 	@PostMapping(value = "update/beneficiaryCallID", headers = "Authorization")
 	public String updateBeneficiaryIDInCall(
-	        @Parameter(description = "{\"callID\":\"integer\", \"beneficiaryRegID\":\"long\"}") @RequestBody String beneficiaryCall) {
-	   
-	    OutputResponse output = new OutputResponse();
-	    Integer startedCall = null;
-	    try {
-	        BeneficiaryCall beneficiarycall = inputMapper.gson().fromJson(beneficiaryCall, BeneficiaryCall.class);
+			@Parameter(description = "{\"callID\":\"integer\", \"beneficiaryRegID\":\"long\"}") @RequestBody String beneficiaryCall) {
+
+		OutputResponse output = new OutputResponse();
+		Integer startedCall = null;
+		try {
+			BeneficiaryCall beneficiarycall = inputMapper.gson().fromJson(beneficiaryCall, BeneficiaryCall.class);
 			if (null != beneficiarycall.getBeneficiaryRegID()) {
 				startedCall = beneficiaryCallService.updateBeneficiaryIDInCall(beneficiarycall.getBenCallID(),
 						beneficiarycall.getBeneficiaryRegID());
 				output.setResponse(startedCall.toString());
-			}else {
+			} else {
 				output.setResponse("Update skipped : BeneficiaryRegID is null");
 			}
-	        logger.info("updateBeneficiaryIDInCall was called successfully");
-	    } catch (Exception e) {
-	        logger.error("updateBeneficiaryIDInCall failed with error " + e.getMessage(), e);
-	        output.setError(e);
+			logger.info("updateBeneficiaryIDInCall was called successfully");
+		} catch (Exception e) {
+			logger.error("updateBeneficiaryIDInCall failed with error " + e.getMessage(), e);
+			output.setError(e);
 
-	    }
+		}
 
-	    logger.info("updateBeneficiaryIDInCall completed");
+		logger.info("updateBeneficiaryIDInCall completed");
 
-	    return output.toString();
+		return output.toString();
 	}
 
-
-	@CrossOrigin
 	@Operation(summary = "Fetch services available in the 104 helpline")
 	@PostMapping(value = "/get/services", headers = "Authorization")
 	public String getServices(
@@ -138,7 +134,6 @@ public class BeneficiaryCallController {
 		return output.toString();
 	}
 
-	@CrossOrigin()
 	@Operation(summary = "Set service history")
 	@PostMapping(value = "set/callHistory", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String setServiceHistory(@RequestBody String request) {

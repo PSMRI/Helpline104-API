@@ -48,7 +48,6 @@ public class PrescriptionController {
 	@Autowired
 	private PrescriptionService prescriptionService;
 
-	@CrossOrigin
 	@Operation(summary = "Save prescription")
 	@PostMapping(value = "/save/prescription", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String savePrescription(@RequestBody String createRequest) {
@@ -69,7 +68,6 @@ public class PrescriptionController {
 		return output.toString();
 	}
 
-	@CrossOrigin
 	@Operation(summary = "Get prescription")
 	@PostMapping(value = "/get/prescription", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getPrescription(@RequestBody String createRequest) {
@@ -96,7 +94,6 @@ public class PrescriptionController {
 		return output.toString();
 	}
 
-	@CrossOrigin
 	@Operation(summary = "Get prescription list")
 	@PostMapping(value = "/get/prescriptionList", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getPrescriptionList(@RequestBody String createRequest) {
@@ -112,7 +109,7 @@ public class PrescriptionController {
 			int size = requestObj.has("size") ? requestObj.getInt("size") : 1000;
 
 			prescription = prescriptionService.getPrescriptionList(t_Prescription.getBeneficiaryRegID(),
-					 PageRequest.of(page, size));
+					PageRequest.of(page, size));
 			if (prescription != null) {
 				output.setResponse(prescription.toString());
 			} else {
@@ -129,7 +126,6 @@ public class PrescriptionController {
 		return output.toString();
 	}
 
-	@CrossOrigin
 	@Operation(summary = "Get latest valid pescription")
 	@PostMapping(value = "/get/latestValidPescription", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getLatestValidPescription(
@@ -146,7 +142,7 @@ public class PrescriptionController {
 			int size = requestObj.has("size") ? requestObj.getInt("size") : 1000;
 
 			prescription = prescriptionService.getLatestValidPescription(t_Prescription.getBeneficiaryRegID(),
-					 PageRequest.of(page, size));
+					PageRequest.of(page, size));
 			if (prescription != null) {
 				output.setResponse(prescription.toString());
 			} else {
