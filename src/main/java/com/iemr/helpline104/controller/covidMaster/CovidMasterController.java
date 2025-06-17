@@ -34,7 +34,6 @@ import com.iemr.helpline104.utils.response.OutputResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 
-@CrossOrigin
 @RestController
 @RequestMapping(value = "/master", headers = "Authorization")
 
@@ -44,7 +43,7 @@ public class CovidMasterController {
 	@Autowired
 	private CovidMasterService covidMasterService;
 
-	@Operation(summary= "Master data  for COVID patient")
+	@Operation(summary = "Master data  for COVID patient")
 	@GetMapping(value = {
 			"/patient/covidDetails/{providerServiceMapID}" }, produces = MediaType.APPLICATION_JSON)
 	public String patientAppMasterData(@PathVariable("providerServiceMapID") Integer providerServiceMapID) {
@@ -56,8 +55,7 @@ public class CovidMasterController {
 		return response.toString();
 	}
 
-	@CrossOrigin
-	@Operation(summary= "Save COVID data")
+	@Operation(summary = "Save COVID data")
 	@PostMapping({ "/save/covidScreeningData" })
 	public String saveBenCovidDoctorData(@RequestBody String requestObj,
 			@RequestHeader(value = "Authorization") String Authorization) {

@@ -48,7 +48,6 @@ public class OrganDonationController {
 	@Autowired
 	private OrganDonationService organDonationService;
 
-	@CrossOrigin
 	@Operation(summary = "Save organ donation details")
 	@PostMapping(value = "/save/organDonationRequestDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String saveOrganDonationDetails(@RequestBody String request) {
@@ -66,7 +65,6 @@ public class OrganDonationController {
 		return output.toString();
 	}
 
-	@CrossOrigin
 	@Operation(summary = "Update organ donation details")
 	@PostMapping(value = "/update/organDonationRequestDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String updateOrganDonationDetails(@RequestBody String request) {
@@ -84,7 +82,6 @@ public class OrganDonationController {
 		return output.toString();
 	}
 
-	@CrossOrigin
 	@Operation(summary = "Save organ donation institute details")
 	@PostMapping(value = "/save/organDonationInstituteDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String saveOrganDonationInstituteDetails(@RequestBody String request) {
@@ -102,7 +99,6 @@ public class OrganDonationController {
 		return output.toString();
 	}
 
-	@CrossOrigin
 	@Operation(summary = "Get organ donation details")
 	@PostMapping(value = "/get/organDonationRequestDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getOrganDonationDetails(
@@ -127,7 +123,6 @@ public class OrganDonationController {
 		return output.toString();
 	}
 
-	@CrossOrigin
 	@Operation(summary = "Get organ donation types")
 	@PostMapping(value = "/get/organDonationTypes", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getOrganDonationTypes() {
@@ -145,7 +140,6 @@ public class OrganDonationController {
 		return output.toString();
 	}
 
-	@CrossOrigin
 	@Operation(summary = "Get donatable organs")
 	@PostMapping(value = "/get/DonatableOrgans", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getDonatableOrgans() {

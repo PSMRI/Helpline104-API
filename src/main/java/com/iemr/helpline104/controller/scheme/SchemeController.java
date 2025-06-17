@@ -48,7 +48,6 @@ public class SchemeController {
 
 	InputMapper mapper = new InputMapper();
 
-	@CrossOrigin
 	@Operation(summary = "Save scheme search history")
 	@PostMapping(value = "/save/schemeSearchHistory", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String saveSchemeSearchHistory(
@@ -71,7 +70,6 @@ public class SchemeController {
 		return output.toString();
 	}
 
-	@CrossOrigin
 	@Operation(summary = "Retrieve scheme search history")
 	@PostMapping(value = "/getSchemeSearchHistory", headers = "Authorization")
 	public String getBenSchemeHistory(

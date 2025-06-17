@@ -27,7 +27,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,7 +39,6 @@ import com.iemr.helpline104.utils.response.OutputResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 
-
 @RequestMapping(value = "/beneficiary")
 @RestController
 public class HealthCareWorkerTypeController {
@@ -49,7 +48,6 @@ public class HealthCareWorkerTypeController {
 	@Autowired
 	private HealthCareWorkerService healthCareWorkerService;
 
-	@CrossOrigin
 	@Operation(summary = "Get health care worker types")
 	@PostMapping(value = "/get/healthCareWorkerTypes", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getHealthCareWorkerTypes() {
