@@ -46,7 +46,6 @@ public class FeedbackTypeController {
 	@Autowired
 	private FeedbackTypeService feedbackTypeService;
 
-	@CrossOrigin
 	@Operation(summary = "Provides nature of complaints")
 	@PostMapping(value = "/get/natureOfComplaintTypes", headers = "Authorization")
 	public String getNatureOfComplaintTypes(

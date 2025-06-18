@@ -46,7 +46,6 @@ public class ClinicalDecisionSupportController {
 	private CDSSService cDSSService;
 	private Logger logger = LoggerFactory.getLogger(ClinicalDecisionSupportController.class);
 
-	@CrossOrigin()
 	@Operation(summary = "Get symptoms")
 	@PostMapping(value = "/Symptoms", produces = "application/json", headers = "Authorization")
 	public String getSymptomsPost(@RequestBody SymptomsWrapper symptomsDetails) {
@@ -73,7 +72,6 @@ public class ClinicalDecisionSupportController {
 
 	}
 
-	@CrossOrigin()
 	@Operation(summary = "Get questions by symptom, age and gender")
 	@PostMapping(value = "/getQuestions", produces = "application/json", headers = "Authorization")
 	public String getQuestion(@RequestBody SymptomsWrapper symptomsDetails) {
@@ -99,7 +97,6 @@ public class ClinicalDecisionSupportController {
 
 	}
 
-	@CrossOrigin()
 	@Operation(summary = "Get result based on compliant id")
 	@PostMapping(value = "/getResult", produces = "application/json", headers = "Authorization")
 	public String getResult(@RequestBody String userAnswer) {
@@ -125,7 +122,6 @@ public class ClinicalDecisionSupportController {
 
 	}
 
-	@CrossOrigin()
 	@Operation(summary = "Save symptom")
 	@PostMapping(value = "/saveSymptom", produces = "application/json", headers = "Authorization")
 	public String saveSymptom(@RequestBody String inputData) {

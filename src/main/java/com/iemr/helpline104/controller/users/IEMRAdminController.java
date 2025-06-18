@@ -46,7 +46,6 @@ import com.iemr.helpline104.utils.response.OutputResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 
-@CrossOrigin
 @RequestMapping(value = "/user")
 @RestController
 public class IEMRAdminController {
@@ -58,7 +57,6 @@ public class IEMRAdminController {
 		this.iemrAdminUserService = iemrAdminUserService;
 	}
 
-	@CrossOrigin()
 	@Operation(summary = "User authenticate")
 	@PostMapping(value = { "/userAuthenticate" }, produces = { "application/json" })
 	public String userAuthenticate(@RequestBody M_User m_User) {
@@ -99,7 +97,6 @@ public class IEMRAdminController {
 		return new Gson().toJson(resMap);
 	}
 
-	@CrossOrigin()
 	@Operation(summary = "Forget password")
 	@PostMapping(value = { "/forgetPassword" }, produces = { "application/json" })
 	public String forgetPassword(@RequestBody M_User m_User) {
@@ -127,7 +124,6 @@ public class IEMRAdminController {
 		return new Gson().toJson(resMap);
 	}
 
-	@CrossOrigin()
 	@Operation(summary = "Set forget password")
 	@PostMapping(value = { "/setForgetPassword" }, produces = { "application/json" })
 	public String setPassword(@RequestBody M_User m_user) {
@@ -149,7 +145,6 @@ public class IEMRAdminController {
 		return new Gson().toJson(setStatus);
 	}
 
-	@CrossOrigin()
 	@Operation(summary = "Change password")
 	@PostMapping(value = { "/changePassword" }, produces = { "application/json" })
 	public String changePassword(@RequestBody M_User m_User) {
@@ -172,7 +167,6 @@ public class IEMRAdminController {
 		return new Gson().toJson(changeReqResult);
 	}
 
-	@CrossOrigin()
 	@Operation(summary = "Save user security question answers")
 	@PostMapping(value = "/saveUserSecurityQuesAns", produces = "application/json")
 	public String saveUserSecurityQuesAns(@RequestBody Iterable<M_UserSecurityQMapping> m_UserSecurityQMapping) {
@@ -194,7 +188,6 @@ public class IEMRAdminController {
 	 * 
 	 * @return security qtns
 	 */
-	@CrossOrigin()
 	@Operation(summary = "Get security quetions")
 	@GetMapping("/getsecurityquetions")
 	public String getSecurityts() {
@@ -202,7 +195,6 @@ public class IEMRAdminController {
 		return test.toString();
 	}
 
-	@CrossOrigin()
 	@Operation(summary = "Get role wrap up time")
 	@GetMapping(value = "/role/{roleID}", produces = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getrolewrapuptime(@PathVariable("roleID") Integer roleID) {

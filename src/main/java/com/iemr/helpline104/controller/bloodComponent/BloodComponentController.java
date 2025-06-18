@@ -47,11 +47,10 @@ public class BloodComponentController {
 	@Autowired
 	private BloodComponentService bloodComponentService;
 
-	@CrossOrigin
 	@Operation(summary = "Save blood component details")
 	@PostMapping(value = "/save/bloodComponentDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String saveBloodComponentDetails(
-			@Parameter(description  = "{\"component\":\"String\",\"componentDesc\":\"String\",\"deleted\":\"boolean\",\"createdBy\":\"String\"}") @RequestBody String request) {
+			@Parameter(description = "{\"component\":\"String\",\"componentDesc\":\"String\",\"deleted\":\"boolean\",\"createdBy\":\"String\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
 			M_Component m_component = inputMapper.gson().fromJson(request, M_Component.class);
@@ -67,11 +66,10 @@ public class BloodComponentController {
 		return output.toString();
 	}
 
-	@CrossOrigin
 	@Operation(summary = "Fetch blood component details")
 	@PostMapping(value = "/get/bloodComponentDetails", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String getBloodComponentDetails(
-			@Parameter(description  = "{\"componentID\":\"Integer\"}") @RequestBody String request) {
+			@Parameter(description = "{\"componentID\":\"Integer\"}") @RequestBody String request) {
 
 		OutputResponse output = new OutputResponse();
 		try {
