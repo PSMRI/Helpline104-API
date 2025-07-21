@@ -6,7 +6,7 @@
 
 	<groupId>com.iemr.common</groupId>
 	<artifactId>helpline-104-api</artifactId>
-	<version>3.1.0</version>
+	<version>3.4.0</version>
 	<packaging>war</packaging>
 	<name>Helpline-104-API</name>
 	<description>Piramal Helpline 104 API</description>
