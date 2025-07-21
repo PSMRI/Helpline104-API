@@ -6,7 +6,7 @@
 
 	<groupId>com.iemr.common</groupId>
 	<artifactId>helpline-104-api</artifactId>
-	<version>3.1.0</version>
+	<version>3.3.0</version>
 	<packaging>war</packaging>
 	<name>Helpline-104-API</name>
 	<description>Piramal Helpline 104 API</description>
@@ -150,7 +150,7 @@
 		<dependency>
 			<groupId>jakarta.ws.rs</groupId>
 			<artifactId>jakarta.ws.rs-api</artifactId>
-			<version>3.1.0</version>
+			<version>3.3.0</version>
 		</dependency>
 
 
@@ -351,7 +351,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
-				<version>3.1.0</version>
+				<version>3.3.0</version>
 				<executions>
 					<execution>
 						<phase>process-resources</phase>
