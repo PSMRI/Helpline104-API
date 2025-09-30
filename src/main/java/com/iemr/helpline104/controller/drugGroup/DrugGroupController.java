@@ -53,10 +53,10 @@ public class DrugGroupController {
 	@Autowired
 	private DrugGroupService drugGroupService;
 
-	@CrossOrigin
-	@Operation(summary= "Fetch drug groups")
+	@Operation(summary = "Fetch drug groups")
 	@PostMapping(value = "/get/drugGroups", headers = "Authorization")
-	public String getDrugGroups(@Parameter(description = "{\"serviceProviderID\":\"integer\"}") @RequestBody String request) {
+	public String getDrugGroups(
+			@Parameter(description = "{\"serviceProviderID\":\"integer\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
 			M_DrugGroup m_DrugGroup = inputMapper.gson().fromJson(request, M_DrugGroup.class);
@@ -74,10 +74,10 @@ public class DrugGroupController {
 		return output.toString();
 	}
 
-	@CrossOrigin
-	@Operation(summary= "Fetch drug list")
+	@Operation(summary = "Fetch drug list")
 	@PostMapping(value = "/get/drugList", headers = "Authorization")
-	public String getDrugList(@Parameter(description = "{\"providerServiceMapID\":\"integer\"}") @RequestBody String request) {
+	public String getDrugList(
+			@Parameter(description = "{\"providerServiceMapID\":\"integer\"}") @RequestBody String request) {
 		OutputResponse output = new OutputResponse();
 		try {
 			M_104drugmapping m_104drugmapping = inputMapper.gson().fromJson(request, M_104drugmapping.class);
@@ -99,8 +99,7 @@ public class DrugGroupController {
 		return output.toString();
 	}
 
-	@CrossOrigin
-	@Operation(summary= "Fetch drug frequency details")
+	@Operation(summary = "Fetch drug frequency details")
 	@PostMapping(value = "/get/drugFrequency", headers = "Authorization")
 	public String getDrugFrequency() {
 		OutputResponse output = new OutputResponse();
@@ -117,8 +116,7 @@ public class DrugGroupController {
 		return output.toString();
 	}
 
-	@CrossOrigin
-	@Operation(summary= "Fetch drug strength details")
+	@Operation(summary = "Fetch drug strength details")
 	@PostMapping(value = "/get/drugStrength", headers = "Authorization")
 	public String getDrugStrength(
 			@Parameter(description = "{\"serviceProviderID\":\"integer\"}") @RequestBody String request) {
@@ -128,7 +126,7 @@ public class DrugGroupController {
 			M_DrugGroup m_DrugGroup = inputMapper.gson().fromJson(request, M_DrugGroup.class);
 
 			ArrayList<DrugStrength> drugStrength = drugGroupService.getDrugStrength(m_DrugGroup.getServiceProviderID());
-			
+
 			output.setResponse(drugStrength.toString());
 
 		} catch (Exception e) {
@@ -139,8 +137,7 @@ public class DrugGroupController {
 		return output.toString();
 	}
 
-	@CrossOrigin
-	@Operation(summary= "Fetch drug name list")
+	@Operation(summary = "Fetch drug name list")
 	@PostMapping(value = "/getDrugDetailList", headers = "Authorization")
 	public String getDrugNameList(
 			@Parameter(description = "{\"providerServiceMapID\":\"integer\"}") @RequestBody String request) {

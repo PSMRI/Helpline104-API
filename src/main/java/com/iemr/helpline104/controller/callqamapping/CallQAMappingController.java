@@ -48,7 +48,6 @@ public class CallQAMappingController {
 	@Autowired
 	public CallqamappingService callqamappingService;
 
-	@CrossOrigin
 	@Operation(summary = "Save call qa mapping")
 	@PostMapping(value = "/save/callqamapping", produces = MediaType.APPLICATION_JSON_VALUE, headers = "Authorization")
 	public String saveCallqamapping(@RequestBody String request) {
@@ -69,7 +68,6 @@ public class CallQAMappingController {
 		return output.toString();
 	}
 
-	@CrossOrigin
 	@Operation(summary = "Fetch questions and answers given by beneficiary")
 	@PostMapping(value = "/get/CDIqamapping", headers = "Authorization")
 	public String getCDIqamapping(

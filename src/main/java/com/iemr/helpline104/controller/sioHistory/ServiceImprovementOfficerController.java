@@ -64,7 +64,6 @@ public class ServiceImprovementOfficerController {
 	@Autowired
 	private FoodSafetyCopmlaintServiceImpl foodSafetyCopmlaintServiceImpl;
 
-	@CrossOrigin
 	@Operation(summary = "Get sio history")
 	@PostMapping(value = "/getSioHistory", produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON, headers = "Authorization")
 	public String getSioHistory(@RequestBody String benificiary) {
