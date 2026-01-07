@@ -22,9 +22,12 @@
 package com.iemr.helpline104.utils.http;
 
 
+import java.util.Arrays;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -43,6 +46,9 @@ public class HTTPRequestInterceptor implements HandlerInterceptor {
 	private final Validator validator;
 
 	Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
+	
+	@Value("${cors.allowed-origins}")
+	private String allowedOrigins;
 
 	@Autowired
 	public HTTPRequestInterceptor(Validator validator) {
@@ -96,6 +102,13 @@ public class HTTPRequestInterceptor implements HandlerInterceptor {
 				response.getOutputStream().print(output.toString());
 				response.setContentType(MediaType.APPLICATION_JSON);
 				response.setContentLength(output.toString().length());
+				String origin = request.getHeader("Origin");
+				if (origin != null && isOriginAllowed(origin)) {
+					response.setHeader("Access-Control-Allow-Origin", origin);
+					response.setHeader("Access-Control-Allow-Credentials", "true");
+				} else if (origin != null) {
+					logger.warn("CORS headers NOT added for error response | Unauthorized origin: {}", origin);
+				}
 				status = false;
 			}
 		}
@@ -123,6 +136,20 @@ public class HTTPRequestInterceptor implements HandlerInterceptor {
 		logger.debug("In afterCompletion Request Completed");
 	}
 
-	
+	private boolean isOriginAllowed(String origin) {
+		if (origin == null || allowedOrigins == null || allowedOrigins.trim().isEmpty()) {
+			return false;
+		}
+
+		return Arrays.stream(allowedOrigins.split(","))
+				.map(String::trim)
+				.anyMatch(pattern -> {
+					String regex = pattern
+							.replace(".", "\\.")
+							.replace("*", ".*")
+							.replace("http://localhost:.*", "http://localhost:\\d+");
+					return origin.matches(regex);
+				});
+	}
 	
 }
