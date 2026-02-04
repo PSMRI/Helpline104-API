@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
@@ -15,6 +16,7 @@ public class TokenDenylist {
     private static final String PREFIX = "denied_";
 
     @Autowired
+    @Qualifier("genericRedisTemplate")
     private RedisTemplate<String, Object> redisTemplate;
 
     private String getKey(String jti) {
