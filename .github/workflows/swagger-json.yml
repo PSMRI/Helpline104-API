@@ -9,6 +9,17 @@ jobs:
   swagger-sync:
     runs-on: ubuntu-latest
 
+    services:
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
     steps:
       - name: Checkout API repo
         uses: actions/checkout@v4
@@ -30,7 +41,7 @@ jobs:
         run: |
           mvn spring-boot:run \
             -Dspring-boot.run.profiles=swagger \
-            -Dspring-boot.run.arguments=--server.port=9090 \
+            -Dspring-boot.run.arguments=--server.port=9090,--spring.redis.host=redis \
             > app.log 2>&1 &
           echo $! > api_pid.txt
 

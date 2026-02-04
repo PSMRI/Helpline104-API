@@ -36,13 +36,13 @@ public class RedisConfig {
 	}
 
     // Add a generic RedisTemplate<String, Object> bean for TokenDenylist and other usages
-    @Bean
-    public RedisTemplate<String, Object> genericRedisTemplate(RedisConnectionFactory factory) {
-        RedisTemplate<String, Object> template = new RedisTemplate<>();
-        template.setConnectionFactory(factory);
-        template.setKeySerializer(new StringRedisSerializer());
-        template.setValueSerializer(new Jackson2JsonRedisSerializer<>(Object.class));
-        return template;
-    }
+	@Bean(name = "genericRedisTemplate")
+	public RedisTemplate<String, Object> genericRedisTemplate(RedisConnectionFactory factory) {
+		RedisTemplate<String, Object> template = new RedisTemplate<>();
+		template.setConnectionFactory(factory);
+		template.setKeySerializer(new StringRedisSerializer());
+		template.setValueSerializer(new org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer());
+		return template;
+	}
 
 }
