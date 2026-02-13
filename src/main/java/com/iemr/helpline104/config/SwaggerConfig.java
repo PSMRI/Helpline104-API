@@ -20,7 +20,7 @@ public class SwaggerConfig {
         String uatUrl = env.getProperty("api.uat.url", DEFAULT_SERVER_URL);
         String demoUrl = env.getProperty("api.demo.url", DEFAULT_SERVER_URL);
         return new OpenAPI()
-            .info(new Info().title("Helpline 104 API").version("version").description("A microservice for the creation and management of beneficiaries."))
+            .info(new Info().title("Helpline 104 API").version("1.0.0").description("Helpline 104 API for health advisory, disease surveillance, and medical information services."))
             .addSecurityItem(new SecurityRequirement().addList("my security"))
             .components(new Components().addSecuritySchemes("my security",
                 new SecurityScheme().name("my security").type(SecurityScheme.Type.HTTP).scheme("bearer")))
