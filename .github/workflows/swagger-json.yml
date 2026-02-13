@@ -9,17 +9,6 @@ jobs:
   swagger-sync:
     runs-on: ubuntu-latest
 
-    services:
-      redis:
-        image: redis:7
-        ports:
-          - 6379:6379
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 5s
-          --health-timeout 5s
-          --health-retries 5
-
     steps:
       - name: Checkout API repo
         uses: actions/checkout@v4
@@ -32,7 +21,7 @@ jobs:
           cache: maven
 
       - name: Build API (skip tests)
-        run: mvn clean package -DskipTests
+        run: mvn clean package -DENV_VAR=swagger -DskipTests -Dcheckstyle.skip=true
 
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
@@ -40,8 +29,11 @@ jobs:
       - name: Run API in swagger profile
         run: |
           mvn spring-boot:run \
+            -DENV_VAR=swagger \
             -Dspring-boot.run.profiles=swagger \
-            -Dspring-boot.run.arguments="--server.port=9090 --spring.redis.host=localhost" \
+            -Dcheckstyle.skip=true \
+            -Dmaven.test.skip=true \
+            -Dspring-boot.run.arguments="--server.port=9090" \
             > app.log 2>&1 &
           echo $! > api_pid.txt
 
@@ -98,7 +90,7 @@ jobs:
         with:
           token: ${{ secrets.DOCS_REPO_TOKEN }}
           path: amrit-docs
-          branch: auto/swagger-update-${{ github.run_id }}
+          branch: auto/swagger-update-helpline104-api
           base: main
           commit-message: Auto-update Helpline104-API swagger
           title: Auto-update Helpline104-API swagger

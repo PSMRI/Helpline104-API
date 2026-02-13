@@ -29,7 +29,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.iemr.helpline104.utils.http.HTTPRequestInterceptor;
 
+import org.springframework.context.annotation.Profile;
+
 @Configuration
+@Profile("!swagger")
 public class InterceptorConfig implements WebMvcConfigurer {
 
 	@Autowired

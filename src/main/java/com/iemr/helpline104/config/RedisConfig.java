@@ -7,12 +7,14 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.context.annotation.Profile;
 import org.springframework.session.data.redis.config.ConfigureRedisAction;
 
 import com.iemr.helpline104.data.users.M_User;
 
 @Configuration
 @EnableCaching
+@Profile("!swagger")
 public class RedisConfig {
 
 	@Bean
@@ -32,16 +34,6 @@ public class RedisConfig {
 		Jackson2JsonRedisSerializer<M_User> serializer = new Jackson2JsonRedisSerializer<>(M_User.class);
 		template.setValueSerializer(serializer);
 
-		return template;
-	}
-
-    // Add a generic RedisTemplate<String, Object> bean for TokenDenylist and other usages
-	@Bean(name = "genericRedisTemplate")
-	public RedisTemplate<String, Object> genericRedisTemplate(RedisConnectionFactory factory) {
-		RedisTemplate<String, Object> template = new RedisTemplate<>();
-		template.setConnectionFactory(factory);
-		template.setKeySerializer(new StringRedisSerializer());
-		template.setValueSerializer(new org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer());
 		return template;
 	}
 
