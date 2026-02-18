@@ -93,4 +93,13 @@ public class OutboundCallActivityServiceImpl implements OutboundCallActivityServ
     public ArrayList<T_104CoMoOutboundCallDetails> getCallActivityHistory() {
         return outboundCallRepository.getCallActivityHistory();
     }
+
+    @Override
+    public T_104CoMoOutboundCallDetails saveCallDetails(T_104CoMoOutboundCallDetails callDetails) {
+        validateCallStatus(callDetails.getCallStatus());
+        if (callDetails.getDeleted() == null) {
+            callDetails.setDeleted(false);
+        }
+        return outboundCallRepository.save(callDetails);
+    }
 }

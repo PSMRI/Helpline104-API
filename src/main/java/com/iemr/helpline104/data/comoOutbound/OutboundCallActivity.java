@@ -46,10 +46,6 @@ public class OutboundCallActivity {
     private String activityName;
 
     @Expose
-    @Column(name = "ActivityDesc")
-    private String activityDesc;
-
-    @Expose
     @Column(name = "ProviderServiceMapID")
     private Integer providerServiceMapID;
 

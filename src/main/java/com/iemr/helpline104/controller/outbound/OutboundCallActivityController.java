@@ -30,6 +30,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.iemr.helpline104.data.comoOutbound.OutboundCallActivity;
+import com.iemr.helpline104.data.comoOutbound.T_104CoMoOutboundCallDetails;
 import com.iemr.helpline104.service.outbound.OutboundCallActivityService;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
@@ -95,7 +96,7 @@ public class OutboundCallActivityController {
         }
         return output.toString();
     }
-
+    
     // Update activity name
     @PutMapping(value = "/activity/name", headers = "Authorization")
     public String updateActivityName(@RequestBody String request) {
@@ -126,6 +127,21 @@ public class OutboundCallActivityController {
 
             Integer updated = activityService.toggleActivityStatus(activityID, deleted, modifiedBy);
             output.setResponse("Activity status updated successfully. Rows affected: " + updated);
+        } catch (Exception e) {
+            output.setError(e);
+        }
+        return output.toString();
+    }
+
+    // Save call details on close
+    @PostMapping(value = "/callDetails/save", headers = "Authorization")
+    public String saveCallDetails(@RequestBody String request) {
+        OutputResponse output = new OutputResponse();
+        try {
+            T_104CoMoOutboundCallDetails callDetails = inputMapper.gson().fromJson(request,
+                    T_104CoMoOutboundCallDetails.class);
+            T_104CoMoOutboundCallDetails savedObj = activityService.saveCallDetails(callDetails);
+            output.setResponse(new Gson().toJson(savedObj));
         } catch (Exception e) {
             output.setError(e);
         }

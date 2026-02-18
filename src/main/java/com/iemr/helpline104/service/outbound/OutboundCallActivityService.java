@@ -43,4 +43,6 @@ public interface OutboundCallActivityService {
 
         ArrayList<T_104CoMoOutboundCallDetails> getCallActivityHistory();
 
+        T_104CoMoOutboundCallDetails saveCallDetails(T_104CoMoOutboundCallDetails callDetails);
+
 }
