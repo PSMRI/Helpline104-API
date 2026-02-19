@@ -31,7 +31,7 @@ public interface OutboundCallActivityService {
 
         ArrayList<OutboundCallActivity> getActiveActivitiesByProvider(Integer providerServiceMapID);
 
-        ArrayList<Object[]> getAllActiveActivities();
+        ArrayList<OutboundCallActivity> getAllActivities();
 
         OutboundCallActivity saveActivity(OutboundCallActivity activity);
 

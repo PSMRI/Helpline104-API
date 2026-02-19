@@ -55,8 +55,8 @@ public class OutboundCallActivityServiceImpl implements OutboundCallActivityServ
     }
 
     @Override
-    public ArrayList<Object[]> getAllActiveActivities() {
-        return activityRepository.findAllActiveActivities();
+    public ArrayList<OutboundCallActivity> getAllActivities() {
+        return activityRepository.findAllActivities();
     }
 
     @Override

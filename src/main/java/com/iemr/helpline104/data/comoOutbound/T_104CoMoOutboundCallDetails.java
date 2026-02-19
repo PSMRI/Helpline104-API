@@ -36,6 +36,7 @@ public class T_104CoMoOutboundCallDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long iD;
 	private Integer uSRMappingID;
+	@Column(name = "CzentrixCallID")
 	private String callId;
 	private String callType;
 	private String callSubType;

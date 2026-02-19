@@ -75,7 +75,7 @@ public class OutboundCallActivityController {
     public String getAllActiveActivities() {
         OutputResponse output = new OutputResponse();
         try {
-            ArrayList<Object[]> activities = activityService.getAllActiveActivities();
+            ArrayList<OutboundCallActivity> activities = activityService.getAllActivities();
             output.setResponse(new Gson().toJson(activities));
         } catch (Exception e) {
             output.setError(e);

@@ -46,10 +46,9 @@ public interface OutboundCallActivityRepository extends CrudRepository<OutboundC
     @Query("SELECT o FROM OutboundCallActivity o WHERE o.deleted = false ORDER BY o.activityName")
     ArrayList<OutboundCallActivity> findAllActiveActivitiesAsList();
 
-    // Get ALL active activities as Object array (activityID, activityName)
-    @Query("SELECT o.activityID, o.activityName FROM OutboundCallActivity o " +
-            "WHERE o.deleted = false ORDER BY o.activityName")
-    ArrayList<Object[]> findAllActiveActivities();
+    // Get ALL activities (active + inactive) as entity list
+    @Query("SELECT o FROM OutboundCallActivity o ORDER BY o.activityName")
+    ArrayList<OutboundCallActivity> findAllActivities();
 
     // Update activity name
     @Transactional
