@@ -404,6 +404,7 @@
 					<failOnNoGitDirectory>false</failOnNoGitDirectory>
 					<abbrevLength>7</abbrevLength>
 					<prefix>git</prefix>
+					<generateGitPropertiesFile>true</generateGitPropertiesFile>
 				</configuration>
 			</plugin>
 			<plugin>
