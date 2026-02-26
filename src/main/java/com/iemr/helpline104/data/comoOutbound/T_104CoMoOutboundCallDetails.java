@@ -65,6 +65,9 @@ public class T_104CoMoOutboundCallDetails {
 	@Column(name = "CallRemarks", length = 500)
 	private String callRemarks; // specifically for call activity to avoid conflicts with Remarks field
 
+	@Column(name = "BeneficiaryPhoneNumber")
+	private String beneficiaryPhoneNumber;
+
 	public T_104CoMoOutboundCallDetails() {
 		super();
 	}
