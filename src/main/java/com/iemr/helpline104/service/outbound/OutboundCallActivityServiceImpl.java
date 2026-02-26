@@ -102,4 +102,9 @@ public class OutboundCallActivityServiceImpl implements OutboundCallActivityServ
         }
         return outboundCallRepository.save(callDetails);
     }
+
+    @Override
+    public ArrayList<T_104CoMoOutboundCallDetails> getActiveCallDetails() {
+        return outboundCallRepository.findAllActiveCallDetails();
+    }
 }

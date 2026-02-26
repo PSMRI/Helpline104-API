@@ -148,6 +148,19 @@ public class OutboundCallActivityController {
         return output.toString();
     }
 
+    // Get all active call details
+    @GetMapping(value = "/callDetails/get", headers = "Authorization")
+    public String getActiveCallDetails() {
+        OutputResponse output = new OutputResponse();
+        try {
+            ArrayList<T_104CoMoOutboundCallDetails> callDetails = activityService.getActiveCallDetails();
+            output.setResponse(new Gson().toJson(callDetails));
+        } catch (Exception e) {
+            output.setError(e);
+        }
+        return output.toString();
+    }
+
     // Get call activity history
     @GetMapping(value = "/callActivity/history", headers = "Authorization")
     public String getCallActivityHistory() {

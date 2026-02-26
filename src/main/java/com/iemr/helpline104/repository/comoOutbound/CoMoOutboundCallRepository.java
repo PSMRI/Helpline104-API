@@ -88,5 +88,11 @@ public interface CoMoOutboundCallRepository extends CrudRepository<T_104CoMoOutb
            "ORDER BY t.lastModDate DESC")
     ArrayList<T_104CoMoOutboundCallDetails> getCallActivityHistory();
 
+    // Get all active (non-deleted) call details
+    @Query("SELECT t FROM T_104CoMoOutboundCallDetails t " +
+           "WHERE t.deleted = false " +
+           "ORDER BY t.createdDate DESC")
+    ArrayList<T_104CoMoOutboundCallDetails> findAllActiveCallDetails();
+
 
 }
