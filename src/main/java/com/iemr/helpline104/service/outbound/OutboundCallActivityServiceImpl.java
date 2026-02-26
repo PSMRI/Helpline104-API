@@ -100,6 +100,12 @@ public class OutboundCallActivityServiceImpl implements OutboundCallActivityServ
 
     @Override
     public ArrayList<T_104CoMoOutboundCallDetails> getActiveCallDetailsByUser(String createdBy) {
-        return outboundCallRepository.findActiveCallDetailsByCreatedBy(createdBy);
+        ArrayList<T_104CoMoOutboundCallDetails> callDetails = outboundCallRepository.findActiveCallDetailsByCreatedBy(createdBy);
+        for (T_104CoMoOutboundCallDetails detail : callDetails) {
+            if (detail.getActivity() != null) {
+                detail.setActivityName(detail.getActivity().getActivityName());
+            }
+        }
+        return callDetails;
     }
 }

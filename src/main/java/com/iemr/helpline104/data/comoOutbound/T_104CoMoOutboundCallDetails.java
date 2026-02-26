@@ -59,6 +59,9 @@ public class T_104CoMoOutboundCallDetails {
 	@JoinColumn(name = "ActivityID", insertable = false, updatable = false)
 	private transient OutboundCallActivity activity;
 
+	@Transient
+	private String activityName;
+
 	@Column(name = "CallStatus")
 	private String callStatus; // Fixed values: Answered, Not Answered, Did Not Want Further Call
 

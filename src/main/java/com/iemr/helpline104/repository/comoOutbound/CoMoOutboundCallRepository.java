@@ -82,8 +82,9 @@ public interface CoMoOutboundCallRepository extends CrudRepository<T_104CoMoOutb
                                  @Param("deleted") Boolean deleted,
                                  @Param("modifiedBy") String modifiedBy);
 
-    // Get active call details by createdBy (logged-in user)
+    // Get active call details by createdBy (logged-in user) with activity eagerly loaded
     @Query("SELECT t FROM T_104CoMoOutboundCallDetails t " +
+           "LEFT JOIN FETCH t.activity " +
            "WHERE t.deleted = false AND t.createdBy = :createdBy " +
            "ORDER BY t.createdDate DESC")
     ArrayList<T_104CoMoOutboundCallDetails> findActiveCallDetailsByCreatedBy(
