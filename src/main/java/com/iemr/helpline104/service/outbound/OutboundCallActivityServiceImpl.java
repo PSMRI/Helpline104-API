@@ -24,6 +24,11 @@ package com.iemr.helpline104.service.outbound;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.iemr.helpline104.repository.comoOutbound.OutboundCallActivityRepository;
@@ -101,11 +106,26 @@ public class OutboundCallActivityServiceImpl implements OutboundCallActivityServ
     @Override
     public ArrayList<T_104CoMoOutboundCallDetails> getActiveCallDetailsByUser(String createdBy) {
         ArrayList<T_104CoMoOutboundCallDetails> callDetails = outboundCallRepository.findActiveCallDetailsByCreatedBy(createdBy);
-        for (T_104CoMoOutboundCallDetails detail : callDetails) {
-            if (detail.getActivity() != null) {
-                detail.setActivityName(detail.getActivity().getActivityName());
+
+        // Collect unique activityIDs
+        Set<Long> activityIDs = callDetails.stream()
+                .map(T_104CoMoOutboundCallDetails::getActivityID)
+                .filter(id -> id != null)
+                .collect(Collectors.toSet());
+
+        if (!activityIDs.isEmpty()) {
+            // Fetch all activities in one query and build a lookup map
+            Map<Long, String> activityNameMap = StreamSupport
+                    .stream(activityRepository.findAllById(activityIDs).spliterator(), false)
+                    .collect(Collectors.toMap(OutboundCallActivity::getActivityID, OutboundCallActivity::getActivityName));
+
+            for (T_104CoMoOutboundCallDetails detail : callDetails) {
+                if (detail.getActivityID() != null) {
+                    detail.setActivityName(activityNameMap.get(detail.getActivityID()));
+                }
             }
         }
+
         return callDetails;
     }
 }
