@@ -32,8 +32,12 @@ import com.google.gson.JsonParser;
 import com.iemr.helpline104.data.comoOutbound.OutboundCallActivity;
 import com.iemr.helpline104.data.comoOutbound.T_104CoMoOutboundCallDetails;
 import com.iemr.helpline104.service.outbound.OutboundCallActivityService;
+import com.iemr.helpline104.utils.CookieUtil;
+import com.iemr.helpline104.utils.JwtUtil;
 import com.iemr.helpline104.utils.mapper.InputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping(value = "/outbound")
@@ -44,6 +48,12 @@ public class OutboundCallActivityController {
 
     @Autowired
     private InputMapper inputMapper;
+
+    @Autowired
+    private JwtUtil jwtUtil;
+
+    @Autowired
+    private CookieUtil cookieUtil;
 
     // Get activities by providerServiceMapID
     @PostMapping(value = "/activities", headers = "Authorization")
@@ -148,12 +158,23 @@ public class OutboundCallActivityController {
         return output.toString();
     }
 
-    // Get all active call details
+    // Get active call details for the logged-in user
     @GetMapping(value = "/callDetails/get", headers = "Authorization")
-    public String getActiveCallDetails() {
+    public String getActiveCallDetails(HttpServletRequest httpRequest) {
         OutputResponse output = new OutputResponse();
         try {
-            ArrayList<T_104CoMoOutboundCallDetails> callDetails = activityService.getActiveCallDetails();
+            String jwtToken = cookieUtil.getCookieValue(httpRequest, "Jwttoken").orElse(null);
+            if (jwtToken == null) {
+                jwtToken = httpRequest.getHeader("JwtToken");
+            }
+            if (jwtToken == null) {
+                throw new IllegalArgumentException("Authentication token not found");
+            }
+            String userName = jwtUtil.extractUsername(jwtToken);
+            if (userName == null || userName.isEmpty()) {
+                throw new IllegalArgumentException("Unable to extract user from token");
+            }
+            ArrayList<T_104CoMoOutboundCallDetails> callDetails = activityService.getActiveCallDetailsByUser(userName);
             output.setResponse(new Gson().toJson(callDetails));
         } catch (Exception e) {
             output.setError(e);
@@ -161,16 +182,4 @@ public class OutboundCallActivityController {
         return output.toString();
     }
 
-    // Get call activity history
-    @GetMapping(value = "/callActivity/history", headers = "Authorization")
-    public String getCallActivityHistory() {
-        OutputResponse output = new OutputResponse();
-        try {
-            ArrayList<?> history = activityService.getCallActivityHistory();
-            output.setResponse(new Gson().toJson(history));
-        } catch (Exception e) {
-            output.setError(e);
-        }
-        return output.toString();
-    }
 }

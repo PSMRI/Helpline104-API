@@ -81,18 +81,12 @@ public interface CoMoOutboundCallRepository extends CrudRepository<T_104CoMoOutb
     Integer toggleActivityStatus(@Param("activityID") Long activityID, 
                                  @Param("deleted") Boolean deleted,
                                  @Param("modifiedBy") String modifiedBy);
-    
-     // Get call activity history
-    @Query("SELECT t FROM T_104CoMoOutboundCallDetails t " +
-           "WHERE t.activityID IS NOT NULL " +
-           "ORDER BY t.lastModDate DESC")
-    ArrayList<T_104CoMoOutboundCallDetails> getCallActivityHistory();
 
-    // Get all active (non-deleted) call details
+    // Get active call details by createdBy (logged-in user)
     @Query("SELECT t FROM T_104CoMoOutboundCallDetails t " +
-           "WHERE t.deleted = false " +
+           "WHERE t.deleted = false AND t.createdBy = :createdBy " +
            "ORDER BY t.createdDate DESC")
-    ArrayList<T_104CoMoOutboundCallDetails> findAllActiveCallDetails();
-
+    ArrayList<T_104CoMoOutboundCallDetails> findActiveCallDetailsByCreatedBy(
+        @Param("createdBy") String createdBy);
 
 }

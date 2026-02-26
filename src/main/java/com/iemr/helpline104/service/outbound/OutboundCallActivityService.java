@@ -41,10 +41,8 @@ public interface OutboundCallActivityService {
 
         void validateCallStatus(String callStatus);
 
-        ArrayList<T_104CoMoOutboundCallDetails> getCallActivityHistory();
-
         T_104CoMoOutboundCallDetails saveCallDetails(T_104CoMoOutboundCallDetails callDetails);
 
-        ArrayList<T_104CoMoOutboundCallDetails> getActiveCallDetails();
+        ArrayList<T_104CoMoOutboundCallDetails> getActiveCallDetailsByUser(String createdBy);
 
 }
