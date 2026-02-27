@@ -57,7 +57,7 @@ public class T_104CoMoOutboundCallDetails {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ActivityID", insertable = false, updatable = false)
-	private transient OutboundCallActivity activity;
+	private OutboundCallActivity activity;
 
 	@Transient
 	private String activityName;
