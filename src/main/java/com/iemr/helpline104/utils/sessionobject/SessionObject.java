@@ -22,6 +22,7 @@
 package com.iemr.helpline104.utils.sessionobject;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import com.google.gson.JsonElement;
@@ -32,6 +33,7 @@ import com.iemr.helpline104.utils.redis.RedisSessionException;
 import com.iemr.helpline104.utils.redis.RedisStorage;
 
 @Component
+@Profile("!swagger")
 public class SessionObject
 {
 

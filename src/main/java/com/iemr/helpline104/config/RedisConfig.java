@@ -7,12 +7,14 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.context.annotation.Profile;
 import org.springframework.session.data.redis.config.ConfigureRedisAction;
 
 import com.iemr.helpline104.data.users.M_User;
 
 @Configuration
 @EnableCaching
+@Profile("!swagger")
 public class RedisConfig {
 
 	@Bean

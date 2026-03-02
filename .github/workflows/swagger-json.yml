@@ -1,0 +1,100 @@
+name: Sync Swagger to AMRIT-Docs
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  swagger-sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout API repo
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: maven
+
+      - name: Build API (skip tests)
+        run: mvn clean package -DENV_VAR=swagger -DskipTests -Dcheckstyle.skip=true
+
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Run API in swagger profile
+        run: |
+          mvn spring-boot:run \
+            -DENV_VAR=swagger \
+            -Dspring-boot.run.profiles=swagger \
+            -Dcheckstyle.skip=true \
+            -Dmaven.test.skip=true \
+            -Dspring-boot.run.arguments="--server.port=9090" \
+            > app.log 2>&1 &
+          echo $! > api_pid.txt
+
+      - name: Wait for API & fetch Swagger
+        run: |
+          for i in {1..30}; do
+            CODE=$(curl --connect-timeout 2 --max-time 5 -s -o swagger_raw.json -w "%{http_code}" http://localhost:9090/v3/api-docs || true)
+            if [ "$CODE" = "200" ]; then
+              if jq . swagger_raw.json > helpline104-api.json; then
+                echo "Swagger generated successfully"
+                exit 0
+              else
+                echo "Failed to parse swagger_raw.json with jq"
+                exit 1
+              fi
+            fi
+            echo "Waiting for API... ($i)"
+            sleep 5
+          done
+
+          echo "Swagger not generated"
+          cat app.log || true
+          exit 1
+
+      - name: Stop API
+        if: always()
+        run: |
+          # Graceful shutdown of the process group
+          sleep 5
+          # Force kill the process group if still running
+          if [ -f api_pid.txt ]; then
+              PID=$(cat api_pid.txt)
+              kill -TERM -- -"$PID" 2>/dev/null || true
+              sleep 2
+              kill -9 -- -"$PID" 2>/dev/null || true
+            fi
+            # Fallback: kill any remaining java process on port 9090
+            fuser -k 9090/tcp 2>/dev/null || true
+
+      - name: Checkout AMRIT-Docs
+        uses: actions/checkout@v4
+        with:
+          repository: PSMRI/AMRIT-Docs
+          token: ${{ secrets.DOCS_REPO_TOKEN }}
+          path: amrit-docs
+
+      - name: Copy Swagger JSON
+        run: |
+          mkdir -p amrit-docs/docs/swagger
+          cp helpline104-api.json amrit-docs/docs/swagger/helpline104-api.json
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.DOCS_REPO_TOKEN }}
+          path: amrit-docs
+          branch: auto/swagger-update-helpline104-api
+          base: main
+          commit-message: Auto-update Helpline104-API swagger
+          title: Auto-update Helpline104-API swagger
+          delete-branch: true
+          body: |
+            This PR automatically updates the Helpline104-API Swagger JSON
+            from the latest main branch build.

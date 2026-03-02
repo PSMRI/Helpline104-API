@@ -28,9 +28,11 @@ import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.RedisStringCommands.SetOption;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.types.Expiration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
+@Profile("!swagger")
 public class RedisStorage {
 	// @Autowired
 	// private RedisConnection redisConnection;// = new RedisConnection();
