@@ -22,6 +22,8 @@
 package com.iemr.helpline104.repository.beneficiarycall;
 
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -100,5 +102,8 @@ public interface BeneficiaryCallRepository extends CrudRepository<BeneficiaryCal
 	
 	@Query("select callID from BeneficiaryCall where benCallID = :benCallID")
 	public String findCallIDFromBenCallID(@Param("benCallID") Long benCallID);
+
+	@Query("select b.beneficiaryRegID from BeneficiaryCall b where b.callID = :callID and b.beneficiaryRegID is not null order by b.benCallID desc")
+	public List<Long> findBeneficiaryRegIDByCallID(@Param("callID") String callID);
 
 }

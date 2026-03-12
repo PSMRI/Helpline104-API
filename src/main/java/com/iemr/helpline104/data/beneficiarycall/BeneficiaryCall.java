@@ -147,6 +147,10 @@ public class BeneficiaryCall {
 		return beneficiaryRegID;
 	}
 
+	public void setBeneficiaryRegID(Long beneficiaryRegID) {
+		this.beneficiaryRegID = beneficiaryRegID;
+	}
+
 	public Integer getCalledServiceID() {
 		return calledServiceID;
 	}
