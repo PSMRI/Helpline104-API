@@ -26,7 +26,8 @@ import java.sql.Date;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import com.google.gson.Gson;
+import com.google.gson.annotations.Expose;
+import com.iemr.helpline104.utils.mapper.OutputMapper;
 
 @Entity
 @Table(name = "t_104CoMoOutboundCallDetails")
@@ -34,24 +35,38 @@ import com.google.gson.Gson;
 public class T_104CoMoOutboundCallDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Expose
 	private Long iD;
+	@Expose
 	private Integer uSRMappingID;
+	@Expose
 	@Column(name = "CzentrixCallID")
 	private String callId;
+	@Expose
 	private String callType;
+	@Expose
 	private String callSubType;
+	@Expose
 	private Boolean is_Visited;
+	@Expose
 	private String remarks;
+	@Expose
 	private String feedback;
+	@Expose
 	private Boolean deleted;
+	@Expose
 	private String createdBy;
+	@Expose
 	@Column(name = "CreatedDate", insertable = false, updatable = false)
 	private Date createdDate;
+	@Expose
 	@Column(name = "ModifiedBy")
 	private String modifiedBy;
+	@Expose
 	@Column(name = "LastModDate", insertable = false, updatable = false)
 	private Date lastModDate;
 
+	@Expose
 	@Column(name = "ActivityID")
 	private Long activityID;
 
@@ -59,15 +74,19 @@ public class T_104CoMoOutboundCallDetails {
 	@JoinColumn(name = "ActivityID", insertable = false, updatable = false)
 	private OutboundCallActivity activity;
 
+	@Expose
 	@Transient
 	private String activityName;
 
+	@Expose
 	@Column(name = "CallStatus")
 	private String callStatus; // Fixed values: Answered, Not Answered, Did Not Want Further Call
 
+	@Expose
 	@Column(name = "CallRemarks", length = 500)
 	private String callRemarks; // specifically for call activity to avoid conflicts with Remarks field
 
+	@Expose
 	@Column(name = "BeneficiaryPhoneNumber")
 	private String beneficiaryPhoneNumber;
 
@@ -188,7 +207,10 @@ public class T_104CoMoOutboundCallDetails {
 		return iD;
 	}
 
+	@Transient
+	private OutputMapper outputMapper = new OutputMapper();
+
 	public String toString() {
-		return new Gson().toJson(this);
+		return OutputMapper.gson().toJson(this);
 	}
 }

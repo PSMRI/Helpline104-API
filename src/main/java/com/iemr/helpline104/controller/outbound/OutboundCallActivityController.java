@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.iemr.helpline104.data.comoOutbound.OutboundCallActivity;
@@ -35,6 +34,7 @@ import com.iemr.helpline104.service.outbound.OutboundCallActivityService;
 import com.iemr.helpline104.utils.CookieUtil;
 import com.iemr.helpline104.utils.JwtUtil;
 import com.iemr.helpline104.utils.mapper.InputMapper;
+import com.iemr.helpline104.utils.mapper.OutputMapper;
 import com.iemr.helpline104.utils.response.OutputResponse;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -73,7 +73,7 @@ public class OutboundCallActivityController {
                 activities = activityService.getActiveActivitiesByProvider(null);
             }
 
-            output.setResponse(new Gson().toJson(activities));
+            output.setResponse(OutputMapper.gson().toJson(activities));
         } catch (Exception e) {
             output.setError(e);
         }
@@ -86,7 +86,7 @@ public class OutboundCallActivityController {
         OutputResponse output = new OutputResponse();
         try {
             ArrayList<OutboundCallActivity> activities = activityService.getAllActivities();
-            output.setResponse(new Gson().toJson(activities));
+            output.setResponse(OutputMapper.gson().toJson(activities));
         } catch (Exception e) {
             output.setError(e);
         }
@@ -151,7 +151,7 @@ public class OutboundCallActivityController {
             T_104CoMoOutboundCallDetails callDetails = inputMapper.gson().fromJson(request,
                     T_104CoMoOutboundCallDetails.class);
             T_104CoMoOutboundCallDetails savedObj = activityService.saveCallDetails(callDetails);
-            output.setResponse(new Gson().toJson(savedObj));
+            output.setResponse(OutputMapper.gson().toJson(savedObj));
         } catch (Exception e) {
             output.setError(e);
         }
@@ -175,7 +175,7 @@ public class OutboundCallActivityController {
                 throw new IllegalArgumentException("Unable to extract user from token");
             }
             ArrayList<T_104CoMoOutboundCallDetails> callDetails = activityService.getActiveCallDetailsByUser(userName);
-            output.setResponse(new Gson().toJson(callDetails));
+            output.setResponse(OutputMapper.gson().toJson(callDetails));
         } catch (Exception e) {
             output.setError(e);
         }
