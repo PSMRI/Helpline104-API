@@ -1,0 +1,72 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology 
+* Integrated EHR (Electronic Health Records) Solution 
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute" 
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
+
+package com.iemr.helpline104.repository.comoOutbound;
+
+import java.util.ArrayList;
+import org.springframework.data.repository.query.Param;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import com.iemr.helpline104.data.comoOutbound.OutboundCallActivity;
+
+import jakarta.transaction.Transactional;
+
+@Repository
+public interface OutboundCallActivityRepository extends CrudRepository<OutboundCallActivity, Long> {
+
+    // Get active activities by provider
+    @Query("SELECT o FROM OutboundCallActivity o WHERE o.deleted = false " +
+            "AND o.providerServiceMapID = :providerServiceMapID ORDER BY o.activityName")
+    ArrayList<OutboundCallActivity> findActiveActivitiesByProvider(
+            @Param("providerServiceMapID") Integer providerServiceMapID);
+
+    // Get ALL active activities as entity list
+    @Query("SELECT o FROM OutboundCallActivity o WHERE o.deleted = false ORDER BY o.activityName")
+    ArrayList<OutboundCallActivity> findAllActiveActivitiesAsList();
+
+    // Get ALL activities (active + inactive) as entity list
+    @Query("SELECT o FROM OutboundCallActivity o ORDER BY o.activityName")
+    ArrayList<OutboundCallActivity> findAllActivities();
+
+    // Update activity name
+    @Transactional
+    @Modifying
+    @Query("UPDATE OutboundCallActivity SET activityName = :activityName, " +
+            "modifiedBy = :modifiedBy " +
+            "WHERE activityID = :activityID")
+    Integer updateActivityName(@Param("activityID") Long activityID,
+            @Param("activityName") String activityName,
+            @Param("modifiedBy") String modifiedBy);
+
+    // Toggle activity status
+    @Transactional
+    @Modifying
+    @Query("UPDATE OutboundCallActivity SET deleted = :deleted, " +
+            "modifiedBy = :modifiedBy " +
+            "WHERE activityID = :activityID")
+    Integer toggleActivityStatus(@Param("activityID") Long activityID,
+            @Param("deleted") Boolean deleted,
+            @Param("modifiedBy") String modifiedBy);
+}

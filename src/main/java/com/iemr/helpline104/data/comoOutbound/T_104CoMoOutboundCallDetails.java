@@ -23,22 +23,20 @@ package com.iemr.helpline104.data.comoOutbound;
 
 import java.sql.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Data;
 
 import com.google.gson.Gson;
 
 @Entity
-@Table(name="t_104CoMoOutboundCallDetails")
+@Table(name = "t_104CoMoOutboundCallDetails")
+@Data
 public class T_104CoMoOutboundCallDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long iD;
 	private Integer uSRMappingID;
+	@Column(name = "CzentrixCallID")
 	private String callId;
 	private String callType;
 	private String callSubType;
@@ -47,13 +45,32 @@ public class T_104CoMoOutboundCallDetails {
 	private String feedback;
 	private Boolean deleted;
 	private String createdBy;
-	@Column(name = "CreatedDate", insertable=false, updatable=false)
+	@Column(name = "CreatedDate", insertable = false, updatable = false)
 	private Date createdDate;
 	@Column(name = "ModifiedBy")
 	private String modifiedBy;
-	@Column(name = "LastModDate", insertable=false, updatable=false)
+	@Column(name = "LastModDate", insertable = false, updatable = false)
 	private Date lastModDate;
-	
+
+	@Column(name = "ActivityID")
+	private Long activityID;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ActivityID", insertable = false, updatable = false)
+	private OutboundCallActivity activity;
+
+	@Transient
+	private String activityName;
+
+	@Column(name = "CallStatus")
+	private String callStatus; // Fixed values: Answered, Not Answered, Did Not Want Further Call
+
+	@Column(name = "CallRemarks", length = 500)
+	private String callRemarks; // specifically for call activity to avoid conflicts with Remarks field
+
+	@Column(name = "BeneficiaryPhoneNumber")
+	private String beneficiaryPhoneNumber;
+
 	public T_104CoMoOutboundCallDetails() {
 		super();
 	}
@@ -170,7 +187,7 @@ public class T_104CoMoOutboundCallDetails {
 	public Long getiD() {
 		return iD;
 	}
-	
+
 	public String toString() {
 		return new Gson().toJson(this);
 	}

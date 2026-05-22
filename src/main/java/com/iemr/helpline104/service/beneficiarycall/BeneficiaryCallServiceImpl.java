@@ -50,6 +50,14 @@ public class BeneficiaryCallServiceImpl implements BeneficiaryCallService {
 	@Override
 	public BeneficiaryCall createCall(BeneficiaryCall beneficiaryCall) {
 		beneficiaryCall.setIs1097(false);
+
+		if (beneficiaryCall.getBeneficiaryRegID() == null && beneficiaryCall.getCallID() != null) {
+			List<Long> existingRegIDs = beneficiaryCallRepository.findBeneficiaryRegIDByCallID(beneficiaryCall.getCallID());
+			if (existingRegIDs != null && !existingRegIDs.isEmpty()) {
+				beneficiaryCall.setBeneficiaryRegID(existingRegIDs.get(0));
+			}
+		}
+
 		BeneficiaryCall savedCalls = beneficiaryCallRepository.save(beneficiaryCall);
 		return savedCalls;
 	}
