@@ -27,15 +27,10 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iemr.helpline104.data.users.M_User;
 import com.iemr.helpline104.utils.IEMRApplBeans;
 import com.iemr.helpline104.utils.config.ConfigProperties;
 
@@ -84,19 +79,4 @@ class HelloController {
 
 	}
 
-	@Bean
-	@Profile("!swagger")
-	public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
-		RedisTemplate<String, Object> template = new RedisTemplate<>();
-		template.setConnectionFactory(factory);
-
-		// Use StringRedisSerializer for keys (userId)
-		template.setKeySerializer(new StringRedisSerializer());
-
-		// Use Jackson2JsonRedisSerializer for values (Users objects)
-		Jackson2JsonRedisSerializer<M_User> serializer = new Jackson2JsonRedisSerializer<>(M_User.class);
-		template.setValueSerializer(serializer);
-
-		return template;
-	}
 }
