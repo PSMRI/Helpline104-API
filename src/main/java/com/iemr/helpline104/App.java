@@ -26,6 +26,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
@@ -60,6 +61,7 @@ public class App extends SpringBootServletInitializer {
 	}
 
 	@Bean
+	@Profile("!swagger")
 	public IEMRApplBeans instantiateBeans() {
 		return new IEMRApplBeans();
 	}
@@ -83,6 +85,7 @@ class HelloController {
 	}
 
 	@Bean
+	@Profile("!swagger")
 	public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
 		RedisTemplate<String, Object> template = new RedisTemplate<>();
 		template.setConnectionFactory(factory);

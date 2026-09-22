@@ -5,6 +5,7 @@ import javax.crypto.SecretKey;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -12,6 +13,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 
 @Component
+@Profile("!swagger")
 public class JwtUtil {
 
 	@Value("${jwt.secret}")
