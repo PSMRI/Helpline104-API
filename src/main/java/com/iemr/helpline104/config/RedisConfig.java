@@ -23,10 +23,12 @@ package com.iemr.helpline104.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.session.data.redis.config.ConfigureRedisAction;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -45,9 +47,11 @@ public class RedisConfig {
 	}
 
 	@Bean
+	@Primary
 	public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
 		RedisTemplate<String, Object> template = new RedisTemplate<>();
 		template.setConnectionFactory(factory);
+		template.setKeySerializer(new StringRedisSerializer());
 
 		Jackson2JsonRedisSerializer<M_User> serializer = new Jackson2JsonRedisSerializer<>(M_User.class);
 		ObjectMapper mapper = new ObjectMapper();
@@ -56,6 +60,15 @@ public class RedisConfig {
 		serializer.setObjectMapper(mapper);
 		template.setValueSerializer(serializer);
 
+		return template;
+	}
+
+	@Bean("genericRedisTemplate")
+	public RedisTemplate<String, Object> genericRedisTemplate(RedisConnectionFactory factory) {
+		RedisTemplate<String, Object> template = new RedisTemplate<>();
+		template.setConnectionFactory(factory);
+		template.setKeySerializer(new StringRedisSerializer());
+		template.setValueSerializer(new GenericJackson2JsonRedisSerializer());
 		return template;
 	}
 
