@@ -251,6 +251,14 @@ public class BenmedhistoryReport implements Serializable
 	@Transient
 	private Long locationID;
 
+	/**
+	 * Required by JPA, and by the Jackson mapper the secondary reports parse
+	 * their requests with.
+	 */
+	public BenmedhistoryReport()
+	{
+	}
+
 	public BenmedhistoryReport(
 			Long benHistoryID, String requestID, Long beneficiaryRegID, Long benCallID, String patientName, Integer patientAge,
 			String patientGenderName, String algorithm, String diseaseSummaryID, String diseaseSummary, String allergies, String selecteDiagnosisID,
