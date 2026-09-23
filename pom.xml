@@ -17,7 +17,7 @@
 	</parent>
 	<properties>
 		<java.version>17</java.version>
-		<maven.test.skip>true</maven.test.skip>
+		<maven.test.skip>false</maven.test.skip>
 		<build.timestamp>${maven.build.timestamp}</build.timestamp>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
 		<final-name>104api-v3.0.0</final-name>
@@ -251,6 +251,12 @@
 		</dependency>
 
 
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -297,6 +303,23 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>3.0.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+					<!-- The entities hold JDK types (SimpleDateFormat, and so the
+					     Calendar and Locale behind it) that gson reflects over when a
+					     request is parsed, which the JDK 17 module system blocks by
+					     default. @{argLine} keeps the JaCoCo agent contributed by
+					     jacoco:prepare-agent. -->
+					<argLine>@{argLine} --add-opens=java.base/java.text=ALL-UNNAMED
+						--add-opens=java.base/java.lang=ALL-UNNAMED
+						--add-opens=java.base/java.util=ALL-UNNAMED
+						--add-opens=java.base/java.time=ALL-UNNAMED
+						--add-opens=java.base/java.math=ALL-UNNAMED</argLine>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
