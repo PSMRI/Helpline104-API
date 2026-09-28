@@ -40,8 +40,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.core.MediaType;
 import com.iemr.helpline104.utils.validator.Validator;
 
+import org.springframework.context.annotation.Profile;
 
 @Component
+@Profile("!swagger")
 public class HTTPRequestInterceptor implements HandlerInterceptor {
 	private final Validator validator;
 

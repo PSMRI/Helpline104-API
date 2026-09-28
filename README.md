@@ -1,6 +1,8 @@
 # AMRIT - Helpline104 Service
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) ![branch parameter](https://github.com/PSMRI/Helpline104-API/actions/workflows/sast.yml/badge.svg)
+[![DeepWiki](https://img.shields.io/badge/DeepWiki-PSMRI%2FHelpline104--API-blue)](https://deepwiki.com/PSMRI/Helpline104-API)
+
 
 The AMRIT Helpline104 service aims to provide comprehensive assistance to individuals in need. It offers a range of services such as medical advice, counseling, grievance resolution, and support during health emergencies. The helpline is designed to cater to the specific needs of callers, ensuring they receive the appropriate assistance.
 
