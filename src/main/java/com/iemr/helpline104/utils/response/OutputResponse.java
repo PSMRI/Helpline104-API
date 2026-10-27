@@ -150,7 +150,7 @@ public class OutputResponse
 	
 	public void setError(String message)
 	{
-		setError(message);
+		setError(GENERIC_FAILURE, message);
 	}
 
 	public boolean isSuccess()

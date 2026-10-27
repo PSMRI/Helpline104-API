@@ -279,6 +279,14 @@ public class FeedbackReport
 	@Transient
 	private String agentName;
 
+	/**
+	 * Required by JPA, and by the Jackson mapper the secondary reports parse
+	 * their requests with.
+	 */
+	public FeedbackReport()
+	{
+	}
+
 	public FeedbackReport(
 			Long feedbackID, String requestID, Long beneficiaryRegID, Long benCallID, String feedbackAgainst, String designation,
 			String institutionName, String stateName, String districtName, String blockName, String districtBranchName, String instituteTypeName,

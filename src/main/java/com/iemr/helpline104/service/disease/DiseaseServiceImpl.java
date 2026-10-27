@@ -152,7 +152,7 @@ public class DiseaseServiceImpl implements DiseaseService{
 	}
 
 	private int getPageCount(Integer totalCount, Integer pageSize) {
-		if (pageSize > 0) {
+		if (pageSize != null && pageSize > 0) {
 			if (totalCount % pageSize == 0)
 				return (int) (totalCount / pageSize);
 			else
